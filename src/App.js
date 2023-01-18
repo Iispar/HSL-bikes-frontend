@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './components/Header'
-
+import Journeys from './components/Journeys'
+import Stations from './components/Stations'
 import './components/Grid.css'
 
 /**
@@ -14,10 +15,10 @@ const App = () => {
         <Header/>
       </div>
       <div className="left-container">
-
+        <Journeys/>
       </div>
       <div className="right-container">
-
+        <Stations/>
       </div>
     </div>
   )
