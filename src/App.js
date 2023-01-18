@@ -7,7 +7,15 @@ import React from 'react'
 const App = () => {
   return (
     <div className="grid-container">
-      <p> Hello World </p>
+      <div className="header-container">
+
+      </div>
+      <div className="left-container">
+
+      </div>
+      <div className="right-container">
+
+      </div>
     </div>
   )
 }
