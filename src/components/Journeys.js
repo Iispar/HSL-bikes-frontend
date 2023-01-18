@@ -20,9 +20,19 @@ const Journeys = () => {
    * method for changing the filter. And setting the journeydata as instructed by the filtering.
    * @param {Array} filter
    */
-  const changeFilter = (filter) => {
-    setFilterNow(['Departure_station_name=Viiskulma', 'limit=10'])
-    bikeService.getFiltered(['Departure_station_name=Viiskulma', 'limit=10'])
+  const changeFilter = (addToFilter) => {
+    const newFilter = [...filterNow]
+    for (const i in addToFilter) {
+      const adding = addToFilter[i].split('=')[0]
+      for (const i in newFilter) {
+        if (newFilter[i].includes(adding)) {
+          newFilter.pop(i)
+        }
+      }
+      newFilter.push(addToFilter[i])
+    }
+    setFilterNow(newFilter)
+    bikeService.getFiltered(newFilter)
       .then(filteredJourneys => setJourneys(filteredJourneys))
   }
 
@@ -57,10 +67,21 @@ const Journeys = () => {
     <div className = "journeys-container">
         <div className = "filters-container">
             <button onClick={() => changeFilter()}> Espoo </button>
+            <div className = "sortDropdown-container">
+                <button className = "sortDropdown-button"> Sort </button>
+                <div className = "sortDropdown-content">
+                    <button className = "sort-button" onClick={() => changeFilter(['sort=-Covered_distance'])}> Furthest </button>
+                    <button className = "sort-button" onClick={() => changeFilter(['sort=+Covered_distance'])}> Shortest </button>
+                    <button className = "sort-button" onClick={() => changeFilter(['sort=-Duration'])}> Longest </button>
+                    <button className = "sort-button" onClick={() => changeFilter(['sort=+Duration'])}> Fastest </button>
+                </div>
+            </div>
         </div>
+
         <div className = "listOfJourneys-container">
-        <ListJourneys journeys = {journeys} />
+            <ListJourneys journeys = {journeys} />
         </div>
+
         <div className = "pageing-container">
         <button onClick = {() => changePage('b', page)}> previous </button>
             <button onClick = {() => changePage('f', page)}> next </button>

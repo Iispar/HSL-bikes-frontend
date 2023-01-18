@@ -1,0 +1,20 @@
+  
+  .sortDropdown-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .sortDropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .sortDropdown-content p:hover {background-color: #ddd;}
+  
+  .sortDropdown-container:hover .sortDropdown-content {display: block;}
+  
+  .sortDropdown-container:hover .sortDropdown-button {background-color: #3e8e41;}
