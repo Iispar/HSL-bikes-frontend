@@ -1,10 +1,10 @@
   
-  .sortDropdown-container {
+  .dropdown-container {
     position: relative;
     display: inline-block;
   }
   
-  .sortDropdown-content {
+  .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
@@ -13,8 +13,8 @@
     z-index: 1;
   }
   
-  .sortDropdown-content p:hover {background-color: #ddd;}
+  .dropdown-content p:hover {background-color: #ddd;}
   
-  .sortDropdown-container:hover .sortDropdown-content {display: block;}
+  .dropdown-container:hover .dropdown-content {display: block;}
   
-  .sortDropdown-container:hover .sortDropdown-button {background-color: #3e8e41;}
+  .dropdown-container:hover .dropdown-button {background-color: #3e8e41;}
