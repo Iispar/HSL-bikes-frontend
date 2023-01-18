@@ -9,4 +9,14 @@ const getAll = async () => {
   return request.data
 }
 
-export default { getAll }
+const getFiltered = async (filters) => {
+  let newUrl = `${baseUrl}/api/bikers?`
+  for (const i in filters) {
+    newUrl = `${newUrl}${filters[i]}&`
+  }
+  console.log(newUrl)
+  const request = await axios.get(newUrl)
+  return request.data
+}
+
+export default { getAll, getFiltered }

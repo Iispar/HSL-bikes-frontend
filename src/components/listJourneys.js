@@ -8,8 +8,8 @@ const ListJourneys = (props) => {
 
   const list = []
   for (const i in journeys) {
-    console.log(journeys[i])
     list.push(<Journey
+            key = {journeys[i]._id}
             DepartureStationName = {journeys[i].Departure_station_name}
             ReturnStationName = {journeys[i].Return_station_name}
             Distance = {journeys[i].Covered_distance}
@@ -20,7 +20,7 @@ const ListJourneys = (props) => {
 }
 
 ListJourneys.propTypes = {
-  journeys: propTypes.lsit
+  journeys: propTypes.array
 }
 
 export default ListJourneys

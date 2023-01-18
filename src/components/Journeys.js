@@ -14,9 +14,15 @@ const Journeys = () => {
       .then(journeysData => setJourneys(journeysData))
   }, [])
 
+  const changeFilter = () => {
+    bikeService.getFiltered(['Departure_station_name=Viiskulma', 'limit=10'])
+      .then(filteredJourneys => setJourneys(filteredJourneys))
+  }
+
   return (
     <div className = "journeys-container">
         <div className = "filters-container">
+            <button onClick={() => changeFilter()}> Espoo </button>
         </div>
         <div className = "listOfJourneys-container">
         <ListJourneys journeys = {journeys} />
