@@ -18,3 +18,10 @@
   .dropdown-container:hover .dropdown-content {display: block;}
   
   .dropdown-container:hover .dropdown-button {background-color: #3e8e41;}
+
+  .filters-container {
+    display: flex;
+    flex-direction: row;
+
+  }
+
