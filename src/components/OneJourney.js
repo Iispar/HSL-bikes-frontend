@@ -8,7 +8,7 @@ const Journey = (props) => {
   const duration = props.duration
 
   return (
-    <div className = "singleJourney-container">
+    <div name = "singleJourney" className = "singleJourney-container">
         Departure station: {departureStationName}, Return station: {returnStationName}, Distance: {distance}, Duration: {duration}
     </div>
   )

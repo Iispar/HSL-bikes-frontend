@@ -4,7 +4,7 @@ import ListJourneys from './ListJourneys'
 import $ from 'jquery'
 import 'jquery-ui-bundle'
 import 'jquery-ui-bundle/jquery-ui.css'
-import { getPageFilter, newFilter } from './filterHelpers'
+import { getPageFilter, newFilter } from './helpers/filterHelpers'
 import { stations, stationsAndIds } from '../data/stationsData'
 
 /**
@@ -116,7 +116,7 @@ const Journeys = () => {
         <div className = "journeyFilters-container">
             <div className = "stationSearch-container">
                 <form onSubmit={handleSubmitDeparture}>
-                    <input id="DepartureStationsInput" placeholder="Departure station"></input>
+                    <input id="DepartureStationsInput" placeholder="Departure station" onChange={() => setDeparture(event.target.value)}></input>
                 </form>
             </div>
             <div className = "stationSearch-container">
@@ -124,7 +124,7 @@ const Journeys = () => {
                 <input id="ReturnStationInput" placeholder="Return station"></input>
             </form>
         <div className="resetButton-container">
-            <button id="reset-button" className="reset-button" onClick={() => resetFilters()}> reset filters </button>
+            <button id="reset-button" className="reset-button" onClick={() => resetFilters()} onChange={() => setArrival(event.target.value)}> reset filters </button>
         </div>
         </div>
 

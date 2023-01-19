@@ -43,7 +43,6 @@ const Stations = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     const stationId = stationsAndIds[name]
-    console.log(stationId)
     const filterToChange = ['ID=' + stationId]
     changeFilter(filterToChange)
     setName('')
@@ -78,24 +77,24 @@ const Stations = () => {
       }
     })
   })
-
+  console.log(name)
   return (
     <div className="station-container">
       <div className="list-container" id="list-container">
         <div className="stationFilter-container">
-        <div className = "stationSearch-container">
-          <form onSubmit={handleSubmit}>
-              <input id="StationInput" placeholder="Station name"></input>
-          </form>
+          <div className = "stationSearch-container">
+            <form onSubmit={handleSubmit}>
+                <input name = "stationInput" id="StationInput" placeholder="Station name" onChange={() => setName(event.target.value)}></input>
+            </form>
+          </div>
         </div>
-        </div>
-        <div className = "listOfStations-container">
-          <ListStations stations = {stationsDisplay}/>
-        </div>
+          <div className = "listOfStations-container">
+            <ListStations stations = {stationsDisplay}/>
+          </div>
         <div className = "pagination-container">
           <button id = "backwardsStation-button" onClick = {() => changePage('b', page)}> previous </button>
           <button id = "forwardsStation-button" onClick = {() => changePage('f', page)}> next </button>
-      </div>
+        </div>
       </div>
       <div className="singleStation-container" id="singleStation-container">
         <SingleStationInfo/>
