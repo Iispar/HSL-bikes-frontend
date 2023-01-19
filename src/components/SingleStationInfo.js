@@ -2,6 +2,9 @@ import React from 'react'
 import $ from 'jquery'
 
 const Station = () => {
+  /**
+   * Closes the single station view and returns the list.
+   */
   const closeView = () => {
     $('#list-container').css('display', 'flex')
     $('#singleStation-container').css('display', 'none')

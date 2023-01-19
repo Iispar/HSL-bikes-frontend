@@ -2,7 +2,7 @@
 import React from 'react'
 import propTypes from 'prop-types'
 import $ from 'jquery'
-import { getCountTripsEnding, getCountTripsStarting } from './stationDataHelpers'
+import { getCountTripsEnding, getCountTripsStarting } from './helpers/stationDataHelpers'
 
 const Station = (props) => {
   const id = props.id
@@ -17,6 +17,10 @@ const Station = (props) => {
   const x = props.x
   const y = props.y
 
+  /**
+   * Clicking an station displays this. We set and call all wanted data from backend and set it with jquery. We also hide the list of stations first and then make visible
+   * the single station view.
+   */
   const setSingleStationThis = async () => {
     $('#list-container').css('display', 'none')
     $('#singleStation-container').css('display', 'flex')

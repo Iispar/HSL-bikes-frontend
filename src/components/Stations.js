@@ -3,7 +3,7 @@ import stationService from '../services/StationService'
 import ListStations from './ListStations'
 import $ from 'jquery'
 import { stations, stationsAndIds } from '../data/stationsData'
-import { newFilter, getPageFilter } from './filterHelpers'
+import { newFilter, getPageFilter } from './helpers/filterHelpers'
 import SingleStationInfo from './SingleStationInfo.js'
 
 /**
@@ -36,6 +36,10 @@ const Stations = () => {
       .then(filteredJourneys => setStationsDisplay(filteredJourneys))
   }
 
+  /**
+   * Handles the submit of the form. Same as in bikes.
+   * @param {} event
+   */
   const handleSubmit = (event) => {
     event.preventDefault()
     const stationId = stationsAndIds[name]
@@ -45,6 +49,11 @@ const Stations = () => {
     setName('')
   }
 
+  /**
+   * Changes the page, same as in journeys,
+   * @param {String} direction
+   * @param {Int} page
+   */
   const changePage = (direction, page) => {
     if (direction === 'f') page.current = page.current + 1
     else page.current = page.current - 1
@@ -84,8 +93,8 @@ const Stations = () => {
           <ListStations stations = {stationsDisplay}/>
         </div>
         <div className = "pagination-container">
-        <button id = "backwardsStation-button" onClick = {() => changePage('b', page)}> previous </button>
-        <button id = "forwardsStation-button" onClick = {() => changePage('f', page)}> next </button>
+          <button id = "backwardsStation-button" onClick = {() => changePage('b', page)}> previous </button>
+          <button id = "forwardsStation-button" onClick = {() => changePage('f', page)}> next </button>
       </div>
       </div>
       <div className="singleStation-container" id="singleStation-container">
