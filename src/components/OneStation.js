@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import propTypes from 'prop-types'
+import $ from 'jquery'
 
 const Station = (props) => {
+  const id = props.ID
   const nameFi = props.nameFi
   const nameSwe = props.nameSwe
   const adressFi = props.adressFi
@@ -14,14 +16,23 @@ const Station = (props) => {
   const x = props.x
   const y = props.y
 
+  const setSingleStationThis = () => {
+    $('#list-container').css('display', 'none')
+    $('#singleStation-container').css('display', 'flex')
+    $('#singleStationHeader').text(nameFi)
+    $('#singleStationInfo').text(adressFi + ',' + cityFi)
+    $('#singleStationCapasity').text('capasity:' + capasity)
+  }
+
   return (
-    <div className = "singleJourney-container">
+    <div className = "singleJourney-container" id={id} onClick={() => setSingleStationThis()}>
         Name: {nameFi}, adress: {adressFi}, city: {cityFi}, operator: {operator}, capasity: {capasity}
     </div>
   )
 }
 
 Station.propTypes = {
+  ID: propTypes.string,
   nameFi: propTypes.string,
   nameSwe: propTypes.string,
   adressFi: propTypes.string,

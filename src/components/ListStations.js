@@ -10,6 +10,7 @@ const ListStations = (props) => {
   for (const i in stations) {
     list.push(<Station
         key = {stations[i].FID}
+        id = {stations[i].ID}
         nameFi = {stations[i].Name_fi}
         nameSwe = {stations[i].Name_swe}
         adressFi = {stations[i].Adress_fi}
@@ -20,7 +21,7 @@ const ListStations = (props) => {
         capasity = {stations[i].Capasity}
         x = {stations[i].x}
         y = {stations[i].y}
-            />)
+      />)
   }
   return list
 }

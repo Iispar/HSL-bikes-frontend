@@ -1,4 +1,11 @@
 
+/**
+ * Helper for pagination. This checks the direction we are paging and then set the filter as following.
+ * @param {Sting} direction
+ * @param {Int} page
+ * @param {Array} filterNow
+ * @returns list with added filter
+ */
 export const getPageFilter = (direction, page, filterNow) => {
   if (direction === 'f') {
     const filter = [...filterNow]
@@ -14,4 +21,24 @@ export const getPageFilter = (direction, page, filterNow) => {
     filter.push(`skip=${page * 10}`)
     return filter
   }
+}
+
+/**
+ * Helper for changing the filter. Adds wanted filters to the previous filter. Als checks if filter already includes said filter.
+ * @param {Array} filterNow
+ * @param {Array} addToFilter
+ * @returns Filter array with new filter added.
+ */
+export const newFilter = (filterNow, addToFilter) => {
+  const newFilter = [...filterNow]
+  for (const i in addToFilter) {
+    const adding = addToFilter[i].split('=')[0]
+    for (const i in newFilter) {
+      if (newFilter[i].includes(adding)) {
+        newFilter.pop(i)
+      }
+    }
+    newFilter.push(addToFilter[i])
+  }
+  return newFilter
 }
