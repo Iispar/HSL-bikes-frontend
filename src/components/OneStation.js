@@ -2,9 +2,10 @@
 import React from 'react'
 import propTypes from 'prop-types'
 import $ from 'jquery'
+import { getCountTripsEnding, getCountTripsStarting } from './stationDataHelpers'
 
 const Station = (props) => {
-  const id = props.ID
+  const id = props.id
   const nameFi = props.nameFi
   const nameSwe = props.nameSwe
   const adressFi = props.adressFi
@@ -16,12 +17,20 @@ const Station = (props) => {
   const x = props.x
   const y = props.y
 
-  const setSingleStationThis = () => {
+  const setSingleStationThis = async () => {
     $('#list-container').css('display', 'none')
     $('#singleStation-container').css('display', 'flex')
     $('#singleStationHeader').text(nameFi)
     $('#singleStationInfo').text(adressFi + ',' + cityFi)
     $('#singleStationCapasity').text('capasity:' + capasity)
+    $('#singleStationTripsDeparture').text('all trips ending here: Waiting for data...')
+    $('#singleStationTripsReturn').text('all trips ending here: Waiting for data...')
+
+    const tripsEndingHere = await getCountTripsEnding(id)
+    const tripsStartingHere = await getCountTripsStarting(id)
+
+    $('#singleStationTripsDeparture').text('all trips ending here: ' + tripsEndingHere)
+    $('#singleStationTripsReturn').text('all trips ending here: ' + tripsStartingHere)
   }
 
   return (
@@ -32,7 +41,7 @@ const Station = (props) => {
 }
 
 Station.propTypes = {
-  ID: propTypes.string,
+  id: propTypes.string,
   nameFi: propTypes.string,
   nameSwe: propTypes.string,
   adressFi: propTypes.string,

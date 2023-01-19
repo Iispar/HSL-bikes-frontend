@@ -24,4 +24,19 @@ const getFiltered = async (filters) => {
   return request.data
 }
 
-export default { getAll, getFiltered }
+/**
+ * Returns amount of trips in database that fill filters.
+ * @param {Array} filters
+ * @returns amount of trips that fill the filter
+ */
+const getCount = async (filters) => {
+  let newUrl = `${baseUrl}/api/bikers/count?`
+  for (const i in filters) {
+    newUrl = `${newUrl}${filters[i]}&`
+  }
+  console.log(newUrl)
+  const request = await axios.get(newUrl)
+  return request.data
+}
+
+export default { getAll, getFiltered, getCount }
