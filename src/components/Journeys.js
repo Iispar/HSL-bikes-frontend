@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import bikeService from '../services/BikeService'
-import ListJourneys from './listJourneys'
+import ListJourneys from './ListJourneys'
 import $ from 'jquery'
 import 'jquery-ui-bundle'
 import 'jquery-ui-bundle/jquery-ui.css'
+import { getPageFilter } from './filterHelpers'
 
 /**
  * method for creating the list of journeys.
@@ -11,7 +12,7 @@ import 'jquery-ui-bundle/jquery-ui.css'
  */
 const Journeys = () => {
   const [journeys, setJourneys] = useState([])
-  const [page, setPage] = useState(1)
+  const page = useRef(0)
   const [filterNow, setFilterNow] = useState(['limit=10'])
   const [departure, setDeparture] = useState('')
   const [arrival, setArrival] = useState('')
@@ -24,6 +25,7 @@ const Journeys = () => {
   useEffect(() => {
     bikeService.getAll()
       .then(journeysData => setJourneys(journeysData))
+    $('#backwards-button').prop('disabled', true)
   }, [])
 
   /**
@@ -53,24 +55,12 @@ const Journeys = () => {
    * @returns set journeydata as filtered
    */
   const changePage = (direction, page) => {
-    if (direction === 'f') {
-      const filter = [...filterNow]
-      filter.push(`skip=${page * 10}`)
-      setPage(page + 1)
-      bikeService.getFiltered(filter)
-        .then(filteredJourneys => setJourneys(filteredJourneys))
-    } else {
-      const filter = [...filterNow]
-      if (page * 10 - 20 < 0) {
-        // TODO: error handling here
-        console.log('too low')
-        return
-      }
-      filter.push(`skip=${page * 10 - 20}`)
-      setPage(page - 1)
-      bikeService.getFiltered(filter)
-        .then(filteredJourneys => setJourneys(filteredJourneys))
-    }
+    if (direction === 'f') page.current = page.current + 1
+    else page.current = page.current - 1
+    page.current === 0 ? $('#backwards-button').prop('disabled', true) : $('#backwards-button').prop('disabled', false)
+    const filter = getPageFilter(direction, page.current, filterNow)
+    bikeService.getFiltered(filter)
+      .then(filteredJourneys => setJourneys(filteredJourneys))
   }
 
   /**
@@ -167,8 +157,8 @@ const Journeys = () => {
         </div>
 
         <div className = "pagination-container">
-        <button onClick = {() => changePage('b', page)}> previous </button>
-            <button onClick = {() => changePage('f', page)}> next </button>
+        <button id = "backwards-button" onClick = {() => changePage('b', page)}> previous </button>
+            <button id = "forwards-button" onClick = {() => changePage('f', page)}> next </button>
         </div>
     </div>
   )
