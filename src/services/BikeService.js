@@ -2,13 +2,18 @@ import axios from 'axios'
 const baseUrl = 'https://solita-backend.fly.dev'
 
 /**
- * get the already filtered data of the drones from the backend.
+ * get the already filtered data of the bikes from the backend. returns first ten items from the backend.
  */
 const getAll = async () => {
   const request = await axios.get(`${baseUrl}/api/bikers/all`)
   return request.data
 }
 
+/**
+ * Get filtered data from the backend with the filters being in the URL
+ * @param {Array} filters
+ * @returns requested data.
+ */
 const getFiltered = async (filters) => {
   let newUrl = `${baseUrl}/api/bikers?`
   for (const i in filters) {

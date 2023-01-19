@@ -10,10 +10,10 @@ const ListJourneys = (props) => {
   for (const i in journeys) {
     list.push(<Journey
             key = {journeys[i]._id}
-            DepartureStationName = {journeys[i].Departure_station_name}
-            ReturnStationName = {journeys[i].Return_station_name}
-            Distance = {journeys[i].Covered_distance}
-            Duration = {journeys[i].Duration}
+            departureStationName = {journeys[i].Departure_station_name}
+            returnStationName = {journeys[i].Return_station_name}
+            distance = {journeys[i].Covered_distance}
+            duration = {journeys[i].Duration}
             />)
   }
   return list

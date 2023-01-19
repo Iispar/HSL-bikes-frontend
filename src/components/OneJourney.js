@@ -2,23 +2,23 @@ import React from 'react'
 import propTypes from 'prop-types'
 
 const Journey = (props) => {
-  const DepartureStationName = props.DepartureStationName
-  const ReturnStationName = props.ReturnStationName
-  const Distance = props.Distance
-  const Duration = props.Duration
+  const departureStationName = props.departureStationName
+  const returnStationName = props.returnStationName
+  const distance = props.distance
+  const duration = props.duration
 
   return (
     <div className = "singleJourney-container">
-        Departure station: {DepartureStationName}, Return station: {ReturnStationName}, Distance: {Distance}, Duration: {Duration}
+        Departure station: {departureStationName}, Return station: {returnStationName}, Distance: {distance}, Duration: {duration}
     </div>
   )
 }
 
 Journey.propTypes = {
-  DepartureStationName: propTypes.string,
-  ReturnStationName: propTypes.string,
-  Distance: propTypes.number,
-  Duration: propTypes.number
+  departureStationName: propTypes.string,
+  returnStationName: propTypes.string,
+  distance: propTypes.number,
+  duration: propTypes.number
 }
 
 export default Journey
