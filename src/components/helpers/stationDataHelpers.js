@@ -1,4 +1,5 @@
 import bikeService from '../../services/BikeService'
+import { stationsAndIds } from '../../data/stationsData'
 
 //     const averageDistanceStarting = ''
 //     const averageDistanceEnding = ''
@@ -43,6 +44,16 @@ export const getAverageDistance = async (direction, stationId, month) => {
  * @returns
  */
 export const getTop = async (direction, stationId, month) => {
-  const result = await bikeService.getAverage(direction, stationId, month)
-  return result
+  const result = await bikeService.getTop(direction, stationId, month)
+  const list = []
+  for (const i in result) {
+    const name = getKeyByValue(stationsAndIds, result[i]._id)
+    list.push(name)
+  }
+  console.log(result)
+  return list
+}
+
+const getKeyByValue = (object, value) => {
+  return Object.keys(object).find(key => object[key] === value)
 }
