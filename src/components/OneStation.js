@@ -2,7 +2,7 @@
 import React from 'react'
 import propTypes from 'prop-types'
 import $ from 'jquery'
-import { getCountTripsEnding, getCountTripsStarting } from './helpers/stationDataHelpers'
+import { getCountTripsEnding, getCountTripsStarting, getTop, getAverageDistance } from './helpers/stationDataHelpers'
 
 const Station = (props) => {
   const id = props.id
@@ -32,9 +32,17 @@ const Station = (props) => {
 
     const tripsEndingHere = await getCountTripsEnding(id)
     const tripsStartingHere = await getCountTripsStarting(id)
+    const topReturning = await getTop('return', id, 'all')
+    const topDeparting = await getTop('departure', id, 'all')
+    const avgReturning = await getAverageDistance('return', id, 'all')
+    const avgDeparting = await getAverageDistance('departure', id, 'all')
 
     $('#singleStationTripsDeparture').text('all trips ending here: ' + tripsEndingHere)
     $('#singleStationTripsReturn').text('all trips ending here: ' + tripsStartingHere)
+    $('#singleStationTopReturning').text('top returning: ' + topReturning)
+    $('#singleStationTopDeparting').text('top departing: ' + topDeparting)
+    $('#singleStationAvgReturning').text('avg distance returning: ' + avgReturning)
+    $('#singleStationAvgDeparting').text('avg distance departing: ' + avgDeparting)
   }
 
   return (

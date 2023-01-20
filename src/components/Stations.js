@@ -75,7 +75,6 @@ const Stations = () => {
       }
     })
   })
-  console.log(name)
   return (
     <div className="station-container">
       <div className="list-container" id="list-container">

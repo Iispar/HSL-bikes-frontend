@@ -22,6 +22,10 @@ const Station = () => {
         <p id="singleStationCapasity"> capasity </p>
         <p id="singleStationTripsDeparture"> trips </p>
         <p id="singleStationTripsReturn"> trips </p>
+        <p id="singleStationTopReturning"> topR </p>
+        <p id="singleStationTopDeparting"> topD </p>
+        <p id="singleStationAvgReturning"> avgLR </p>
+        <p id="singleStationAvgDeparting"> avgLD </p>
       </div>
     </div>
   )

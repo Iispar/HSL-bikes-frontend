@@ -26,3 +26,23 @@ export const getCountTripsStarting = async (stationId) => {
   const result = await bikeService.getCount(filter)
   return result
 }
+
+/**
+ * Calls the average api and returns average distance of trips from or to station.
+ * @param {String} stationId
+ * @returns
+ */
+export const getAverageDistance = async (direction, stationId, month) => {
+  const result = await bikeService.getAverage(direction, stationId, month)
+  return result[0].average
+}
+
+/**
+ * Calls the top api and returns top 5 returning or deparute stations for this station.
+ * @param {String} stationId
+ * @returns
+ */
+export const getTop = async (direction, stationId, month) => {
+  const result = await bikeService.getAverage(direction, stationId, month)
+  return result
+}

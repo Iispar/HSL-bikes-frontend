@@ -39,4 +39,38 @@ const getCount = async (filters) => {
   return request.data
 }
 
-export default { getAll, getFiltered, getCount }
+/**
+ * Returns the average distance of selected months, station and direction
+ * @param {Array} filters
+ * @returns amount of trips that fill the filter
+ */
+const getAverage = async (direction, stationId, month) => {
+  if (direction === 'departure') {
+    const url = `${baseUrl}/api/bikers/average/departure/${stationId}/${month}`
+    const request = await axios.get(url)
+    return request.data
+  } else {
+    const url = `${baseUrl}/api/bikers/average/return/${stationId}/${month}`
+    const request = await axios.get(url)
+    return request.data
+  }
+}
+
+/**
+ * Returns the top five stations of selected months, station and direction
+ * @param {Array} filters
+ * @returns amount of trips that fill the filter
+ */
+const getTop = async (direction, stationId, month) => {
+  if (direction === 'departure') {
+    const url = `${baseUrl}/api/bikers/top/departure/${stationId}/${month}`
+    const request = await axios.get(url)
+    return request.data
+  } else {
+    const url = `${baseUrl}/api/bikers/top/return/${stationId}/${month}`
+    const request = await axios.get(url)
+    return request.data
+  }
+}
+
+export default { getAll, getFiltered, getCount, getAverage, getTop }
