@@ -57,6 +57,7 @@ const Journeys = () => {
    */
   const handleSubmitDeparture = (event) => {
     event.preventDefault()
+    $('#DepartureStationsInput').autocomplete('close')
     const id = stationsAndIds[departure]
     const filterToChange = ['Departure_station_id=' + id]
     changeFilter(filterToChange)
@@ -65,6 +66,7 @@ const Journeys = () => {
 
   const handleSubmitReturn = (event) => {
     event.preventDefault()
+    $('#ReturnStationInput').autocomplete('close')
     const id = stationsAndIds[arrival]
     const filterToChange = ['Return_station_id=' + id]
     changeFilter(filterToChange)
@@ -80,9 +82,6 @@ const Journeys = () => {
       source: stations,
       select: (event, ui) => {
         setDeparture(ui.item.value)
-      },
-      change: (event, ui) => {
-        setDeparture(ui.item.value)
       }
     })
   })
@@ -95,9 +94,6 @@ const Journeys = () => {
       source: stations,
       select: (event, ui) => {
         setArrival(ui.item.value)
-      },
-      change: (event, ui) => {
-        setArrival(ui.item.value)
       }
     })
   })
@@ -107,8 +103,8 @@ const Journeys = () => {
    */
   const resetFilters = () => {
     setFilterNow(['limit=10'])
-    bikeService.getFiltered(filterNow)
-      .then(filteredJourneys => setJourneys(filteredJourneys))
+    bikeService.getFiltered(['limit=10'])
+      .then(filteredJourneys => setJourneys([...filteredJourneys]))
   }
 
   return (
@@ -121,20 +117,20 @@ const Journeys = () => {
             </div>
             <div className = "stationSearch-container">
             <form onSubmit={handleSubmitReturn}>
-                <input id="ReturnStationInput" placeholder="Return station"></input>
+                <input id="ReturnStationInput" placeholder="Return station" onChange={() => setArrival(event.target.value)}></input>
             </form>
         <div className="resetButton-container">
-            <button id="reset-button" className="reset-button" onClick={() => resetFilters()} onChange={() => setArrival(event.target.value)}> reset filters </button>
+            <button id="reset-button" className="reset-button" onClick={() => resetFilters()}> reset filters </button>
         </div>
         </div>
 
             <div className = "dropdown-container">
             <button className = "dropdown-button"> Sort </button>
             <div className = "dropdown-content">
-                <button className = "sort-button" onClick={() => changeFilter(['sort=-Covered_distance'])}> Furthest </button>
-                <button className = "sort-button" onClick={() => changeFilter(['sort=+Covered_distance'])}> Shortest </button>
-                <button className = "sort-button" onClick={() => changeFilter(['sort=-Duration'])}> Longest </button>
-                <button className = "sort-button" onClick={() => changeFilter(['sort=+Duration'])}> Fastest </button>
+                <button id = "DistanceDecreasing-button" className = "sort-button" onClick={() => changeFilter(['sort=-Covered_distance'])}> Furthest </button>
+                <button id = "DistanceIncreasing-button" className = "sort-button" onClick={() => changeFilter(['sort=+Covered_distance'])}> Shortest </button>
+                <button id = "DurationDecreasing-button" className = "sort-button" onClick={() => changeFilter(['sort=-Duration'])}> Longest </button>
+                <button id = "DurationIncreasing-button" className = "sort-button" onClick={() => changeFilter(['sort=+Duration'])}> Fastest </button>
             </div>
         </div>
     </div>

@@ -2,7 +2,8 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    'jest/globals': true
+    'jest/globals': true,
+    'cypress/globals': true
   },
   extends: [
     'plugin:react/recommended',
@@ -15,7 +16,9 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    'react'
+    'react',
+    'jest',
+    'cypress'
   ],
   rules: {
   }
