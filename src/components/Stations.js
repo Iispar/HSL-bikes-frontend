@@ -42,6 +42,7 @@ const Stations = () => {
    */
   const handleSubmit = (event) => {
     event.preventDefault()
+    $('#StationInput').autocomplete('close')
     const stationId = stationsAndIds[name]
     const filterToChange = ['ID=' + stationId]
     changeFilter(filterToChange)
@@ -70,9 +71,6 @@ const Stations = () => {
     $('#StationInput').autocomplete({
       source: stations,
       select: (event, ui) => {
-        setName(ui.item.value)
-      },
-      change: (event, ui) => {
         setName(ui.item.value)
       }
     })
