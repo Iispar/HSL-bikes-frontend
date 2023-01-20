@@ -22,6 +22,7 @@ const Station = (props) => {
    * the single station view.
    */
   const setSingleStationThis = async () => {
+    $('#stationInformation').attr('name', id)
     $('#list-container').css('display', 'none')
     $('#singleStation-container').css('display', 'flex')
     $('#singleStationHeader').text(nameFi)

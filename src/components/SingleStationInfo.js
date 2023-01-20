@@ -1,5 +1,6 @@
 import React from 'react'
 import $ from 'jquery'
+import { getTop, getAverageDistance } from './helpers/stationDataHelpers'
 
 const Station = () => {
   /**
@@ -9,9 +10,38 @@ const Station = () => {
     $('#list-container').css('display', 'flex')
     $('#singleStation-container').css('display', 'none')
   }
+
+  const changeMonth = async (month) => {
+    const id = $('#stationInformation').attr('name')
+
+    $('#singleStationTopReturning').text('Loading...')
+    $('#singleStationTopDeparting').text('Loading...')
+    $('#singleStationAvgReturning').text('Loading...')
+    $('#singleStationAvgDeparting').text('Loading...')
+
+    const topReturning = await getTop('return', id, month)
+    const topDeparting = await getTop('departure', id, month)
+    const avgReturning = await getAverageDistance('return', id, month)
+    const avgDeparting = await getAverageDistance('departure', id, month)
+
+    $('#singleStationTopReturning').text('top returning: ' + topReturning)
+    $('#singleStationTopDeparting').text('top departing: ' + topDeparting)
+    $('#singleStationAvgReturning').text('avg distance returning: ' + avgReturning)
+    $('#singleStationAvgDeparting').text('avg distance departing: ' + avgDeparting)
+  }
+
   return (
-    <div className = "stationInformation" id="stationInformation">
-    <button onClick={() => closeView()}> close </button>
+    <div className = "stationInformation" id="stationInformation" name="">
+      <button onClick={() => closeView()}> close </button>
+      <div className = "dropdown-container">
+      <button className = "dropdown-button"> Month </button>
+      <div className = "dropdown-content">
+      <button onClick={() => changeMonth('all')}> all </button>
+        <button onClick={() => changeMonth(5)}> may </button>
+        <button onClick={() => changeMonth(6)}> june </button>
+        <button onClick={() => changeMonth(7)}> july </button>
+      </div>
+  </div>
       <div className = "singleStationHeader" id="singleStationHeader">
         station name
       </div>

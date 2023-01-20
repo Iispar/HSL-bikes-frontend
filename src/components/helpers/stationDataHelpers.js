@@ -50,7 +50,6 @@ export const getTop = async (direction, stationId, month) => {
     const name = getKeyByValue(stationsAndIds, result[i]._id)
     list.push(name)
   }
-  console.log(result)
   return list
 }
 
