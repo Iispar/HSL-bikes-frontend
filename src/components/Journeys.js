@@ -131,6 +131,8 @@ const Journeys = () => {
                 <button id = "DistanceIncreasing-button" className = "sort-button" onClick={() => changeFilter(['sort=+Covered_distance'])}> Shortest </button>
                 <button id = "DurationDecreasing-button" className = "sort-button" onClick={() => changeFilter(['sort=-Duration'])}> Longest </button>
                 <button id = "DurationIncreasing-button" className = "sort-button" onClick={() => changeFilter(['sort=+Duration'])}> Fastest </button>
+                <button id = "DateIncreasing-button" className = "sort-button" onClick={() => changeFilter(['sort=+Departure'])}> Earliest </button>
+                <button id = "DateDecreasing-button" className = "sort-button" onClick={() => changeFilter(['sort=-Departure'])}> Latest </button>
             </div>
         </div>
     </div>
