@@ -42,10 +42,24 @@ export const getAverageDistance = async (direction, stationId, month) => {
  */
 export const getTop = async (direction, stationId, month) => {
   const result = await bikeService.getTop(direction, stationId, month);
-  const list = [];
+  const list = document.getElementById('topStationsList');
   for (let i = 0; i < result.length; i += 1) {
     const name = getKeyByValue(stationsAndIds, result[i]._id);
-    list.push(name);
+    const li = document.createElement('li');
+    li.innerHTML = name;
+    list.appendChild(li);
   }
   return list;
+};
+
+/**
+ * Returns the name of the integer month.
+ * @param {int} month
+ * @returns months name
+ */
+export const getMonthName = (month) => {
+  if (month === 5) return 'may';
+  if (month === 6) return 'june';
+  if (month === 7) return 'july';
+  return 'all';
 };

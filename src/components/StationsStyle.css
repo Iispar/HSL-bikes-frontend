@@ -1,5 +1,12 @@
 .stationFilter-container {
-    height: 100px;
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 5px;
 }
 
 .singleStation-container {
@@ -9,4 +16,34 @@
 .list-container {
     display: flex;
     flex-direction: column;
+}
+
+.singleStation-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.singleStationHeader-container {
+    border: 2px solid;
+}
+
+.singleStationTitle-container {
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+        font-size: 50px;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 500;
+        letter-spacing: 0.8px;
+}
+
+.singleStationData-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.topForStation-container {
+
 }

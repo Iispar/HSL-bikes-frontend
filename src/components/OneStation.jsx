@@ -36,8 +36,7 @@ const Station = (props) => {
     $('#singleStationTripsReturn').text('all trips ending here: Waiting for data...');
     $('#singleStationTripsDeparture').text('all trips ending here: Waiting for data...');
     $('#singleStationTripsReturn').text('all trips ending here: Waiting for data...');
-    $('#singleStationTopReturning').text('top returning: Waiting for data...');
-    $('#singleStationTopDeparting').text('top departing: Waiting for data...');
+    $('#waitForTopStations').text('top stations: Waiting for data...');
     $('#singleStationAvgReturning').text('avg distance returning: Waiting for data...');
     $('#singleStationAvgDeparting').text('avg distance departing: Waiting for data...');
 
@@ -46,10 +45,8 @@ const Station = (props) => {
     const tripsStartingHere = await getCountTripsStarting(id);
     $('#singleStationTripsReturn').text(`all trips ending here: ${tripsStartingHere}`);
 
-    const topReturning = await getTop('return', id, 'all');
-    const topDeparting = await getTop('departure', id, 'all');
-    $('#singleStationTopReturning').text(`top returning: ${topReturning}`);
-    $('#singleStationTopDeparting').text(`top departing: ${topDeparting}`);
+    await getTop('return', id, 'all');
+    $('#waitForTopStations').text('top return stations all time');
 
     const avgReturning = await getAverageDistance('return', id, 'all');
     const avgDeparting = await getAverageDistance('departure', id, 'all');
