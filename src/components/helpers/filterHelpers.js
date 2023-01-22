@@ -31,14 +31,12 @@ export const getPageFilter = (direction, page, filterNow) => {
  */
 export const newFilter = (filterNow, addToFilter) => {
   const filter = [...filterNow];
-  for (let i = 0; i < filter.length; i += 1) {
-    const adding = addToFilter[i].split('=')[0];
-    for (let s = 0; s < filter.length; s += 1) {
-      if (filter[s].includes(adding)) {
-        filter.pop(s);
-      }
+  const adding = addToFilter[0].split('=')[0];
+  for (let s = 0; s < filter.length; s += 1) {
+    if (filter[s].includes(adding)) {
+      filter.pop(s);
     }
-    filter.push(addToFilter[i]);
   }
+  filter.push(addToFilter[0]);
   return filter;
 };

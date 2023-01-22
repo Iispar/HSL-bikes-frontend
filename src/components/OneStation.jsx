@@ -75,17 +75,31 @@ const Station = (props) => {
 };
 
 Station.propTypes = {
-  id: propTypes.string.isRequired,
-  nameFi: propTypes.string.isRequired,
-  nameSwe: propTypes.string.isRequired,
-  adressFi: propTypes.string.isRequired,
-  adressSwe: propTypes.string.isRequired,
-  cityFi: propTypes.string.isRequired,
-  citySwe: propTypes.string.isRequired,
-  operator: propTypes.string.isRequired,
-  capasity: propTypes.number.isRequired,
-  x: propTypes.string.isRequired,
-  y: propTypes.string.isRequired,
+  id: propTypes.string,
+  nameFi: propTypes.string,
+  nameSwe: propTypes.string,
+  adressFi: propTypes.string,
+  adressSwe: propTypes.string,
+  cityFi: propTypes.string,
+  citySwe: propTypes.string,
+  operator: propTypes.string,
+  capasity: propTypes.number,
+  x: propTypes.string,
+  y: propTypes.string,
+};
+
+Station.defaultProps = {
+  id: null,
+  nameFi: null,
+  nameSwe: null,
+  adressFi: null,
+  adressSwe: null,
+  cityFi: null,
+  citySwe: null,
+  operator: null,
+  capasity: null,
+  x: null,
+  y: null,
 };
 
 export default Station;

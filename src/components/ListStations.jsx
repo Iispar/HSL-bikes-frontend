@@ -27,7 +27,11 @@ const ListStations = (props) => {
 };
 
 ListStations.propTypes = {
-  stations: propTypes.arrayOf(propTypes.shape([propTypes.number, propTypes.string])).isRequired,
+  stations: propTypes.arrayOf(propTypes.shape([propTypes.number, propTypes.string])),
+};
+
+ListStations.defaultProps = {
+  stations: null,
 };
 
 export default ListStations;

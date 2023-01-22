@@ -20,7 +20,11 @@ const ListJourneys = (props) => {
 };
 
 ListJourneys.propTypes = {
-  journeys: propTypes.arrayOf(propTypes.shape([propTypes.number, propTypes.string])).isRequired,
+  journeys: propTypes.arrayOf(propTypes.shape([propTypes.number, propTypes.string])),
+};
+
+ListJourneys.defaultProps = {
+  journeys: null,
 };
 
 export default ListJourneys;
