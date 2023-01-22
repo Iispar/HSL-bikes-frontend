@@ -1,63 +1,52 @@
-  
-  .dropdown-container {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content p:hover {background-color: #ddd;}
-  
-  .dropdown-container:hover .dropdown-content {display: block;}
-  
-  .dropdown-container:hover .dropdown-button {background-color: #3e8e41;}
-
-  .filters-container {
-    display: flex;
-    flex-direction: row;
-
-  }
-  .rangeSlider {
-    position: relative;
-    justify-content: center;
-    display: flex;
-    height: 50px;
-    padding-top: 20px;
-    width: 500px;
-  }
-
-  .sliderTrack {
-
-  }
-
-
-input[type="range"]{
-  appearance: none;
-  width: 100%;
-  outline: none;
-  position: absolute;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  background-color: transparent;
-  pointer-events: none;
+.journeys-container {
+  width: 90%;
+  height: 100%;
 }
 
-input[type="range"]::-webkit-slider-thumb{
-  height: 1.7em;
-  width: 1.7em;
-  background-color: #3264fe;
-  cursor: pointer;
-  margin-top: -9px;
-  pointer-events: auto;
-  border-radius: 50%;
+/* .listOfJourneys-container {
+  height: 85%;
+} */
+
+.singleJourney-container {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 2px solid;
+  border-radius: 5px;
 }
 
+.singelJourneyData-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
+.singelJourneyLocation-container {
+  display: flex;
+  justify-content: center;
+}
+
+.station-text {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+
+.data-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75px;
+  margin-left: 5px;
+  border: 2px solid;
+  aspect-ratio: 1;
+  border-radius: 5px;
+}
+
+p {
+  margin: 0px;
+}

@@ -5,6 +5,7 @@ import Stations from './components/Stations';
 import './components/Grid.css';
 import './components/JourneysStyle.css';
 import './components/StationsStyle.css';
+import './components/Filters.css';
 
 /**
  * Basic structure for the application. Used a grid layout but only have

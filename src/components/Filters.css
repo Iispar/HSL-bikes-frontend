@@ -1,0 +1,86 @@
+  
+  .journeyFilters-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 5px;
+  }
+  
+  .search-container {
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    gap: 2px;
+  }
+
+  .resetButton-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .dropdown-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content p:hover {background-color: #ddd;}
+  
+  .dropdown-container:hover .dropdown-content {display: block;}
+  
+  .dropdown-container:hover .dropdown-button {background-color: #3e8e41;}
+
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+  .rangeSlider {
+    position: relative;
+    justify-content: center;
+    display: flex;
+    height: 50px;
+    padding-top: 20px;
+    width: 500px;
+  }
+
+  .sliderTrack {
+
+  }
+
+
+input[type="range"]{
+  appearance: none;
+  width: 100%;
+  outline: none;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+  height: 1.7em;
+  width: 1.7em;
+  background-color: #3264fe;
+  cursor: pointer;
+  margin-top: -9px;
+  pointer-events: auto;
+  border-radius: 50%;
+}

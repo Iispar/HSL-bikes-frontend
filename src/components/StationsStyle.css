@@ -1,3 +1,7 @@
+.stationFilter-container {
+    height: 100px;
+}
+
 .singleStation-container {
     display: none;
 }

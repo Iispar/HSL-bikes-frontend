@@ -9,15 +9,26 @@ const Journey = (props) => {
 
   return (
     <div name="singleJourney" className="singleJourney-container">
-      Departure station:
-      {' '}
-      {departureStationName}
-      , Return station:
-      {returnStationName}
-      , Distance:
-      {distance}
-      , Duration:
-      {duration}
+      <div name="singelJourneyLocation-container">
+        <p className="station-text">
+          From:
+          {departureStationName}
+        </p>
+        <p className="station-text">
+          To:
+          {returnStationName}
+        </p>
+      </div>
+      <div className="singelJourneyData-container">
+        <p className="data-text">
+          {distance}
+          M
+        </p>
+        <p className="data-text">
+          {duration}
+          MIN
+        </p>
+      </div>
     </div>
   );
 };

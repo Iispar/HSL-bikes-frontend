@@ -115,29 +115,34 @@ const Journeys = () => {
   return (
     <div className="journeys-container">
       <div className="journeyFilters-container">
-        <div className="stationSearch-container">
-          <form onSubmit={handleSubmitDeparture}>
-            <input id="DepartureStationsInput" placeholder="Departure station" onChange={(event) => setDeparture(event.target.value)} />
-          </form>
-        </div>
-        <div className="stationSearch-container">
-          <form onSubmit={handleSubmitReturn}>
-            <input id="ReturnStationInput" placeholder="Return station" onChange={(event) => setArrival(event.target.value)} />
-          </form>
-          <div className="resetButton-container">
-            <button id="reset-button" className="reset-button" onClick={() => resetFilters()} type="button"> reset filters </button>
+        <div className="search-container">
+          <div className="stationSearch-container">
+            <form onSubmit={handleSubmitDeparture}>
+              <input id="DepartureStationsInput" placeholder="Departure station" onChange={(event) => setDeparture(event.target.value)} />
+            </form>
+          </div>
+          <div className="stationSearch-container">
+            <form onSubmit={handleSubmitReturn}>
+              <input id="ReturnStationInput" placeholder="Return station" onChange={(event) => setArrival(event.target.value)} />
+            </form>
           </div>
         </div>
 
-        <div className="dropdown-container">
-          <button className="dropdown-button" type="button"> Sort </button>
-          <div className="dropdown-content">
-            <button id="DistanceDecreasing-button" className="sort-button" onClick={() => changeFilter(['sort=-Covered_distance'])} type="button"> Furthest </button>
-            <button id="DistanceIncreasing-button" className="sort-button" onClick={() => changeFilter(['sort=+Covered_distance'])} type="button"> Shortest </button>
-            <button id="DurationDecreasing-button" className="sort-button" onClick={() => changeFilter(['sort=-Duration'])} type="button"> Longest </button>
-            <button id="DurationIncreasing-button" className="sort-button" onClick={() => changeFilter(['sort=+Duration'])} type="button"> Fastest </button>
-            <button id="DateIncreasing-button" className="sort-button" onClick={() => changeFilter(['sort=+Departure'])} type="button"> Oldest </button>
-            <button id="DateDecreasing-button" className="sort-button" onClick={() => changeFilter(['sort=-Departure'])} type="button"> Latest </button>
+        <div className="resetAndSort-container">
+          <div className="resetButton-container">
+            <button id="reset-button" className="reset-button" onClick={() => resetFilters()} type="button"> reset </button>
+          </div>
+
+          <div className="dropdown-container">
+            <button className="dropdown-button" type="button"> Sort </button>
+            <div className="dropdown-content">
+              <button id="DistanceDecreasing-button" className="sort-button" onClick={() => changeFilter(['sort=-Covered_distance'])} type="button"> Furthest </button>
+              <button id="DistanceIncreasing-button" className="sort-button" onClick={() => changeFilter(['sort=+Covered_distance'])} type="button"> Shortest </button>
+              <button id="DurationDecreasing-button" className="sort-button" onClick={() => changeFilter(['sort=-Duration'])} type="button"> Longest </button>
+              <button id="DurationIncreasing-button" className="sort-button" onClick={() => changeFilter(['sort=+Duration'])} type="button"> Fastest </button>
+              <button id="DateIncreasing-button" className="sort-button" onClick={() => changeFilter(['sort=+Departure'])} type="button"> Oldest </button>
+              <button id="DateDecreasing-button" className="sort-button" onClick={() => changeFilter(['sort=-Departure'])} type="button"> Latest </button>
+            </div>
           </div>
         </div>
       </div>
