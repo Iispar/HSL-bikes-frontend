@@ -2,24 +2,24 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    'jest/globals': true,
-    'cypress/globals': true
   },
   extends: [
     'plugin:react/recommended',
-    'standard'
+    'airbnb',
   ],
   overrides: [
   ],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
   },
   plugins: [
     'react',
-    'jest',
-    'cypress'
   ],
   rules: {
-  }
-}
+    'react/function-component-definition': [0],
+    'no-underscore-dangle': [0],
+    'import/ignore': [0],
+    'import/no-extraneous-dependencies': [0],
+  },
+};
