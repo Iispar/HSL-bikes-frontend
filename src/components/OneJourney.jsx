@@ -12,12 +12,12 @@ const Journey = (props) => {
   return (
     <div name="singleJourney" className="singleJourney-container">
       <div name="singelJourneyLocation-container">
-        <p className="station-text">
-          From:
+        <p className="station-text" name="station-text">
+          From:&nbsp;
           {departureStationName}
         </p>
         <p className="station-text">
-          To:
+          To:&nbsp;
           {returnStationName}
         </p>
       </div>

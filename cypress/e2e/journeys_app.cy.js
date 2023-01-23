@@ -2,7 +2,7 @@ describe('Journeys', () => {
   it('front page opens', () => {
     cy.visit('http://localhost:3000')
     cy.contains('Bikes')
-    cy.contains('Departure station: Laajalahden aukio')
+    cy.contains('From: Laajalahden aukio')
     cy.contains('Name: Hanasaari')
   })
 
@@ -10,10 +10,9 @@ describe('Journeys', () => {
     cy.visit('http://localhost:3000')
     cy.get('input[id="DepartureStationsInput"]').type('Hanasaari{enter}')
     cy.wait(500)
-
-    cy.get('*[name=singleJourney]')
-      .filter((index, elt) => { return elt.innerText.match('Hanasaari') })
-      .should('have.length.gte', 10)
+    cy.get('*[name=station-text]')
+    .filter((index, elt) => { return elt.textContent.match('Hanasaari')}) 
+    .should('have.length.gte', 10)
   })
 
   it('popup and sort buttons works', () => {
@@ -28,7 +27,7 @@ describe('Journeys', () => {
       .and('match', /block/)
     cy.get('button[id=DistanceDecreasing-button]').click()
     cy.wait(1000)
-    cy.contains('Distance: 3680771')
+    cy.contains('3680.77')
   })
 
   it('reset button works', () => {
@@ -38,7 +37,7 @@ describe('Journeys', () => {
     cy.wait(1000)
     cy.get('button[id=reset-button]').click()
     cy.wait(500)
-    cy.contains('Departure station: Laajalahden aukio')
+    cy.contains('From: Laajalahden aukio')
   })
 
   it('pagination works', () => {
@@ -46,12 +45,12 @@ describe('Journeys', () => {
     cy.wait(500)
     cy.get('button[id=forwardsJourney-button]').click()
     cy.wait(200)
-    cy.contains('Departure station: Kalevankatu')
+    cy.contains('From: Kalevankatu')
     cy.get('button[id=forwardsJourney-button]').click()
     cy.wait(200)
-    cy.contains('Departure station: Kalevankatu').should('not.exist')
+    cy.contains('From: Kalevankatu').should('not.exist')
     cy.get('button[id=backwardsJourney-button]').click()
     cy.wait(200)
-    cy.contains('Departure station: Kalevankatu')
+    cy.contains('From: Kalevankatu')
   })
 })
