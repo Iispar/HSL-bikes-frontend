@@ -31,14 +31,17 @@ const getFiltered = async (filters) => {
  * @param {Array} filters
  * @returns amount of trips that fill the filter
  */
-const getCount = async (filters) => {
-  let newUrl = `${baseUrl}/api/bikers/count?`;
-  for (let i = 0; i < filters.length; i += 1) {
-    newUrl = `${newUrl}${filters[i]}&`;
+const getCount = async (direction, url) => {
+  if (direction === 'departure') {
+    const newUrl = `${baseUrl}/api/bikers/count/departure/${url}`;
+    console.log(newUrl);
+    const request = await axios.get(newUrl);
+    return request.data[0].count;
   }
+  const newUrl = `${baseUrl}/api/bikers/count/return/${url}`;
   console.log(newUrl);
   const request = await axios.get(newUrl);
-  return request.data;
+  return request.data[0].count;
 };
 
 /**

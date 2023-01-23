@@ -4,24 +4,13 @@ import { stationsAndIds } from '../../data/stationsData';
 const getKeyByValue = (object, value) => Object.keys(object).find((key) => object[key] === value);
 
 /**
- * Calls the count api and return all trips ending in given location
+ * Calls the count api and return count of all trips in given direction
  * @param {String} stationId
  * @returns
  */
-export const getCountTripsEnding = async (stationId) => {
-  const filter = [`Return_station_id=${stationId}`];
-  const result = await bikeService.getCount(filter);
-  return result;
-};
-
-/**
- * Calls the count api and return all trips starting in given location
- * @param {String} stationId
- * @returns
- */
-export const getCountTripsStarting = async (stationId) => {
-  const filter = [`Departure_station_id=${stationId}`];
-  const result = await bikeService.getCount(filter);
+export const getCountTrips = async (direction, stationId, month) => {
+  const filter = `${stationId}/${month}`;
+  const result = await bikeService.getCount(direction, filter);
   return result;
 };
 

@@ -3,7 +3,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import $ from 'jquery';
 import {
-  getCountTripsEnding, getCountTripsStarting, getTop, getAverageDistance,
+  getCountTrips, getTop, getAverageDistance,
 } from './helpers/stationDataHelpers';
 
 const Station = (props) => {
@@ -34,30 +34,25 @@ const Station = (props) => {
     $('#singleStationHeader').text(nameFi);
     $('#singleStationInfo').text(`${adressFi},${cityFi}`);
     $('#singleStationCapasity').text(`capasity:${capasity}`);
-    $('#singleStationTripsDeparture').text('all trips ending here: Waiting for data...');
-    $('#singleStationTripsReturn').text('all trips ending here: Waiting for data...');
-    $('#singleStationTripsDeparture').text('all trips ending here: Waiting for data...');
-    $('#singleStationTripsReturn').text('all trips ending here: Waiting for data...');
+    $('#singleStationTripsDeparture').text('Waiting for data...');
+    $('#singleStationTripsReturn').text('Waiting for data...');
     $('#waitForTopStations').text('top stations: Waiting for data...');
-    $('#singleStationAvgReturning').text('avg distance returning: Waiting for data...');
-    $('#singleStationAvgDeparting').text('avg distance departing: Waiting for data...');
-
-    const tripsEndingHere = await getCountTripsEnding(id);
-    $('#singleStationTripsDeparture').text(`Trips ending here: ${tripsEndingHere}`);
-    const tripsStartingHere = await getCountTripsStarting(id);
-    $('#singleStationTripsReturn').text(`Trips starting here: ${tripsStartingHere}`);
 
     await getTop('return', id, 'all');
     $('#waitForTopStations').text('top return stations all time');
     $('.stationFilter-button').prop('disabled', false);
     $('#topReturn-button').prop('disabled', true);
 
+    const tripsEndingHere = await getCountTrips('return', id, 'all');
+    const tripsStartingHere = await getCountTrips('departure', id, 'all');
     const avgReturning = await getAverageDistance('return', id, 'all');
     const avgDeparting = await getAverageDistance('departure', id, 'all');
     const avgReturnignKm = parseFloat(avgReturning / 1000).toFixed(2);
     const avgDepartingKm = parseFloat(avgDeparting / 1000).toFixed(2);
-    $('#singleStationAvgReturning').text(`avg distance returning: ${avgReturnignKm} km`);
-    $('#singleStationAvgDeparting').text(`avg distance departing: ${avgDepartingKm} km`);
+    $('#singleStationAvgReturning').text(`avg: ${avgReturnignKm} KM`);
+    $('#singleStationAvgDeparting').text(`avg: ${avgDepartingKm} KM`);
+    $('#singleStationTripsDeparture').text(`${tripsEndingHere} trips`);
+    $('#singleStationTripsReturn').text(`${tripsStartingHere} trips`);
   };
 
   return (

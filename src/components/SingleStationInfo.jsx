@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import $ from 'jquery';
-import { getTop, getAverageDistance, getMonthName } from './helpers/stationDataHelpers';
+import {
+  getTop, getAverageDistance, getMonthName, getCountTrips,
+} from './helpers/stationDataHelpers';
 
 const Station = () => {
   const [currentMonth, setCurrentMonth] = useState('all');
@@ -25,6 +27,10 @@ const Station = () => {
     setCurrentMonth(month);
     const id = $('#stationInformation').attr('name');
 
+    $('#singleStationTripsDeparture').text('Waiting for data...');
+    $('#singleStationTripsReturn').text('Waiting for data...');
+    $('#singleStationAvgReturning').text('');
+    $('#singleStationAvgDeparting').text('');
     $('#waitForTopStations').css('display', 'flex');
     $('#waitForTopStations').text('loading...');
     $('#topStationsList').text('');
@@ -36,17 +42,22 @@ const Station = () => {
       $('#waitForTopStations').text(`top ${currentDirection} stations in ${setMonth}`);
       $('#currentMonthStatistics').text(`in ${setMonth}`);
     }
-    await getTop(currentDirection, id, currentMonth);
+    await getTop(currentDirection, id, month);
     $('.stationFilter-button').prop('disabled', false);
     if (currentDirection === 'return') $('#topReturn-button').prop('disabled', true);
     else $('#topDeparture-button').prop('disabled', true);
-    const avgReturning = await getAverageDistance('return', id, currentMonth);
-    const avgDeparting = await getAverageDistance('departure', id, currentMonth);
+
+    const tripsEndingHere = await getCountTrips('return', id, month);
+    const tripsStartingHere = await getCountTrips('deparute', id, month);
+    const avgReturning = await getAverageDistance('return', id, month);
+    const avgDeparting = await getAverageDistance('departure', id, month);
     const avgReturnignKm = parseFloat(avgReturning / 1000).toFixed(2);
     const avgDepartingKm = parseFloat(avgDeparting / 1000).toFixed(2);
 
-    $('#singleStationAvgReturning').text(`avg distance returning: ${avgReturnignKm} km`);
-    $('#singleStationAvgDeparting').text(`avg distance departing: ${avgDepartingKm} km`);
+    $('#singleStationTripsDeparture').text(`trips ${tripsEndingHere}`);
+    $('#singleStationTripsReturn').text(`trips ${tripsStartingHere}`);
+    $('#singleStationAvgReturning').text(`avg: ${avgReturnignKm} km`);
+    $('#singleStationAvgDeparting').text(`avg: ${avgDepartingKm} km`);
   };
 
   /**
@@ -106,14 +117,20 @@ const Station = () => {
         </div>
         <div className="statisticsForStation-container">
           <div className="stationData-container">
-            <h2 id="currentMonthStatistics"> all time </h2>
-            <p id="singleStationTripsDeparture"> trips </p>
-            <p id="singleStationTripsReturn"> trips </p>
-            <p id="singleStationAvgReturning"> avgLR </p>
-            <p id="singleStationAvgDeparting"> avgLD </p>
+            <h2 id="currentMonthStatistics"> </h2>
+            <p className="stats-p">
+              Departing:
+            </p>
+            <p id="singleStationTripsDeparture"> </p>
+            <p id="singleStationAvgDeparting"> </p>
+            <p className="stats-p">
+              Returning:
+            </p>
+            <p id="singleStationTripsReturn"> </p>
+            <p id="singleStationAvgReturning"> </p>
           </div>
           <div className="capasity-container">
-            <p id="singleStationCapasity"> capasity </p>
+            <p id="singleStationCapasity"> </p>
           </div>
         </div>
       </div>

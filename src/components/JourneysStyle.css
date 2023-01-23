@@ -1,16 +1,11 @@
 .journeys-container {
-  width: 90%;
-  height: 100%;
+  width: 95%;
 }
-
-/* .listOfJourneys-container {
-  height: 85%;
-} */
 
 .singleJourney-container {
   display: flex;
   justify-content: space-between;
-  height: 45px;
+  height: 40px;
   padding: 5px;
   margin-bottom: 5px;
   border: 2px solid;
