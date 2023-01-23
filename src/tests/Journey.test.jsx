@@ -17,7 +17,7 @@ describe('Journey component tests', () => {
   test('renders journey', () => {
     const component = render(journey);
     expect(component.container).toHaveTextContent(
-      'Departure station: TestDepartureStation, Return station: TestReturnStation, Distance: 200, Duration: 100',
+      'From: TestDepartureStationTo: TestReturnStation0.20KM1MIN',
     );
   });
 });
