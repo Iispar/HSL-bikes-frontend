@@ -10,6 +10,7 @@ I have some custom rules in the .eslintrc so I can give this file if needed. Ple
 # Tests
 This project has jest and e2e tests. Simple jest tests that can be used by cloning the project and again using npm install
 and then npm run test. E2e tests can be opened with npm run cypress:open.
+!!! these will fail at the moment as I'm still developing especially if you view the latest commit !!!
 # Technologies 
 I use React and js for the framework. Api calls are made with axios. E2e testing with cypress and basic unit tests with Jest.
 I also use Jquery for the styles.
