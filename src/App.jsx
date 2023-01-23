@@ -13,13 +13,13 @@ import './components/Filters.css';
  */
 const App = () => (
   <div className="grid-container">
-    <div className="header-container">
+    <div className="header-container" id="header-container">
       <Header />
     </div>
-    <div className="left-container">
+    <div className="left-container" id="left-container">
       <Journeys />
     </div>
-    <div className="right-container">
+    <div className="right-container" id="right-container">
       <Stations />
     </div>
   </div>

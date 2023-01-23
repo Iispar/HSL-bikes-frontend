@@ -27,8 +27,10 @@ const Station = (props) => {
    */
   const setSingleStationThis = async () => {
     $('#stationInformation').attr('name', id);
+    $('.stationFilter-button').prop('disabled', true);
     $('#list-container').css('display', 'none');
-    $('#singleStation-container').css('display', 'flex');
+    $('#right-container').css('border', 'none');
+    $('#singleStation-container').css('display', 'block');
     $('#singleStationHeader').text(nameFi);
     $('#singleStationInfo').text(`${adressFi},${cityFi}`);
     $('#singleStationCapasity').text(`capasity:${capasity}`);
@@ -41,17 +43,21 @@ const Station = (props) => {
     $('#singleStationAvgDeparting').text('avg distance departing: Waiting for data...');
 
     const tripsEndingHere = await getCountTripsEnding(id);
-    $('#singleStationTripsDeparture').text(`all trips ending here: ${tripsEndingHere}`);
+    $('#singleStationTripsDeparture').text(`Trips ending here: ${tripsEndingHere}`);
     const tripsStartingHere = await getCountTripsStarting(id);
-    $('#singleStationTripsReturn').text(`all trips ending here: ${tripsStartingHere}`);
+    $('#singleStationTripsReturn').text(`Trips starting here: ${tripsStartingHere}`);
 
     await getTop('return', id, 'all');
     $('#waitForTopStations').text('top return stations all time');
+    $('.stationFilter-button').prop('disabled', false);
+    $('#topReturn-button').prop('disabled', true);
 
     const avgReturning = await getAverageDistance('return', id, 'all');
     const avgDeparting = await getAverageDistance('departure', id, 'all');
-    $('#singleStationAvgReturning').text(`avg distance returning: ${avgReturning}`);
-    $('#singleStationAvgDeparting').text(`avg distance departing: ${avgDeparting}`);
+    const avgReturnignKm = parseFloat(avgReturning / 1000).toFixed(2);
+    const avgDepartingKm = parseFloat(avgDeparting / 1000).toFixed(2);
+    $('#singleStationAvgReturning').text(`avg distance returning: ${avgReturnignKm} km`);
+    $('#singleStationAvgDeparting').text(`avg distance departing: ${avgDepartingKm} km`);
   };
 
   return (

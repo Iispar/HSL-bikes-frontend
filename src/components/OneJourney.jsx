@@ -5,7 +5,9 @@ const Journey = (props) => {
   const { departureStationName } = props;
   const { returnStationName } = props;
   const { distance } = props;
+  const distanceInKm = parseFloat(distance / 1000).toFixed(2);
   const { duration } = props;
+  const durationInMin = Math.floor(duration / 60);
 
   return (
     <div name="singleJourney" className="singleJourney-container">
@@ -21,11 +23,11 @@ const Journey = (props) => {
       </div>
       <div className="singelJourneyData-container">
         <p className="data-text">
-          {distance}
-          M
+          {distanceInKm}
+          KM
         </p>
         <p className="data-text">
-          {duration}
+          {durationInMin}
           MIN
         </p>
       </div>
