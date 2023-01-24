@@ -4,7 +4,7 @@ import Journey from './OneJourney';
 
 const ListJourneys = (props) => {
   const { journeys } = props;
-  if (journeys.length === 0) return <div className="loading-containter"> Waiting for data... </div>;
+  if (journeys.length === 0) return <p id="loadingJourneys-container" className="loadingJourneys-container"> No results </p>;
 
   const list = [];
   for (let i = 0; i < journeys.length; i += 1) {

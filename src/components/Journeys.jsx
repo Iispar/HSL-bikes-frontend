@@ -34,7 +34,11 @@ const Journeys = () => {
     const filter = newFilter(filterNow, addToFilter);
     setFilterNow(filter);
     bikeService.getFiltered(filter)
-      .then((filteredJourneys) => setJourneys(filteredJourneys));
+      .then((filteredJourneys) => {
+        setJourneys(filteredJourneys);
+        if (filteredJourneys.length <= 0) $('#forwardsJourney-button').prop('disabled', true);
+        else $('#forwardsJourney-button').prop('disabled', false);
+      });
   };
 
   /**
@@ -107,6 +111,7 @@ const Journeys = () => {
    * Resets the filters back to none and also refreshes the journey data back.
    */
   const resetFilters = () => {
+    $('#forwardsJourney-button').prop('disabled', false);
     $('#backwardsStation-button').prop('disabled', true);
     $('#DepartureStationsInput').val('')
     $('#DepartureStationsInput').val('')

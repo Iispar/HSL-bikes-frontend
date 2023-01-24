@@ -4,7 +4,7 @@ import Station from './OneStation';
 
 const ListStations = (props) => {
   const { stations } = props;
-  if (stations.length === 0) return <div className="loading-containter"> Waiting for data... </div>;
+  if (stations.length === 0) return <p id="loadingStations-container" className="loadingStations-container"> No results </p>;
 
   const list = [];
   for (let i = 0; i < stations.length; i += 1) {
