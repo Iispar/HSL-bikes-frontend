@@ -74,6 +74,7 @@ const Stations = () => {
   const resetFilters = () => {
     $('#backwardsStation-button').prop('disabled', true);
     $('#forwardsStation-button').prop('disabled', false);
+    $('#stationInput').val('');
     setFilterNow(['limit=10', 'sort=+ID']);
     setName('');
     stationService.getFiltered(['limit=10', 'sort=+ID'])

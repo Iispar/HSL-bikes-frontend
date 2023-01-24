@@ -107,6 +107,9 @@ const Journeys = () => {
    * Resets the filters back to none and also refreshes the journey data back.
    */
   const resetFilters = () => {
+    $('#backwardsStation-button').prop('disabled', true);
+    $('#DepartureStationsInput').val('')
+    $('#DepartureStationsInput').val('')
     setFilterNow(['limit=10']);
     bikeService.getFiltered(['limit=10'])
       .then((filteredJourneys) => setJourneys([...filteredJourneys]));
