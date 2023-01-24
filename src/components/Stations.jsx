@@ -79,7 +79,7 @@ const Stations = () => {
     });
   });
   return (
-    <div className="station-container">
+    <div className="station-container" id="station-container">
       <div className="list-container" id="list-container">
         <div className="stationFilter-container">
           <div className="stationSearch-container">
@@ -96,7 +96,7 @@ const Stations = () => {
           <button id="forwardsStation-button" onClick={() => changePage('f', page)} type="button"> next </button>
         </div>
       </div>
-      <div className="singleStation-container" id="singleStation-container">
+      <div className="allStations-container" id="singleStation-container">
         <SingleStationInfo />
       </div>
     </div>

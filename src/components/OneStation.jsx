@@ -29,7 +29,8 @@ const Station = (props) => {
     $('#stationInformation').attr('name', id);
     $('.stationFilter-button').prop('disabled', true);
     $('#list-container').css('display', 'none');
-    $('#right-container').css('border', 'none');
+    $('#station-container').css('border', 'none');
+    $('#station-container').css('background', 'none');
     $('#singleStation-container').css('display', 'block');
     $('#singleStationHeader').text(nameFi);
     $('#singleStationInfo').text(`${adressFi},${cityFi}`);
@@ -56,18 +57,24 @@ const Station = (props) => {
   };
 
   return (
-    <div className="singleJourney-container" id={id} onClick={() => setSingleStationThis()} onKeyDown={() => setSingleStationThis()} role="button" tabIndex={0}>
-      Name:
-      {' '}
-      {nameFi}
-      , adress:
-      {adressFi}
-      , city:
-      {cityFi}
-      , operator:
-      {operator}
-      , capasity:
-      {capasity}
+    <div className="singleStation-container" id={id} onClick={() => setSingleStationThis()} onKeyDown={() => setSingleStationThis()} role="button" tabIndex={0}>
+      <div className="stationID-container">
+        {id}
+      </div>
+      <div className="stationLocation-container">
+        <div className="stationName-container">
+          {nameFi}
+        </div>
+        <div className="stationAdress-container">
+          {adressFi}
+          ,&nbsp;
+          {cityFi}
+        </div>
+      </div>
+      <div className="stationCapasity-container">
+        {capasity}
+        b
+      </div>
     </div>
   );
 };
