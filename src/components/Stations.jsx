@@ -66,6 +66,13 @@ const Stations = () => {
       .then((filteredJourneys) => setStationsDisplay(filteredJourneys));
   };
 
+  const resetFilters = () => {
+    setFilterNow(['limit=10']);
+    setName('');
+    stationService.getFiltered(['limit=10'])
+      .then((filteredJourneys) => setStationsDisplay([...filteredJourneys]));
+  };
+
   /**
    * Using jQuery autocomplete which also sets the inputfield data into the city variable.
    * Can this be done with const(?)
@@ -87,6 +94,7 @@ const Stations = () => {
               <input name="stationInput" id="StationInput" placeholder="Station name" onChange={(event) => setName(event.target.value)} />
             </form>
           </div>
+          <button className="reset-button" type="button" onClick={() => resetFilters()}> reset </button>
         </div>
         <div className="listOfStations-container">
           <ListStations stations={stationsDisplay} />
