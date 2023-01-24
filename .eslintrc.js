@@ -3,11 +3,12 @@ module.exports = {
     browser: true,
     es2021: true,
     jest: true,
-    'cyress/globals': true,
+    'cypress/globals': true,
   },
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    'plugin:cypress/recommended'
   ],
   overrides: [
   ],

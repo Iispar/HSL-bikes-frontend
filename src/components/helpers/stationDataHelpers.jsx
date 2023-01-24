@@ -9,7 +9,8 @@ const getKeyByValue = (object, value) => Object.keys(object).find((key) => objec
  * @returns
  */
 export const getCountTrips = async (direction, stationId, month) => {
-  const filter = `${stationId}/${month}`;
+  const id = parseInt(stationId, 10);
+  const filter = `${id}/${month}`;
   const result = await bikeService.getCount(direction, filter);
   return result;
 };
@@ -20,7 +21,8 @@ export const getCountTrips = async (direction, stationId, month) => {
  * @returns
  */
 export const getAverageDistance = async (direction, stationId, month) => {
-  const result = await bikeService.getAverage(direction, stationId, month);
+  const id = parseInt(stationId, 10);
+  const result = await bikeService.getAverage(direction, id, month);
   return result[0].average;
 };
 
@@ -30,7 +32,8 @@ export const getAverageDistance = async (direction, stationId, month) => {
  * @returns
  */
 export const getTop = async (direction, stationId, month) => {
-  const result = await bikeService.getTop(direction, stationId, month);
+  const id = parseInt(stationId, 10);
+  const result = await bikeService.getTop(direction, id, month);
   const list = document.getElementById('topStationsList');
   for (let i = 0; i < result.length; i += 1) {
     const name = getKeyByValue(stationsAndIds, result[i]._id);

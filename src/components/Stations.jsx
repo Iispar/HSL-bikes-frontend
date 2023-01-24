@@ -13,7 +13,7 @@ import SingleStationInfo from './SingleStationInfo';
 const Stations = () => {
   const [stationsDisplay, setStationsDisplay] = useState([]);
   const [name, setName] = useState('');
-  const [filterNow, setFilterNow] = useState(['limit=10']);
+  const [filterNow, setFilterNow] = useState(['limit=10', 'sort=+ID']);
   const page = useRef(0);
 
   /**
@@ -42,6 +42,8 @@ const Stations = () => {
    */
   const handleSubmit = (event) => {
     event.preventDefault();
+    $('#backwardsStation-button').prop('disabled', true);
+    $('#forwardsStation-button').prop('disabled', true);
     $('#StationInput').autocomplete('close');
     const stationId = stationsAndIds[name];
     const filterToChange = [`ID=${stationId}`];
@@ -66,10 +68,15 @@ const Stations = () => {
       .then((filteredJourneys) => setStationsDisplay(filteredJourneys));
   };
 
+  /**
+   * Resets the current sorts
+   */
   const resetFilters = () => {
-    setFilterNow(['limit=10']);
+    $('#backwardsStation-button').prop('disabled', true);
+    $('#forwardsStation-button').prop('disabled', false);
+    setFilterNow(['limit=10', 'sort=+ID']);
     setName('');
-    stationService.getFiltered(['limit=10'])
+    stationService.getFiltered(['limit=10', 'sort=+ID'])
       .then((filteredJourneys) => setStationsDisplay([...filteredJourneys]));
   };
 
