@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
     jest: true,
+    cyress: true,
   },
   extends: [
     'plugin:react/recommended',
@@ -16,6 +17,7 @@ module.exports = {
   },
   plugins: [
     'react',
+    'cypress'
   ],
   rules: {
     'react/function-component-definition': [0],

@@ -1,7 +1,7 @@
 describe('Stations', () => {
   it('stations render', () => {
     cy.visit('http://localhost:3000')
-    cy.contains('Name: Hanasaari, adress:')
+    cy.contains('Hanasaari')
   })
 
   it('search works', () => {
@@ -16,7 +16,7 @@ describe('Stations', () => {
     cy.wait(500)
     cy.get('button[id=forwardsStation-button]').click()
     cy.wait(200)
-    cy.contains('Name: Tapionaukio')
+    cy.contains('Tapionaukio')
     cy.get('button[id=forwardsStation-button]').click()
     cy.wait(200)
     cy.contains('Tapionaukio').should('not.exist')
@@ -31,5 +31,16 @@ describe('Stations', () => {
     cy.wait(200)
     cy.get('.singleStation-container').should('have.css', 'display')
       .and('match', /flex/)
+    cy.contains('capasity')
+    cy.contains('top')
+    cy.contains('avg')
+  })
+
+  it('close works', () => {
+    cy.visit('http://localhost:3000')
+    cy.contains('Hanasaari').click()
+    cy.wait(200)
+    cy.contains('close').click()
+    cy.contains('Golfpolku')
   })
 })
