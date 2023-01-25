@@ -120,8 +120,9 @@ const Journeys = () => {
       setDistanceMax(filtered);
     } else if (slider === 'durationSlider-min') {
       const filtered = Math.round((valuePotent * 40000) * 60);
-      $('#durationSlider-header').text(Math.round(filtered / 60));
+      $('#durationSlider-header').text(`${Math.round(filtered / 60)} -`);
       setDurationMin(filtered);
+      return;
     }
     const displayMin = parseFloat(distanceMin / 1000).toFixed(2);
     const displayMax = parseFloat(distanceMax / 1000).toFixed(2);
@@ -180,11 +181,11 @@ const Journeys = () => {
   $(() => {
     $('#durationSlider-container').on({
       mouseenter: () => {
-        if (durationMin === 'null') $('#durationSlider-header').text('0');
-        else $('#durationSlider-header').text(Math.round(durationMin / 60));
+        if (durationMin === 'null') $('#durationSlider-header').text('0 - ');
+        else $('#durationSlider-header').text(`${Math.round(durationMin / 60)} -`);
       },
       mouseleave: () => {
-        $('#durationSlider-header').text('min duration');
+        $('#durationSlider-header').text('duration');
       },
     });
   });
@@ -253,7 +254,7 @@ const Journeys = () => {
         </div>
 
         <div className="durationSlider-container" id="durationSlider-container">
-          <p className="durationSlider-header" id="durationSlider-header"> min duration </p>
+          <p className="durationSlider-header" id="durationSlider-header"> duration </p>
           <div className="sliders-container">
             <div className="slider-track" />
             <input type="range" min="0" max="1" step="0.01" defaultValue="0" id="durationSlider-min" onChange={(event) => changeSliderValue(event, 'durationSlider-min')} />
