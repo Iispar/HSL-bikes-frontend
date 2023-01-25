@@ -8,7 +8,6 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
-    'plugin:cypress/recommended'
   ],
   overrides: [
   ],
@@ -18,7 +17,7 @@ module.exports = {
   },
   plugins: [
     'react',
-    'cypress/globals'
+    'cypress',
   ],
   rules: {
     'react/function-component-definition': [0],

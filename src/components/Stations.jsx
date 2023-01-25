@@ -34,7 +34,7 @@ const Stations = () => {
     setFilterNow(filter);
     stationService.getFiltered(filter)
       .then((filteredJourneys) => {
-        setStationsDisplay(filteredJourneys)
+        setStationsDisplay(filteredJourneys);
       });
   };
 

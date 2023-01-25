@@ -1,3 +1,5 @@
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 /**
  * Helper for pagination.
  *  * This checks the direction we are paging and then set the filter as following.
@@ -31,12 +33,14 @@ export const getPageFilter = (direction, page, filterNow) => {
  */
 export const newFilter = (filterNow, addToFilter) => {
   const filter = [...filterNow];
-  const adding = addToFilter[0].split('=')[0];
-  for (let s = 0; s < filter.length; s += 1) {
-    if (filter[s].includes(adding)) {
-      filter.pop(s);
+  for (const s in addToFilter) {
+    const adding = addToFilter[s].split(/(?<==)|(?<=<)|(?<=>)/g)[0];
+    for (const i in filter) {
+      if (filter[i].includes(adding)) {
+        filter.splice(i, 1);
+      }
     }
+    filter.push(addToFilter[s]);
   }
-  filter.push(addToFilter[0]);
   return filter;
 };

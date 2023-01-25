@@ -17,6 +17,10 @@ const Journeys = () => {
   const [filterNow, setFilterNow] = useState(['limit=10']);
   const [departure, setDeparture] = useState('');
   const [arrival, setArrival] = useState('');
+  const [distanceMin, setDistanceMin] = useState('null');
+  const [distanceMax, setDistanceMax] = useState('null');
+  const [durationMin, setDurationMin] = useState('null');
+
   /**
    * UseEffect hook that retrieves the data when the app is loaded in.
    */
@@ -71,7 +75,10 @@ const Journeys = () => {
     changeFilter(filterToChange);
     setDeparture('');
   };
-
+  /**
+   * Handles the submit of the form, formats the request and sends it to changeFilter().
+   * We use id:s to send the request.
+   */
   const handleSubmitReturn = (event) => {
     event.preventDefault();
     $('#ReturnStationInput').autocomplete('close');
@@ -80,6 +87,103 @@ const Journeys = () => {
     changeFilter(filterToChange);
     setDeparture('');
   };
+
+  /**
+   *  onChange for distance and duration slider.
+   * We set the value of the slider and also check that the sliders don't overlap.
+   * @param {*} event
+   * @param {*} slider
+   */
+  const changeSliderValue = (event, slider) => {
+    event.preventDefault();
+    const { value } = event.target;
+    const min = $('#distanceSlider-min').val();
+    const max = $('#distanceSlider-max').val();
+    const valuePotent = value ** 3;
+    let filteredMin;
+    let filteredMax;
+    if (slider === 'distanceSlider-min') {
+      if (min >= max - 0.2) {
+        $('#distanceSlider-max').val(parseFloat($('#distanceSlider-max').val()) + 0.01);
+      }
+      const filtered = Math.round((valuePotent * 3600) * 50);
+      filteredMax = Math.round(((parseFloat($('#distanceSlider-max').val()) ** 3) * 3600) * 50);
+      setDistanceMax(filteredMax);
+      setDistanceMin(filtered);
+    } else if (slider === 'distanceSlider-max') {
+      if (min >= max - 0.2) {
+        $('#distanceSlider-min').val(parseFloat($('#distanceSlider-min').val()) - 0.01);
+      }
+      const filtered = Math.round((valuePotent * 3600) * 50);
+      filteredMin = Math.round((parseFloat($('#distanceSlider-min').val()) * 3600) * 50);
+      setDistanceMin(filteredMin);
+      setDistanceMax(filtered);
+    } else if (slider === 'durationSlider-min') {
+      const filtered = Math.round((valuePotent * 40000) * 60);
+      $('#durationSlider-header').text(Math.round(filtered / 60));
+      setDurationMin(filtered);
+    }
+    if ((parseFloat(min, 10) === 0.00) && (parseFloat(max, 10) === 1.0)) $('#distanceSlider-header').text('all');
+    else if (parseFloat(max, 10) === 1.0) $('#distanceSlider-header').text(`${distanceMin} -`);
+    else if (parseFloat(min, 10) === 0.00) $('#distanceSlider-header').text(`- ${distanceMax} `);
+    else $('#distanceSlider-header').text(`${distanceMin} - ${distanceMax} `);
+  };
+
+  /**
+   * Handler for the search button. Searches with current filters.
+   */
+  const searchFilters = async () => {
+    let filter = [];
+    if (distanceMax !== 'null') filter.push(`Covered_distance<${distanceMax}`);
+    if (distanceMin !== 'null') filter.push(`Covered_distance>${distanceMin}`);
+    if (durationMin !== 'null') filter.push(`Duration>${durationMin}`);
+    if (departure !== '') {
+      const id = stationsAndIds[departure];
+      filter.push(`Return_station_id>${id}`);
+    }
+    if (arrival !== '') {
+      const id = stationsAndIds[arrival];
+      filter.push(`Return_station_id>${id}`);
+    }
+    filter = newFilter(filterNow, filter);
+    setFilterNow(filter);
+    bikeService.getFiltered(filter)
+      .then((filteredJourneys) => setJourneys(filteredJourneys));
+  };
+
+  /**
+   * Listener for distanceSlider which displays the value of the slider.
+   */
+  $(() => {
+    $('#distanceSlider-container').on({
+      mouseenter: () => {
+        const min = $('#distanceSlider-min').val();
+        const max = $('#distanceSlider-max').val();
+        if ((parseFloat(min, 10) === 0.00) && (parseFloat(max, 10) === 1.0)) $('#distanceSlider-header').text('all');
+        else if (parseFloat(max, 10) === 1.0) $('#distanceSlider-header').text(`${distanceMin} -`);
+        else if (parseFloat(min, 10) === 0.00) $('#distanceSlider-header').text(`- ${distanceMax} `);
+        else $('#distanceSlider-header').text(`${distanceMin} - ${distanceMax} `);
+      },
+      mouseleave: () => {
+        $('#distanceSlider-header').text('distance');
+      },
+    });
+  });
+
+  /**
+   * Listener for durationSlider which displays the value of the slider.
+   */
+  $(() => {
+    $('#durationSlider-container').on({
+      mouseenter: () => {
+        if (durationMin === 'null') $('#durationSlider-header').text('0');
+        else $('#durationSlider-header').text(Math.round(durationMin / 60));
+      },
+      mouseleave: () => {
+        $('#durationSlider-header').text('min duration');
+      },
+    });
+  });
 
   /**
    * Using jQuery autocomplete which also sets the inputfield data into the city variable.
@@ -113,8 +217,8 @@ const Journeys = () => {
   const resetFilters = () => {
     $('#forwardsJourney-button').prop('disabled', false);
     $('#backwardsStation-button').prop('disabled', true);
-    $('#DepartureStationsInput').val('')
-    $('#DepartureStationsInput').val('')
+    $('#DepartureStationsInput').val('');
+    $('#DepartureStationsInput').val('');
     setFilterNow(['limit=10']);
     bikeService.getFiltered(['limit=10'])
       .then((filteredJourneys) => setJourneys([...filteredJourneys]));
@@ -135,6 +239,22 @@ const Journeys = () => {
             </form>
           </div>
         </div>
+        <div className="distanceSlider-container" id="distanceSlider-container">
+          <p className="distanceSlider-header" id="distanceSlider-header"> distance </p>
+          <div className="sliders-container">
+            <div className="slider-track" />
+            <input type="range" min="0" max="1" step="0.01" defaultValue="0" id="distanceSlider-min" onChange={(event) => changeSliderValue(event, 'distanceSlider-min')} />
+            <input type="range" min="0" max="1" step="0.01" defaultValue="1" id="distanceSlider-max" onChange={(event) => changeSliderValue(event, 'distanceSlider-max')} />
+          </div>
+        </div>
+
+        <div className="durationSlider-container" id="durationSlider-container">
+          <p className="durationSlider-header" id="durationSlider-header"> min duration </p>
+          <div className="sliders-container">
+            <div className="slider-track" />
+            <input type="range" min="0" max="1" step="0.01" defaultValue="0" id="durationSlider-min" onChange={(event) => changeSliderValue(event, 'durationSlider-min')} />
+          </div>
+        </div>
 
         <div className="resetAndSort-container">
           <div className="resetButton-container">
@@ -152,6 +272,7 @@ const Journeys = () => {
               <button id="DateDecreasing-button" className="sort-button" onClick={() => changeFilter(['sort=-Departure'])} type="button"> Latest </button>
             </div>
           </div>
+          <button type="button" id="search-button" onClick={() => searchFilters()}> search </button>
         </div>
       </div>
       <div className="listOfJourneys-container">
