@@ -5,6 +5,7 @@
     grid-auto-rows: auto 1fr 1fr;
     height: 90%;
     width: 98%;
+    min-width: 1000px;
   }
   
 .grid-container > div {
@@ -35,6 +36,7 @@
     margin-left: 60px;
     margin-right: 60px;
     width: 80%;
+    min-width: 300px;
 }
 
 .left-container {
@@ -44,4 +46,5 @@
     grid-column: 1/2;
     margin-right: 20px;
     margin-left: 20px;
+    min-width: 400px;
 }

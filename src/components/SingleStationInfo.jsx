@@ -15,7 +15,7 @@ const Station = () => {
     $('#singleStation-container').css('display', 'none');
     $('#topStationsList').empty();
     $('#station-container').css('border', '2px solid');
-    $('#station-container').css('background', '#34568B');
+    $('#station-container').css('background', '#34558bca');
   };
 
   /**

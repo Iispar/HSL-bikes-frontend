@@ -101,7 +101,7 @@ const Stations = () => {
         <div className="stationFilter-container">
           <div className="stationSearch-container">
             <form onSubmit={handleSubmit}>
-              <input name="stationInput" id="StationInput" placeholder="Station name" onChange={(event) => setName(event.target.value)} />
+              <input className="stationInput" name="stationInput" id="StationInput" placeholder="Station name" onChange={(event) => setName(event.target.value)} />
             </form>
           </div>
           <button className="reset-button" type="button" onClick={() => resetFilters()}> reset </button>
@@ -110,8 +110,8 @@ const Stations = () => {
           <ListStations stations={stationsDisplay} />
         </div>
         <div className="pagination-container">
-          <button id="backwardsStation-button" onClick={() => changePage('b', page)} type="button"> previous </button>
-          <button id="forwardsStation-button" onClick={() => changePage('f', page)} type="button"> next </button>
+          <button className="pagination-button" id="backwardsStation-button" onClick={() => changePage('b', page)} type="button"> previous </button>
+          <button className="pagination-button" id="forwardsStation-button" onClick={() => changePage('f', page)} type="button"> next </button>
         </div>
       </div>
       <div className="allStations-container" id="singleStation-container">

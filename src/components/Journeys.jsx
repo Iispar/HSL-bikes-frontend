@@ -123,10 +123,12 @@ const Journeys = () => {
       $('#durationSlider-header').text(Math.round(filtered / 60));
       setDurationMin(filtered);
     }
+    const displayMin = parseFloat(distanceMin / 1000).toFixed(2);
+    const displayMax = parseFloat(distanceMax / 1000).toFixed(2);
     if ((parseFloat(min, 10) === 0.00) && (parseFloat(max, 10) === 1.0)) $('#distanceSlider-header').text('all');
-    else if (parseFloat(max, 10) === 1.0) $('#distanceSlider-header').text(`${distanceMin} -`);
-    else if (parseFloat(min, 10) === 0.00) $('#distanceSlider-header').text(`- ${distanceMax} `);
-    else $('#distanceSlider-header').text(`${distanceMin} - ${distanceMax} `);
+    else if (parseFloat(max, 10) === 1.0) $('#distanceSlider-header').text(`${displayMin} -`);
+    else if (parseFloat(min, 10) === 0.00) $('#distanceSlider-header').text(`- ${displayMax} `);
+    else $('#distanceSlider-header').text(`${displayMin} - ${displayMax} `);
   };
 
   /**
@@ -159,10 +161,12 @@ const Journeys = () => {
       mouseenter: () => {
         const min = $('#distanceSlider-min').val();
         const max = $('#distanceSlider-max').val();
+        const displayMin = parseFloat(distanceMin / 1000).toFixed(2);
+        const displayMax = parseFloat(distanceMax / 1000).toFixed(2);
         if ((parseFloat(min, 10) === 0.00) && (parseFloat(max, 10) === 1.0)) $('#distanceSlider-header').text('all');
-        else if (parseFloat(max, 10) === 1.0) $('#distanceSlider-header').text(`${distanceMin} -`);
-        else if (parseFloat(min, 10) === 0.00) $('#distanceSlider-header').text(`- ${distanceMax} `);
-        else $('#distanceSlider-header').text(`${distanceMin} - ${distanceMax} `);
+        else if (parseFloat(max, 10) === 1.0) $('#distanceSlider-header').text(`${displayMin} -`);
+        else if (parseFloat(min, 10) === 0.00) $('#distanceSlider-header').text(`- ${displayMax} `);
+        else $('#distanceSlider-header').text(`${displayMin} - ${displayMax} `);
       },
       mouseleave: () => {
         $('#distanceSlider-header').text('distance');
@@ -230,12 +234,12 @@ const Journeys = () => {
         <div className="search-container">
           <div className="stationSearch-container">
             <form onSubmit={handleSubmitDeparture}>
-              <input id="DepartureStationsInput" placeholder="Departure station" onChange={(event) => setDeparture(event.target.value)} />
+              <input type="text" id="DepartureStationsInput" placeholder="Departure station" onChange={(event) => setDeparture(event.target.value)} />
             </form>
           </div>
           <div className="stationSearch-container">
             <form onSubmit={handleSubmitReturn}>
-              <input id="ReturnStationInput" placeholder="Return station" onChange={(event) => setArrival(event.target.value)} />
+              <input type="text" id="ReturnStationInput" placeholder="Return station" onChange={(event) => setArrival(event.target.value)} />
             </form>
           </div>
         </div>
@@ -256,23 +260,23 @@ const Journeys = () => {
           </div>
         </div>
 
-        <div className="resetAndSort-container">
+        <div className="buttons-container">
           <div className="resetButton-container">
-            <button id="reset-button" className="reset-button" onClick={() => resetFilters()} type="button"> reset </button>
+            <button id="reset-button" className="button" onClick={() => resetFilters()} type="button"> reset </button>
           </div>
 
           <div className="dropdown-container">
-            <button className="dropdown-button" type="button"> Sort </button>
+            <button className="button" type="button"> Sort </button>
             <div className="dropdown-content">
-              <button id="DistanceDecreasing-button" className="sort-button" onClick={() => changeFilter(['sort=-Covered_distance'])} type="button"> Furthest </button>
-              <button id="DistanceIncreasing-button" className="sort-button" onClick={() => changeFilter(['sort=+Covered_distance'])} type="button"> Shortest </button>
-              <button id="DurationDecreasing-button" className="sort-button" onClick={() => changeFilter(['sort=-Duration'])} type="button"> Longest </button>
-              <button id="DurationIncreasing-button" className="sort-button" onClick={() => changeFilter(['sort=+Duration'])} type="button"> Fastest </button>
-              <button id="DateIncreasing-button" className="sort-button" onClick={() => changeFilter(['sort=+Departure'])} type="button"> Oldest </button>
-              <button id="DateDecreasing-button" className="sort-button" onClick={() => changeFilter(['sort=-Departure'])} type="button"> Latest </button>
+              <button id="DistanceDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Covered_distance'])} type="button"> Furthest </button>
+              <button id="DistanceIncreasing-button" className="sortButton" onClick={() => changeFilter(['sort=+Covered_distance'])} type="button"> Shortest </button>
+              <button id="DurationDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Duration'])} type="button"> Longest </button>
+              <button id="DurationIncreasing-button" className="sortButton" onClick={() => changeFilter(['sort=+Duration'])} type="button"> Fastest </button>
+              <button id="DateIncreasing-button" className="sortButton" onClick={() => changeFilter(['sort=+Departure'])} type="button"> Oldest </button>
+              <button id="DateDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Departure'])} type="button"> Latest </button>
             </div>
           </div>
-          <button type="button" id="search-button" onClick={() => searchFilters()}> search </button>
+          <button className="button" type="button" id="search-button" onClick={() => searchFilters()}> search </button>
         </div>
       </div>
       <div className="listOfJourneys-container">
@@ -280,8 +284,8 @@ const Journeys = () => {
       </div>
 
       <div className="pagination-container">
-        <button id="backwardsJourney-button" onClick={() => changePage('b', page)} type="button"> previous </button>
-        <button id="forwardsJourney-button" onClick={() => changePage('f', page)} type="button"> next </button>
+        <button className="pagination-button" id="backwardsJourney-button" onClick={() => changePage('b', page)} type="button"> previous </button>
+        <button className="pagination-button" id="forwardsJourney-button" onClick={() => changePage('f', page)} type="button"> next </button>
       </div>
     </div>
   );
