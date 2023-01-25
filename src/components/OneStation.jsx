@@ -80,7 +80,7 @@ const Station = (props) => {
 };
 
 Station.propTypes = {
-  id: propTypes.string,
+  id: propTypes.number,
   nameFi: propTypes.string,
   nameSwe: propTypes.string,
   adressFi: propTypes.string,

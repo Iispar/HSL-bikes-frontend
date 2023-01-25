@@ -4,7 +4,9 @@
     align-items: center;
     width: 95%;
     border: 2px solid;
+    border-radius: 5px;
     padding: 10px;
+    background: #34558bca;
 }
 
 .singleStation-container {
@@ -17,7 +19,8 @@
     margin-bottom: 5px;
     border: 2px solid;
     border-radius: 5px;
-    background: white;
+    background:rgb(238, 238, 238);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.441);
   }
 
 .stationInformation-container {
@@ -33,6 +36,8 @@
     display: none;
     padding: 10px;
     border: 2px solid;
+    border-radius: 5px;
+    background: #34558bca;
     height: 400px;
 }
 
@@ -86,6 +91,8 @@
     margin-top: 10px;
     height: 60px;
     border: 2px solid;
+    background:rgb(238, 238, 238);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.168);
 }
 
 .singleStationTitle-container {
@@ -121,6 +128,8 @@
     padding: 10px;
     border: 2px solid;
     border-radius: 5px;
+    background:rgb(238, 238, 238);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.168);
 }
 
 ol.topStationsList {
@@ -141,8 +150,11 @@ li {
     display: flex;
     flex-direction: column;
     border: 2px solid;
+    border-radius: 5px;
     height: 200px;
     gap: 5px;
+    background:rgb(238, 238, 238);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.168);
 }
 
 .stationID-container {
