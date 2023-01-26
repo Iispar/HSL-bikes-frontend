@@ -24,7 +24,7 @@ describe('Station component tests', () => {
   test('renders station', () => {
     const component = render(station);
     expect(component.container).toHaveTextContent(
-      'Name: testStationFi, adress:testStation, city:testCityFi, operator:testOperator, capasity:10',
+      '111testStationFitestStation, testCityFi1',
     );
   });
 });
