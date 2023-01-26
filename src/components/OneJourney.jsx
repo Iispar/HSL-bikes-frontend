@@ -9,6 +9,9 @@ const Journey = (props) => {
   const { duration } = props;
   const durationInMin = Math.floor(duration / 60);
 
+  /**
+   * Returns html for one single journey.
+   */
   return (
     <div name="singleJourney" className="singleJourney-container">
       <div name="singelJourneyLocation-container">

@@ -2,6 +2,11 @@ import React from 'react';
 import propTypes from 'prop-types';
 import Station from './OneStation';
 
+/**
+ * Lists all the stations as Station.
+ * @param {*} props
+ * @returns
+ */
 const ListStations = (props) => {
   const { stations } = props;
   if (stations.length === 0) return <p id="loadingStations-container" className="loadingStations-container"> No results </p>;

@@ -20,7 +20,6 @@ const getFiltered = async (filters) => {
   for (let i = 0; i < filters.length; i += 1) {
     newUrl = `${newUrl}${filters[i]}&`;
   }
-  console.log(newUrl);
   const request = await axios.get(newUrl);
   return request.data;
 };

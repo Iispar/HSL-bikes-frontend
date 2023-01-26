@@ -6,6 +6,11 @@ import {
   getCountTrips, getTop, getAverageDistance,
 } from './helpers/stationDataHelpers';
 
+/**
+ * Creates a html object of a station.
+ * @param {} props
+ * @returns singular station object
+ */
 const Station = (props) => {
   const { id } = props;
   const { nameFi } = props;

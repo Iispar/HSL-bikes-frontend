@@ -2,6 +2,11 @@ import React from 'react';
 import propTypes from 'prop-types';
 import Journey from './OneJourney';
 
+/**
+ * Lists all of the journeys as Journeys.
+ * @param {} props
+ * @returns list that includes journeys
+ */
 const ListJourneys = (props) => {
   const { journeys } = props;
   if (journeys.length === 0) return <p id="loadingJourneys-container" className="loadingJourneys-container"> No results </p>;

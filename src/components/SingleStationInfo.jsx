@@ -4,6 +4,10 @@ import {
   getTop, getAverageDistance, getMonthName, getCountTrips,
 } from './helpers/stationDataHelpers';
 
+/**
+ * Returns html for a view with one station.
+ * @returns view of a single station
+ */
 const Station = () => {
   const [currentMonth, setCurrentMonth] = useState('all');
   const [currentDirection, setCurrentDirection] = useState('');
