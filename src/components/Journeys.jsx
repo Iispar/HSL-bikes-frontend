@@ -142,11 +142,11 @@ const Journeys = () => {
     if (durationMin !== 'null') filter.push(`Duration>${durationMin}`);
     if (departure !== '') {
       const id = stationsAndIds[departure];
-      filter.push(`Return_station_id>${id}`);
+      filter.push(`Departure_station_id=${id}`);
     }
     if (arrival !== '') {
       const id = stationsAndIds[arrival];
-      filter.push(`Return_station_id>${id}`);
+      filter.push(`Return_station_id=${id}`);
     }
     filter = newFilter(filterNow, filter);
     setFilterNow(filter);

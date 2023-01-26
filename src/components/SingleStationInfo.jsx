@@ -111,14 +111,14 @@ const Station = () => {
               <button type="button" onClick={() => changeDirection('departure')} className="stationFilter-button" id="topDeparture-button"> departure </button>
             </div>
           </div>
-          <h2 id="waitForTopStations">
+          <h2 className="waitForTopStations" id="waitForTopStations">
             Waiting for top stations...
           </h2>
           <ol id="topStationsList" className="topStationsList"> </ol>
         </div>
         <div className="statisticsForStation-container">
           <div className="stationData-container">
-            <h2 id="currentMonthStatistics"> </h2>
+            <h2 id="currentMonthStatistics"> all time </h2>
             <p className="stats-p">
               Departing:
             </p>
@@ -131,7 +131,7 @@ const Station = () => {
             <p id="singleStationAvgReturning"> </p>
           </div>
           <div className="capasity-container">
-            <p id="singleStationCapasity"> </p>
+            <p className="singleStationCapasity" id="singleStationCapasity"> </p>
           </div>
         </div>
       </div>

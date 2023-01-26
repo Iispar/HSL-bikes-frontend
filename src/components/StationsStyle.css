@@ -117,6 +117,14 @@
         letter-spacing: 0.8px;
 }
 
+.singleStationCapasity {
+    text-transform: uppercase;
+        font-size: 14px;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 500;
+        letter-spacing: 0.8px;
+}
+
 .singleStationJourneyData-container {
     display: flex;
     flex-direction: row;
@@ -142,6 +150,10 @@
     border-radius: 5px;
     background:rgb(238, 238, 238);
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.168);
+}
+
+.waitForTopStations {
+    margin-bottom: -5px;
 }
 
 ol.topStationsList {
@@ -194,6 +206,16 @@ li {
         letter-spacing: 0.8px;
 }
 
+.bike-image {
+    margin-top: 5px;
+    height: 45px;
+    width: 45px;
+    background-image: url('../data/bike.svg');
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .stationAdress-container {
     text-transform: uppercase;
         font-size: 10px;
@@ -207,7 +229,7 @@ li {
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
-        font-size: 25px;
+        font-size: 20px;
         font-family: "Work Sans", sans-serif;
         font-weight: 100;
         letter-spacing: 0.8px;

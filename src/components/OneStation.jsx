@@ -73,7 +73,7 @@ const Station = (props) => {
       </div>
       <div className="stationCapasity-container">
         {capasity}
-        b
+        <div className="bike-image" />
       </div>
     </div>
   );
