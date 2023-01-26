@@ -106,16 +106,28 @@ const Journeys = () => {
       if (min >= max - 0.2) {
         $('#distanceSlider-max').val(parseFloat($('#distanceSlider-max').val()) + 0.01);
       }
+      if (min >= 0.85) {
+        $('#distanceSlider-min').val(0.85);
+        const filtered = Math.round(((0.85 ** 3) * 3600) * 50);
+        setDistanceMin(filtered);
+        return;
+      }
       const filtered = Math.round((valuePotent * 3600) * 50);
-      filteredMax = Math.round(((parseFloat($('#distanceSlider-max').val()) ** 3) * 3600) * 50);
+      filteredMax = Math.round($('#distanceSlider-max').val() ** 3 * 3600 * 50);
       setDistanceMax(filteredMax);
       setDistanceMin(filtered);
     } else if (slider === 'distanceSlider-max') {
       if (min >= max - 0.2) {
         $('#distanceSlider-min').val(parseFloat($('#distanceSlider-min').val()) - 0.01);
       }
+      if (max <= 0.15) {
+        $('#distanceSlider-max').val(0.15);
+        const filtered = Math.round(((0.15 ** 3) * 3600) * 50);
+        setDistanceMax(filtered);
+        return;
+      }
       const filtered = Math.round((valuePotent * 3600) * 50);
-      filteredMin = Math.round((parseFloat($('#distanceSlider-min').val()) * 3600) * 50);
+      filteredMin = Math.round((($('#distanceSlider-min').val() ** 3) * 3600) * 50);
       setDistanceMin(filteredMin);
       setDistanceMax(filtered);
     } else if (slider === 'durationSlider-min') {
@@ -124,8 +136,10 @@ const Journeys = () => {
       setDurationMin(filtered);
       return;
     }
-    const displayMin = parseFloat(distanceMin / 1000).toFixed(2);
-    const displayMax = parseFloat(distanceMax / 1000).toFixed(2);
+    const minDisplayValue = ($('#distanceSlider-min').val() ** 3) * 3600 * 50;
+    const maxDisplayValue = ($('#distanceSlider-max').val() ** 3) * 3600 * 50;
+    const displayMin = parseFloat(minDisplayValue / 1000).toFixed(2);
+    const displayMax = parseFloat(maxDisplayValue / 1000).toFixed(2);
     if ((parseFloat(min, 10) === 0.00) && (parseFloat(max, 10) === 1.0)) $('#distanceSlider-header').text('all');
     else if (parseFloat(max, 10) === 1.0) $('#distanceSlider-header').text(`${displayMin} -`);
     else if (parseFloat(min, 10) === 0.00) $('#distanceSlider-header').text(`- ${displayMax} `);
@@ -153,7 +167,6 @@ const Journeys = () => {
     bikeService.getFiltered(filter)
       .then((filteredJourneys) => setJourneys(filteredJourneys));
   };
-
   /**
    * Listener for distanceSlider which displays the value of the slider.
    */
