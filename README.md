@@ -5,7 +5,7 @@ link: bikes-frontend-solita.vercel.app
 This is a project where I used data from HSL's citybikes and display this data for the user. The data is located in mongoDB
 and the backend is an REST API that I make the calls to. More about the backend can be read in its [repository](https://github.com/Iispar/solita-backend)
 # Prerequisites and Configurations
-The project can be accessed form [here](bikes-frontend-solita.vercel.app).
+The project can be accessed form [here](https://bikes-frontend-solita.vercel.app/).
 The application can be also accessed by cloning the repository and using command npm install and npm start.
 This should open the app into localhost:3000 and work with the backend. The project might give eslint errors because
 I have some custom rules in the .eslintrc so I can give this file if needed. Please contact me if the project doesn't work.
