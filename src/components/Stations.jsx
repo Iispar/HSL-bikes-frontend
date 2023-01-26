@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import $ from 'jquery';
 import stationService from '../services/StationService';
 import ListStations from './ListStations';
-import { stations, stationsAndIds } from '../data/stationsData';
+import { stations } from '../data/stationsData';
 import { newFilter, getPageFilter } from './helpers/filterHelpers';
 import SingleStationInfo from './SingleStationInfo';
 
@@ -47,8 +47,7 @@ const Stations = () => {
     $('#backwardsStation-button').prop('disabled', true);
     $('#forwardsStation-button').prop('disabled', true);
     $('#StationInput').autocomplete('close');
-    const stationId = stationsAndIds[name];
-    const filterToChange = [`ID=${stationId}`];
+    const filterToChange = [`Name_fi=${name}`];
     changeFilter(filterToChange);
     setName('');
   };
