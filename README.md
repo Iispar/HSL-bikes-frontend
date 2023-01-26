@@ -1,5 +1,5 @@
 # bikes-frontend-solita
-Project for solitas pre assingment that is still underway. But feel free to view it still.
+bikes-frontend-solita.vercel.app
 # Bikes
 This is a project where I used data from HSL's citybikes and display this data for the user. The data is located in mongoDB
 and the backend is an REST API that I make the calls to. More about the backend can be read in its [repository](https://github.com/Iispar/solita-backend)
