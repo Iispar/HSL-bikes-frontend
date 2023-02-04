@@ -28,5 +28,9 @@ and then npm run test. E2e tests can be opened with npm run cypress:open and you
 I use React and js for the framework. Api calls are made with axios. E2e testing with cypress and basic unit tests with Jest.
 I also use Jquery for the styles.
 
-# TODO
-Add an endpoint to add data to the backend and create an UI for this.
+# TODO (after recruitment process)
+-Endpoint to add data.
+-Ui for adding data.
+-Display station location on map.
+-Better tests.
+-Sisplay journey start and end on map (?)
