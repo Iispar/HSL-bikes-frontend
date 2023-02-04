@@ -1,6 +1,7 @@
 .station-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 95%;
     border: 2px solid;
@@ -249,7 +250,7 @@ p {
     text-transform: uppercase;
         font-size: 12px;
         font-family: "Work Sans", sans-serif;
-        font-weight: 1000;
+        font-weight: 500;
         letter-spacing: 0.8px;
 }
 

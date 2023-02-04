@@ -20,6 +20,8 @@ const Station = () => {
     $('#topStationsList').empty();
     $('#station-container').css('border', '2px solid');
     $('#station-container').css('background', '#34558bca');
+    $('#singleStationAvgReturning').text('');
+    $('#singleStationAvgDeparting').text('');
   };
 
   /**
