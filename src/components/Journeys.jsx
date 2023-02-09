@@ -244,62 +244,69 @@ const Journeys = () => {
 
   return (
     <div className="journeys-container">
-      <div className="journeyFilters-container">
-        <div className="search-container">
-          <div className="stationSearch-container">
-            <form onSubmit={handleSubmitDeparture}>
-              <input type="text" id="DepartureStationsInput" placeholder="Departure station" onChange={(event) => setDeparture(event.target.value)} />
-            </form>
-          </div>
-          <div className="stationSearch-container">
-            <form onSubmit={handleSubmitReturn}>
-              <input type="text" id="ReturnStationInput" placeholder="Return station" onChange={(event) => setArrival(event.target.value)} />
-            </form>
-          </div>
-        </div>
-        <div className="distanceSlider-container" id="distanceSlider-container">
-          <p className="distanceSlider-header" id="distanceSlider-header"> distance </p>
-          <div className="sliders-container">
-            <div className="slider-track" />
-            <input type="range" min="0" max="1" step="0.01" defaultValue="0" id="distanceSlider-min" onChange={(event) => changeSliderValue(event, 'distanceSlider-min')} />
-            <input type="range" min="0" max="1" step="0.01" defaultValue="1" id="distanceSlider-max" onChange={(event) => changeSliderValue(event, 'distanceSlider-max')} />
-          </div>
-        </div>
-
-        <div className="durationSlider-container" id="durationSlider-container">
-          <p className="durationSlider-header" id="durationSlider-header"> duration </p>
-          <div className="sliders-container">
-            <div className="slider-track" />
-            <input type="range" min="0" max="1" step="0.01" defaultValue="0" id="durationSlider-min" onChange={(event) => changeSliderValue(event, 'durationSlider-min')} />
-          </div>
-        </div>
-
-        <div className="buttons-container">
-          <div className="resetButton-container">
-            <button id="reset-button" className="button" onClick={() => resetFilters()} type="button"> reset </button>
-          </div>
-
-          <div className="dropdown-container">
-            <button className="button" type="button"> Sort </button>
-            <div className="dropdown-content">
-              <button id="DistanceDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Covered_distance'])} type="button"> Furthest </button>
-              <button id="DistanceIncreasing-button" className="sortButton" onClick={() => changeFilter(['sort=+Covered_distance'])} type="button"> Shortest </button>
-              <button id="DurationDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Duration'])} type="button"> Longest </button>
-              <button id="DurationIncreasing-button" className="sortButton" onClick={() => changeFilter(['sort=+Duration'])} type="button"> Fastest </button>
-              <button id="DateIncreasing-button" className="sortButton" onClick={() => changeFilter(['sort=+Departure'])} type="button"> Oldest </button>
-              <button id="DateDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Departure'])} type="button"> Latest </button>
+      <div className="journeysHeader-container">
+        <h1 className="journeyHeader">
+          Journeys
+        </h1>
+      </div>
+      <div className="list-container">
+        <div className="journeyFilters-container">
+          <div className="search-container">
+            <div className="stationSearch-container">
+              <form onSubmit={handleSubmitDeparture}>
+                <input type="text" id="DepartureStationsInput" placeholder="Departure station" onChange={(event) => setDeparture(event.target.value)} />
+              </form>
+            </div>
+            <div className="stationSearch-container">
+              <form onSubmit={handleSubmitReturn}>
+                <input type="text" id="ReturnStationInput" placeholder="Return station" onChange={(event) => setArrival(event.target.value)} />
+              </form>
             </div>
           </div>
-          <button className="button" type="button" id="search-button" onClick={() => searchFilters()}> search </button>
-        </div>
-      </div>
-      <div className="listOfJourneys-container">
-        <ListJourneys journeys={journeys} />
-      </div>
+          <div className="distanceSlider-container" id="distanceSlider-container">
+            <p className="distanceSlider-header" id="distanceSlider-header"> distance </p>
+            <div className="sliders-container">
+              <div className="slider-track" />
+              <input type="range" min="0" max="1" step="0.01" defaultValue="0" id="distanceSlider-min" onChange={(event) => changeSliderValue(event, 'distanceSlider-min')} />
+              <input type="range" min="0" max="1" step="0.01" defaultValue="1" id="distanceSlider-max" onChange={(event) => changeSliderValue(event, 'distanceSlider-max')} />
+            </div>
+          </div>
 
-      <div className="pagination-container">
-        <button className="pagination-button" id="backwardsJourney-button" onClick={() => changePage('b', page)} type="button"> previous </button>
-        <button className="pagination-button" id="forwardsJourney-button" onClick={() => changePage('f', page)} type="button"> next </button>
+          <div className="durationSlider-container" id="durationSlider-container">
+            <p className="durationSlider-header" id="durationSlider-header"> duration </p>
+            <div className="sliders-container">
+              <div className="slider-track" />
+              <input type="range" min="0" max="1" step="0.01" defaultValue="0" id="durationSlider-min" onChange={(event) => changeSliderValue(event, 'durationSlider-min')} />
+            </div>
+          </div>
+
+          <div className="buttons-container">
+            <div className="resetButton-container">
+              <button id="reset-button" className="button" onClick={() => resetFilters()} type="button"> reset </button>
+            </div>
+
+            <div className="dropdown-container">
+              <button className="button" type="button"> Sort </button>
+              <div className="dropdown-content">
+                <button id="DistanceDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Covered_distance'])} type="button"> Furthest </button>
+                <button id="DistanceIncreasing-button" className="sortButton" onClick={() => changeFilter(['sort=+Covered_distance'])} type="button"> Shortest </button>
+                <button id="DurationDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Duration'])} type="button"> Longest </button>
+                <button id="DurationIncreasing-button" className="sortButton" onClick={() => changeFilter(['sort=+Duration'])} type="button"> Fastest </button>
+                <button id="DateIncreasing-button" className="sortButton" onClick={() => changeFilter(['sort=+Departure'])} type="button"> Oldest </button>
+                <button id="DateDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Departure'])} type="button"> Latest </button>
+              </div>
+            </div>
+            <button className="button" type="button" id="search-button" onClick={() => searchFilters()}> search </button>
+          </div>
+        </div>
+        <div className="listOfJourneys-container">
+          <ListJourneys journeys={journeys} />
+        </div>
+
+        <div className="pagination-container">
+          <button className="pagination-button" id="backwardsJourney-button" onClick={() => changePage('b', page)} type="button"> previous </button>
+          <button className="pagination-button" id="forwardsJourney-button" onClick={() => changePage('f', page)} type="button"> next </button>
+        </div>
       </div>
     </div>
   );

@@ -1,74 +1,9 @@
-.station-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 95%;
-    border: 2px solid;
-    border-radius: 5px;
-    padding: 10px;
-    background: #34558bca;
-}
-
-.singleStation-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 40px;
-    width: 30vw;
-    padding: 5px;
-    margin-bottom: 5px;
-    border: 2px solid;
-    border-radius: 5px;
-    background:rgb(238, 238, 238);
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.441);
-    min-width: 300px;
-  }
-
-.stationInformation-container {
-    display: grid;
-    grid-auto-columns: 1fr 1fr;
-    grid-auto-rows: auto 1fr 1fr;
-    height: 100%;
-    max-width: 500px;
-    gap: 10px;
-}
-
 .allStations-container {
     display: none;
     padding: 10px;
     border: 2px solid;
     border-radius: 5px;
     background: #34558bca;
-    height: 400px;
-}
-
-.stationFilter-container {
-    height: 45px;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 10px;
-    justify-content: space-between;
-    padding: 5px;
-    border: 2px solid;
-    border-radius: 5px;
-    background: white;
-}
-
-.stationInput {
-    height: 42px;
-    border: 1px solid;
-    border-radius: 5px;
-    text-transform: uppercase;
-        font-size: 20px;
-        font-family: "Work Sans", sans-serif;
-        font-weight: 500;
-        letter-spacing: 0.8px;
-}
-
-.list-container {
-    display: flex;
-    flex-direction: column;
 }
 
 .singleStationHeader-container {
@@ -104,6 +39,17 @@
     margin-top: 10px;
     height: 60px;
     border: 2px solid;
+    background:rgb(238, 238, 238);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.168);
+}
+
+.stationData-container {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid;
+    border-radius: 5px;
+    height: 100px;
+    gap: 5px;
     background:rgb(238, 238, 238);
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.168);
 }
@@ -168,71 +114,6 @@ li {
         font-size: 15px;
         font-family: "Work Sans", sans-serif;
         font-weight: 500;
-        letter-spacing: 0.8px;
-}
-
-.stationData-container {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid;
-    border-radius: 5px;
-    height: 200px;
-    gap: 5px;
-    background:rgb(238, 238, 238);
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.168);
-}
-
-.stationID-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    border: 1px solid;
-    border-color: rgba(0, 0, 0, 0.455);
-    height: 42px;
-    width: 60px;
-    background: rgb(212, 212, 212);
-    text-transform: uppercase;
-        font-size: 25px;
-        font-family: "Work Sans", sans-serif;
-        font-weight: 100;
-        letter-spacing: 0.8px;
-}
-
-.stationName-container {
-    text-transform: uppercase;
-        font-size: 16px;
-        font-family: "Work Sans", sans-serif;
-        font-weight: 2000;
-        letter-spacing: 0.8px;
-}
-
-.bike-image {
-    margin-top: 5px;
-    height: 45px;
-    width: 45px;
-    background-image: url('../data/bike.svg');
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.stationAdress-container {
-    text-transform: uppercase;
-        font-size: 10px;
-        font-family: "Work Sans", sans-serif;
-        font-weight: 2000;
-        letter-spacing: 0.8px;
-}
-
-.stationCapasity-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-        font-size: 20px;
-        font-family: "Work Sans", sans-serif;
-        font-weight: 100;
         letter-spacing: 0.8px;
 }
 

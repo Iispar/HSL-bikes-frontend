@@ -1,0 +1,120 @@
+.station-container {
+    display: flex;
+    flex-direction: column;
+    background: #0055ff;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.stationHeader-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 98%;
+    height: 60px;
+    padding-top: 10px;
+}
+
+.stationHeader {
+    text-transform: uppercase;
+    font-size: 80px;
+    font-family: "bajigoor";
+    font-weight: 100;
+    letter-spacing: 1px;
+    color: #dadada;
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 100px 50px 100px;
+}
+
+.singleStation-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+    width: 20vw;
+    padding: 5px;
+    margin-bottom: 2px;
+    background:rgb(238, 238, 238);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.441);
+    min-width: 300px;
+  }
+
+
+.stationFilter-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 5px;
+    background: white;
+}
+
+.stationInput {
+    border: 1px solid;
+    border-radius: 5px;
+    text-transform: uppercase;
+        font-size: 20px;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 500;
+        letter-spacing: 0.8px;
+}
+
+.stationID-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.455);
+    height: 30px;
+    width: 30px;
+    background: rgb(212, 212, 212);
+    text-transform: uppercase;
+        font-size: 20px;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 500;
+        letter-spacing: 0.8px;
+}
+
+.stationName-container {
+    text-transform: uppercase;
+        font-size: 16px;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 2000;
+        letter-spacing: 0.8px;
+}
+
+.bike-image {
+    margin-top: 5px;
+    height: 45px;
+    width: 45px;
+    background-image: url('../data/bike.svg');
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.stationAdress-container {
+    text-transform: uppercase;
+        font-size: 10px;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 2000;
+        letter-spacing: 0.8px;
+}
+
+.stationCapasity-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+        font-size: 20px;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 100;
+        letter-spacing: 0.8px;
+}

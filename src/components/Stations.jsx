@@ -96,6 +96,11 @@ const Stations = () => {
   });
   return (
     <div className="station-container" id="station-container">
+      <div className="stationHeader-container">
+        <h1 className="stationHeader">
+          STATIONS
+        </h1>
+      </div>
       <div className="list-container" id="list-container">
         <div className="stationFilter-container">
           <div className="stationSearch-container">
