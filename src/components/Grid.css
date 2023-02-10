@@ -1,23 +1,23 @@
-@font-face {
-  font-family: bajigoor;
-  src: url('../data/Bajigoor-X3P5a.ttf')
-}
 
 .background-container {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
+  flex-direction: column;
   top: 0px;
   right: 0px;
   left: 0px;
   bottom: 0px;
+  background-image: url('../data/clouds.jpg');
+  background-size: 100%;
 }
 
 .grid-container {
   display: grid;
   grid-auto-columns: auto auto;
   grid-auto-rows: 1fr;
+  z-index: 1;
   }
   
 .grid-container > div {
