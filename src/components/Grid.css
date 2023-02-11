@@ -1,23 +1,12 @@
-
-.background-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  flex-direction: column;
-  top: 0px;
-  right: 0px;
-  left: 0px;
-  bottom: 0px;
-  background-image: url('../data/clouds.jpg');
-  background-size: 100%;
-}
-
 .grid-container {
   display: grid;
-  grid-auto-columns: auto auto;
-  grid-auto-rows: 1fr;
-  z-index: 1;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   }
   
 .grid-container > div {
@@ -27,13 +16,13 @@
 .left-container {
   display: flex;
   justify-content: center;
-  grid-column: 1;
+  grid-column: 1/1;
   grid-row: 1;
 }
 
 .right-container {
   display: flex;
   justify-content: center;
-  grid-column: 2;
+  grid-column: 2/4;
   grid-row: 1;
 }

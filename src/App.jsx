@@ -12,14 +12,12 @@ import './components/StationListStyle.css';
  * need for the header and a main element that is split into two.
  */
 const App = () => (
-  <div className="background-container">
-    <div className="grid-container">
-      <div className="right-container" id="right-container">
-        <Journeys />
-      </div>
-      <div className="left-container" id="left-container">
-        <Stations />
-      </div>
+  <div className="grid-container">
+    <div className="right-container" id="right-container">
+      <Journeys />
+    </div>
+    <div className="left-container" id="left-container">
+      <Stations />
     </div>
   </div>
 );

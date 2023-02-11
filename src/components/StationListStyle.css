@@ -1,9 +1,7 @@
 .station-container {
     display: flex;
     flex-direction: column;
-    background: #0079c9bd;
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
+    background: rgb(0,122,201);
 }
 
 .stationHeader-container {
