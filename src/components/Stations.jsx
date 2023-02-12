@@ -46,7 +46,7 @@ const Stations = () => {
     event.preventDefault();
     $('#backwardsStation-button').prop('disabled', true);
     $('#forwardsStation-button').prop('disabled', true);
-    $('#StationInput').autocomplete('close');
+    $('#stationInput').autocomplete('close');
     const filterToChange = [`Name_fi=${name}`];
     changeFilter(filterToChange);
     setName('');
@@ -75,6 +75,7 @@ const Stations = () => {
   const resetFilters = () => {
     $('#backwardsStation-button').prop('disabled', true);
     $('#forwardsStation-button').prop('disabled', false);
+    $('#stationInputReset-button').css('display', 'none');
     $('#stationInput').val('');
     setFilterNow(['limit=10', 'sort=+ID']);
     setName('');
@@ -82,12 +83,21 @@ const Stations = () => {
       .then((filteredJourneys) => setStationsDisplay([...filteredJourneys]));
   };
 
+  const changeName = (val) => {
+    setName(val);
+    if (val !== '') {
+      $('#stationInputReset-button').css('display', 'block');
+    } else {
+      $('#stationInputReset-button').css('display', 'none');
+    }
+  };
+
   /**
    * Using jQuery autocomplete which also sets the inputfield data into the city variable.
    * Can this be done with const(?)
    */
   $(() => {
-    $('#StationInput').autocomplete({
+    $('#stationInput').autocomplete({
       source: stations,
       select: (event, ui) => {
         setName(ui.item.value);
@@ -104,11 +114,12 @@ const Stations = () => {
       <div className="list-container" id="list-container">
         <div className="stationFilter-container">
           <div className="stationSearch-container">
+            <i className="stationInputLogo-container" />
             <form onSubmit={handleSubmit}>
-              <input className="stationInput" name="stationInput" id="StationInput" placeholder="Station name" onChange={(event) => setName(event.target.value)} />
+              <input className="stationInput" name="stationInput" id="stationInput" placeholder="Station name" onChange={(event) => changeName(event.target.value)} />
             </form>
+            <button className="reset-button" id="stationInputReset-button" type="button" onClick={() => resetFilters()}> </button>
           </div>
-          <button className="reset-button" type="button" onClick={() => resetFilters()}> reset </button>
         </div>
         <div className="listOfStations-container">
           <ListStations stations={stationsDisplay} />

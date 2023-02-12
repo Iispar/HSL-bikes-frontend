@@ -11,6 +11,7 @@
   
 .grid-container > div {
   text-align: center;
+  margin: 0px;
   }
 
 .left-container {
@@ -25,4 +26,13 @@
   justify-content: center;
   grid-column: 2/4;
   grid-row: 1;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
