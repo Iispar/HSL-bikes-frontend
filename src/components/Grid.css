@@ -1,7 +1,7 @@
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 60px 1fr;
   position: absolute;
   top: 0;
   left: 0;
@@ -14,18 +14,25 @@
   margin: 0px;
   }
 
+.header-container {
+  display: flex;
+  justify-content: center;
+  grid-column: 1/4;
+  grid-row: 1;
+}
+
 .left-container {
   display: flex;
   justify-content: center;
   grid-column: 1/1;
-  grid-row: 1;
+  grid-row: 2;
 }
 
 .right-container {
   display: flex;
   justify-content: center;
   grid-column: 2/4;
-  grid-row: 1;
+  grid-row: 2;
 }
 
 .list-container {

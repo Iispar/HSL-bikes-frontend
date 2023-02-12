@@ -1,6 +1,5 @@
-# bikes-frontend-solita
-This is the pre-assignment task for solitas job listing.
-link: bikes-frontend-solita.vercel.app
+This project is still underway, but all pushed versions should work as intented, so please view it. Committed versions are the latest versions, that don't pass the tests yet.
+
 # Bikes
 This is a project where I used data from HSL's citybikes and display this data for the user. The data is located in mongoDB
 and the backend is an REST API that I make the calls to. More about the backend can be read in its [repository](https://github.com/Iispar/solita-backend)

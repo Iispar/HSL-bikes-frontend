@@ -1,11 +1,13 @@
 import React from 'react';
 import Journeys from './components/Journeys';
 import Stations from './components/Stations';
+import Header from './components/Header';
 import './components/Grid.css';
 import './components/JourneysStyle.css';
 import './components/StationsStyle.css';
 import './components/Filters.css';
 import './components/StationListStyle.css';
+import './components/HeaderStyle.css';
 
 /**
  * Basic structure for the application. Used a grid layout but only have
@@ -13,6 +15,9 @@ import './components/StationListStyle.css';
  */
 const App = () => (
   <div className="grid-container">
+    <div className="header-container" id="header-container">
+      <Header />
+    </div>
     <div className="right-container" id="right-container">
       <Journeys />
     </div>
