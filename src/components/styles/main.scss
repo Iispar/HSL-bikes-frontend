@@ -1,0 +1,39 @@
+
+
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 60px 1fr;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  &>div {
+    text-align: center;
+    margin: 0px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    grid-column: 1/4;
+    grid-row: 1;
+  }
+
+  &__right {
+    display: flex;
+    justify-content: center;
+    grid-column: 2/4;
+    grid-row: 2;
+  }
+
+  &__left {
+    display: flex;
+    justify-content: center;
+    grid-column: 1/1;
+    grid-row: 2;
+  }
+}
