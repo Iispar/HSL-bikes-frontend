@@ -1,3 +1,22 @@
+.header {
+  background: #007AC9;
+  width: 100%;
+}
+.header__logo {
+  display: flex;
+  position: absolute;
+  width: 100px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+}
+.header__create-new {
+  display: flex;
+  position: absolute;
+  right: 10px;
+  top: 20px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

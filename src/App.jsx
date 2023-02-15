@@ -7,7 +7,6 @@ import './components/JourneysStyle.css';
 import './components/StationsStyle.css';
 import './components/Filters.css';
 import './components/StationListStyle.css';
-import './components/HeaderStyle.css';
 import './components/styles/SearchBar.css';
 
 /**
