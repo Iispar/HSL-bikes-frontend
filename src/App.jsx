@@ -8,6 +8,7 @@ import './components/StationsStyle.css';
 import './components/Filters.css';
 import './components/StationListStyle.css';
 import './components/HeaderStyle.css';
+import './components/css/SearchBar.css';
 
 /**
  * Basic structure for the application. Used a grid layout but only have

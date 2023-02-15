@@ -253,13 +253,15 @@ const Journeys = () => {
         <div className="journeyFilters-container">
           <div className="search-container">
             <div className="stationSearch-container">
+              <i className="journeyInputLogo-container" />
               <form onSubmit={handleSubmitDeparture}>
-                <input type="text" id="DepartureStationsInput" placeholder="Departure station" onChange={(event) => setDeparture(event.target.value)} />
+                <input id="DepartureStationsInput" className="DepartureStationsInput" placeholder="Departure station" onChange={(event) => setDeparture(event.target.value)} />
               </form>
             </div>
             <div className="stationSearch-container">
+              <i className="journeyInputLogo-container" />
               <form onSubmit={handleSubmitReturn}>
-                <input type="text" id="ReturnStationInput" placeholder="Return station" onChange={(event) => setArrival(event.target.value)} />
+                <input id="ReturnStationInput" className="ReturnStationsInput" placeholder="Return station" onChange={(event) => setArrival(event.target.value)} />
               </form>
             </div>
           </div>

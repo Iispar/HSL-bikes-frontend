@@ -58,56 +58,6 @@
     width: 100%;
 }
 
-.stationInputLogo-container {
-    position: absolute;
-    top: 7px;
-    left: 7px;
-    width: 25px;
-    height: 25px;
-    font-weight: bold;
-    font-style: normal;
-    background-image: url('../data/stationLocation.svg');
-    background-size: 100%;
-    background-repeat: no-repeat;
-    filter: invert(28%) sepia(100%) saturate(994%) hue-rotate(176deg) brightness(106%) contrast(105%);
-}
-
-.stationInput {
-    height: 35px;
-    padding-left: 40px;
-    padding-right: 30px;
-    width: 100%;
-    border-radius: 5px;
-    background: #dedede;
-    border: 1px solid;
-        font-size: 17px;
-        font-family: "HCo Gotham XNarrow", sans-serif;
-        font-weight: 500;
-        letter-spacing: 1px;
-}
-
-.stationInput:focus {
-    border: 2px solid #007AC9;
-    box-shadow: 0 0 3px #007AC9;
-    outline-offset: 0px;
-    outline: none;
-}
-
-.reset-button {
-    display: none;
-    position: absolute;
-    top: 5px;
-    right: -68px;
-    width: 30px;
-    height: 30px;
-    border: 0;
-    background: transparent;
-    background-image: url('../data/closeIcon.svg');
-    background-size: 50%;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
 .stationID-container {
     display: flex;
     justify-content: center;
