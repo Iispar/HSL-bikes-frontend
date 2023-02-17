@@ -46,7 +46,7 @@ const Stations = () => {
     event.preventDefault();
     $('#backwardsStation-button').prop('disabled', true);
     $('#forwardsStation-button').prop('disabled', true);
-    $('#stationInput').autocomplete('close');
+    $('#stations__search__input').autocomplete('close');
     const filterToChange = [`Name_fi=${name}`];
     changeFilter(filterToChange);
     setName('');
@@ -75,8 +75,8 @@ const Stations = () => {
   const resetFilters = () => {
     $('#backwardsStation-button').prop('disabled', true);
     $('#forwardsStation-button').prop('disabled', false);
-    $('#stationInputReset-button').css('display', 'none');
-    $('#stationInput').val('');
+    $('#stations__search__reset-btn').css('display', 'none');
+    $('#stations__search__input').val('');
     setFilterNow(['limit=10', 'sort=+ID']);
     setName('');
     stationService.getFiltered(['limit=10', 'sort=+ID'])
@@ -86,9 +86,9 @@ const Stations = () => {
   const changeName = (val) => {
     setName(val);
     if (val !== '') {
-      $('#stationInputReset-button').css('display', 'block');
+      $('#stations__search__reset-btn').css('display', 'block');
     } else {
-      $('#stationInputReset-button').css('display', 'none');
+      $('#stations__search__reset-btn').css('display', 'none');
     }
   };
 
@@ -97,7 +97,7 @@ const Stations = () => {
    * Can this be done with const(?)
    */
   $(() => {
-    $('#stationInput').autocomplete({
+    $('#stations__search__input').autocomplete({
       source: stations,
       select: (event, ui) => {
         setName(ui.item.value);
@@ -105,31 +105,31 @@ const Stations = () => {
     });
   });
   return (
-    <div className="station-container" id="station-container">
-      <div className="stationHeader-container">
-        <h1 className="stationHeader">
+    <div className="stations" id="stations">
+      <div className="stations__header">
+        <h1 className="stations__list-header">
           STATIONS
         </h1>
       </div>
-      <div className="list-container" id="list-container">
-        <div className="stationFilter-container">
-          <div className="stationSearch-container">
-            <i className="stationInputLogo-container" />
+      <div className="stations__view" id="stations__view">
+        <div className="stations__filters">
+          <div className="stations__search">
+            <i className="stations__search__logo" />
             <form onSubmit={handleSubmit}>
-              <input className="stationInput" name="stationInput" id="stationInput" placeholder="Station name" onChange={(event) => changeName(event.target.value)} />
+              <input className="stations__search__input" name="stations__search__input" id="stations__search__input" placeholder="Station name" onChange={(event) => changeName(event.target.value)} />
             </form>
-            <button className="reset-button" id="stationInputReset-button" type="button" onClick={() => resetFilters()}> </button>
+            <button className="stations__search__reset-btn" id="stations__search__reset-btn" type="button" onClick={() => resetFilters()}> </button>
           </div>
         </div>
-        <div className="listOfStations-container">
+        <div className="stations__list">
           <ListStations stations={stationsDisplay} />
         </div>
-        <div className="pagination-container">
-          <button className="pagination-button" id="backwardsStation-button" onClick={() => changePage('b', page)} type="button"> previous </button>
-          <button className="pagination-button" id="forwardsStation-button" onClick={() => changePage('f', page)} type="button"> next </button>
+        <div className="stations__pagination">
+          <button className="stations__pagination__button" id="backwardsStation-button" onClick={() => changePage('b', page)} type="button"> previous </button>
+          <button className="stations__pagination__button" id="forwardsStation-button" onClick={() => changePage('f', page)} type="button"> next </button>
         </div>
       </div>
-      <div className="allStations-container" id="singleStation-container">
+      <div className="stations__single-station" id="stations__single-station">
         <SingleStationInfo />
       </div>
     </div>

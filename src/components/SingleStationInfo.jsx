@@ -15,11 +15,9 @@ const Station = () => {
    * Closes the single station view and returns the list.
    */
   const closeView = () => {
-    $('#list-container').css('display', 'flex');
-    $('#singleStation-container').css('display', 'none');
+    $('#stations__view').css('display', 'flex');
+    $('#stations__single-station').css('display', 'none');
     $('#topStationsList').empty();
-    $('#station-container').css('border', '2px solid');
-    $('#station-container').css('background', '#34558bca');
     $('#singleStationAvgReturning').text('');
     $('#singleStationAvgDeparting').text('');
   };

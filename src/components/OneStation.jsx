@@ -62,23 +62,23 @@ const Station = (props) => {
   };
 
   return (
-    <div className="singleStation-container" id={id} onClick={() => setSingleStationThis()} onKeyDown={() => setSingleStationThis()} role="button" tabIndex={0}>
-      <div className="stationID-container">
+    <div className="station-display" id={id} onClick={() => setSingleStationThis()} onKeyDown={() => setSingleStationThis()} role="button" tabIndex={0}>
+      <div className="station-display__id">
         {id}
       </div>
-      <div className="stationLocation-container">
-        <div className="stationName-container">
+      <div className="station-display__location">
+        <div className="station-display__location__name">
           {nameFi}
         </div>
-        <div className="stationAdress-container">
+        <div className="station-display__location__address">
           {adressFi}
           ,&nbsp;
           {cityFi}
         </div>
       </div>
-      <div className="stationCapasity-container">
+      <div className="station-display__capasity">
         {capasity}
-        <div className="bike-image" />
+        <div className="station-display__bike-img" />
       </div>
     </div>
   );

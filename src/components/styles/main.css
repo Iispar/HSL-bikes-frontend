@@ -17,6 +17,237 @@
   top: 20px;
 }
 
+input-logo, .stations__search__logo {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  width: 25px;
+  height: 25px;
+  font-weight: bold;
+  font-style: normal;
+  background-image: url("../../data/stationLocation.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  filter: invert(28%) sepia(100%) saturate(994%) hue-rotate(176deg) brightness(106%) contrast(105%);
+}
+
+input-field, .stations__search__input {
+  height: 35px;
+  padding-left: 40px;
+  width: 100%;
+  border-radius: 5px;
+  background: #dedede;
+  border: 1px solid;
+  font-size: 15px;
+  font-family: "HCo Gotham XNarrow", sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+input-field-focus, .stations__search__input :focus {
+  border: 2px solid #007AC9;
+  box-shadow: 0 0 3px #007AC9;
+  outline-offset: 0px;
+  outline: none;
+}
+
+reset-btn, .stations__search__reset-btn {
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: -42px;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: transparent;
+  background-image: url("../../data/closeIcon.svg");
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.stations {
+  display: flex;
+  flex-direction: column;
+  background: #dedede;
+  border-right: 2px solid;
+  border-color: #acacac;
+  width: 100%;
+  align-items: center;
+}
+.stations__header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  padding-top: 4px;
+  padding-right: 20px;
+}
+.stations__list-header {
+  text-transform: uppercase;
+  font-size: 50px;
+  font-family: "HCo Gotham XNarrow", sans-serif;
+  font-weight: 500;
+  font-stretch: expanded;
+  letter-spacing: 0px;
+  color: #007AC9;
+}
+.stations__view {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
+.stations__filters {
+  display: flex;
+  margin-bottom: 20px;
+  width: 320px;
+}
+.stations__search {
+  position: relative;
+  width: 100%;
+}
+.stations__pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.stations__pagination__button {
+  border: 0px;
+  border-radius: 13px;
+  height: 26px;
+  width: 80px;
+  color: white;
+  background-color: #007AC9;
+  text-align: center;
+  font-family: "HCo Gotham XNarrow", sans-serif;
+}
+.stations__pagination__button:disabled {
+  display: none;
+}
+.stations__pagination__button:hover {
+  background-color: #0065a8;
+}
+
+.station-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10px;
+  width: 360px;
+  padding-bottom: 18px;
+  padding-top: 9px;
+  margin-bottom: 9px;
+  background: #dedede;
+  border-bottom: 1px solid;
+  border-color: #929292;
+}
+.station-display__id {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border-color: rgba(0, 0, 0, 0.455);
+  height: 30px;
+  width: 50px;
+  background: #007AC9;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-family: "HCo Gotham XNarrow", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  color: white;
+}
+.station-display__location__name {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-family: "HCo Gotham XNarrow", sans-serif;
+  font-weight: 2000;
+  letter-spacing: 0.8px;
+}
+.station-display__location__address {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-family: "HCo Gotham XNarrow", sans-serif;
+  font-weight: 100;
+  letter-spacing: 0.2px;
+}
+.station-display__capasity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-family: "HCo Gotham XNarrow", sans-serif;
+  font-weight: 100;
+  letter-spacing: 0.8px;
+}
+.station-display__bike-img {
+  margin-top: 5px;
+  height: 45px;
+  width: 45px;
+  background-image: url("../../data/bike.svg");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.stations__single-station {
+  display: none;
+}
+
+input-logo, .stations__search__logo {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  width: 25px;
+  height: 25px;
+  font-weight: bold;
+  font-style: normal;
+  background-image: url("../../data/stationLocation.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  filter: invert(28%) sepia(100%) saturate(994%) hue-rotate(176deg) brightness(106%) contrast(105%);
+}
+
+input-field, .stations__search__input {
+  height: 35px;
+  padding-left: 40px;
+  width: 100%;
+  border-radius: 5px;
+  background: #dedede;
+  border: 1px solid;
+  font-size: 15px;
+  font-family: "HCo Gotham XNarrow", sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+input-field-focus, .stations__search__input :focus {
+  border: 2px solid #007AC9;
+  box-shadow: 0 0 3px #007AC9;
+  outline-offset: 0px;
+  outline: none;
+}
+
+reset-btn, .stations__search__reset-btn {
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: -42px;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: transparent;
+  background-image: url("../../data/closeIcon.svg");
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

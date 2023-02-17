@@ -3,11 +3,6 @@ import Journeys from './components/Journeys';
 import Stations from './components/Stations';
 import Header from './components/Header';
 import './components/styles/main.css';
-import './components/JourneysStyle.css';
-import './components/StationsStyle.css';
-import './components/Filters.css';
-import './components/StationListStyle.css';
-import './components/styles/SearchBar.css';
 
 /**
  * Basic structure for the application. Used a grid layout but only have
