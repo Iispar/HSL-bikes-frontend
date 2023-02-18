@@ -13,8 +13,8 @@ const Journey = (props) => {
    * Returns html for one single journey.
    */
   return (
-    <div name="singleJourney" className="singleJourney-container">
-      <div name="singelJourneyLocation-container">
+    <div name="journey-display" className="journey-display">
+      <div name="journey-display__location">
         <p className="station-text" name="station-text">
           From:&nbsp;
           {departureStationName}
@@ -24,7 +24,7 @@ const Journey = (props) => {
           {returnStationName}
         </p>
       </div>
-      <div className="singelJourneyData-container">
+      <div className="journey-display__data">
         <p className="data-text">
           {distanceInKm}
           KM

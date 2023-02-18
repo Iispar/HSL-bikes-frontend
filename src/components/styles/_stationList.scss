@@ -10,7 +10,7 @@
     width: 100%;
     align-items: center;
 
-    &__header {
+    &__title {
         display: flex;
         justify-content: flex-end;
         align-items: center;
@@ -18,16 +18,15 @@
         height: 60px;
         padding-top: 4px;
         padding-right: 20px;
-    }
-
-    &__list-header {
-        text-transform: uppercase;
-        font-size: 50px;
-        font-family: $font, sans-serif;
-        font-weight: 500;
-        font-stretch: expanded;
-        letter-spacing: 0px;
-        color: #007AC9;
+        &__text {
+            text-transform: uppercase;
+            font-size: 50px;
+            font-family: $font, sans-serif;
+            font-weight: 500;
+            font-stretch: expanded;
+            letter-spacing: 0px;
+            color: #007AC9;
+        }
     }
 
     &__view {
@@ -42,7 +41,7 @@
     &__filters {
         display: flex;
         margin-bottom: 20px;
-        width: 320px;
+        width: 300px;
     }
 
     &__search {
@@ -77,7 +76,7 @@
             color: white;
             background-color: #007AC9;
             text-align: center;
-            font-family: "HCo Gotham XNarrow", sans-serif;
+            font-family: $font, sans-serif;
 
             &:disabled {
                 display: none;

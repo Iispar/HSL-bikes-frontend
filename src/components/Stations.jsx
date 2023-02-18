@@ -106,8 +106,8 @@ const Stations = () => {
   });
   return (
     <div className="stations" id="stations">
-      <div className="stations__header">
-        <h1 className="stations__list-header">
+      <div className="stations__title">
+        <h1 className="stations__title__text">
           STATIONS
         </h1>
       </div>

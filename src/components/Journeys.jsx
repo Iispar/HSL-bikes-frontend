@@ -27,7 +27,7 @@ const Journeys = () => {
   useEffect(() => {
     bikeService.getAll()
       .then((journeysData) => setJourneys(journeysData));
-    $('#backwardsJourney-button').prop('disabled', true);
+    $('#backwards-journey-button').prop('disabled', true);
   }, []);
 
   /**
@@ -40,8 +40,8 @@ const Journeys = () => {
     bikeService.getFiltered(filter)
       .then((filteredJourneys) => {
         setJourneys(filteredJourneys);
-        if (filteredJourneys.length <= 0) $('#forwardsJourney-button').prop('disabled', true);
-        else $('#forwardsJourney-button').prop('disabled', false);
+        if (filteredJourneys.length <= 0) $('#forwards-journey-button').prop('disabled', true);
+        else $('#forwards-journey-button').prop('disabled', false);
       });
   };
 
@@ -55,8 +55,8 @@ const Journeys = () => {
     if (direction === 'f') page.current += 1;
     else page.current -= 1;
 
-    if (page.current === 0) $('#backwardsJourney-button').prop('disabled', true);
-    else $('#backwardsJourney-button').prop('disabled', false);
+    if (page.current === 0) $('#backwards-journey-button').prop('disabled', true);
+    else $('#backwards-journey-button').prop('disabled', false);
 
     const filter = getPageFilter(direction, page.current, filterNow);
     bikeService.getFiltered(filter)
@@ -69,7 +69,7 @@ const Journeys = () => {
    */
   const handleSubmitDeparture = (event) => {
     event.preventDefault();
-    $('#DepartureStationsInput').autocomplete('close');
+    $('#journeys__header__search__departure__input').autocomplete('close');
     const id = stationsAndIds[departure];
     const filterToChange = [`Departure_station_id=${id}`];
     changeFilter(filterToChange);
@@ -81,7 +81,7 @@ const Journeys = () => {
    */
   const handleSubmitReturn = (event) => {
     event.preventDefault();
-    $('#ReturnStationInput').autocomplete('close');
+    $('#journeys__header__search__return__input').autocomplete('close');
     const id = stationsAndIds[arrival];
     const filterToChange = [`Return_station_id=${id}`];
     changeFilter(filterToChange);
@@ -97,53 +97,53 @@ const Journeys = () => {
   const changeSliderValue = (event, slider) => {
     event.preventDefault();
     const { value } = event.target;
-    const min = $('#distanceSlider-min').val();
-    const max = $('#distanceSlider-max').val();
+    const min = $('#distance-slider-min').val();
+    const max = $('#distance-slider-max').val();
     const valuePotent = value ** 3;
     let filteredMin;
     let filteredMax;
-    if (slider === 'distanceSlider-min') {
+    if (slider === 'distance-slider-min') {
       if (min >= max - 0.2) {
-        $('#distanceSlider-max').val(parseFloat($('#distanceSlider-max').val()) + 0.01);
+        $('#distance-slider-max').val(parseFloat($('#distance-slider-max').val()) + 0.01);
       }
       if (min >= 0.85) {
-        $('#distanceSlider-min').val(0.85);
+        $('#distance-slider-min').val(0.85);
         const filtered = Math.round(((0.85 ** 3) * 3600) * 50);
         setDistanceMin(filtered);
         return;
       }
       const filtered = Math.round((valuePotent * 3600) * 50);
-      filteredMax = Math.round($('#distanceSlider-max').val() ** 3 * 3600 * 50);
+      filteredMax = Math.round($('#distance-slider-max').val() ** 3 * 3600 * 50);
       setDistanceMax(filteredMax);
       setDistanceMin(filtered);
-    } else if (slider === 'distanceSlider-max') {
+    } else if (slider === 'distance-slider-max') {
       if (min >= max - 0.2) {
-        $('#distanceSlider-min').val(parseFloat($('#distanceSlider-min').val()) - 0.01);
+        $('#distance-slider-min').val(parseFloat($('#distance-slider-min').val()) - 0.01);
       }
       if (max <= 0.15) {
-        $('#distanceSlider-max').val(0.15);
+        $('#distance-slider-max').val(0.15);
         const filtered = Math.round(((0.15 ** 3) * 3600) * 50);
         setDistanceMax(filtered);
         return;
       }
       const filtered = Math.round((valuePotent * 3600) * 50);
-      filteredMin = Math.round((($('#distanceSlider-min').val() ** 3) * 3600) * 50);
+      filteredMin = Math.round((($('#distance-slider-min').val() ** 3) * 3600) * 50);
       setDistanceMin(filteredMin);
       setDistanceMax(filtered);
-    } else if (slider === 'durationSlider-min') {
+    } else if (slider === 'duration-slider-min') {
       const filtered = Math.round((valuePotent * 40000) * 60);
-      $('#durationSlider-header').text(`${Math.round(filtered / 60)} -`);
+      $('#duration-slider-header').text(`${Math.round(filtered / 60)} -`);
       setDurationMin(filtered);
       return;
     }
-    const minDisplayValue = ($('#distanceSlider-min').val() ** 3) * 3600 * 50;
-    const maxDisplayValue = ($('#distanceSlider-max').val() ** 3) * 3600 * 50;
+    const minDisplayValue = ($('#distance-slider-min').val() ** 3) * 3600 * 50;
+    const maxDisplayValue = ($('#distance-slider-max').val() ** 3) * 3600 * 50;
     const displayMin = parseFloat(minDisplayValue / 1000).toFixed(2);
     const displayMax = parseFloat(maxDisplayValue / 1000).toFixed(2);
-    if ((parseFloat(min, 10) === 0.00) && (parseFloat(max, 10) === 1.0)) $('#distanceSlider-header').text('all');
-    else if (parseFloat(max, 10) === 1.0) $('#distanceSlider-header').text(`${displayMin} -`);
-    else if (parseFloat(min, 10) === 0.00) $('#distanceSlider-header').text(`- ${displayMax} `);
-    else $('#distanceSlider-header').text(`${displayMin} - ${displayMax} `);
+    if ((parseFloat(min, 10) === 0.00) && (parseFloat(max, 10) === 1.0)) $('#distance-slider-header').text('all');
+    else if (parseFloat(max, 10) === 1.0) $('#distance-slider-header').text(`${displayMin} -`);
+    else if (parseFloat(min, 10) === 0.00) $('#distance-slider-header').text(`- ${displayMax} `);
+    else $('#distance-slider-header').text(`${displayMin} - ${displayMax} `);
   };
 
   /**
@@ -171,19 +171,19 @@ const Journeys = () => {
    * Listener for distanceSlider which displays the value of the slider.
    */
   $(() => {
-    $('#distanceSlider-container').on({
+    $('#journeys__header__filters__distace-slider').on({
       mouseenter: () => {
-        const min = $('#distanceSlider-min').val();
-        const max = $('#distanceSlider-max').val();
+        const min = $('#distance-slider-min').val();
+        const max = $('#distance-slider-max').val();
         const displayMin = parseFloat(distanceMin / 1000).toFixed(2);
         const displayMax = parseFloat(distanceMax / 1000).toFixed(2);
-        if ((parseFloat(min, 10) === 0.00) && (parseFloat(max, 10) === 1.0)) $('#distanceSlider-header').text('all');
-        else if (parseFloat(max, 10) === 1.0) $('#distanceSlider-header').text(`${displayMin} -`);
-        else if (parseFloat(min, 10) === 0.00) $('#distanceSlider-header').text(`- ${displayMax} `);
-        else $('#distanceSlider-header').text(`${displayMin} - ${displayMax} `);
+        if ((parseFloat(min, 10) === 0.00) && (parseFloat(max, 10) === 1.0)) $('#distance-slider-header').text('all');
+        else if (parseFloat(max, 10) === 1.0) $('#distance-slider-header').text(`${displayMin} -`);
+        else if (parseFloat(min, 10) === 0.00) $('#distance-slider-header').text(`- ${displayMax} `);
+        else $('#distance-slider-header').text(`${displayMin} - ${displayMax} `);
       },
       mouseleave: () => {
-        $('#distanceSlider-header').text('distance');
+        $('#distance-slider-header').text('distance');
       },
     });
   });
@@ -192,13 +192,13 @@ const Journeys = () => {
    * Listener for durationSlider which displays the value of the slider.
    */
   $(() => {
-    $('#durationSlider-container').on({
+    $('#journeys__header__filters__duration-slider').on({
       mouseenter: () => {
-        if (durationMin === 'null') $('#durationSlider-header').text('0 - ');
-        else $('#durationSlider-header').text(`${Math.round(durationMin / 60)} -`);
+        if (durationMin === 'null') $('#duration-slider-header').text('0 - ');
+        else $('#duration-slider-header').text(`${Math.round(durationMin / 60)} -`);
       },
       mouseleave: () => {
-        $('#durationSlider-header').text('duration');
+        $('#duration-slider-header').text('duration');
       },
     });
   });
@@ -208,7 +208,7 @@ const Journeys = () => {
    * Can this be done with const(?)
    */
   $(() => {
-    $('#DepartureStationsInput').autocomplete({
+    $('#journeys__header__search__departure__input').autocomplete({
       source: stations,
       select: (event, ui) => {
         setDeparture(ui.item.value);
@@ -221,7 +221,7 @@ const Journeys = () => {
    * so we need to make different autofills, for each one.
    */
   $(() => {
-    $('#ReturnStationInput').autocomplete({
+    $('#journeys__header__search__return__input').autocomplete({
       source: stations,
       select: (event, ui) => {
         setArrival(ui.item.value);
@@ -233,57 +233,57 @@ const Journeys = () => {
    * Resets the filters back to none and also refreshes the journey data back.
    */
   const resetFilters = () => {
-    $('#forwardsJourney-button').prop('disabled', false);
-    $('#backwardsStation-button').prop('disabled', true);
-    $('#DepartureStationsInput').val('');
-    $('#DepartureStationsInput').val('');
+    $('#forwards-journey-button').prop('disabled', false);
+    $('#backwards-journey-button').prop('disabled', true);
+    $('#journeys__header__search__departure__input').val('');
+    $('#journeys__header__search__return__input').val('');
     setFilterNow(['limit=10']);
     bikeService.getFiltered(['limit=10'])
       .then((filteredJourneys) => setJourneys([...filteredJourneys]));
   };
 
   return (
-    <div className="journeys-container">
-      <div className="journeysHeader-container">
-        <h1 className="journeyHeader">
+    <div className="journeys">
+      <div className="journeys__title">
+        <h1 className="journeys__title__text">
           Journeys
         </h1>
       </div>
-      <div className="list-container">
-        <div className="journeyFilters-container">
-          <div className="search-container">
-            <div className="stationSearch-container">
-              <i className="journeyInputLogo-container" />
-              <form onSubmit={handleSubmitDeparture}>
-                <input id="DepartureStationsInput" className="DepartureStationsInput" placeholder="Departure station" onChange={(event) => setDeparture(event.target.value)} />
-              </form>
-            </div>
-            <div className="stationSearch-container">
-              <i className="journeyInputLogo-container" />
-              <form onSubmit={handleSubmitReturn}>
-                <input id="ReturnStationInput" className="ReturnStationsInput" placeholder="Return station" onChange={(event) => setArrival(event.target.value)} />
-              </form>
-            </div>
+      <div className="journeys__header">
+        <div className="journeys__header__search">
+          <div className="journeys__header__search__departure">
+            <i className="journeys__header__search__departure__logo" />
+            <form onSubmit={handleSubmitDeparture}>
+              <input id="journeys__header__search__departure__input" className="journeys__header__search__departure__input" placeholder="Departure station" onChange={(event) => setDeparture(event.target.value)} />
+            </form>
           </div>
-          <div className="distanceSlider-container" id="distanceSlider-container">
-            <p className="distanceSlider-header" id="distanceSlider-header"> distance </p>
-            <div className="sliders-container">
-              <div className="slider-track" />
-              <input type="range" min="0" max="1" step="0.01" defaultValue="0" id="distanceSlider-min" onChange={(event) => changeSliderValue(event, 'distanceSlider-min')} />
-              <input type="range" min="0" max="1" step="0.01" defaultValue="1" id="distanceSlider-max" onChange={(event) => changeSliderValue(event, 'distanceSlider-max')} />
-            </div>
+          <div className="journeys__header__search__return">
+            <i className="journeys__header__search__return__logo" />
+            <form onSubmit={handleSubmitReturn}>
+              <input id="journeys__header__search__return__input" className="journeys__header__search__return__input" placeholder="Return station" onChange={(event) => setArrival(event.target.value)} />
+            </form>
           </div>
-
-          <div className="durationSlider-container" id="durationSlider-container">
-            <p className="durationSlider-header" id="durationSlider-header"> duration </p>
-            <div className="sliders-container">
-              <div className="slider-track" />
-              <input type="range" min="0" max="1" step="0.01" defaultValue="0" id="durationSlider-min" onChange={(event) => changeSliderValue(event, 'durationSlider-min')} />
+        </div>
+        <div className="journeys__header__filters">
+          <div className="journeys__header__filters__distance-slider" id="journeys__header__filters__distace-slider">
+            <p className="journeys__header__filters__distance-slider__header" id="distance-slider-header"> distance </p>
+            <div className="journeys__header__filters__distance-slider__container">
+              <div className="journeys__header__filters__distance-slider__track" />
+              <input type="range" min="0" max="1" step="0.01" defaultValue="0" id="distance-slider-min" onChange={(event) => changeSliderValue(event, 'distance-slider-min')} />
+              <input type="range" min="0" max="1" step="0.01" defaultValue="1" id="distance-slider-max" onChange={(event) => changeSliderValue(event, 'distance-slider-max')} />
             </div>
           </div>
 
-          <div className="buttons-container">
-            <div className="resetButton-container">
+          <div className="journeys__header__filters__duration-slider" id="journeys__header__filters__duration-slider">
+            <p className="journeys__header__filters__duration-slider__header" id="duration-slider-header"> duration </p>
+            <div className="journeys__header__filters__duration-slider__container">
+              <div className="journeys__header__filters__duration-slider__track" />
+              <input type="range" min="0" max="1" step="0.01" defaultValue="0" id="duration-slider-min" onChange={(event) => changeSliderValue(event, 'duration-slider-min')} />
+            </div>
+          </div>
+
+          <div className="journeys__header__filters__buttons">
+            <div className="reset-button-container">
               <button id="reset-button" className="button" onClick={() => resetFilters()} type="button"> reset </button>
             </div>
 
@@ -301,14 +301,14 @@ const Journeys = () => {
             <button className="button" type="button" id="search-button" onClick={() => searchFilters()}> search </button>
           </div>
         </div>
-        <div className="listOfJourneys-container">
-          <ListJourneys journeys={journeys} />
-        </div>
+      </div>
+      <div className="journeys__list">
+        <ListJourneys journeys={journeys} />
+      </div>
 
-        <div className="pagination-container">
-          <button className="pagination-button" id="backwardsJourney-button" onClick={() => changePage('b', page)} type="button"> previous </button>
-          <button className="pagination-button" id="forwardsJourney-button" onClick={() => changePage('f', page)} type="button"> next </button>
-        </div>
+      <div className="journeys__pagination">
+        <button className="journeys__pagination" id="backwards-journey-button" onClick={() => changePage('b', page)} type="button"> previous </button>
+        <button className="journeys__pagination" id="forwards-journey-button" onClick={() => changePage('f', page)} type="button"> next </button>
       </div>
     </div>
   );
