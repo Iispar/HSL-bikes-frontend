@@ -230,16 +230,27 @@ const Journeys = () => {
   });
 
   /**
-   * Resets the filters back to none and also refreshes the journey data back.
+   * Resets the filters back to none and also refreshes the journey data back. And also
+   * closes the filters menu.
    */
   const resetFilters = () => {
     $('#forwards-journey-button').prop('disabled', false);
     $('#backwards-journey-button').prop('disabled', true);
     $('#journeys__header__search__departure__input').val('');
     $('#journeys__header__search__return__input').val('');
+    $('.journeys__header__all').css('display', 'flex');
+    $('.journeys__header__filters').css('display', 'none');
     setFilterNow(['limit=10']);
     bikeService.getFiltered(['limit=10'])
       .then((filteredJourneys) => setJourneys([...filteredJourneys]));
+  };
+
+  /**
+   * Opens the menu for the filters.
+   */
+  const openFilters = () => {
+    $('.journeys__header__all').css('display', 'none');
+    $('.journeys__header__filters').css('display', 'flex');
   };
 
   return (
@@ -263,6 +274,10 @@ const Journeys = () => {
               <input id="journeys__header__search__return__input" className="journeys__header__search__return__input" placeholder="Return station" onChange={(event) => setArrival(event.target.value)} />
             </form>
           </div>
+        </div>
+        <div className="journeys__header__all">
+          <button className="journeys__header__all__button" type="button" onClick={() => openFilters()}> ALL </button>
+          <div className="journeys__header__all__arrow-down" />
         </div>
         <div className="journeys__header__filters">
           <div className="journeys__header__filters__sliders">
@@ -309,8 +324,8 @@ const Journeys = () => {
       </div>
 
       <div className="journeys__pagination">
-        <button className="journeys__pagination__button" id="backwards-journey-button" onClick={() => changePage('b', page)} type="button"> previous </button>
-        <button className="journeys__pagination__button" id="forwards-journey-button" onClick={() => changePage('f', page)} type="button"> next </button>
+        <button className="journeys__pagination__button" id="backwards-journey-button" onClick={() => changePage('b', page)} type="button"> Previous </button>
+        <button className="journeys__pagination__button" id="forwards-journey-button" onClick={() => changePage('f', page)} type="button"> Next </button>
       </div>
     </div>
   );
