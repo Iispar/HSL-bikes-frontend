@@ -499,7 +499,7 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
 .journeys__header__filters__buttons__dropdown__content {
   display: none;
   position: absolute;
-  top: 30px;
+  top: 20px;
   right: 10px;
   background-color: #f1f1f1;
   min-width: 160px;
@@ -509,7 +509,7 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
   background-color: #ddd;
 }
 .journeys__header__filters__buttons__search {
-  display: none;
+  display: block;
 }
 .journeys__list {
   justify-self: center;

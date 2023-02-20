@@ -220,7 +220,7 @@
                     &__content {
                         display: none;
                         position: absolute;
-                        top: 30px;
+                        top: 20px;
                         right: 10px;
                         background-color: #f1f1f1;
                         min-width: 160px;
@@ -232,7 +232,7 @@
                     }
                 }
                 &__search {
-                    display: none;
+                    display: block;
                 }
             }
         }
