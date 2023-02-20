@@ -15,21 +15,21 @@ const Journey = (props) => {
   return (
     <div name="journey-display" className="journey-display">
       <div name="journey-display__location">
-        <p className="station-text" name="station-text">
+        <p className="journey-display__location__text" name="station-text">
           From:&nbsp;
           {departureStationName}
         </p>
-        <p className="station-text">
+        <p className="journey-display__location__text">
           To:&nbsp;
           {returnStationName}
         </p>
       </div>
       <div className="journey-display__data">
-        <p className="data-text">
+        <p className="journey-display__data__text">
           {distanceInKm}
           KM
         </p>
-        <p className="data-text">
+        <p className="journey-display__data__text">
           {durationInMin}
           MIN
         </p>

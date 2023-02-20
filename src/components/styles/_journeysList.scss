@@ -2,16 +2,18 @@
 @import './sliders';
 
 .journeys {
-    display: flex;
-    flex-direction: column;
-    background: #dadadabf;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 70px 500px 10px;
+    background: #dedede;
     width: 100%;
 
     &__title {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        height: 60px;
+        grid-row: 1;
+        height: 100%;
         padding-top: 4px;
         padding-left: 10px;
         
@@ -26,14 +28,16 @@
     }
 
     &__header {
+        grid-row: 2;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        border-radius: 5px;
+        height: 100%;
+        margin-top: 10px;
         padding-bottom: 10px;
-        padding-top: 10px;
-        padding-left: 25px;
+        padding-left: 50px;
         gap: 10px;
+        justify-self: center;
 
         &__search {
             display: flex;
@@ -45,22 +49,21 @@
 
             &__return {
                 position: relative;
-                width: 156px;
-
+                
                 &__logo {
                     @extend input-logo;
-                    height: 20px;
-                    width: 20px;
-                    top: 4px;
-                    left: 4px;
+                    height: 25px;
+                    width: 25px;
+                    top: 5px;
+                    left: 5px;
                     filter: invert(73%) sepia(9%) saturate(2369%) hue-rotate(283deg) brightness(98%) contrast(92%);
                 }
         
                 &__input {
                     @extend input-field;
-                    height: 25px;
                     padding-right: 0px;
                     padding-left: 30px;
+                    width: calc(100% - 30px);
                     :focus {
                         @extend input-field-focus;
                     }
@@ -69,22 +72,21 @@
 
             &__departure {
                 position: relative;
-                width: 156px;
         
                 &__logo {
                     @extend input-logo;
-                    height: 20px;
-                    width: 20px;
-                    top: 4px;
-                    left: 4px;
+                    height: 25px;
+                    width: 25px;
+                    top: 5px;
+                    left: 5px;
                     filter: invert(60%) sepia(37%) saturate(1265%) hue-rotate(52deg) brightness(102%) contrast(76%);
                 }
         
                 &__input {
                     @extend input-field;
-                    height: 25px;
                     padding-right: 0px;
                     padding-left: 30px;
+                    width: calc(100% - 30px);
                     :focus {
                         @extend input-field-focus;
                     }
@@ -93,23 +95,192 @@
         }
 
         &__filters {
-            height: 70px;
-            width: 100%;
+            display: none;
+            height: 80px;
+            width: 60%;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 18px;
+            margin-left: 20px;
+            margin-right: 20px;
+            border-radius: 5px;
+            background: rgb(197, 197, 197);
+            &__sliders {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                padding-left: 30px;
+                padding-right: 5px;
+                &__distance-slider {
+                    @extend double-range-slider;
+                    &__header {
+                        font-family: $font, sans-serif;
+                        padding-bottom: 4px;
+                        margin: 0px;
+                    }
+                    &__container {
+                        @extend double-slider-container;
+                    }
+                    &__track {
+                        @extend double-slider-track;
+                    }
+                }
 
-            &__distance-slider {
-                @extend double-range-slider;
-                &__header {
-                    font-family: $font, sans-serif;
-                    padding-bottom: 10px;
-                    margin: 0px;
-                }
-                &__container {
-                    @extend double-slider-container;
-                }
-                &__track {
-                    @extend double-slider-track;
+                &__duration-slider {
+                    @extend double-range-slider;
+                    &__header {
+                        font-family: $font, sans-serif;
+                        padding-bottom: 6px;
+                        margin: 0px;
+                    }
+                    &__container {
+                        @extend double-slider-container;
+                    }
+                    &__track {
+                        @extend double-slider-track;
+                    }
                 }
             }
+
+            &__buttons {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 80px;
+                height: 100%;
+                &__reset {           
+                    position: absolute;
+                    right: 0px;
+                    width: 30px;
+                    height: 30px;
+                    border: 0;
+                    background: transparent;
+                        background-image: url('../../data/closeIcon.svg');
+                        background-size: 50%;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        filter: invert(28%) sepia(100%) saturate(994%) hue-rotate(176deg) brightness(106%) contrast(105%);
+                }
+
+                &__dropdown {
+                    position: absolute;
+                    right: 5px;
+                    bottom: 5px;
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                    &:hover .journeys__header__filters__buttons__dropdown__content {
+                        display: block;
+                    }
+                    &__button {
+                        border: 0px;
+                        border-radius: 13px;
+                        height: 26px;
+                        width: 80px;
+                        color: white;
+                        background-color: #007AC9;
+                        text-align: center;
+                        font-family: $buttonFont, sans-serif;
+                        font-size: 16px;
+                    }
+                    &__content {
+                        display: none;
+                        position: absolute;
+                        top: 30px;
+                        right: 10px;
+                        background-color: #f1f1f1;
+                        min-width: 160px;
+                        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+                        &:hover  {
+                            background-color: #ddd;
+                        }
+                    }
+                }
+                &__search {
+                    display: none;
+                }
+            }
+        }
+    }
+    &__list {
+        justify-self: center;
+        grid-row: 3;
+        margin-top: 40px;
+        padding-right: 50px;
+        padding-left: 50px;
+    }
+
+    &__pagination {
+        grid-row: 4;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+        &__button {
+            border: 0px;
+            border-radius: 13px;
+            height: 26px;
+            width: 80px;
+            color: white;
+            background-color: #007AC9;
+            text-align: center;
+            font-family: $buttonFont, sans-serif;
+
+            &:disabled {
+                display: none;
+            }
+
+            &:hover {
+                background-color: #0065a8;
+            }
+        }
+    }
+}
+
+.journey-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10px;
+    width: 500px;
+    padding-bottom: 18px;
+    padding-top: 9px;
+    margin-bottom: 9px;
+    background:#dedede;
+    border-bottom: 1px solid;
+    border-color: #929292;
+
+    &__location {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        &__text {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 2px;
+            margin-bottom: 5px;
+        }
+    }
+
+    &__data {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        &__text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 40px;
+            margin-left: 5px;
+            border: 1px solid;
+            border-color: rgba(0, 0, 0, 0.455);
+            border-radius: 5px;
+            background: rgb(212, 212, 212);
         }
     }
 }

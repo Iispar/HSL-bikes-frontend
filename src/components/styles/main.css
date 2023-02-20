@@ -17,10 +17,18 @@
   top: 20px;
 }
 
-input-logo, .journeys__header__search__departure__logo, .journeys__header__search__return__logo, .stations__search__logo {
+@font-face {
+  font-family: "Varela round";
+  src: url("https://fonts.googleapis.com/css?family=Varela Round") format("truetype");
+}
+@font-face {
+  font-family: "Varela round";
+  src: url("https://fonts.googleapis.com/css?family=Varela Round") format("truetype");
+}
+input-logo, .journeys__header__search__departure__logo, .journeys__header__search__return__logo, .stations__search__field__logo {
   position: absolute;
-  top: 7px;
-  left: 7px;
+  top: 5px;
+  left: 5px;
   width: 25px;
   height: 25px;
   font-weight: bold;
@@ -31,11 +39,11 @@ input-logo, .journeys__header__search__departure__logo, .journeys__header__searc
   filter: invert(28%) sepia(100%) saturate(994%) hue-rotate(176deg) brightness(106%) contrast(105%);
 }
 
-input-field, .journeys__header__search__departure__input, .journeys__header__search__return__input, .stations__search__input {
-  height: 35px;
+input-field, .journeys__header__search__departure__input, .journeys__header__search__return__input, .stations__search__field__input {
+  height: 30px;
   padding-left: 40px;
   padding-right: 20px;
-  width: 100%;
+  width: calc(100% - 60px);
   border-radius: 5px;
   background: #dedede;
   border: 1px solid;
@@ -45,20 +53,20 @@ input-field, .journeys__header__search__departure__input, .journeys__header__sea
   letter-spacing: 1px;
 }
 
-input-field-focus, .journeys__header__search__departure__input :focus, .journeys__header__search__return__input :focus, .stations__search__input :focus {
+input-field-focus, .journeys__header__search__departure__input :focus, .journeys__header__search__return__input :focus, .stations__search__field__input:focus {
   border: 2px solid #007AC9;
   box-shadow: 0 0 3px #007AC9;
   outline-offset: 0px;
   outline: none;
 }
 
-reset-btn, .stations__search__reset-btn {
+reset-btn, .stations__search__field__reset-btn {
   display: none;
   position: absolute;
   top: 5px;
-  right: -42px;
-  width: 30px;
-  height: 30px;
+  right: 5px;
+  width: 25px;
+  height: 25px;
   border: 0;
   background: transparent;
   background-image: url("../../data/closeIcon.svg");
@@ -68,22 +76,21 @@ reset-btn, .stations__search__reset-btn {
 }
 
 .stations {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 60px 70px 500px 10px;
   background: #dedede;
-  border-right: 2px solid;
-  border-color: #acacac;
   width: 100%;
-  align-items: center;
+  border-right: 2px solid #b4b4b4;
 }
 .stations__title {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 100%;
-  height: 60px;
+  grid-row: 1;
+  height: 100%;
   padding-top: 4px;
-  padding-right: 20px;
+  padding-right: 10px;
 }
 .stations__title__text {
   text-transform: uppercase;
@@ -94,27 +101,33 @@ reset-btn, .stations__search__reset-btn {
   letter-spacing: 0px;
   color: #007AC9;
 }
-.stations__view {
+.stations__search {
+  grid-row: 2;
+  position: relative;
+  height: 100%;
+  width: calc(100% - 40px);
+  margin-top: 40px;
+  padding-right: 20px;
+  padding-left: 20px;
+  justify-self: center;
+}
+.stations__search__field {
+  position: relative;
+}
+.stations__list {
+  grid-row: 3;
   display: flex;
   flex-direction: column;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 10px;
-  padding-bottom: 50px;
-}
-.stations__filters {
-  display: flex;
-  margin-bottom: 20px;
-  width: 300px;
-}
-.stations__search {
-  position: relative;
-  width: 100%;
+  margin-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .stations__pagination {
+  grid-row: 4;
   display: flex;
   justify-content: center;
   gap: 10px;
+  margin-top: 10px;
 }
 .stations__pagination__button {
   border: 0px;
@@ -124,7 +137,7 @@ reset-btn, .stations__search__reset-btn {
   color: white;
   background-color: #007AC9;
   text-align: center;
-  font-family: "HCo Gotham XNarrow", sans-serif;
+  font-family: "Varela round", sans-serif;
 }
 .stations__pagination__button:disabled {
   display: none;
@@ -200,10 +213,14 @@ reset-btn, .stations__search__reset-btn {
   display: none;
 }
 
-input-logo, .journeys__header__search__departure__logo, .journeys__header__search__return__logo, .stations__search__logo {
+@font-face {
+  font-family: "Varela round";
+  src: url("https://fonts.googleapis.com/css?family=Varela Round") format("truetype");
+}
+input-logo, .journeys__header__search__departure__logo, .journeys__header__search__return__logo, .stations__search__field__logo {
   position: absolute;
-  top: 7px;
-  left: 7px;
+  top: 5px;
+  left: 5px;
   width: 25px;
   height: 25px;
   font-weight: bold;
@@ -214,11 +231,11 @@ input-logo, .journeys__header__search__departure__logo, .journeys__header__searc
   filter: invert(28%) sepia(100%) saturate(994%) hue-rotate(176deg) brightness(106%) contrast(105%);
 }
 
-input-field, .journeys__header__search__departure__input, .journeys__header__search__return__input, .stations__search__input {
-  height: 35px;
+input-field, .journeys__header__search__departure__input, .journeys__header__search__return__input, .stations__search__field__input {
+  height: 30px;
   padding-left: 40px;
   padding-right: 20px;
-  width: 100%;
+  width: calc(100% - 60px);
   border-radius: 5px;
   background: #dedede;
   border: 1px solid;
@@ -228,20 +245,20 @@ input-field, .journeys__header__search__departure__input, .journeys__header__sea
   letter-spacing: 1px;
 }
 
-input-field-focus, .journeys__header__search__departure__input :focus, .journeys__header__search__return__input :focus, .stations__search__input :focus {
+input-field-focus, .journeys__header__search__departure__input :focus, .journeys__header__search__return__input :focus, .stations__search__field__input:focus {
   border: 2px solid #007AC9;
   box-shadow: 0 0 3px #007AC9;
   outline-offset: 0px;
   outline: none;
 }
 
-reset-btn, .stations__search__reset-btn {
+reset-btn, .stations__search__field__reset-btn {
   display: none;
   position: absolute;
   top: 5px;
-  right: -42px;
-  width: 30px;
-  height: 30px;
+  right: 5px;
+  width: 25px;
+  height: 25px;
   border: 0;
   background: transparent;
   background-image: url("../../data/closeIcon.svg");
@@ -250,6 +267,10 @@ reset-btn, .stations__search__reset-btn {
   background-repeat: no-repeat;
 }
 
+@font-face {
+  font-family: "Varela round";
+  src: url("https://fonts.googleapis.com/css?family=Varela Round") format("truetype");
+}
 input[type=range] {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -273,7 +294,7 @@ input[type=range]::-webkit-slider-thumb {
   border-radius: 50%;
 }
 
-double-slider-container, .journeys__header__filters__distance-slider__container {
+double-slider-container, .journeys__header__filters__sliders__duration-slider__container, .journeys__header__filters__sliders__distance-slider__container {
   position: relative;
   display: flex;
   align-items: center;
@@ -281,16 +302,16 @@ double-slider-container, .journeys__header__filters__distance-slider__container 
   width: 100%;
 }
 
-double-range-slider, .journeys__header__filters__distance-slider {
+double-range-slider, .journeys__header__filters__sliders__duration-slider, .journeys__header__filters__sliders__distance-slider {
   position: relative;
   justify-content: center;
   display: flex;
   flex-direction: column;
-  height: 35px;
+  height: 30px;
   width: 100px;
 }
 
-double-slider-track, .journeys__header__filters__distance-slider__track {
+double-slider-track, .journeys__header__filters__sliders__duration-slider__track, .journeys__header__filters__sliders__distance-slider__track {
   width: 100px;
   height: 4px;
   background: rgb(21, 0, 255);
@@ -298,16 +319,18 @@ double-slider-track, .journeys__header__filters__distance-slider__track {
 }
 
 .journeys {
-  display: flex;
-  flex-direction: column;
-  background: rgba(218, 218, 218, 0.7490196078);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 60px 70px 500px 10px;
+  background: #dedede;
   width: 100%;
 }
 .journeys__title {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 60px;
+  grid-row: 1;
+  height: 100%;
   padding-top: 4px;
   padding-left: 10px;
 }
@@ -320,14 +343,16 @@ double-slider-track, .journeys__header__filters__distance-slider__track {
   color: #007AC9;
 }
 .journeys__header {
+  grid-row: 2;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-radius: 5px;
+  height: 100%;
+  margin-top: 10px;
   padding-bottom: 10px;
-  padding-top: 10px;
-  padding-left: 25px;
+  padding-left: 50px;
   gap: 10px;
+  justify-self: center;
 }
 .journeys__header__search {
   display: flex;
@@ -339,45 +364,196 @@ double-slider-track, .journeys__header__filters__distance-slider__track {
 }
 .journeys__header__search__return {
   position: relative;
-  width: 156px;
 }
 .journeys__header__search__return__logo {
-  height: 20px;
-  width: 20px;
-  top: 4px;
-  left: 4px;
+  height: 25px;
+  width: 25px;
+  top: 5px;
+  left: 5px;
   filter: invert(73%) sepia(9%) saturate(2369%) hue-rotate(283deg) brightness(98%) contrast(92%);
 }
 .journeys__header__search__return__input {
-  height: 25px;
   padding-right: 0px;
   padding-left: 30px;
+  width: calc(100% - 30px);
 }
 .journeys__header__search__departure {
   position: relative;
-  width: 156px;
 }
 .journeys__header__search__departure__logo {
-  height: 20px;
-  width: 20px;
-  top: 4px;
-  left: 4px;
+  height: 25px;
+  width: 25px;
+  top: 5px;
+  left: 5px;
   filter: invert(60%) sepia(37%) saturate(1265%) hue-rotate(52deg) brightness(102%) contrast(76%);
 }
 .journeys__header__search__departure__input {
-  height: 25px;
   padding-right: 0px;
   padding-left: 30px;
+  width: calc(100% - 30px);
 }
 .journeys__header__filters {
-  height: 70px;
-  width: 100%;
+  display: none;
+  height: 80px;
+  width: 60%;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 18px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 5px;
+  background: rgb(197, 197, 197);
 }
-.journeys__header__filters__distance-slider__header {
+.journeys__header__filters__sliders {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 30px;
+  padding-right: 5px;
+}
+.journeys__header__filters__sliders__distance-slider__header {
   font-family: "HCo Gotham XNarrow", sans-serif;
-  padding-bottom: 10px;
+  padding-bottom: 4px;
   margin: 0px;
 }
+.journeys__header__filters__sliders__duration-slider__header {
+  font-family: "HCo Gotham XNarrow", sans-serif;
+  padding-bottom: 6px;
+  margin: 0px;
+}
+.journeys__header__filters__buttons {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80px;
+  height: 100%;
+}
+.journeys__header__filters__buttons__reset {
+  position: absolute;
+  right: 0px;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: transparent;
+  background-image: url("../../data/closeIcon.svg");
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: invert(28%) sepia(100%) saturate(994%) hue-rotate(176deg) brightness(106%) contrast(105%);
+}
+.journeys__header__filters__buttons__dropdown {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.journeys__header__filters__buttons__dropdown:hover .journeys__header__filters__buttons__dropdown__content {
+  display: block;
+}
+.journeys__header__filters__buttons__dropdown__button {
+  border: 0px;
+  border-radius: 13px;
+  height: 26px;
+  width: 80px;
+  color: white;
+  background-color: #007AC9;
+  text-align: center;
+  font-family: "Varela round", sans-serif;
+  font-size: 16px;
+}
+.journeys__header__filters__buttons__dropdown__content {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+.journeys__header__filters__buttons__dropdown__content:hover {
+  background-color: #ddd;
+}
+.journeys__header__filters__buttons__search {
+  display: none;
+}
+.journeys__list {
+  justify-self: center;
+  grid-row: 3;
+  margin-top: 40px;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+.journeys__pagination {
+  grid-row: 4;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.journeys__pagination__button {
+  border: 0px;
+  border-radius: 13px;
+  height: 26px;
+  width: 80px;
+  color: white;
+  background-color: #007AC9;
+  text-align: center;
+  font-family: "Varela round", sans-serif;
+}
+.journeys__pagination__button:disabled {
+  display: none;
+}
+.journeys__pagination__button:hover {
+  background-color: #0065a8;
+}
+
+.journey-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10px;
+  width: 500px;
+  padding-bottom: 18px;
+  padding-top: 9px;
+  margin-bottom: 9px;
+  background: #dedede;
+  border-bottom: 1px solid;
+  border-color: #929292;
+}
+.journey-display__location {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.journey-display__location__text {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+.journey-display__data {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.journey-display__data__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 40px;
+  margin-left: 5px;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.455);
+  border-radius: 5px;
+  background: rgb(212, 212, 212);
+}
+
 input[type=range] {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -401,7 +577,7 @@ input[type=range]::-webkit-slider-thumb {
   border-radius: 50%;
 }
 
-double-slider-container, .journeys__header__filters__distance-slider__container {
+double-slider-container, .journeys__header__filters__sliders__distance-slider__container, .journeys__header__filters__sliders__duration-slider__container {
   position: relative;
   display: flex;
   align-items: center;
@@ -409,16 +585,16 @@ double-slider-container, .journeys__header__filters__distance-slider__container 
   width: 100%;
 }
 
-double-range-slider, .journeys__header__filters__distance-slider {
+double-range-slider, .journeys__header__filters__sliders__distance-slider, .journeys__header__filters__sliders__duration-slider {
   position: relative;
   justify-content: center;
   display: flex;
   flex-direction: column;
-  height: 35px;
+  height: 30px;
   width: 100px;
 }
 
-double-slider-track, .journeys__header__filters__distance-slider__track {
+double-slider-track, .journeys__header__filters__sliders__distance-slider__track, .journeys__header__filters__sliders__duration-slider__track {
   width: 100px;
   height: 4px;
   background: rgb(21, 0, 255);

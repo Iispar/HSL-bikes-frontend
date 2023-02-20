@@ -265,31 +265,31 @@ const Journeys = () => {
           </div>
         </div>
         <div className="journeys__header__filters">
-          <div className="journeys__header__filters__distance-slider" id="journeys__header__filters__distace-slider">
-            <p className="journeys__header__filters__distance-slider__header" id="distance-slider-header"> distance </p>
-            <div className="journeys__header__filters__distance-slider__container">
-              <div className="journeys__header__filters__distance-slider__track" />
-              <input type="range" min="0" max="1" step="0.01" defaultValue="0" id="distance-slider-min" onChange={(event) => changeSliderValue(event, 'distance-slider-min')} />
-              <input type="range" min="0" max="1" step="0.01" defaultValue="1" id="distance-slider-max" onChange={(event) => changeSliderValue(event, 'distance-slider-max')} />
+          <div className="journeys__header__filters__sliders">
+            <div className="journeys__header__filters__sliders__distance-slider" id="journeys__header__filters__distace-slider">
+              <p className="journeys__header__filters__sliders__distance-slider__header" id="distance-slider-header"> distance </p>
+              <div className="journeys__header__filters__sliders__distance-slider__container">
+                <div className="journeys__header__filters__sliders__distance-slider__track" />
+                <input type="range" min="0" max="1" step="0.01" defaultValue="0" id="distance-slider-min" onChange={(event) => changeSliderValue(event, 'distance-slider-min')} />
+                <input type="range" min="0" max="1" step="0.01" defaultValue="1" id="distance-slider-max" onChange={(event) => changeSliderValue(event, 'distance-slider-max')} />
+              </div>
+            </div>
+
+            <div className="journeys__header__filters__sliders__duration-slider" id="journeys__header__filters__duration-slider">
+              <p className="journeys__header__filters__sliders__duration-slider__header" id="duration-slider-header"> duration </p>
+              <div className="journeys__header__filters__sliders__duration-slider__container">
+                <div className="journeys__header__filters__sliders__duration-slider__track" />
+                <input type="range" min="0" max="1" step="0.01" defaultValue="0" id="duration-slider-min" onChange={(event) => changeSliderValue(event, 'duration-slider-min')} />
+              </div>
             </div>
           </div>
-
-          <div className="journeys__header__filters__duration-slider" id="journeys__header__filters__duration-slider">
-            <p className="journeys__header__filters__duration-slider__header" id="duration-slider-header"> duration </p>
-            <div className="journeys__header__filters__duration-slider__container">
-              <div className="journeys__header__filters__duration-slider__track" />
-              <input type="range" min="0" max="1" step="0.01" defaultValue="0" id="duration-slider-min" onChange={(event) => changeSliderValue(event, 'duration-slider-min')} />
-            </div>
-          </div>
-
           <div className="journeys__header__filters__buttons">
-            <div className="reset-button-container">
-              <button id="reset-button" className="button" onClick={() => resetFilters()} type="button"> reset </button>
-            </div>
 
-            <div className="dropdown-container">
-              <button className="button" type="button"> Sort </button>
-              <div className="dropdown-content">
+            <button id="reset-button" className="journeys__header__filters__buttons__reset" onClick={() => resetFilters()} type="button"> </button>
+
+            <div className="journeys__header__filters__buttons__dropdown">
+              <button className="journeys__header__filters__buttons__dropdown__button" type="button"> Sort by </button>
+              <div className="journeys__header__filters__buttons__dropdown__content">
                 <button id="DistanceDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Covered_distance'])} type="button"> Furthest </button>
                 <button id="DistanceIncreasing-button" className="sortButton" onClick={() => changeFilter(['sort=+Covered_distance'])} type="button"> Shortest </button>
                 <button id="DurationDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Duration'])} type="button"> Longest </button>
@@ -298,7 +298,9 @@ const Journeys = () => {
                 <button id="DateDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Departure'])} type="button"> Latest </button>
               </div>
             </div>
-            <button className="button" type="button" id="search-button" onClick={() => searchFilters()}> search </button>
+            <div className="journeys__header__filters__buttons__search">
+              <button className="button" type="button" id="search-button" onClick={() => searchFilters()}> search </button>
+            </div>
           </div>
         </div>
       </div>
@@ -307,8 +309,8 @@ const Journeys = () => {
       </div>
 
       <div className="journeys__pagination">
-        <button className="journeys__pagination" id="backwards-journey-button" onClick={() => changePage('b', page)} type="button"> previous </button>
-        <button className="journeys__pagination" id="forwards-journey-button" onClick={() => changePage('f', page)} type="button"> next </button>
+        <button className="journeys__pagination__button" id="backwards-journey-button" onClick={() => changePage('b', page)} type="button"> previous </button>
+        <button className="journeys__pagination__button" id="forwards-journey-button" onClick={() => changePage('f', page)} type="button"> next </button>
       </div>
     </div>
   );

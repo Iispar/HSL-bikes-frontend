@@ -111,23 +111,21 @@ const Stations = () => {
           STATIONS
         </h1>
       </div>
-      <div className="stations__view" id="stations__view">
-        <div className="stations__filters">
-          <div className="stations__search">
-            <i className="stations__search__logo" />
-            <form onSubmit={handleSubmit}>
-              <input className="stations__search__input" name="stations__search__input" id="stations__search__input" placeholder="Station name" onChange={(event) => changeName(event.target.value)} />
-            </form>
-            <button className="stations__search__reset-btn" id="stations__search__reset-btn" type="button" onClick={() => resetFilters()}> </button>
-          </div>
+      <div className="stations__search">
+        <div className="stations__search__field">
+          <i className="stations__search__field__logo" />
+          <form onSubmit={handleSubmit}>
+            <input className="stations__search__field__input" name="stations__search__input" id="stations__search__input" placeholder="Station name" onChange={(event) => changeName(event.target.value)} />
+          </form>
+          <button className="stations__search__field__reset-btn" id="stations__search__reset-btn" type="button" onClick={() => resetFilters()}> </button>
         </div>
-        <div className="stations__list">
-          <ListStations stations={stationsDisplay} />
-        </div>
-        <div className="stations__pagination">
-          <button className="stations__pagination__button" id="backwardsStation-button" onClick={() => changePage('b', page)} type="button"> previous </button>
-          <button className="stations__pagination__button" id="forwardsStation-button" onClick={() => changePage('f', page)} type="button"> next </button>
-        </div>
+      </div>
+      <div className="stations__list">
+        <ListStations stations={stationsDisplay} />
+      </div>
+      <div className="stations__pagination">
+        <button className="stations__pagination__button" id="backwardsStation-button" onClick={() => changePage('b', page)} type="button"> Previous </button>
+        <button className="stations__pagination__button" id="forwardsStation-button" onClick={() => changePage('f', page)} type="button"> Next </button>
       </div>
       <div className="stations__single-station" id="stations__single-station">
         <SingleStationInfo />
