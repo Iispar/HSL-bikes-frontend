@@ -177,10 +177,7 @@
 
             &__buttons {
                 position: relative;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                width: 80px;
+                width: 100px;
                 height: 100%;
                 &__reset {           
                     position: absolute;
@@ -200,22 +197,27 @@
                     position: absolute;
                     right: 5px;
                     bottom: 5px;
-                    display: flex;
-                    justify-content: center;
-                    gap: 10px;
+                    width: 48px;
+                    height: 24px;
                     &:hover .journeys__header__filters__buttons__dropdown__content {
                         display: block;
                     }
                     &__button {
+                        position: absolute;
+                        right: 5px;
+                        bottom: 5px;
                         border: 0px;
-                        border-radius: 13px;
-                        height: 26px;
-                        width: 80px;
+                        height: 24px;
+                        width: 60px;
                         color: white;
                         background-color: #007AC9;
-                        text-align: center;
                         font-family: $buttonFont, sans-serif;
-                        font-size: 16px;
+                        font-size: 13px;
+                        text-align: right;
+                        padding-right: 6px;
+                        border-radius: 12px;
+                        line-height: 24px;
+                        -webkit-mask-image: radial-gradient(circle 13px at 0 12px, transparent 0, transparent 13px, black 12px);
                     }
                     &__content {
                         display: none;
@@ -232,7 +234,20 @@
                     }
                 }
                 &__search {
-                    display: block;
+                    position: absolute;
+                    bottom: 4px;
+                    right: 61px;
+                    border-radius: 12px;
+                    height: 26px;
+                    width: 26px;
+                    border: 1px solid black;
+                    background-color: transparent;
+                    background-image: url('../../data/searchIcon.svg');
+                    background-size: 60%;
+                    background-position: 5px 5px;
+                    background-repeat: no-repeat;
+                    cursor: pointer;
+                    filter: invert(28%) sepia(100%) saturate(994%) hue-rotate(176deg) brightness(106%) contrast(105%);
                 }
             }
         }

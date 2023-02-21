@@ -299,11 +299,11 @@ const Journeys = () => {
             </div>
           </div>
           <div className="journeys__header__filters__buttons">
-
             <button id="reset-button" className="journeys__header__filters__buttons__reset" onClick={() => resetFilters()} type="button"> </button>
-
+            <div className="journeys__header__filters__buttons__dropdown__button" type="button"> Sort by </div>
             <div className="journeys__header__filters__buttons__dropdown">
-              <button className="journeys__header__filters__buttons__dropdown__button" type="button"> Sort by </button>
+              <div className="journeys__header__filters__buttons__dropdown__button__top-corner" />
+              <div className="journeys__header__filters__buttons__dropdown__button__bottom-corner" />
               <div className="journeys__header__filters__buttons__dropdown__content">
                 <button id="DistanceDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Covered_distance'])} type="button"> Furthest </button>
                 <button id="DistanceIncreasing-button" className="sortButton" onClick={() => changeFilter(['sort=+Covered_distance'])} type="button"> Shortest </button>
@@ -313,9 +313,7 @@ const Journeys = () => {
                 <button id="DateDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Departure'])} type="button"> Latest </button>
               </div>
             </div>
-            <div className="journeys__header__filters__buttons__search">
-              <button className="button" type="button" id="search-button" onClick={() => searchFilters()}> search </button>
-            </div>
+            <button className="journeys__header__filters__buttons__search" type="button" id="search-button" onClick={() => searchFilters()}> </button>
           </div>
         </div>
       </div>
