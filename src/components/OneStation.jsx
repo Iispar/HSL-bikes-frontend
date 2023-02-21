@@ -33,10 +33,12 @@ const Station = (props) => {
   const setSingleStationThis = async () => {
     $('#stationInformation').attr('name', id);
     $('.stationFilter-button').prop('disabled', true);
-    $('#list-container').css('display', 'none');
+    $('#stations__list').css('display', 'none');
+    $('#stations__pagination').css('display', 'none');
+
     $('#station-container').css('border', 'none');
     $('#station-container').css('background', 'none');
-    $('#singleStation-container').css('display', 'block');
+    $('#stations__single-station').css('display', 'block');
     $('#singleStationHeader').text(nameFi);
     $('#singleStationInfo').text(`${adressFi},${cityFi}`);
     $('#singleStationCapasity').text(`capasity:${capasity}`);

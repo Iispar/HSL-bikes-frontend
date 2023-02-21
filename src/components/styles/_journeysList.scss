@@ -4,7 +4,7 @@
 .journeys {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 60px 70px 500px 10px;
+    grid-template-rows: 60px 70px 534px 10px;
     background: #dedede;
     width: 100%;
 
@@ -288,46 +288,108 @@
 }
 
 .journey-display {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 10px;
+    position: relative;
+    height: 14px;
     width: 500px;
     padding-bottom: 18px;
     padding-top: 9px;
     margin-bottom: 9px;
     background:#dedede;
-    border-bottom: 1px solid;
-    border-color: #929292;
+    border-bottom: 1px solid #c0c0c0;
 
     &__location {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        &__text {
+        position: absolute;
+        top: -4px;
+        bottom: 4px;
+        left: 0;
+        width: 65%;
+        border-bottom: 2px dashed rgb(119, 119, 119);
+        &__biker {
+            position: absolute;
+            bottom: -4px;
+            height: 28px;
+            width: 28px;
+            background-image: url('../../data/biker.svg');
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: bottom;
+        }
+        &__from-text {
+            position: absolute;
+            top: 0px;
+            left: 0px;
             display: flex;
             justify-content: flex-start;
             align-items: center;
             margin-top: 2px;
             margin-bottom: 5px;
+            font-family: $font, sans-serif;
+            font-size: 14px;
+        }
+
+        &__from-station {
+            position: absolute;
+            bottom: -2px;
+            left: 15px;
+            height: 25px;
+            width: 25px;
+            background-image: url('../../data/bikeParking.svg');
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: bottom;
+        }
+
+        &__to-text {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 2px;
+            margin-bottom: 5px;
+            font-family: $font, sans-serif;
+            font-size: 14px;
+        }
+
+        &__to-station {
+            position: absolute;
+            bottom: -2px;
+            right: 15px;
+            height: 25px;
+            width: 25px;
+            background-image: url('../../data/bikeParking.svg');
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: bottom;
         }
     }
 
     &__data {
         display: flex;
+        position: absolute;
         flex-direction: row;
         justify-content: center;
+        align-items: center;
+        gap: 5px;
+        bottom: 9px;
+        top: 0;
+        right: 0;
+        width: 33%;
+        padding: 0px;
         &__text {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 80px;
-            height: 40px;
-            margin-left: 5px;
-            border: 1px solid;
-            border-color: rgba(0, 0, 0, 0.455);
+            width: 70px;
+            height: 100%;
+            border: 2px solid;
+            border-color: #007AC9;
             border-radius: 5px;
-            background: rgb(212, 212, 212);
+            background: #dedede;
+            font-family: $font, sans-serif;
+            font-size: 16px;
+            font-weight: 100;
         }
     }
 }

@@ -120,10 +120,10 @@ const Stations = () => {
           <button className="stations__search__field__reset-btn" id="stations__search__reset-btn" type="button" onClick={() => resetFilters()}> </button>
         </div>
       </div>
-      <div className="stations__list">
+      <div className="stations__list" id="stations__list">
         <ListStations stations={stationsDisplay} />
       </div>
-      <div className="stations__pagination">
+      <div className="stations__pagination" id="stations__pagination">
         <button className="stations__pagination__button" id="backwardsStation-button" onClick={() => changePage('b', page)} type="button"> Previous </button>
         <button className="stations__pagination__button" id="forwardsStation-button" onClick={() => changePage('f', page)} type="button"> Next </button>
       </div>
