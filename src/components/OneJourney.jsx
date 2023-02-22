@@ -8,8 +8,8 @@ const Journey = (props) => {
   const distanceInKm = parseFloat(distance / 1000).toFixed(2);
   const { duration } = props;
   const durationInMin = Math.floor(duration / 60);
-  const num = Math.floor(Math.random() * 200) + 50;
-  const string = `${num}px`;
+  // const num = Math.floor(Math.random() * 200) + 50;
+  // const string = `${num}px`;
 
   /**
    * Returns html for one single journey.
@@ -21,7 +21,7 @@ const Journey = (props) => {
           {departureStationName}
         </div>
         <div className="journey-display__location__from-station" />
-        <div className="journey-display__location__biker" style={{ left: string }} />
+        <div className="journey-display__location__biker" />
         <div className="journey-display__location__to-text">
           {returnStationName}
         </div>

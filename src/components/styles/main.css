@@ -314,7 +314,7 @@ double-range-slider, .journeys__header__filters__sliders__duration-slider, .jour
 double-slider-track, .journeys__header__filters__sliders__duration-slider__track, .journeys__header__filters__sliders__distance-slider__track {
   width: 100px;
   height: 4px;
-  background: rgb(21, 0, 255);
+  background: #007AC9;
   border-radius: 5px;
 }
 
@@ -702,7 +702,7 @@ double-range-slider, .journeys__header__filters__sliders__distance-slider, .jour
 double-slider-track, .journeys__header__filters__sliders__distance-slider__track, .journeys__header__filters__sliders__duration-slider__track {
   width: 100px;
   height: 4px;
-  background: rgb(21, 0, 255);
+  background: #007AC9;
   border-radius: 5px;
 }
 
