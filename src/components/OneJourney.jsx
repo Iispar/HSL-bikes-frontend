@@ -8,8 +8,15 @@ const Journey = (props) => {
   const distanceInKm = parseFloat(distance / 1000).toFixed(2);
   const { duration } = props;
   const durationInMin = Math.floor(duration / 60);
-  // const num = Math.floor(Math.random() * 200) + 50;
-  // const string = `${num}px`;
+  const { id } = props;
+  let string = '';
+  if (!localStorage.getItem(id)) {
+    const num = Math.floor(Math.random() * 200) + 50;
+    string = `${num}px`;
+    localStorage.setItem(id, string);
+  } else {
+    string = localStorage.getItem(id);
+  }
 
   /**
    * Returns html for one single journey.
@@ -21,7 +28,7 @@ const Journey = (props) => {
           {departureStationName}
         </div>
         <div className="journey-display__location__from-station" />
-        <div className="journey-display__location__biker" />
+        <div className="journey-display__location__biker" style={{ left: `${string}` }} />
         <div className="journey-display__location__to-text">
           {returnStationName}
         </div>
@@ -46,6 +53,7 @@ Journey.propTypes = {
   returnStationName: propTypes.string.isRequired,
   distance: propTypes.number.isRequired,
   duration: propTypes.number.isRequired,
+  id: propTypes.string.isRequired,
 };
 
 export default Journey;

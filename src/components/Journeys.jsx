@@ -256,9 +256,9 @@ const Journeys = () => {
   return (
     <div className="journeys">
       <div className="journeys__title">
-        <h1 className="journeys__title__text">
+        <p className="journeys__title__text">
           Journeys
-        </h1>
+        </p>
       </div>
       <div className="journeys__header">
         <div className="journeys__header__search">

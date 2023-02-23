@@ -9,15 +9,19 @@ import './components/styles/main.css';
  * need for the header and a main element that is split into two.
  */
 const App = () => (
-  <div className="grid">
-    <div className="grid__header" id="header-container">
-      <Header />
-    </div>
-    <div className="grid__right" id="right-container">
-      <Journeys />
-    </div>
-    <div className="grid__left" id="left-container">
-      <Stations />
+  <div className="background">
+    <div id="header-background" />
+    <div id="top-right-background" />
+    <div className="grid">
+      <div className="grid__header" id="header-container">
+        <Header />
+      </div>
+      <div className="grid__right" id="right-container">
+        <Journeys />
+      </div>
+      <div className="grid__left" id="left-container">
+        <Stations />
+      </div>
     </div>
   </div>
 );

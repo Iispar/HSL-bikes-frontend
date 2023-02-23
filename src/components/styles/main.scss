@@ -5,16 +5,14 @@
 @import './input';
 @import './journeysList';
 @import './sliders.scss';
+@import './backgrounds';
 
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 60px 1fr;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  grid-template-rows: 50px 1fr;
+  max-height: 720px;
+  max-width: 1080px;
 
   &>div {
     text-align: center;
@@ -40,5 +38,6 @@
     justify-content: center;
     grid-column: 1/1;
     grid-row: 2;
+    max-width: 720px;
   }
 }
