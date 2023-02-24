@@ -6,7 +6,7 @@ import { stations } from '../data/stationsData';
 import { newFilter, getPageFilter } from './helpers/filterHelpers';
 import SingleStationInfo from './SingleStationInfo';
 
-/**
+/*
  * method for creating the list of stations.
  * @returns the stations
  */

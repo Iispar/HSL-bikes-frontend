@@ -12,6 +12,7 @@ const App = () => (
   <div className="background">
     <div id="header-background" />
     <div id="top-right-background" />
+    <div id="bottom-left-background" />
     <div className="grid">
       <div className="grid__header" id="header-container">
         <Header />

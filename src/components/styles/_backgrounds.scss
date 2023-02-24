@@ -24,10 +24,26 @@
     background-size: 1500px;
     background-repeat: no-repeat;
     top: 30px;
-    right: -150px;
+    right: -25px;
     height: 500px;
     width: 60%;
+    min-width: 550px;
     z-index: 0;
-    border: 2px solid;
+    filter: invert(28%) sepia(100%) saturate(1681%) hue-rotate(184deg) brightness(91%) contrast(102%);
+    }
+
+
+#bottom-left-background {
+    position: fixed;
+    background-image: url('../../data/blobLeftBottom.svg');
+    background-size: 1500px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    bottom: -40px;
+    right: 550px;
+    height: 500px;
+    width: 72%;
+    min-width: 550px;
+    z-index: 0;
     filter: invert(28%) sepia(100%) saturate(1681%) hue-rotate(184deg) brightness(91%) contrast(102%);
     }
