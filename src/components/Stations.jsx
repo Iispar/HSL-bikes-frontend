@@ -94,7 +94,7 @@ const Stations = () => {
 
   /**
    * Using jQuery autocomplete which also sets the inputfield data into the city variable.
-   * Can this be done with const(?)
+   *
    */
   $(() => {
     $('#stations__search__input').autocomplete({

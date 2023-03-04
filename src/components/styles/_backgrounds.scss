@@ -9,23 +9,14 @@
     bottom: 0;
 }
 
-#header-background {
-    background: #007AC9;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-}
-
 #top-right-background {
     position: fixed;
     background-image: url('../../data/blob.svg');
     background-size: 1500px;
     background-repeat: no-repeat;
-    top: 30px;
+    top: 0px;
     right: -25px;
-    height: 500px;
+    height: 600px;
     width: 60%;
     min-width: 550px;
     z-index: 0;
@@ -38,12 +29,13 @@
     background-image: url('../../data/blobLeftBottom.svg');
     background-size: 1500px;
     background-repeat: no-repeat;
-    background-position: left bottom;
-    bottom: -40px;
-    right: 550px;
-    height: 500px;
-    width: 72%;
-    min-width: 550px;
+    background-position: bottom 0px left 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 450px;
+    height: 1050px;
+    width: 88%;
+    min-width: 920px;
     z-index: 0;
     filter: invert(28%) sepia(100%) saturate(1681%) hue-rotate(184deg) brightness(91%) contrast(102%);
     }

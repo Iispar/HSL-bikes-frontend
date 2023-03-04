@@ -366,10 +366,10 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
 .journeys__header__search {
   display: flex;
   flex-direction: column;
-  justify-self: center;
   gap: 10px;
   width: 200px;
   height: 70px;
+  margin-right: 10px;
 }
 .journeys__header__search__return {
   position: relative;
@@ -437,11 +437,11 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
 .journeys__header__filters {
   display: none;
   height: 80px;
-  width: 280px;
+  width: 270px;
   flex-direction: row;
   justify-content: space-between;
   gap: 18px;
-  margin-left: 10px;
+  margin-left: 0px;
   border-radius: 5px;
   background: #dedede;
   z-index: 1;
@@ -731,23 +731,14 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   bottom: 0;
 }
 
-#header-background {
-  background: #007AC9;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-}
-
 #top-right-background {
   position: fixed;
   background-image: url("../../data/blob.svg");
   background-size: 1500px;
   background-repeat: no-repeat;
-  top: 30px;
+  top: 0px;
   right: -25px;
-  height: 500px;
+  height: 600px;
   width: 60%;
   min-width: 550px;
   z-index: 0;
@@ -759,12 +750,13 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   background-image: url("../../data/blobLeftBottom.svg");
   background-size: 1500px;
   background-repeat: no-repeat;
-  background-position: left bottom;
-  bottom: -40px;
-  right: 550px;
-  height: 500px;
-  width: 72%;
-  min-width: 550px;
+  background-position: bottom 0px left 0px;
+  top: 0px;
+  bottom: 0px;
+  right: 450px;
+  height: 1050px;
+  width: 88%;
+  min-width: 920px;
   z-index: 0;
   filter: invert(28%) sepia(100%) saturate(1681%) hue-rotate(184deg) brightness(91%) contrast(102%);
 }
@@ -773,8 +765,6 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 50px 1fr;
-  max-height: 720px;
-  max-width: 1180px;
   min-width: 1000px;
 }
 .grid > div {

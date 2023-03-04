@@ -46,10 +46,10 @@
         &__search {
             display: flex;
             flex-direction: column;
-            justify-self: center;
             gap: 10px;
             width: 200px;
             height: 70px;
+            margin-right: 10px;
 
             &__return {
                 position: relative;
@@ -135,11 +135,11 @@
         &__filters {
             display: none;
             height: 80px;
-            width: 280px;
+            width: 270px;
             flex-direction: row;
             justify-content: space-between;
             gap: 18px;
-            margin-left: 10px;
+            margin-left: 0px;
             border-radius: 5px;
             background: #dedede;
             z-index: 1;
