@@ -10,9 +10,11 @@ import './components/styles/main.css';
  */
 const App = () => (
   <div className="background">
-    <div id="header-background" />
-    <div id="top-right-background" />
-    <div id="bottom-left-background" />
+    <div className="background-container">
+      <div id="header-background" />
+      <div id="top-right-background" />
+      <div id="bottom-left-background" />
+    </div>
     <div className="grid">
       <div className="grid__header" id="header-container">
         <Header />

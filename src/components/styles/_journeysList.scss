@@ -4,8 +4,9 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 40px 65px 488px 10px;
-    background: #dedede;
+    background: transparent;
     width: 100%;
+    z-index: 0;
 
     &__title {
         text-align: center;
@@ -265,6 +266,7 @@
         margin-top: 38px;
         padding-left: 10px;
         padding-right: 10px;
+        z-index: 1;
     }
 
     &__pagination {
@@ -273,6 +275,7 @@
         justify-content: center;
         gap: 10px;
         margin-top: 10px;
+        z-index: 1;
         &__button {
             border: 0px;
             border-radius: 13px;
@@ -303,6 +306,7 @@
     margin-bottom: 9px;
     background:transparent;
     border-bottom: 1px solid #929292;;
+    z-index: 1;
 
     &__location {
         position: absolute;
