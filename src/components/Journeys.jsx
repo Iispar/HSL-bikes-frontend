@@ -305,13 +305,12 @@ const Journeys = () => {
               <div className="journeys__header__filters__buttons__dropdown__button__top-corner" />
               <div className="journeys__header__filters__buttons__dropdown__button__bottom-corner" />
               <div className="journeys__header__filters__buttons__dropdown__content">
-                <button id="DistanceDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Covered_distance'])} type="button"> Furthest </button>
-                <button id="DistanceIncreasing-button" className="sortButton" onClick={() => changeFilter(['sort=+Covered_distance'])} type="button"> Shortest </button>
-                <button id="DurationDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Duration'])} type="button"> Longest </button>
-                <button id="DurationIncreasing-button" className="sortButton" onClick={() => changeFilter(['sort=+Duration'])} type="button"> Fastest </button>
-                <button id="DateIncreasing-button" className="sortButton" onClick={() => changeFilter(['sort=+Departure'])} type="button"> Oldest </button>
-                <button id="DateDecreasing-button" className="sortButton" onClick={() => changeFilter(['sort=-Departure'])} type="button"> Latest </button>
+                <button id="DistanceDecreasing-button" className="journeys__header__filters__buttons__dropdown__content_sort-btn" onClick={() => changeFilter(['sort=-Covered_distance'])} type="button"> Furthest </button>
+                <button id="DistanceIncreasing-button" className="journeys__header__filters__buttons__dropdown__content_sort-btn" onClick={() => changeFilter(['sort=+Covered_distance'])} type="button"> Shortest </button>
+                <button id="DurationDecreasing-button" className="journeys__header__filters__buttons__dropdown__content_sort-btn" onClick={() => changeFilter(['sort=-Duration'])} type="button"> Longest </button>
+                <button id="DurationIncreasing-button" className="journeys__header__filters__buttons__dropdown__content_sort-btn" onClick={() => changeFilter(['sort=+Duration'])} type="button"> Fastest </button>
               </div>
+              <div className="journeys__header__filters__buttons__dropdown__content_top-right" />
             </div>
             <button className="journeys__header__filters__buttons__search" type="button" id="search-button" onClick={() => searchFilters()}> </button>
           </div>

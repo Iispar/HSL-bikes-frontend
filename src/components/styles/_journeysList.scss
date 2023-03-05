@@ -143,7 +143,7 @@
             gap: 18px;
             margin-left: 0px;
             border-radius: 5px;
-            background: #b6b6b6;
+            background: #dedede;
             z-index: 1;
             &__sliders {
                 height: 100%;
@@ -207,9 +207,20 @@
                     bottom: 5px;
                     width: 48px;
                     height: 24px;
+                    z-index: 0;
                     &:hover .journeys__header__filters__buttons__dropdown__content {
-                        display: block;
+                        display: flex;
+                        animation: growDown 300ms ease-out;
+                        transform-origin: top center;
+                        transform: scaleY(1);
                     }
+
+                    &:hover .journeys__header__filters__buttons__dropdown__content_top-right {
+                        display: flex;
+                        animation: growRight 100ms ease-out;
+                        transform-origin: left center;
+                    }
+
                     &__button {
                         position: absolute;
                         right: 5px;
@@ -228,16 +239,53 @@
                         -webkit-mask-image: radial-gradient(circle 13px at 0 12px, transparent 0, transparent 13px, black 12px);
                     }
                     &__content {
-                        display: none;
+                        display: flex;
                         position: absolute;
-                        top: 20px;
-                        right: 10px;
-                        background-color: #f1f1f1;
-                        min-width: 160px;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        transition: height 0.2s;
+                        transform: scaleY(0);
+                        gap: 2px;
+                        top: 23px;
+                        left: -11px;
+                        background-color: #007AC9;
+                        width: 80px;
+                        height: 110px;
+                        border-bottom-left-radius: 5px;
+                        border-bottom-right-radius: 5px;
                         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
+                        &_sort-btn {
+                            width: 60px;
+                            height: 25px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background: white;
+                            border: 1px solid #696969;
+                            border-radius: 5px;
+                            &:hover {
+                                background: #dedede;
+                            }
+                        }
+
+                        &_top-right {
+                            display: none;
+                            position: absolute;
+                            transition: width 1s;
+                            top: 0px;
+                            left: 31px;
+                            height: 23px;
+                            width: 38px;
+                            border-top-right-radius: 13px;
+                            background : #007AC9;
+                            -webkit-mask-image: radial-gradient(circle 13px at 0 12px, transparent 0, transparent 13px, black 12px);
+
+                        }
+
                         &:hover  {
-                            background-color: #ddd;
+                            background-color: #007AC9;
                         }
                     }
                 }
@@ -266,7 +314,7 @@
         margin-top: 38px;
         padding-left: 10px;
         padding-right: 10px;
-        z-index: 1;
+        z-index: 0;
     }
 
     &__pagination {
@@ -297,6 +345,30 @@
     }
 }
 
+@keyframes growRight {
+    0% {
+        width: 0px;
+    }
+    80% {
+        width: 30px;
+    }
+    100% {
+        width: 38px;
+    }
+}
+
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+    }
+    80% {
+        transform: scaleY(0.8)
+    }
+    100% {
+        transform: scaleY(1)
+    }
+}
+
 .journey-display {
     position: relative;
     height: 14px;
@@ -306,7 +378,6 @@
     margin-bottom: 9px;
     background:transparent;
     border-bottom: 1px solid #929292;;
-    z-index: 1;
 
     &__location {
         position: absolute;
@@ -398,7 +469,6 @@
             border: 2px solid;
             border-color: #007AC9;
             border-radius: 5px;
-            background: #dedede;
             font-family: $font, sans-serif;
             font-size: 16px;
             font-weight: 100;
