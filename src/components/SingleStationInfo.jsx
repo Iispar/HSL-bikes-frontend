@@ -15,6 +15,7 @@ const Station = () => {
    * Closes the single station view and returns the list.
    */
   const closeView = () => {
+    console.log('hei');
     $('#stations__view').css('display', 'flex');
     $('#stations__single-station').css('display', 'none');
     $('#topStationsList').empty();

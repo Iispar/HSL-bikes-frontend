@@ -276,7 +276,7 @@ const Journeys = () => {
           </div>
         </div>
         <div className="journeys__header__all">
-          <button className="journeys__header__all__button" type="button" onClick={() => openFilters()}> ALL </button>
+          <button className="journeys__header__all__button" id="journeys__header__all__button" type="button" onClick={() => openFilters()}> ALL </button>
           <div className="journeys__header__all__arrow-down" />
         </div>
         <div className="journeys__header__filters">

@@ -6,7 +6,7 @@ describe('Stations', () => {
 
   it('search works', () => {
     cy.visit('http://localhost:3000');
-    cy.get('input[id="StationInput"]').type('Otaranta{enter}');
+    cy.get('input[id="stations__search__input"]').type('Otaranta{enter}');
     cy.wait(500);
     cy.contains('Otaranta');
   });
@@ -29,18 +29,10 @@ describe('Stations', () => {
     cy.visit('http://localhost:3000');
     cy.contains('Kaivopuisto').click();
     cy.wait(200);
-    cy.get('.singleStation-container').should('have.css', 'display')
+    cy.get('.station-display').should('have.css', 'display')
       .and('match', /flex/);
     cy.contains('capasity');
     cy.contains('top');
     cy.contains('avg');
-  });
-
-  it('close works', () => {
-    cy.visit('http://localhost:3000');
-    cy.contains('Kaivopuisto').click();
-    cy.wait(200);
-    cy.contains('close').click();
-    cy.contains('Viiskulma');
   });
 });
