@@ -254,7 +254,7 @@ const Journeys = () => {
   };
 
   return (
-    <div className="journeys">
+    <div className="journeys" id="journeys">
       <div className="journeys__title">
         <p className="journeys__title__text">
           Journeys

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import $ from 'jquery';
 import {
-  getTop, getAverageDistance, getMonthName, getCountTrips,
+  setTop, getAverageDistance, getMonthName, getCountTrips,
 } from './helpers/stationDataHelpers';
 
 /**
@@ -9,18 +9,21 @@ import {
  * @returns view of a single station
  */
 const Station = () => {
-  const [currentMonth, setCurrentMonth] = useState('all');
-  const [currentDirection, setCurrentDirection] = useState('');
   /**
    * Closes the single station view and returns the list.
    */
   const closeView = () => {
-    console.log('hei');
     $('#stations__view').css('display', 'flex');
-    $('#stations__single-station').css('display', 'none');
-    $('#topStationsList').empty();
-    $('#singleStationAvgReturning').text('');
-    $('#singleStationAvgDeparting').text('');
+    $('#stations__search').css('display', 'flex');
+    $('#stations__title').css('display', 'flex');
+    $('#stations__list').css('display', 'flex');
+    $('#stations__pagination').css('display', 'flex');
+    $('#journeys').css('display', 'grid');
+    $('#station-information').css('display', 'none');
+    $('#station-information__data__top-returning__list').empty();
+    $('#station-information__data__top-departing__list').empty();
+    $('#station-information__data__statistics__returning__all-avg').text('');
+    $('#station-information__data__statistics__departing__all-avg').text('');
   };
 
   /**
@@ -28,115 +31,102 @@ const Station = () => {
    * @param {Int} month
    */
   const changeMonth = async (month) => {
-    $('.stationFilter-button').prop('disabled', true);
+    $('button[name=station-filter-btn]').prop('disabled', true);
     const setMonth = getMonthName(month);
-    setCurrentMonth(month);
-    const id = $('#stationInformation').attr('name');
+    const id = $('#station-information').attr('name');
 
-    $('#singleStationTripsDeparture').text('Waiting for data...');
-    $('#singleStationTripsReturn').text('Waiting for data...');
-    $('#singleStationAvgReturning').text('');
-    $('#singleStationAvgDeparting').text('');
-    $('#waitForTopStations').css('display', 'flex');
-    $('#waitForTopStations').text('loading...');
-    $('#topStationsList').text('');
+    $('#station-information__data__statistics__departing__all-trips').text('Waiting for data...');
+    $('#station-information__data__statistics__returning__all-trips').text('Waiting for data...');
+    $('#station-information__data__statistics__returning__all-avg').text('');
+    $('#station-information__data__statistics__departing__all-avg').text('');
+    $('td[name=top-stations-title]').text('');
+    $('#station-information__data__top-returning__list').text('');
+    $('#station-information__data__top-departing__list').text('');
 
     if (setMonth === 'all') {
-      $('#waitForTopStations').text(`top ${currentDirection} stations all time`);
-      $('#currentMonthStatistics').text('all time');
+      $('.station-information__data__top-returning__title').text('top return stations all time');
+      $('.station-information__data__top-departing__title').text('top departure stations all time');
+      $('#station-information__data__statistics').text('all time');
     } else {
-      $('#waitForTopStations').text(`top ${currentDirection} stations in ${setMonth}`);
-      $('#currentMonthStatistics').text(`in ${setMonth}`);
+      $('#station-information__data__top-returning__title').text(`top return stations in ${setMonth}`);
+      $('#station-information__data__top-departing__title').text(`top departure stations in ${setMonth}`);
+      $('#station-information__data__statistics').text(`in ${setMonth}`);
     }
-    await getTop(currentDirection, id, month);
-    $('.stationFilter-button').prop('disabled', false);
-    if (currentDirection === 'return') $('#topReturn-button').prop('disabled', true);
-    else $('#topDeparture-button').prop('disabled', true);
+    await setTop('station-information__data__top-returning__list', 'return', id, month);
+    await setTop('station-information__data__top-departing__list', 'departure', id, month);
+
+    $('button[name=station-filter-btn]').prop('disabled', false);
 
     const tripsEndingHere = await getCountTrips('return', id, month);
-    const tripsStartingHere = await getCountTrips('deparute', id, month);
+    const tripsStartingHere = await getCountTrips('departure', id, month);
     const avgReturning = await getAverageDistance('return', id, month);
     const avgDeparting = await getAverageDistance('departure', id, month);
     const avgReturnignKm = parseFloat(avgReturning / 1000).toFixed(2);
     const avgDepartingKm = parseFloat(avgDeparting / 1000).toFixed(2);
 
-    $('#singleStationTripsDeparture').text(`trips ${tripsEndingHere}`);
-    $('#singleStationTripsReturn').text(`trips ${tripsStartingHere}`);
-    $('#singleStationAvgReturning').text(`avg: ${avgReturnignKm} km`);
-    $('#singleStationAvgDeparting').text(`avg: ${avgDepartingKm} km`);
-  };
-
-  /**
-   * Changes the top list from return to departure or vice versa.
-   * @param {string} direction
-   */
-  const changeDirection = async (direction) => {
-    $('.stationFilter-button').prop('disabled', true);
-    const setMonth = getMonthName(currentMonth);
-    setCurrentDirection(direction);
-    const id = $('#stationInformation').attr('name');
-    $('#waitForTopStations').css('display', 'flex');
-    $('#waitForTopStations').text('loading...');
-    $('#topStationsList').text('');
-    await getTop(direction, id, currentMonth);
-    if (setMonth === 'all') $('#waitForTopStations').text(`top ${direction} stations all time`);
-    else $('#waitForTopStations').text(`top ${direction} stations in ${setMonth}`);
-    $('.stationFilter-button').prop('disabled', false);
-    if (direction === 'return') $('#topReturn-button').prop('disabled', true);
-    else $('#topDeparture-button').prop('disabled', true);
+    $('#station-information__data__statistics__departing__all-trips').text(`trips ${tripsEndingHere}`);
+    $('#station-information__data__statistics__returning__all-trips').text(`trips ${tripsStartingHere}`);
+    $('#station-information__data__statistics__returning__all-avg').text(`avg: ${avgReturnignKm} km`);
+    $('#station-information__data__statistics__departing__all-avg').text(`avg: ${avgDepartingKm} km`);
   };
 
   return (
-    <div className="stationInformation-container" id="stationInformation" name="">
-      <div className="singleStationHeader-container">
-        <div className="close-button">
-          <button onClick={() => closeView()} type="button"> close </button>
+    <div className="station-information" id="station-information" name="">
+      <div className="station-information__header">
+        <div className="station-information__header__name">
+          <div className="station-information__header__name__title" id="station-information__header__name__title">
+            station name
+          </div>
+          <div className="station-information__header__name__location" id="station-information__header__name__location">
+            streetname, city
+          </div>
         </div>
-        <div className="singleStationTitle-container" id="singleStationHeader">
-          station name
-        </div>
-        <div className="singleStationInfo-container" id="singleStationInfo">
-          streetname, city
+        <div className="station-information__header__close">
+          <button className="station-information__header__close__btn" id="station-information__header__close__btn" onClick={() => closeView()} type="button"> </button>
         </div>
       </div>
-      <div className="singleStationJourneyData-container">
-        <div className="topForStation-container">
-          <div className="topForStationFilters-container">
-            <div className="dropdown-container">
-              <button className="dropdown-button" type="button"> Month </button>
-              <div className="dropdown-content">
-                <button onClick={() => changeMonth('all')} type="button" className="stationFilter-button"> all </button>
-                <button onClick={() => changeMonth(5)} type="button" className="stationFilter-button"> may </button>
-                <button onClick={() => changeMonth(6)} type="button" className="stationFilter-button"> june </button>
-                <button onClick={() => changeMonth(7)} type="button" className="stationFilter-button"> july </button>
-              </div>
-            </div>
-            <div className="returnDepartureFilter-container">
-              <button type="button" onClick={() => changeDirection('return')} className="stationFilter-button" id="topReturn-button"> return </button>
-              <button type="button" onClick={() => changeDirection('departure')} className="stationFilter-button" id="topDeparture-button"> departure </button>
-            </div>
-          </div>
-          <h2 className="waitForTopStations" id="waitForTopStations">
-            Waiting for top stations...
-          </h2>
-          <ol id="topStationsList" className="topStationsList"> </ol>
+      <div className="station-information__selection">
+        <div className="station-information__selection__container">
+          <button type="button" name="station-filter-btn" id="station-information__selection__container__all-btn" className="station-information__selection__container__btn"> stats </button>
+          <button type="button" name="station-filter-btn" id="station-information__selection__container__return-btn" className="station-information__selection__container__btn"> return </button>
+          <button type="button" name="station-filter-btn" id="station-information__selection__container__departure-btn" className="station-information__selection__container__btn"> departure </button>
         </div>
-        <div className="statisticsForStation-container">
-          <div className="stationData-container">
-            <h2 id="currentMonthStatistics"> all time </h2>
-            <p className="stats-p">
-              Departing:
-            </p>
-            <p id="singleStationTripsDeparture"> </p>
-            <p id="singleStationAvgDeparting"> </p>
-            <p className="stats-p">
-              Returning:
-            </p>
-            <p id="singleStationTripsReturn"> </p>
-            <p id="singleStationAvgReturning"> </p>
+      </div>
+      <div className="station-information__data">
+        <div className="station-information__data__month-filter">
+          <div className="station-information__data__month-filter__dropdown">
+            <button className="station-information__data__month-filter__dropdown__button" type="button"> month </button>
+            <div className="station-information__data__month-filter__dropdown__content">
+              <button onClick={() => changeMonth('all')} type="button" name="station-filter-btn"> all </button>
+              <button onClick={() => changeMonth(5)} type="button" name="station-filter-btn"> may </button>
+              <button onClick={() => changeMonth(6)} type="button" name="station-filter-btn"> june </button>
+              <button onClick={() => changeMonth(7)} type="button" name="station-filter-btn"> july </button>
+            </div>
           </div>
-          <div className="capasity-container">
-            <p className="singleStationCapasity" id="singleStationCapasity"> </p>
+        </div>
+        <div className="station-information__data__top-returning">
+          <h2 className="station-information__data__top-returning__title" id="station-information__data__top-returning__title" name="top-stations-title">
+            waiting for data...
+          </h2>
+          <ol id="station-information__data__top-returning__list" className="station-information__data__top-returning__list"> </ol>
+        </div>
+        <div className="station-information__data__top-departing">
+          <h2 className="station-information__data__top-departing__title" id="station-information__data__top-departing__title" name="top-stations-title">
+            waiting for data...
+          </h2>
+          <ol id="station-information__data__top-departing__list" className="station-information__data__top-departing__list"> </ol>
+        </div>
+        <div className="station-information__data__statistics">
+          <h2 id="station-information__data__statistics__title"> all time </h2>
+          <div className="station-information__data__statistics__departing">
+            <p className="station-information__data__statistics__departing__title"> departing: </p>
+            <p id="station-information__data__statistics__departing__all-trips" />
+            <p id="station-information__data__statistics__departing__all-avg" />
+          </div>
+          <div className="station-information__data__statistics__returning">
+            <p className="station-information__data__statistics__returning__title"> returning: </p>
+            <p id="station-information__data__statistics__returning__all-trips" />
+            <p id="station-information__data__statistics__returning__all-avg" />
           </div>
         </div>
       </div>

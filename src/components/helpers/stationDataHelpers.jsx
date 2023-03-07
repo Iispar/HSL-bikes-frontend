@@ -31,10 +31,10 @@ export const getAverageDistance = async (direction, stationId, month) => {
  * @param {String} stationId
  * @returns
  */
-export const getTop = async (direction, stationId, month) => {
+export const setTop = async (elementId, direction, stationId, month) => {
   const id = parseInt(stationId, 10);
   const result = await bikeService.getTop(direction, id, month);
-  const list = document.getElementById('topStationsList');
+  const list = document.getElementById(elementId);
   for (let i = 0; i < result.length; i += 1) {
     const name = getKeyByValue(stationsAndIds, result[i]._id);
     const li = document.createElement('li');

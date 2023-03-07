@@ -106,12 +106,12 @@ const Stations = () => {
   });
   return (
     <div className="stations" id="stations">
-      <div className="stations__title">
+      <div className="stations__title" id="stations__title">
         <h1 className="stations__title__text">
           STATIONS
         </h1>
       </div>
-      <div className="stations__search">
+      <div className="stations__search" id="stations__search">
         <div className="stations__search__field">
           <i className="stations__search__field__logo" />
           <form onSubmit={handleSubmit}>

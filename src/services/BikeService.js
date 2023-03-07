@@ -31,12 +31,7 @@ const getFiltered = async (filters) => {
  * @returns amount of trips that fill the filter
  */
 const getCount = async (direction, url) => {
-  if (direction === 'departure') {
-    const newUrl = `${baseUrl}/api/bikers/count/departure/${url}`;
-    const request = await axios.get(newUrl);
-    return request.data[0].count;
-  }
-  const newUrl = `${baseUrl}/api/bikers/count/return/${url}`;
+  const newUrl = `${baseUrl}/api/bikers/count/${direction}/${url}`;
   const request = await axios.get(newUrl);
   return request.data[0].count;
 };
@@ -47,12 +42,7 @@ const getCount = async (direction, url) => {
  * @returns amount of trips that fill the filter
  */
 const getAverage = async (direction, stationId, month) => {
-  if (direction === 'departure') {
-    const url = `${baseUrl}/api/bikers/average/departure/${stationId}/${month}`;
-    const request = await axios.get(url);
-    return request.data;
-  }
-  const url = `${baseUrl}/api/bikers/average/return/${stationId}/${month}`;
+  const url = `${baseUrl}/api/bikers/average/${direction}/${stationId}/${month}`;
   const request = await axios.get(url);
   return request.data;
 };
@@ -63,12 +53,7 @@ const getAverage = async (direction, stationId, month) => {
  * @returns amount of trips that fill the filter
  */
 const getTop = async (direction, stationId, month) => {
-  if (direction === 'departure') {
-    const url = `${baseUrl}/api/bikers/top/departure/${stationId}/${month}`;
-    const request = await axios.get(url);
-    return request.data;
-  }
-  const url = `${baseUrl}/api/bikers/top/return/${stationId}/${month}`;
+  const url = `${baseUrl}/api/bikers/top/${direction}/${stationId}/${month}`;
   const request = await axios.get(url);
   return request.data;
 };

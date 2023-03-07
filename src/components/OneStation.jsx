@@ -3,7 +3,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import $ from 'jquery';
 import {
-  getCountTrips, getTop, getAverageDistance,
+  getCountTrips, setTop, getAverageDistance,
 } from './helpers/stationDataHelpers';
 
 /**
@@ -31,25 +31,27 @@ const Station = (props) => {
    * the single station view.
    */
   const setSingleStationThis = async () => {
-    $('#stationInformation').attr('name', id);
-    $('.stationFilter-button').prop('disabled', true);
+    $('#station-information').attr('name', id);
+    $('#station-filter-btn').prop('disabled', true);
     $('#stations__list').css('display', 'none');
     $('#stations__pagination').css('display', 'none');
+    $('#stations__search').css('display', 'none');
+    $('#stations__title').css('display', 'none');
+    $('#journeys').css('display', 'none');
+    $('#station-information').css('display', 'flex');
+    $('#station-information__selection__container__all-btn').css('background', '#ffffff');
 
-    $('#station-container').css('border', 'none');
-    $('#station-container').css('background', 'none');
-    $('#stations__single-station').css('display', 'block');
-    $('#singleStationHeader').text(nameFi);
-    $('#singleStationInfo').text(`${adressFi},${cityFi}`);
-    $('#singleStationCapasity').text(`capasity:${capasity}`);
-    $('#singleStationTripsDeparture').text('Waiting for data...');
-    $('#singleStationTripsReturn').text('Waiting for data...');
-    $('#waitForTopStations').text('top stations: Waiting for data...');
+    if (nameFi.length > 16) $('#station-information__header__name__title').css('font-size', '30px');
+    else $('#station-information__header__name__title').css('font-size', '38px');
 
-    await getTop('return', id, 'all');
-    $('#waitForTopStations').text('top return stations all time');
-    $('.stationFilter-button').prop('disabled', false);
-    $('#topReturn-button').prop('disabled', true);
+    $('#station-information__header__name__title').text(nameFi);
+    $('#station-information__header__name__location').text(`${adressFi},${cityFi}`);
+
+    await setTop('station-information__data__top-returning__list', 'return', id, 'all');
+    await setTop('station-information__data__top-departing__list', 'departure', id, 'all');
+    $('.station-information__data__top-returning__title').text('top return stations all time');
+    $('.station-information__data__top-departing__title').text('top departure stations all time');
+    $('#station-filter-btn').prop('disabled', false);
 
     const tripsEndingHere = await getCountTrips('return', id, 'all');
     const tripsStartingHere = await getCountTrips('departure', id, 'all');
@@ -57,10 +59,10 @@ const Station = (props) => {
     const avgDeparting = await getAverageDistance('departure', id, 'all');
     const avgReturnignKm = parseFloat(avgReturning / 1000).toFixed(2);
     const avgDepartingKm = parseFloat(avgDeparting / 1000).toFixed(2);
-    $('#singleStationAvgReturning').text(`avg: ${avgReturnignKm} KM`);
-    $('#singleStationAvgDeparting').text(`avg: ${avgDepartingKm} KM`);
-    $('#singleStationTripsDeparture').text(`${tripsEndingHere} trips`);
-    $('#singleStationTripsReturn').text(`${tripsStartingHere} trips`);
+    $('#station-information__data__statistics__returning__all-avg').text(`avg: ${avgReturnignKm} KM`);
+    $('#station-information__data__statistics__departing__all-avg').text(`avg: ${avgDepartingKm} KM`);
+    $('#station-information__data__statistics__departing__all-trips').text(`${tripsEndingHere} trips`);
+    $('#station-information__data__statistics__returning__all-trips').text(`${tripsStartingHere} trips`);
   };
 
   return (
