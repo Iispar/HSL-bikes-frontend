@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import $ from 'jquery';
 import {
   setTop, getAverageDistance, getMonthName, getCountTrips,
@@ -9,6 +9,7 @@ import {
  * @returns view of a single station
  */
 const Station = () => {
+  const [currentView, setCurrentView] = useState('stats');
   /**
    * Closes the single station view and returns the list.
    */
@@ -70,6 +71,15 @@ const Station = () => {
     $('#station-information__data__statistics__departing__all-avg').text(`avg: ${avgDepartingKm} km`);
   };
 
+  /**
+   * Changes the view between stats, returning trips and departing trips.
+   */
+  const changeView = (selection) => {
+    $(`#station-information__selection__container__${currentView}-btn`).removeClass('selected');
+    $(`#station-information__selection__container__${selection}-btn`).addClass('selected');
+    setCurrentView(selection);
+  };
+
   return (
     <div className="station-information" id="station-information" name="">
       <div className="station-information__header">
@@ -87,9 +97,9 @@ const Station = () => {
       </div>
       <div className="station-information__selection">
         <div className="station-information__selection__container">
-          <button type="button" name="station-filter-btn" id="station-information__selection__container__all-btn" className="station-information__selection__container__btn"> stats </button>
-          <button type="button" name="station-filter-btn" id="station-information__selection__container__return-btn" className="station-information__selection__container__btn"> return </button>
-          <button type="button" name="station-filter-btn" id="station-information__selection__container__departure-btn" className="station-information__selection__container__btn"> departure </button>
+          <button type="button" onClick={() => changeView('stats')} name="station-filter-btn" id="station-information__selection__container__stats-btn" className="station-information__selection__container__btn"> stats </button>
+          <button type="button" onClick={() => changeView('return')} name="station-filter-btn" id="station-information__selection__container__return-btn" className="station-information__selection__container__btn"> return </button>
+          <button type="button" onClick={() => changeView('departure')} name="station-filter-btn" id="station-information__selection__container__departure-btn" className="station-information__selection__container__btn"> departure </button>
         </div>
       </div>
       <div className="station-information__data">

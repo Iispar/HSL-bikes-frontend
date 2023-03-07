@@ -946,7 +946,15 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   width: 80px;
   border-radius: 3px;
   border: 0px;
+  transition: background-color 0.3s ease-out;
+  z-index: 1;
   background: transparent;
+  color: #888888;
+  font-family: "Varela round", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: expanded;
+  letter-spacing: 0px;
 }
 .station-information__data {
   display: grid;
@@ -978,6 +986,11 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   grid-row: 2/7;
   grid-column: 2;
   z-index: 1;
+}
+
+.selected {
+  background: #ffffff;
+  color: #333333;
 }
 
 .grid {

@@ -39,7 +39,7 @@ const Station = (props) => {
     $('#stations__title').css('display', 'none');
     $('#journeys').css('display', 'none');
     $('#station-information').css('display', 'flex');
-    $('#station-information__selection__container__all-btn').css('background', '#ffffff');
+    $('#station-information__selection__container__stats-btn').addClass('selected');
 
     if (nameFi.length > 16) $('#station-information__header__name__title').css('font-size', '30px');
     else $('#station-information__header__name__title').css('font-size', '38px');

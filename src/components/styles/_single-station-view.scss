@@ -82,7 +82,15 @@
                 width: 80px;
                 border-radius: 3px;
                 border: 0px;
+                transition: background-color .3s ease-out;
+                z-index: 1;
                 background: transparent;
+                color: #888888;
+                    font-family: $buttonFont, sans-serif;
+                    font-size: 14px;
+                    font-weight: 500;
+                    font-stretch: expanded;
+                    letter-spacing: 0px;
             }
         }
     }
@@ -118,4 +126,9 @@
             z-index: 1;
         }
     }
+}
+
+.selected {
+    background: #ffffff;
+    color: #333333;
 }
