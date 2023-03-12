@@ -6,13 +6,13 @@
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 100%;
+    width: 380px;
 
     &__header {
         display: flex;
         justify-content: space-between;
         height: 70px;
-        width: 380px;
+        width: 100%;
 
         &__name {
             display: flex;
@@ -44,6 +44,7 @@
         &__close {
             position: relative;
             display: flex;
+            right: 5px;
             height: 100%;
             width: 30px;
             &__btn {       
@@ -75,7 +76,7 @@
             justify-content: center;
             width: 244px;
             background: #DDDDDD;
-            height: 33px;
+            height: 34px;
             border-radius: 3px;
             &__btn {
                 height: 30px;
@@ -97,17 +98,95 @@
 
     &__data {
         display: grid;
-        grid-template-columns: 1fr 180px;
+        grid-template-columns: 1fr 160px;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
         height: 500px;
-        background: purple;
-        z-index: 1;
+        z-index: 0;
         margin-right: 20px;
         &__month-filter {
-            background: lightblue;
             grid-row: 1;
             grid-column: 2;
-            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &__dropdown {
+                position: relative;
+                padding: 2px;
+                border: 1px solid;
+                border-radius: 5px;
+                display: flex;
+                flex-direction: row;
+                height: 45px;
+                &__search {
+                    display: flex;
+                    flex-direction: row;
+                    &__info {
+                        pointer-events: none;
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        width: 80px;
+                        &__title {
+                            position: absolute;;
+                            top: 2px;
+                            left: 5px;
+                            font-family: $buttonFont, sans-serif;
+                                font-size: 16px;
+                                font-weight: 500;
+                                font-stretch: expanded;
+                                letter-spacing: 0px;
+                                color: #767676;
+                        }
+                        &__current {
+                            position: absolute;
+                            bottom: 1px;
+                            left: 5px;
+                                font-family: $buttonFont, sans-serif;
+                                font-size: 16px;
+                                font-weight: 500;
+                                font-stretch: expanded;
+                                letter-spacing: 0px;
+                        }
+                    }
+                    &__logo {
+                        pointer-events: none;
+                        height: 45px;
+                        width: 45px;
+                        border-left: 1px solid #888888;
+                    }
+                }
+                &__content {
+                    display: none;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 52px;
+                    left: -1px;
+                    width: 130px;
+                    z-index: 1;
+                    gap: 2px;
+                    border: 1px solid rgb(138, 138, 138);
+                    border-radius: 3px;
+                    background: white;
+                    box-shadow: 0 0 3px #aeaeae;
+
+                    &__btn {
+                        background: transparent;
+                        border: 0px;
+                        height: 25px;
+                        text-align: left;
+                            font-family: $buttonFont, sans-serif;
+                            font-size: 16px;
+                            font-weight: 500;
+                            font-stretch: expanded;
+                            letter-spacing: 0px;
+
+                        &:hover {
+                            background: #0079c970;
+                        }
+                    }
+                }
+            }
         }
         &__top-returning {
             background: rgb(116, 201, 137);
@@ -120,10 +199,9 @@
             grid-column: 1;
         }
         &__statistics {
-            background: rgb(0, 3, 53);
             grid-row: 2/7;
             grid-column: 2;
-            z-index: 1;
+            z-index: 0;
         }
     }
 }
@@ -131,4 +209,30 @@
 .selected {
     background: #ffffff;
     color: #333333;
+}
+
+.animation {
+    display: flex;
+    animation: growDown 100ms ease-out;
+    transform-origin: top center;
+    transform: scaleY(1);
+}
+
+.focus {
+    border: 1px solid #007AC9;
+    box-shadow: 0 0 3px #007AC9;
+    outline-offset: 0px;
+    outline: none;
+}
+
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+    }
+    80% {
+        transform: scaleY(0.8)
+    }
+    100% {
+        transform: scaleY(1)
+    }
 }

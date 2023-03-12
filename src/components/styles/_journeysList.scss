@@ -70,7 +70,7 @@
                     padding-right: 0px;
                     padding-left: 30px;
                     width: calc(100% - 30px);
-                    :focus {
+                    &:focus {
                         @extend input-field-focus;
                     }
                 }
@@ -93,7 +93,7 @@
                     padding-right: 0px;
                     padding-left: 30px;
                     width: calc(100% - 30px);
-                    :focus {
+                    &:focus {
                         @extend input-field-focus;
                     }
                 }
@@ -377,7 +377,8 @@
     padding-top: 9px;
     margin-bottom: 9px;
     background:transparent;
-    border-bottom: 1px solid #929292;;
+    border-bottom: 1px solid #929292;
+    cursor: default;
 
     &__location {
         position: absolute;

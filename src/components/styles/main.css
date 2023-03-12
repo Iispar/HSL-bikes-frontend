@@ -79,7 +79,7 @@ input-field, .journeys__header__search__departure__input, .journeys__header__sea
   letter-spacing: 1px;
 }
 
-input-field-focus, .journeys__header__search__departure__input :focus, .journeys__header__search__return__input :focus, .stations__search__field__input:focus {
+input-field-focus, .journeys__header__search__departure__input:focus, .journeys__header__search__return__input:focus, .stations__search__field__input:focus {
   border: 2px solid #007AC9;
   box-shadow: 0 0 3px #007AC9;
   outline-offset: 0px;
@@ -190,6 +190,7 @@ reset-btn, .stations__search__field__reset-btn {
   border-bottom: 1px solid;
   border-color: #929292;
   z-index: 1;
+  cursor: default;
 }
 .station-display__id {
   display: flex;
@@ -272,7 +273,7 @@ input-field, .journeys__header__search__departure__input, .journeys__header__sea
   letter-spacing: 1px;
 }
 
-input-field-focus, .journeys__header__search__departure__input :focus, .journeys__header__search__return__input :focus, .stations__search__field__input:focus {
+input-field-focus, .journeys__header__search__departure__input:focus, .journeys__header__search__return__input:focus, .stations__search__field__input:focus {
   border: 2px solid #007AC9;
   box-shadow: 0 0 3px #007AC9;
   outline-offset: 0px;
@@ -669,6 +670,7 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
   margin-bottom: 9px;
   background: transparent;
   border-bottom: 1px solid #929292;
+  cursor: default;
 }
 .journey-display__location {
   position: absolute;
@@ -871,13 +873,13 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   padding-left: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
-  width: 100%;
+  width: 380px;
 }
 .station-information__header {
   display: flex;
   justify-content: space-between;
   height: 70px;
-  width: 380px;
+  width: 100%;
 }
 .station-information__header__name {
   display: flex;
@@ -908,6 +910,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
 .station-information__header__close {
   position: relative;
   display: flex;
+  right: 5px;
   height: 100%;
   width: 30px;
 }
@@ -938,7 +941,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   justify-content: center;
   width: 244px;
   background: #DDDDDD;
-  height: 33px;
+  height: 34px;
   border-radius: 3px;
 }
 .station-information__selection__container__btn {
@@ -958,18 +961,93 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
 }
 .station-information__data {
   display: grid;
-  grid-template-columns: 1fr 180px;
+  grid-template-columns: 1fr 160px;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   height: 500px;
-  background: purple;
-  z-index: 1;
+  z-index: 0;
   margin-right: 20px;
 }
 .station-information__data__month-filter {
-  background: lightblue;
   grid-row: 1;
   grid-column: 2;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.station-information__data__month-filter__dropdown {
+  position: relative;
+  padding: 2px;
+  border: 1px solid;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  height: 45px;
+}
+.station-information__data__month-filter__dropdown__search {
+  display: flex;
+  flex-direction: row;
+}
+.station-information__data__month-filter__dropdown__search__info {
+  pointer-events: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+}
+.station-information__data__month-filter__dropdown__search__info__title {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  font-family: "Varela round", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: expanded;
+  letter-spacing: 0px;
+  color: #767676;
+}
+.station-information__data__month-filter__dropdown__search__info__current {
+  position: absolute;
+  bottom: 1px;
+  left: 5px;
+  font-family: "Varela round", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: expanded;
+  letter-spacing: 0px;
+}
+.station-information__data__month-filter__dropdown__search__logo {
+  pointer-events: none;
+  height: 45px;
+  width: 45px;
+  border-left: 1px solid #888888;
+}
+.station-information__data__month-filter__dropdown__content {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 52px;
+  left: -1px;
+  width: 130px;
+  z-index: 1;
+  gap: 2px;
+  border: 1px solid rgb(138, 138, 138);
+  border-radius: 3px;
+  background: white;
+  box-shadow: 0 0 3px #aeaeae;
+}
+.station-information__data__month-filter__dropdown__content__btn {
+  background: transparent;
+  border: 0px;
+  height: 25px;
+  text-align: left;
+  font-family: "Varela round", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: expanded;
+  letter-spacing: 0px;
+}
+.station-information__data__month-filter__dropdown__content__btn:hover {
+  background: rgba(0, 121, 201, 0.4392156863);
 }
 .station-information__data__top-returning {
   background: rgb(116, 201, 137);
@@ -982,10 +1060,9 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   grid-column: 1;
 }
 .station-information__data__statistics {
-  background: rgb(0, 3, 53);
   grid-row: 2/7;
   grid-column: 2;
-  z-index: 1;
+  z-index: 0;
 }
 
 .selected {
@@ -993,6 +1070,31 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   color: #333333;
 }
 
+.animation {
+  display: flex;
+  animation: growDown 100ms ease-out;
+  transform-origin: top center;
+  transform: scaleY(1);
+}
+
+.focus {
+  border: 1px solid #007AC9;
+  box-shadow: 0 0 3px #007AC9;
+  outline-offset: 0px;
+  outline: none;
+}
+
+@keyframes growDown {
+  0% {
+    transform: scaleY(0);
+  }
+  80% {
+    transform: scaleY(0.8);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

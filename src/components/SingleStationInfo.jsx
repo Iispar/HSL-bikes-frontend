@@ -45,13 +45,9 @@ const Station = () => {
     $('#station-information__data__top-departing__list').text('');
 
     if (setMonth === 'all') {
-      $('.station-information__data__top-returning__title').text('top return stations all time');
-      $('.station-information__data__top-departing__title').text('top departure stations all time');
-      $('#station-information__data__statistics').text('all time');
+      $('#station-information__data__month-filter__dropdown__button__info__current').text('all');
     } else {
-      $('#station-information__data__top-returning__title').text(`top return stations in ${setMonth}`);
-      $('#station-information__data__top-departing__title').text(`top departure stations in ${setMonth}`);
-      $('#station-information__data__statistics').text(`in ${setMonth}`);
+      $('#station-information__data__month-filter__dropdown__button__info__current').text(setMonth);
     }
     await setTop('station-information__data__top-returning__list', 'return', id, month);
     await setTop('station-information__data__top-departing__list', 'departure', id, month);
@@ -80,6 +76,32 @@ const Station = () => {
     setCurrentView(selection);
   };
 
+  /**
+   * When we click outside of the monthselector and the dropdown is visible we close it.
+   */
+  $(document).click((e) => {
+    if (e.target.id !== 'station-information__data__month-filter__dropdown__search' && $('#station-information__data__month-filter__dropdown__content').css('display') === 'flex') {
+      $('#station-information__data__month-filter__dropdown__content').removeClass('animation');
+      $('#station-information__data__month-filter__dropdown').removeClass('focus');
+    }
+  });
+
+  /**
+   * When the search for months is clicked we open the dropdown menu.
+   */
+  $('.station-information__data__month-filter__dropdown__search').click(() => {
+    $('#station-information__data__month-filter__dropdown__content').addClass('animation');
+    $('#station-information__data__month-filter__dropdown').addClass('focus');
+  });
+
+  /**
+   * When we select a month we close the dropdown.
+   */
+  $('#station-information__data__month-filter__dropdown__content').click(() => {
+    $('#station-information__data__month-filter__dropdown__content').removeClass('animation');
+    $('#station-information__data__month-filter__dropdown').removeClass('focus');
+  });
+
   return (
     <div className="station-information" id="station-information" name="">
       <div className="station-information__header">
@@ -104,13 +126,19 @@ const Station = () => {
       </div>
       <div className="station-information__data">
         <div className="station-information__data__month-filter">
-          <div className="station-information__data__month-filter__dropdown">
-            <button className="station-information__data__month-filter__dropdown__button" type="button"> month </button>
-            <div className="station-information__data__month-filter__dropdown__content">
-              <button onClick={() => changeMonth('all')} type="button" name="station-filter-btn"> all </button>
-              <button onClick={() => changeMonth(5)} type="button" name="station-filter-btn"> may </button>
-              <button onClick={() => changeMonth(6)} type="button" name="station-filter-btn"> june </button>
-              <button onClick={() => changeMonth(7)} type="button" name="station-filter-btn"> july </button>
+          <div className="station-information__data__month-filter__dropdown" id="station-information__data__month-filter__dropdown">
+            <div className="station-information__data__month-filter__dropdown__search" id="station-information__data__month-filter__dropdown__search">
+              <div className="station-information__data__month-filter__dropdown__search__info">
+                <div className="station-information__data__month-filter__dropdown__search__info__title"> Month </div>
+                <div className="station-information__data__month-filter__dropdown__search__info__current" id="station-information__data__month-filter__dropdown__button__info__current"> all </div>
+              </div>
+              <i className="station-information__data__month-filter__dropdown__search__logo" />
+            </div>
+            <div className="station-information__data__month-filter__dropdown__content" id="station-information__data__month-filter__dropdown__content">
+              <button className="station-information__data__month-filter__dropdown__content__btn" onClick={() => changeMonth('all')} type="button" name="station-filter-btn"> all </button>
+              <button className="station-information__data__month-filter__dropdown__content__btn" onClick={() => changeMonth(5)} type="button" name="station-filter-btn" id="station-filter-may"> may </button>
+              <button className="station-information__data__month-filter__dropdown__content__btn" onClick={() => changeMonth(6)} type="button" name="station-filter-btn" id="station-filter-june"> june </button>
+              <button className="station-information__data__month-filter__dropdown__content__btn" onClick={() => changeMonth(7)} type="button" name="station-filter-btn" id="station-filter-july"> july </button>
             </div>
           </div>
         </div>

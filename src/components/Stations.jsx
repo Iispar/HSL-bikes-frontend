@@ -104,6 +104,7 @@ const Stations = () => {
       },
     });
   });
+
   return (
     <div className="stations" id="stations">
       <div className="stations__title" id="stations__title">
