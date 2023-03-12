@@ -963,7 +963,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   display: grid;
   grid-template-columns: 1fr 160px;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-  height: 500px;
+  height: 400px;
   z-index: 0;
   margin-right: 20px;
 }
@@ -972,7 +972,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   grid-column: 2;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 .station-information__data__month-filter__dropdown {
   position: relative;
@@ -1050,19 +1050,129 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   background: rgba(0, 121, 201, 0.4392156863);
 }
 .station-information__data__top-returning {
-  background: rgb(116, 201, 137);
   grid-row: 1/4;
   grid-column: 1;
+  padding-top: 8px;
+}
+.station-information__data__top-returning__container {
+  display: flex;
+  flex-direction: column;
+  background: #dedede;
+  border-radius: 5px;
+}
+.station-information__data__top-returning__container__title {
+  padding-top: 5px;
+  padding-left: 5px;
+  text-align: left;
+  font-family: "HCo Gotham XNarrow", sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-stretch: expanded;
+  letter-spacing: 0px;
+  color: #007AC9;
+}
+.station-information__data__top-returning__container__list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  justify-content: left;
+  padding-left: 5px;
+  font-family: "HCo Gotham XNarrow", sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-stretch: expanded;
+  letter-spacing: 0px;
+}
+.station-information__data__top-returning__container__list li {
+  display: flex;
+  margin-bottom: 6px;
+  counter-increment: list;
+  align-items: center;
+}
+.station-information__data__top-returning__container__list li::before {
+  content: counter(list);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  background: #007AC9;
+  border-radius: 3px;
+  margin-right: 4px;
 }
 .station-information__data__top-departing {
-  background: rgb(0, 118, 29);
   grid-row: 4/7;
   grid-column: 1;
+  padding-top: 8px;
+}
+.station-information__data__top-departing__container {
+  display: flex;
+  flex-direction: column;
+  background: #dedede;
+  border-radius: 5px;
+}
+.station-information__data__top-departing__container__title {
+  padding-top: 5px;
+  padding-left: 5px;
+  text-align: left;
+  font-family: "HCo Gotham XNarrow", sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-stretch: expanded;
+  letter-spacing: 0px;
+  color: #007AC9;
+}
+.station-information__data__top-departing__container__list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  justify-content: left;
+  padding-left: 5px;
+  font-family: "HCo Gotham XNarrow", sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-stretch: expanded;
+  letter-spacing: 0px;
+}
+.station-information__data__top-departing__container__list li {
+  display: flex;
+  margin-bottom: 6px;
+  counter-increment: list;
+  align-items: center;
+}
+.station-information__data__top-departing__container__list li::before {
+  content: counter(list);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  background: #007AC9;
+  border-radius: 3px;
+  margin-right: 4px;
 }
 .station-information__data__statistics {
   grid-row: 2/7;
   grid-column: 2;
   z-index: 0;
+  padding: 10px;
+}
+.station-information__data__statistics__container {
+  border-radius: 5px;
+  background: #dedede;
+}
+.station-information__data__statistics__container__title {
+  padding: 2px;
+  font-family: "HCo Gotham XNarrow", sans-serif;
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-stretch: expanded;
+  letter-spacing: 0px;
 }
 
 .selected {

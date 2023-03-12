@@ -47,10 +47,10 @@ const Station = (props) => {
     $('#station-information__header__name__title').text(nameFi);
     $('#station-information__header__name__location').text(`${adressFi},${cityFi}`);
 
-    await setTop('station-information__data__top-returning__list', 'return', id, 'all');
-    await setTop('station-information__data__top-departing__list', 'departure', id, 'all');
-    $('.station-information__data__top-returning__title').text('top return stations all time');
-    $('.station-information__data__top-departing__title').text('top departure stations all time');
+    await setTop('station-information__data__top-returning__container__list', 'return', id, 'all');
+    await setTop('station-information__data__top-departing__container__list', 'departure', id, 'all');
+    $('.station-information__data__top-returning__container__title').text('top return: ');
+    $('.station-information__data__top-departing__container__title').text('top departure:');
     $('#station-filter-btn').prop('disabled', false);
 
     const tripsEndingHere = await getCountTrips('return', id, 'all');
@@ -59,10 +59,10 @@ const Station = (props) => {
     const avgDeparting = await getAverageDistance('departure', id, 'all');
     const avgReturnignKm = parseFloat(avgReturning / 1000).toFixed(2);
     const avgDepartingKm = parseFloat(avgDeparting / 1000).toFixed(2);
-    $('#station-information__data__statistics__returning__all-avg').text(`avg: ${avgReturnignKm} KM`);
-    $('#station-information__data__statistics__departing__all-avg').text(`avg: ${avgDepartingKm} KM`);
-    $('#station-information__data__statistics__departing__all-trips').text(`${tripsEndingHere} trips`);
-    $('#station-information__data__statistics__returning__all-trips').text(`${tripsStartingHere} trips`);
+    $('#station-information__data__statistics__container__returning__all-avg').text(`avg: ${avgReturnignKm} KM`);
+    $('#station-information__data__statistics__container__departing__all-avg').text(`avg: ${avgDepartingKm} KM`);
+    $('#station-information__data__statistics__container__departing__all-trips').text(`${tripsEndingHere} trips`);
+    $('#station-information__data__statistics__container__returning__all-trips').text(`${tripsStartingHere} trips`);
   };
 
   return (

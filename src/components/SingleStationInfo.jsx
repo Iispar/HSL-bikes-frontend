@@ -21,10 +21,10 @@ const Station = () => {
     $('#stations__pagination').css('display', 'flex');
     $('#journeys').css('display', 'grid');
     $('#station-information').css('display', 'none');
-    $('#station-information__data__top-returning__list').empty();
-    $('#station-information__data__top-departing__list').empty();
+    $('#station-information__data__top-returning__container__list').empty();
+    $('#station-information__data__top-departing__container__list').empty();
     $('#station-information__data__statistics__returning__all-avg').text('');
-    $('#station-information__data__statistics__departing__all-avg').text('');
+    $('#station-information__data__statistics__container__departing__all-avg').text('');
   };
 
   /**
@@ -36,21 +36,21 @@ const Station = () => {
     const setMonth = getMonthName(month);
     const id = $('#station-information').attr('name');
 
-    $('#station-information__data__statistics__departing__all-trips').text('Waiting for data...');
+    $('#station-information__data__statistics__container__departing__all-trips').text('Waiting for data...');
     $('#station-information__data__statistics__returning__all-trips').text('Waiting for data...');
     $('#station-information__data__statistics__returning__all-avg').text('');
-    $('#station-information__data__statistics__departing__all-avg').text('');
+    $('#station-information__data__statistics__container__departing__all-avg').text('');
     $('td[name=top-stations-title]').text('');
-    $('#station-information__data__top-returning__list').text('');
-    $('#station-information__data__top-departing__list').text('');
+    $('#station-information__data__top-returning__container__list').text('');
+    $('#station-information__data__top-departing__container__list').text('');
 
     if (setMonth === 'all') {
       $('#station-information__data__month-filter__dropdown__button__info__current').text('all');
     } else {
       $('#station-information__data__month-filter__dropdown__button__info__current').text(setMonth);
     }
-    await setTop('station-information__data__top-returning__list', 'return', id, month);
-    await setTop('station-information__data__top-departing__list', 'departure', id, month);
+    await setTop('station-information__data__top-returning__container__list', 'return', id, month);
+    await setTop('station-information__data__top-departing__container__list', 'departure', id, month);
 
     $('button[name=station-filter-btn]').prop('disabled', false);
 
@@ -61,10 +61,10 @@ const Station = () => {
     const avgReturnignKm = parseFloat(avgReturning / 1000).toFixed(2);
     const avgDepartingKm = parseFloat(avgDeparting / 1000).toFixed(2);
 
-    $('#station-information__data__statistics__departing__all-trips').text(`trips ${tripsEndingHere}`);
-    $('#station-information__data__statistics__returning__all-trips').text(`trips ${tripsStartingHere}`);
-    $('#station-information__data__statistics__returning__all-avg').text(`avg: ${avgReturnignKm} km`);
-    $('#station-information__data__statistics__departing__all-avg').text(`avg: ${avgDepartingKm} km`);
+    $('#station-information__data__statistics__container__departing__all-trips').text(`trips ${tripsEndingHere}`);
+    $('#station-information__data__statistics__container__returning__all-trips').text(`trips ${tripsStartingHere}`);
+    $('#station-information__data__statistics__container__returning__all-avg').text(`avg: ${avgReturnignKm} km`);
+    $('#station-information__data__statistics__container__departing__all-avg').text(`avg: ${avgDepartingKm} km`);
   };
 
   /**
@@ -143,28 +143,34 @@ const Station = () => {
           </div>
         </div>
         <div className="station-information__data__top-returning">
-          <h2 className="station-information__data__top-returning__title" id="station-information__data__top-returning__title" name="top-stations-title">
-            waiting for data...
-          </h2>
-          <ol id="station-information__data__top-returning__list" className="station-information__data__top-returning__list"> </ol>
+          <div className="station-information__data__top-returning__container">
+            <div className="station-information__data__top-returning__container__title" id="station-information__data__top-returning__container__title" name="top-stations-title">
+              waiting for data...
+            </div>
+            <ol id="station-information__data__top-returning__container__list" className="station-information__data__top-returning__container__list"> </ol>
+          </div>
         </div>
         <div className="station-information__data__top-departing">
-          <h2 className="station-information__data__top-departing__title" id="station-information__data__top-departing__title" name="top-stations-title">
-            waiting for data...
-          </h2>
-          <ol id="station-information__data__top-departing__list" className="station-information__data__top-departing__list"> </ol>
+          <div className="station-information__data__top-departing__container">
+            <div className="station-information__data__top-departing__container__title" id="station-information__data__top-departing__container__title" name="top-stations-title">
+              waiting for data...
+            </div>
+            <ol id="station-information__data__top-departing__container__list" className="station-information__data__top-departing__container__list"> </ol>
+          </div>
         </div>
         <div className="station-information__data__statistics">
-          <h2 id="station-information__data__statistics__title"> all time </h2>
-          <div className="station-information__data__statistics__departing">
-            <p className="station-information__data__statistics__departing__title"> departing: </p>
-            <p id="station-information__data__statistics__departing__all-trips" />
-            <p id="station-information__data__statistics__departing__all-avg" />
-          </div>
-          <div className="station-information__data__statistics__returning">
-            <p className="station-information__data__statistics__returning__title"> returning: </p>
-            <p id="station-information__data__statistics__returning__all-trips" />
-            <p id="station-information__data__statistics__returning__all-avg" />
+          <div className="station-information__data__statistics__container">
+            <div className="station-information__data__statistics__container__title" id="station-information__data__statistics__container__title"> statistics </div>
+            <div className="station-information__data__statistics__container__departing">
+              <p className="station-information__data__statistics__container__departing__title"> departing: </p>
+              <p className="station-information__data__statistics__container__departing__all-trips" id="station-information__data__statistics__container__departing__all-trips" />
+              <p className="station-information__data__statistics__container__departing__all-avg" id="station-information__data__statistics__container__departing__all-avg" />
+            </div>
+            <div className="station-information__data__statistics__container__returning">
+              <p className="station-information__data__statistics__container__returning__title"> returning: </p>
+              <p className="station-information__data__statistics__container__returning__all-trips" id="station-information__data__statistics__container__returning__all-trips" />
+              <p className="station-information__data__statistics__container__returning__all-avg" id="station-information__data__statistics__container__returning__all-avg" />
+            </div>
           </div>
         </div>
       </div>
