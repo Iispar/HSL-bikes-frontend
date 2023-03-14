@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
+import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
   setTop, getAverageDistance, getMonthName, getCountTrips,
 } from './helpers/stationDataHelpers';
@@ -10,6 +13,68 @@ import {
  */
 const Station = () => {
   const [currentView, setCurrentView] = useState('stats');
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const nameFi = 'Hanasaari';
+  const adressFi = 'x';
+  const cityFi = 'y';
+  let tripsEndingHere = null;
+  let tripsStartingHere = null;
+  let avgReturning = null;
+  let avgDeparting = null;
+  let avgReturnignKm = null;
+  let avgDepartingKm = null;
+
+  /**
+   * Sets the correct information for the current displayed station.
+   */
+  const setStation = async () => {
+    $('#station-information').attr('name', id);
+    $('#station-filter-btn').prop('disabled', true);
+    $('#stations__list').css('display', 'none');
+    $('#stations__pagination').css('display', 'none');
+    $('#stations__search').css('display', 'none');
+    $('#stations__title').css('display', 'none');
+    $('#journeys__title').css('display', 'none');
+    $('#journeys__header').css('display', 'none');
+    $('#journeys__list').css('display', 'none');
+    $('#journeys__pagination').css('display', 'none');
+    $('#journeys__single-station-map').css('display', 'flex');
+    $('#station-information').css('display', 'flex');
+    $('#station-information__selection__container__stats-btn').addClass('selected');
+
+    if (nameFi.length > 16) $('#station-information__header__name__title').css('font-size', '30px');
+    else $('#station-information__header__name__title').css('font-size', '38px');
+
+    $('#station-information__header__name__title').text(nameFi);
+    $('#station-information__header__name__location').text(`${adressFi},${cityFi}`);
+    await setTop('station-information__data__top-returning__container__list', 'return', id, 'all');
+    await setTop('station-information__data__top-departing__container__list', 'departure', id, 'all');
+    $('.station-information__data__top-returning__container__title').text('top return: ');
+    $('.station-information__data__top-departing__container__title').text('top departure:');
+    $('#station-filter-btn').prop('disabled', false);
+
+    tripsEndingHere = await getCountTrips('return', id, 'all');
+    tripsStartingHere = await getCountTrips('departure', id, 'all');
+    avgReturning = await getAverageDistance('return', id, 'all');
+    avgDeparting = await getAverageDistance('departure', id, 'all');
+    avgReturnignKm = parseFloat(avgReturning / 1000).toFixed(2);
+    avgDepartingKm = parseFloat(avgDeparting / 1000).toFixed(2);
+    $('#station-information__data__statistics__container__departing__all-trips').text(`trips ${tripsEndingHere}`);
+    $('#station-information__data__statistics__container__returning__all-trips').text(`trips ${tripsStartingHere}`);
+    $('#station-information__data__statistics__container__returning__all-avg').text(`avg: ${avgReturnignKm} km`);
+    $('#station-information__data__statistics__container__departing__all-avg').text(`avg: ${avgDepartingKm} km`);
+  };
+
+  /**
+   * sets the station info after the page has been loaded.
+   */
+  useEffect(() => {
+    if (tripsEndingHere !== null) return;
+    // Doing thisway because useEffect can't be async.
+    setStation();
+  });
+
   /**
    * Closes the single station view and returns the list.
    */
@@ -19,12 +84,17 @@ const Station = () => {
     $('#stations__title').css('display', 'flex');
     $('#stations__list').css('display', 'flex');
     $('#stations__pagination').css('display', 'flex');
-    $('#journeys').css('display', 'grid');
+    $('#journeys__title').css('display', 'flex');
+    $('#journeys__header').css('display', 'flex');
+    $('#journeys__list').css('display', 'block');
+    $('#journeys__pagination').css('display', 'flex');
+    $('#journeys__single-station-map').css('display', 'none');
     $('#station-information').css('display', 'none');
     $('#station-information__data__top-returning__container__list').empty();
     $('#station-information__data__top-departing__container__list').empty();
     $('#station-information__data__statistics__returning__all-avg').text('');
     $('#station-information__data__statistics__container__departing__all-avg').text('');
+    navigate('/');
   };
 
   /**
@@ -34,7 +104,6 @@ const Station = () => {
   const changeMonth = async (month) => {
     $('button[name=station-filter-btn]').prop('disabled', true);
     const setMonth = getMonthName(month);
-    const id = $('#station-information').attr('name');
 
     $('#station-information__data__statistics__container__departing__all-trips').text('Waiting for data...');
     $('#station-information__data__statistics__returning__all-trips').text('Waiting for data...');
@@ -49,18 +118,18 @@ const Station = () => {
     } else {
       $('#station-information__data__month-filter__dropdown__button__info__current').text(setMonth);
     }
+
     await setTop('station-information__data__top-returning__container__list', 'return', id, month);
     await setTop('station-information__data__top-departing__container__list', 'departure', id, month);
 
     $('button[name=station-filter-btn]').prop('disabled', false);
 
-    const tripsEndingHere = await getCountTrips('return', id, month);
-    const tripsStartingHere = await getCountTrips('departure', id, month);
-    const avgReturning = await getAverageDistance('return', id, month);
-    const avgDeparting = await getAverageDistance('departure', id, month);
-    const avgReturnignKm = parseFloat(avgReturning / 1000).toFixed(2);
-    const avgDepartingKm = parseFloat(avgDeparting / 1000).toFixed(2);
-
+    tripsEndingHere = await getCountTrips('return', id, month);
+    tripsStartingHere = await getCountTrips('departure', id, month);
+    avgReturning = await getAverageDistance('return', id, month);
+    avgDeparting = await getAverageDistance('departure', id, month);
+    avgReturnignKm = parseFloat(avgReturning / 1000).toFixed(2);
+    avgDepartingKm = parseFloat(avgDeparting / 1000).toFixed(2);
     $('#station-information__data__statistics__container__departing__all-trips').text(`trips ${tripsEndingHere}`);
     $('#station-information__data__statistics__container__returning__all-trips').text(`trips ${tripsStartingHere}`);
     $('#station-information__data__statistics__container__returning__all-avg').text(`avg: ${avgReturnignKm} km`);

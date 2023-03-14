@@ -1,7 +1,11 @@
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
 import React from 'react';
-import Journeys from './components/Journeys';
-import Stations from './components/Stations';
-import Header from './components/Header';
+import Home from './components/Home';
+import StationData from './components/StationData';
 import './components/styles/main.css';
 
 /**
@@ -9,24 +13,12 @@ import './components/styles/main.css';
  * need for the header and a main element that is split into two.
  */
 const App = () => (
-  <div className="background">
-    <div className="background-container">
-      <div id="header-background" />
-      <div id="top-right-background" />
-      <div id="bottom-left-background" />
-    </div>
-    <div className="grid">
-      <div className="grid__header" id="header-container">
-        <Header />
-      </div>
-      <div className="grid__right" id="right-container">
-        <Journeys />
-      </div>
-      <div className="grid__left" id="left-container">
-        <Stations />
-      </div>
-    </div>
-  </div>
+  <Router>
+    <Routes>
+      <Route exact path="/" element=<Home /> />
+      <Route exact path="/:id" element=<StationData /> />
+    </Routes>
+  </Router>
 );
 
 export default App;

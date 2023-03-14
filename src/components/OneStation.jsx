@@ -2,6 +2,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import $ from 'jquery';
+import { useNavigate } from 'react-router-dom';
 import {
   getCountTrips, setTop, getAverageDistance,
 } from './helpers/stationDataHelpers';
@@ -23,6 +24,7 @@ const Station = (props) => {
   const { capasity } = props;
   const { x } = props;
   const { y } = props;
+  const navigate = useNavigate();
 
   /**
    * Clicking an station displays this.
@@ -31,38 +33,7 @@ const Station = (props) => {
    * the single station view.
    */
   const setSingleStationThis = async () => {
-    $('#station-information').attr('name', id);
-    $('#station-filter-btn').prop('disabled', true);
-    $('#stations__list').css('display', 'none');
-    $('#stations__pagination').css('display', 'none');
-    $('#stations__search').css('display', 'none');
-    $('#stations__title').css('display', 'none');
-    $('#journeys').css('display', 'none');
-    $('#station-information').css('display', 'flex');
-    $('#station-information__selection__container__stats-btn').addClass('selected');
-
-    if (nameFi.length > 16) $('#station-information__header__name__title').css('font-size', '30px');
-    else $('#station-information__header__name__title').css('font-size', '38px');
-
-    $('#station-information__header__name__title').text(nameFi);
-    $('#station-information__header__name__location').text(`${adressFi},${cityFi}`);
-
-    await setTop('station-information__data__top-returning__container__list', 'return', id, 'all');
-    await setTop('station-information__data__top-departing__container__list', 'departure', id, 'all');
-    $('.station-information__data__top-returning__container__title').text('top return: ');
-    $('.station-information__data__top-departing__container__title').text('top departure:');
-    $('#station-filter-btn').prop('disabled', false);
-
-    const tripsEndingHere = await getCountTrips('return', id, 'all');
-    const tripsStartingHere = await getCountTrips('departure', id, 'all');
-    const avgReturning = await getAverageDistance('return', id, 'all');
-    const avgDeparting = await getAverageDistance('departure', id, 'all');
-    const avgReturnignKm = parseFloat(avgReturning / 1000).toFixed(2);
-    const avgDepartingKm = parseFloat(avgDeparting / 1000).toFixed(2);
-    $('#station-information__data__statistics__container__returning__all-avg').text(`avg: ${avgReturnignKm} KM`);
-    $('#station-information__data__statistics__container__departing__all-avg').text(`avg: ${avgDepartingKm} KM`);
-    $('#station-information__data__statistics__container__departing__all-trips').text(`${tripsEndingHere} trips`);
-    $('#station-information__data__statistics__container__returning__all-trips').text(`${tripsStartingHere} trips`);
+    navigate(`/${id}`);
   };
 
   return (

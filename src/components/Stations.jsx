@@ -4,7 +4,6 @@ import stationService from '../services/StationService';
 import ListStations from './ListStations';
 import { stations } from '../data/stationsData';
 import { newFilter, getPageFilter } from './helpers/filterHelpers';
-import SingleStationInfo from './SingleStationInfo';
 
 /*
  * method for creating the list of stations.
@@ -127,9 +126,6 @@ const Stations = () => {
       <div className="stations__pagination" id="stations__pagination">
         <button className="stations__pagination__button" id="backwardsStation-button" onClick={() => changePage('b', page)} type="button"> Previous </button>
         <button className="stations__pagination__button" id="forwardsStation-button" onClick={() => changePage('f', page)} type="button"> Next </button>
-      </div>
-      <div className="stations__single-station" id="stations__single-station">
-        <SingleStationInfo />
       </div>
     </div>
   );

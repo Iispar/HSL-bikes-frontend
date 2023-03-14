@@ -255,12 +255,12 @@ const Journeys = () => {
 
   return (
     <div className="journeys" id="journeys">
-      <div className="journeys__title">
+      <div className="journeys__title" id="journeys__title">
         <p className="journeys__title__text">
           Journeys
         </p>
       </div>
-      <div className="journeys__header">
+      <div className="journeys__header" id="journeys__header">
         <div className="journeys__header__search">
           <div className="journeys__header__search__departure">
             <i className="journeys__header__search__departure__logo" />
@@ -316,11 +316,11 @@ const Journeys = () => {
           </div>
         </div>
       </div>
-      <div className="journeys__list">
+      <div className="journeys__list" id="journeys__list">
         <ListJourneys journeys={journeys} />
       </div>
 
-      <div className="journeys__pagination">
+      <div className="journeys__pagination" id="journeys__pagination">
         <button className="journeys__pagination__button" id="backwards-journey-button" onClick={() => changePage('b', page)} type="button"> Previous </button>
         <button className="journeys__pagination__button" id="forwards-journey-button" onClick={() => changePage('f', page)} type="button"> Next </button>
       </div>
