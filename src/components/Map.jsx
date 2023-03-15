@@ -1,4 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
+import $ from 'jquery';
+import { useParams } from 'react-router-dom';
+import stationService from '../services/StationService';
+import { stationsAndIds } from '../data/stationsData';
+import { getKeyByValue } from './helpers/stationDataHelpers';
 // eslint-disable-line import/no-webpack-loader-syntax
 // eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
 import mapboxgl from '!mapbox-gl';
@@ -7,11 +12,32 @@ const Map = () => {
   mapboxgl.accessToken = 'pk.eyJ1IjoiaWlzcGFyIiwiYSI6ImNsZjZ2ZjNtbDB6MHczd3FoemJiYjYwNDIifQ.MHK5AW08xBT6JgTuYfBJTg';
 
   const map = useRef(null);
-  const [lng] = useState(24.9);
-  const [lat] = useState(60.2);
-  const [zoom] = useState(9);
+  const [lng, setLng] = useState(24.9000000000);
+  const [lat, setLat] = useState(60.2000000000);
+  const [zoom] = useState(18);
+  const [station, setStation] = useState('');
+  const { id } = useParams();
+  const nameFi = getKeyByValue(stationsAndIds, id);
+
+  const getStationData = async () => {
+    await stationService.getFiltered([`Name_fi=${nameFi}`])
+      .then((stationData) => setStation(stationData));
+    try {
+      $('#station-information__header__name__location').text(`${station[0].Adress_fi},${station[0].City_fi}`);
+      if (lng !== station[0].x) {
+        await setLng(station[0].x);
+        await setLat(station[0].y);
+        map.current.flyTo({
+          center: [station[0].x, station[0].y],
+        });
+      }
+    } catch {
+      console.log('no x');
+    }
+  };
 
   useEffect(() => {
+    getStationData();
     if (map.current) {
       map.current.on('load', () => {
         map.current.resize();

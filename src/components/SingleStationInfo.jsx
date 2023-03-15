@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 import { useParams, useNavigate } from 'react-router-dom';
 import { stationsAndIds } from '../data/stationsData';
-import stationService from '../services/StationService';
 import {
   setTop, getAverageDistance, getMonthName, getCountTrips, getKeyByValue,
 } from './helpers/stationDataHelpers';
@@ -14,11 +13,8 @@ import {
 const Station = () => {
   const [currentView, setCurrentView] = useState('stats');
   const { id } = useParams();
-  const [current, setCurrent] = useState('null');
   const navigate = useNavigate();
   const nameFi = getKeyByValue(stationsAndIds, id);
-  let adressFi = 'x';
-  let cityFi = 'y';
   let tripsEndingHere = null;
   let tripsStartingHere = null;
   let avgReturning = null;
@@ -30,10 +26,6 @@ const Station = () => {
    * Sets the correct information for the current displayed station.
    */
   const setStation = async () => {
-    stationService.getFiltered([`Name_fi=${nameFi}`])
-      .then((stationData) => setCurrent(stationData));
-    adressFi = current[0].Adress_fi;
-    cityFi = current[0].City_fi;
     $('#station-information').attr('name', id);
     $('#station-filter-btn').prop('disabled', true);
     $('#stations__list').css('display', 'none');
@@ -52,7 +44,6 @@ const Station = () => {
     else $('#station-information__header__name__title').css('font-size', '38px');
 
     $('#station-information__header__name__title').text(nameFi);
-    $('#station-information__header__name__location').text(`${adressFi},${cityFi}`);
     await setTop('station-information__data__top-returning__container__list', 'return', id, 'all');
     await setTop('station-information__data__top-departing__container__list', 'departure', id, 'all');
     $('.station-information__data__top-returning__container__title').text('top return: ');
@@ -75,10 +66,9 @@ const Station = () => {
    * sets the station info after the page has been loaded.
    */
   useEffect(() => {
-    if (tripsEndingHere !== null) return;
     // Doing thisway because useEffect can't be async.
     setStation();
-  });
+  }, []);
 
   /**
    * Closes the single station view and returns the list.
