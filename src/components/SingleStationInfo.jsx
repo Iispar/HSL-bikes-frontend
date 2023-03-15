@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 import { useParams, useNavigate } from 'react-router-dom';
+import { stationsAndIds } from '../data/stationsData';
+import stationService from '../services/StationService';
 import {
-  setTop, getAverageDistance, getMonthName, getCountTrips,
+  setTop, getAverageDistance, getMonthName, getCountTrips, getKeyByValue,
 } from './helpers/stationDataHelpers';
 
 /**
@@ -14,10 +14,11 @@ import {
 const Station = () => {
   const [currentView, setCurrentView] = useState('stats');
   const { id } = useParams();
+  const [current, setCurrent] = useState('null');
   const navigate = useNavigate();
-  const nameFi = 'Hanasaari';
-  const adressFi = 'x';
-  const cityFi = 'y';
+  const nameFi = getKeyByValue(stationsAndIds, id);
+  let adressFi = 'x';
+  let cityFi = 'y';
   let tripsEndingHere = null;
   let tripsStartingHere = null;
   let avgReturning = null;
@@ -29,6 +30,10 @@ const Station = () => {
    * Sets the correct information for the current displayed station.
    */
   const setStation = async () => {
+    stationService.getFiltered([`Name_fi=${nameFi}`])
+      .then((stationData) => setCurrent(stationData));
+    adressFi = current[0].Adress_fi;
+    cityFi = current[0].City_fi;
     $('#station-information').attr('name', id);
     $('#station-filter-btn').prop('disabled', true);
     $('#stations__list').css('display', 'none');

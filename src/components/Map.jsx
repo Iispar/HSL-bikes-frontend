@@ -5,9 +5,10 @@ import mapboxgl from '!mapbox-gl';
 
 const Map = () => {
   mapboxgl.accessToken = 'pk.eyJ1IjoiaWlzcGFyIiwiYSI6ImNsZjZ2ZjNtbDB6MHczd3FoemJiYjYwNDIifQ.MHK5AW08xBT6JgTuYfBJTg';
+
   const map = useRef(null);
-  const [lng] = useState(25);
-  const [lat] = useState(60);
+  const [lng] = useState(24.9);
+  const [lat] = useState(60.2);
   const [zoom] = useState(9);
 
   useEffect(() => {
@@ -17,11 +18,20 @@ const Map = () => {
       });
       return;
     }
+
+    const bounds = [
+      [24.6, 59.9], // Southwest coordinates
+      [25.2, 60.4], // Northeast coordinates
+    ];
+
     map.current = new mapboxgl.Map({
       container: 'map__container',
       style: 'mapbox://styles/mapbox/streets-v12',
       center: [lng, lat],
       zoom,
+      maxZoom: 20,
+      minZoom: 10,
+      maxBounds: bounds,
     });
     // map.current.on('load', () => {
     //   // Add a new vector tile source with ID 'mapillary'.

@@ -1,7 +1,9 @@
 import bikeService from '../../services/BikeService';
 import { stationsAndIds } from '../../data/stationsData';
 
-const getKeyByValue = (object, value) => Object.keys(object).find((key) => object[key] === value);
+export const getKeyByValue = (object, value) => Object
+  .keys(object)
+  .find((key) => object[key] === value);
 
 /**
  * Calls the count api and return count of all trips in given direction

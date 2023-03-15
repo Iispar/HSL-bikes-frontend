@@ -1,11 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import propTypes from 'prop-types';
-import $ from 'jquery';
 import { useNavigate } from 'react-router-dom';
-import {
-  getCountTrips, setTop, getAverageDistance,
-} from './helpers/stationDataHelpers';
 
 /**
  * Creates a html object of a station.
