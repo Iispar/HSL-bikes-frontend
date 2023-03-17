@@ -1209,9 +1209,19 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   }
 }
 .map {
-  z-index: 1;
+  z-index: 0;
   height: 100%;
   width: 100%;
+}
+.map__menu {
+  position: absolute;
+  background: #efefef;
+  padding: 10px;
+  font-family: "Open Sans", sans-serif;
+  z-index: 5;
+}
+.map__menu__return-btn {
+  z-index: 9999;
 }
 .map__container {
   height: 100%;

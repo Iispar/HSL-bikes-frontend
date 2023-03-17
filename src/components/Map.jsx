@@ -3,7 +3,7 @@ import $ from 'jquery';
 import { useParams } from 'react-router-dom';
 import stationService from '../services/StationService';
 import { stationsAndIds } from '../data/stationsData';
-import { getKeyByValue } from './helpers/stationDataHelpers';
+import { getKeyByValue, setTopOnMap } from './helpers/stationDataHelpers';
 // eslint-disable-line import/no-webpack-loader-syntax
 // eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
 import mapboxgl from '!mapbox-gl';
@@ -18,26 +18,30 @@ const Map = () => {
   const [station, setStation] = useState('');
   const { id } = useParams();
   const nameFi = getKeyByValue(stationsAndIds, id);
-
-  const getStationData = async () => {
-    await stationService.getFiltered([`Name_fi=${nameFi}`])
-      .then((stationData) => setStation(stationData));
-    try {
-      $('#station-information__header__name__location').text(`${station[0].Adress_fi},${station[0].City_fi}`);
-      if (lng !== station[0].x) {
-        await setLng(station[0].x);
-        await setLat(station[0].y);
-        map.current.flyTo({
-          center: [station[0].x, station[0].y],
-        });
-      }
-    } catch {
-      console.log('no x');
-    }
-  };
+  let currentMarkers = [];
 
   useEffect(() => {
-    getStationData();
+    stationService.getFiltered([`Name_fi=${nameFi}`])
+      .then((stationData) => setStation(stationData));
+  }, []);
+
+  useEffect(() => {
+    const getStationData = async () => {
+      $('#station-information__header__name__location').text(`${station[0].Adress_fi},${station[0].City_fi}`);
+      await setLng(station[0].x);
+      await setLat(station[0].y);
+      map.current.flyTo({
+        center: [station[0].x, station[0].y],
+      });
+      // eslint-disable-next-line no-unused-vars
+      const stationMarker = new mapboxgl.Marker()
+        .setLngLat([station[0].x, station[0].y])
+        .addTo(map.current);
+    };
+
+    if (station !== '') {
+      getStationData();
+    }
     if (map.current) {
       map.current.on('load', () => {
         map.current.resize();
@@ -88,10 +92,22 @@ const Map = () => {
     //     },
     //   );
     // });
-  });
+  }, [station]);
+
+  const changeDirection = (direction) => {
+    for (let i = 0; i < currentMarkers.length; i += 1) {
+      currentMarkers[i].remove();
+    }
+    currentMarkers = [];
+    setTopOnMap(map.current, direction, id, 'all', currentMarkers);
+  };
 
   return (
     <div className="map" id="map">
+      <div id="menu" className="map__menu">
+        <button id="map-return-btn" type="button" name="map__menu__return-btn" onClick={() => changeDirection('return')}> return </button>
+        <button id="map-return-btn" type="button" name="map__menu__return-btn" onClick={() => changeDirection('departure')}> departure </button>
+      </div>
       <div id="map__container" className="map__container" />
     </div>
   );
