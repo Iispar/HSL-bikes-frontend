@@ -17,26 +17,30 @@ const Map = () => {
   const [zoom] = useState(18);
   const [station, setStation] = useState('');
   const { id } = useParams();
-  const nameFi = getKeyByValue(stationsAndIds, id);
+  const nameEng = getKeyByValue(stationsAndIds, id);
   let currentMarkers = [];
 
   useEffect(() => {
-    stationService.getFiltered([`Name_fi=${nameFi}`])
+    stationService.getFiltered([`Name=${nameEng}`])
       .then((stationData) => setStation(stationData));
   }, []);
 
   useEffect(() => {
     const getStationData = async () => {
-      $('#station-information__header__name__location').text(`${station[0].Adress_fi},${station[0].City_fi}`);
-      await setLng(station[0].x);
-      await setLat(station[0].y);
-      map.current.flyTo({
-        center: [station[0].x, station[0].y],
-      });
-      // eslint-disable-next-line no-unused-vars
-      const stationMarker = new mapboxgl.Marker()
-        .setLngLat([station[0].x, station[0].y])
-        .addTo(map.current);
+      try {
+        $('#station-information__header__name__location').text(`${station[0].Adress_fi},${station[0].City_fi}`);
+        await setLng(station[0].x);
+        await setLat(station[0].y);
+        map.current.flyTo({
+          center: [station[0].x, station[0].y],
+        });
+        // eslint-disable-next-line no-unused-vars
+        const stationMarker = new mapboxgl.Marker()
+          .setLngLat([station[0].x, station[0].y])
+          .addTo(map.current);
+      } catch {
+        console.log('error with the name in the database, please fix');
+      }
     };
 
     if (station !== '') {

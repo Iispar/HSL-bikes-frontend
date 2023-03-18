@@ -10,7 +10,7 @@ export const getKeyByValue = (object, value) => Object
 
 export const getStationInfo = async (name) => {
   let station = '';
-  await stationService.getFiltered([`Name_fi=${name}`])
+  await stationService.getFiltered([`Name=${name}`])
     .then((stationData) => {
       station = stationData;
     });

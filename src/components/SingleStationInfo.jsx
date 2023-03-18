@@ -14,7 +14,7 @@ const Station = () => {
   const [currentView, setCurrentView] = useState('stats');
   const { id } = useParams();
   const navigate = useNavigate();
-  const nameFi = getKeyByValue(stationsAndIds, id);
+  const name = getKeyByValue(stationsAndIds, id);
   let tripsEndingHere = null;
   let tripsStartingHere = null;
   let avgReturning = null;
@@ -40,10 +40,11 @@ const Station = () => {
     $('#station-information').css('display', 'flex');
     $('#station-information__selection__container__stats-btn').addClass('selected');
 
-    if (nameFi.length > 16) $('#station-information__header__name__title').css('font-size', '30px');
+    if (name.length > 20) $('#station-information__header__name__title').css('font-size', '22px');
+    else if (name.length > 16) $('#station-information__header__name__title').css('font-size', '30px');
     else $('#station-information__header__name__title').css('font-size', '38px');
 
-    $('#station-information__header__name__title').text(nameFi);
+    $('#station-information__header__name__title').text(name);
     await setTop('station-information__data__top-returning__container__list', 'return', id, 'all');
     await setTop('station-information__data__top-departing__container__list', 'departure', id, 'all');
     $('.station-information__data__top-returning__container__title').text('top return: ');
@@ -142,20 +143,17 @@ const Station = () => {
 
   /**
    * When we click outside of the monthselector and the dropdown is visible we close it.
+   * And when inside we open the dropdown menu.
+   *
    */
   $(document).click((e) => {
     if (e.target.id !== 'station-information__data__month-filter__dropdown__search' && $('#station-information__data__month-filter__dropdown__content').css('display') === 'flex') {
       $('#station-information__data__month-filter__dropdown__content').removeClass('animation');
       $('#station-information__data__month-filter__dropdown').removeClass('focus');
+    } else if (e.target.id === 'station-information__data__month-filter__dropdown__search') {
+      $('#station-information__data__month-filter__dropdown__content').addClass('animation');
+      $('#station-information__data__month-filter__dropdown').addClass('focus');
     }
-  });
-
-  /**
-   * When the search for months is clicked we open the dropdown menu.
-   */
-  $('.station-information__data__month-filter__dropdown__search').click(() => {
-    $('#station-information__data__month-filter__dropdown__content').addClass('animation');
-    $('#station-information__data__month-filter__dropdown').addClass('focus');
   });
 
   /**

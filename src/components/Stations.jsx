@@ -46,7 +46,7 @@ const Stations = () => {
     $('#backwardsStation-button').prop('disabled', true);
     $('#forwardsStation-button').prop('disabled', true);
     $('#stations__search__input').autocomplete('close');
-    const filterToChange = [`Name_fi=${name}`];
+    const filterToChange = [`Name=${name}`];
     changeFilter(filterToChange);
     setName('');
   };

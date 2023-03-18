@@ -18,6 +18,7 @@ const ListStations = (props) => {
       id={stations[i].ID}
       nameFi={stations[i].Name_fi}
       nameSwe={stations[i].Name_swe}
+      name={stations[i].Name}
       adressFi={stations[i].Adress_fi}
       adressSwe={stations[i].Adress}
       cityFi={stations[i].City_fi}

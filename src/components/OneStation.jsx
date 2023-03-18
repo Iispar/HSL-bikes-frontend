@@ -12,6 +12,7 @@ const Station = (props) => {
   const { id } = props;
   const { nameFi } = props;
   const { nameSwe } = props;
+  const { name } = props;
   const { adressFi } = props;
   const { adressSwe } = props;
   const { cityFi } = props;
@@ -39,7 +40,7 @@ const Station = (props) => {
       </div>
       <div className="station-display__location">
         <div className="station-display__location__name">
-          {nameFi}
+          {name}
         </div>
         <div className="station-display__location__address">
           {adressFi}
@@ -67,6 +68,7 @@ Station.propTypes = {
   capasity: propTypes.number,
   x: propTypes.string,
   y: propTypes.string,
+  name: propTypes.string,
 };
 
 Station.defaultProps = {
@@ -81,6 +83,7 @@ Station.defaultProps = {
   capasity: null,
   x: null,
   y: null,
+  name: null,
 };
 
 export default Station;
