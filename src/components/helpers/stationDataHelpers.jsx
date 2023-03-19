@@ -69,7 +69,9 @@ export const setTopOnMap = async (map, direction, stationId, month) => {
   }
   const responses = await Promise.all(toCall);
   for (let i = 0; i < responses.length; i += 1) {
-    const stationMarker = new mapboxgl.Marker()
+    const el = document.createElement('div');
+    el.className = 'marker';
+    const stationMarker = new mapboxgl.Marker(el)
       .setLngLat([responses[i][0].x, responses[i][0].y])
       .setPopup(new mapboxgl.Popup()
         .setHTML(`${responses[i][0].Name_fi} is the ${i + 1} top ${direction} station`))

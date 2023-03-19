@@ -44,6 +44,25 @@
   background-color: #dedede;
 }
 
+.single-station-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: #007AC9;
+}
+.single-station-header__logo {
+  display: flex;
+  justify-self: flex-start;
+  width: 60px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15px;
+}
+
 @font-face {
   font-family: "Varela round";
   src: url("../../data/varelaRound.ttf");
@@ -817,6 +836,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 0;
 }
 
 .background-container {
@@ -1253,6 +1273,15 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
 }
 .map__container {
   height: 100%;
+}
+
+.marker {
+  background-image: url("../../data/mapStation.svg");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 22px;
+  width: 22px;
 }
 
 .selected {

@@ -1,7 +1,7 @@
 import React from 'react';
 import SingleStationInfo from './SingleStationInfo';
 import Map from './Map';
-import Header from './Header';
+import Header from './SingleStationHeader';
 
 const StationData = () => (
   <div className="background">
