@@ -111,8 +111,12 @@ const Station = () => {
 
     if (setMonth === 'all') {
       $('#station-information__data__month-filter__dropdown__button__info__current').text('all');
+      $('#map__menu').attr('data-month', 'all');
+      $('#map__menu').data('month', 'all');
     } else {
       $('#station-information__data__month-filter__dropdown__button__info__current').text(setMonth);
+      $('#map__menu').attr('data-month', month);
+      $('#map__menu').data('month', month);
     }
 
     await setTop('station-information__data__top-returning__container__list', 'return', id, month);
@@ -223,7 +227,7 @@ const Station = () => {
         <div className="station-information__data__statistics">
           <div className="station-information__data__statistics__container">
             <div className="station-information__data__statistics__container__title" id="station-information__data__statistics__container__title"> statistics </div>
-            <div className="station-information__data__statistics__container__departing">
+            <div className="station-information__data__statistics__container__departing" id="station-information__data__statistics__container__departing">
               <p className="station-information__data__statistics__container__departing__title"> departing: </p>
               <p className="station-information__data__statistics__container__departing__all-trips" id="station-information__data__statistics__container__departing__all-trips" />
               <p className="station-information__data__statistics__container__departing__all-avg" id="station-information__data__statistics__container__departing__all-avg" />

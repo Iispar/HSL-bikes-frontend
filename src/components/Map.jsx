@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-console */
 import React, { useRef, useEffect, useState } from 'react';
 import $ from 'jquery';
 import { useParams } from 'react-router-dom';
@@ -18,12 +20,40 @@ const Map = () => {
   const [station, setStation] = useState('');
   const { id } = useParams();
   const nameEng = getKeyByValue(stationsAndIds, id);
-  let currentMarkers = [];
+  const [markers, setMarkers] = useState([]);
+  const [observer, setObserver] = useState('');
+
+  const changeDirection = async (direction) => {
+    const val = $('#map__menu').data('month');
+    $('#map__menu').data('dir', direction);
+    for (let i = 0; i < markers.length; i += 1) {
+      markers[i].remove();
+    }
+    const newMarkers = await setTopOnMap(map.current, direction, id, val);
+    setMarkers(newMarkers);
+    if (observer !== '') observer.disconnect();
+  };
 
   useEffect(() => {
     stationService.getFiltered([`Name=${nameEng}`])
       .then((stationData) => setStation(stationData));
   }, []);
+
+  useEffect(() => {
+    const elem = document.getElementById('map__menu');
+    const newObserver = new MutationObserver(() => {
+      const dir = $('#map__menu').data('dir');
+      if (dir !== '' && markers.length !== 0) {
+        changeDirection(dir);
+        newObserver.disconnect();
+      }
+    });
+    setObserver(newObserver);
+    newObserver.observe(elem, {
+      attributes: true,
+      attributeFilter: ['data-month'],
+    });
+  }, [markers]);
 
   useEffect(() => {
     const getStationData = async () => {
@@ -98,17 +128,9 @@ const Map = () => {
     // });
   }, [station]);
 
-  const changeDirection = (direction) => {
-    for (let i = 0; i < currentMarkers.length; i += 1) {
-      currentMarkers[i].remove();
-    }
-    currentMarkers = [];
-    setTopOnMap(map.current, direction, id, 'all', currentMarkers);
-  };
-
   return (
     <div className="map" id="map">
-      <div id="menu" className="map__menu">
+      <div id="map__menu" className="map__menu" data-month="all" data-dir="">
         <button id="map-return-btn" type="button" name="map__menu__return-btn" onClick={() => changeDirection('return')}> return </button>
         <button id="map-return-btn" type="button" name="map__menu__return-btn" onClick={() => changeDirection('departure')}> departure </button>
       </div>

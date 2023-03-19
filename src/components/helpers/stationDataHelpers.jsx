@@ -58,7 +58,8 @@ export const setTop = async (elementId, direction, stationId, month) => {
   return list;
 };
 
-export const setTopOnMap = async (map, direction, stationId, month, list) => {
+export const setTopOnMap = async (map, direction, stationId, month) => {
+  const list = [];
   const toCall = [];
   const id = parseInt(stationId, 10);
   const result = await bikeService.getTop(direction, id, month);
