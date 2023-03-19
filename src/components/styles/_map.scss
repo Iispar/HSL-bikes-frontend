@@ -2,18 +2,50 @@
     z-index: 0;
     height: 100%;
     width: 100%;
+    position: relative;
     &__menu {
         position: absolute;
-        background: #efefef;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: transparent;
         padding: 10px;
         font-family: 'Open Sans', sans-serif;
         z-index: 5;
-
-        &__return-btn {
-            z-index: 9999;
+        &__btn-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 164px;
+            background: #DDDDDD;
+            height: 34px;
+            border-radius: 3px;
+            &__btn {
+                height: 30px;
+                width: 80px;
+                border-radius: 3px;
+                border: 0px;
+                transition: background-color .3s ease-out;
+                z-index: 1;
+                background: transparent;
+                color: #888888;
+                    font-family: $buttonFont, sans-serif;
+                    font-size: 14px;
+                    font-weight: 500;
+                    font-stretch: expanded;
+                    letter-spacing: 0px;
+            }
         }
     }
     &__container {
         height: 100%;
     }
+}
+
+.selected {
+    background: #ffffff;
+    color: #333333;
 }

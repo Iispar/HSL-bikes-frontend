@@ -24,6 +24,14 @@ const Map = () => {
   const [observer, setObserver] = useState('');
 
   const changeDirection = async (direction) => {
+    $('button[name=map__menu__btn').prop('disabled', true);
+    if (direction === 'return') {
+      $('#map-departure-btn').removeClass('selected');
+      $('#map-return-btn').addClass('selected');
+    } else {
+      $('#map-departure-btn').addClass('selected');
+      $('#map-return-btn').removeClass('selected');
+    }
     const val = $('#map__menu').data('month');
     $('#map__menu').data('dir', direction);
     for (let i = 0; i < markers.length; i += 1) {
@@ -32,6 +40,7 @@ const Map = () => {
     const newMarkers = await setTopOnMap(map.current, direction, id, val);
     setMarkers(newMarkers);
     if (observer !== '') observer.disconnect();
+    $('button[name=map__menu__btn').prop('disabled', false);
   };
 
   useEffect(() => {
@@ -97,42 +106,15 @@ const Map = () => {
       minZoom: 10,
       maxBounds: bounds,
     });
-    // map.current.on('load', () => {
-    //   // Add a new vector tile source with ID 'mapillary'.
-    //   map.current.addSource('mapillary', {
-    //     type: 'vector',
-    //     tiles: [
-    //       'https://cdn.digitransit.fi/map/v2/hsl-stop-map/{z}/{x}/{y}.pbf',
-    //     ],
-    //     minzoom: 6,
-    //     maxzoom: 14,
-    //   });
-    //   map.current.addLayer(
-    //     {
-    //       id: 'mapillary', // Layer ID
-    //       type: 'line',
-    //       source: 'mapillary', // ID of the tile source created above
-    //       // Source has several layers. We visualize the one with name 'sequence'.
-    //       'source-layer': 'sequence',
-    //       layout: {
-    //         'line-cap': 'round',
-    //         'line-join': 'round',
-    //       },
-    //       paint: {
-    //         'line-opacity': 0.6,
-    //         'line-color': 'rgb(53, 175, 109)',
-    //         'line-width': 2,
-    //       },
-    //     },
-    //   );
-    // });
   }, [station]);
 
   return (
     <div className="map" id="map">
       <div id="map__menu" className="map__menu" data-month="all" data-dir="">
-        <button id="map-return-btn" type="button" name="map__menu__return-btn" onClick={() => changeDirection('return')}> return </button>
-        <button id="map-return-btn" type="button" name="map__menu__return-btn" onClick={() => changeDirection('departure')}> departure </button>
+        <div className="map__menu__btn-container">
+          <button className="map__menu__btn-container__btn" id="map-return-btn" type="button" name="map__menu__btn" onClick={() => changeDirection('return')}> return </button>
+          <button className="map__menu__btn-container__btn" id="map-departure-btn" type="button" name="map__menu__btn" onClick={() => changeDirection('departure')}> departure </button>
+        </div>
       </div>
       <div id="map__container" className="map__container" />
     </div>
