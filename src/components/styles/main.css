@@ -992,6 +992,8 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  width: 100%;
+  padding: 10px;
 }
 .station-information__data__month-filter__dropdown {
   position: relative;
@@ -1076,8 +1078,9 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
 .station-information__data__top-returning__container {
   display: flex;
   flex-direction: column;
-  background: #dedede;
+  background: #f2f2f2;
   border-radius: 5px;
+  padding: 2px;
 }
 .station-information__data__top-returning__container__title {
   padding-top: 5px;
@@ -1132,8 +1135,9 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
 .station-information__data__top-departing__container {
   display: flex;
   flex-direction: column;
-  background: #dedede;
+  background: #f2f2f2;
   border-radius: 5px;
+  padding: 2px;
 }
 .station-information__data__top-departing__container__title {
   padding-top: 5px;
@@ -1184,17 +1188,168 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   grid-row: 2/7;
   grid-column: 2;
   z-index: 0;
-  padding: 10px;
+  padding-left: 10px;
+  width: 100%;
 }
 .station-information__data__statistics__container {
-  border-radius: 5px;
-  background: #dedede;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.station-information__data__statistics__container__title {
-  padding: 2px;
-  font-family: "HCo Gotham XNarrow", sans-serif;
-  font-size: 24px;
-  text-transform: uppercase;
+.station-information__data__statistics__container__departing {
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+  position: relative;
+}
+.station-information__data__statistics__container__departing__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #51aae6;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  height: 65px;
+  width: 100%;
+}
+.station-information__data__statistics__container__departing__container__all-img {
+  height: 30px;
+  width: 30px;
+  background-image: url("../../data/biker.svg");
+  background-size: 120%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.station-information__data__statistics__container__departing__container__avg-img {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(8px, 2px);
+  background-image: url("../../data/avgIcon.svg");
+  background-size: 130%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.station-information__data__statistics__container__departing__container__all-trips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  transform: translateX(-8px);
+  font-family: "Varela round", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: expanded;
+  letter-spacing: 0px;
+}
+.station-information__data__statistics__container__departing__container__all-avg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  font-family: "Varela round", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: expanded;
+  letter-spacing: 0px;
+}
+.station-information__data__statistics__container__departing__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #007AC9;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 15px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  color: white;
+  font-family: "Varela round", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: expanded;
+  letter-spacing: 0px;
+}
+.station-information__data__statistics__container__returning {
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+  position: relative;
+}
+.station-information__data__statistics__container__returning__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #51aae6;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  height: 65px;
+  width: 100%;
+}
+.station-information__data__statistics__container__returning__container__all-img {
+  height: 30px;
+  width: 30px;
+  background-image: url("../../data/biker.svg");
+  background-size: 120%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.station-information__data__statistics__container__returning__container__avg-img {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(8px, 2px);
+  background-image: url("../../data/avgIcon.svg");
+  background-size: 130%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.station-information__data__statistics__container__returning__container__all-trips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  transform: translateX(-8px);
+  font-family: "Varela round", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: expanded;
+  letter-spacing: 0px;
+}
+.station-information__data__statistics__container__returning__container__all-avg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  font-family: "Varela round", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: expanded;
+  letter-spacing: 0px;
+}
+.station-information__data__statistics__container__returning__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #007AC9;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 15px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  color: white;
+  font-family: "Varela round", sans-serif;
+  font-size: 14px;
   font-weight: 500;
   font-stretch: expanded;
   letter-spacing: 0px;
@@ -1235,6 +1390,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   height: 100%;
   width: 100%;
   position: relative;
+  border-left: 2px solid #dedede;
 }
 .map__menu {
   position: absolute;

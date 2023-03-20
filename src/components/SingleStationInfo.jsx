@@ -57,10 +57,10 @@ const Station = () => {
     avgDeparting = await getAverageDistance('departure', id, 'all');
     avgReturnignKm = parseFloat(avgReturning / 1000).toFixed(2);
     avgDepartingKm = parseFloat(avgDeparting / 1000).toFixed(2);
-    $('#station-information__data__statistics__container__departing__all-trips').text(`trips ${tripsEndingHere}`);
-    $('#station-information__data__statistics__container__returning__all-trips').text(`trips ${tripsStartingHere}`);
-    $('#station-information__data__statistics__container__returning__all-avg').text(`avg: ${avgReturnignKm} km`);
-    $('#station-information__data__statistics__container__departing__all-avg').text(`avg: ${avgDepartingKm} km`);
+    $('#station-information__data__statistics__container__departing__container__all-trips').text(`${tripsEndingHere} trips`);
+    $('#station-information__data__statistics__container__returning__container__all-trips').text(`${tripsStartingHere} trips`);
+    $('#station-information__data__statistics__container__returning__container__all-avg').text(`${avgReturnignKm} km`);
+    $('#station-information__data__statistics__container__departing__container__all-avg').text(`${avgDepartingKm} km`);
   };
 
   /**
@@ -89,7 +89,7 @@ const Station = () => {
     $('#station-information__data__top-returning__container__list').empty();
     $('#station-information__data__top-departing__container__list').empty();
     $('#station-information__data__statistics__returning__all-avg').text('');
-    $('#station-information__data__statistics__container__departing__all-avg').text('');
+    $('#station-information__data__statistics__container__departing__container__all-avg').text('');
     navigate('/');
   };
 
@@ -101,10 +101,10 @@ const Station = () => {
     $('button[name=station-filter-btn]').prop('disabled', true);
     const setMonth = getMonthName(month);
 
-    $('#station-information__data__statistics__container__departing__all-trips').text('Waiting for data...');
+    $('#station-information__data__statistics__container__departing__container__all-trips').text('Waiting for data...');
     $('#station-information__data__statistics__returning__all-trips').text('Waiting for data...');
     $('#station-information__data__statistics__returning__all-avg').text('');
-    $('#station-information__data__statistics__container__departing__all-avg').text('');
+    $('#station-information__data__statistics__container__departing__container__all-avg').text('');
     $('td[name=top-stations-title]').text('');
     $('#station-information__data__top-returning__container__list').text('');
     $('#station-information__data__top-departing__container__list').text('');
@@ -130,10 +130,10 @@ const Station = () => {
     avgDeparting = await getAverageDistance('departure', id, month);
     avgReturnignKm = parseFloat(avgReturning / 1000).toFixed(2);
     avgDepartingKm = parseFloat(avgDeparting / 1000).toFixed(2);
-    $('#station-information__data__statistics__container__departing__all-trips').text(`trips ${tripsEndingHere}`);
-    $('#station-information__data__statistics__container__returning__all-trips').text(`trips ${tripsStartingHere}`);
-    $('#station-information__data__statistics__container__returning__all-avg').text(`avg: ${avgReturnignKm} km`);
-    $('#station-information__data__statistics__container__departing__all-avg').text(`avg: ${avgDepartingKm} km`);
+    $('#station-information__data__statistics__container__departing__container__all-trips').text(`${tripsEndingHere} trips`);
+    $('#station-information__data__statistics__container__returning__container__all-trips').text(`${tripsStartingHere} trips`);
+    $('#station-information__data__statistics__container__returning__container__all-avg').text(`${avgReturnignKm} km`);
+    $('#station-information__data__statistics__container__departing__container__all-avg').text(`${avgDepartingKm} km`);
   };
 
   /**
@@ -226,16 +226,23 @@ const Station = () => {
         </div>
         <div className="station-information__data__statistics">
           <div className="station-information__data__statistics__container">
-            <div className="station-information__data__statistics__container__title" id="station-information__data__statistics__container__title"> statistics </div>
             <div className="station-information__data__statistics__container__departing" id="station-information__data__statistics__container__departing">
-              <p className="station-information__data__statistics__container__departing__title"> departing: </p>
-              <p className="station-information__data__statistics__container__departing__all-trips" id="station-information__data__statistics__container__departing__all-trips" />
-              <p className="station-information__data__statistics__container__departing__all-avg" id="station-information__data__statistics__container__departing__all-avg" />
+              <div className="station-information__data__statistics__container__departing__container">
+                <div className="station-information__data__statistics__container__departing__container__all-img" />
+                <div className="station-information__data__statistics__container__departing__container__all-trips" id="station-information__data__statistics__container__departing__container__all-trips" />
+                <div className="station-information__data__statistics__container__departing__container__avg-img" />
+                <div className="station-information__data__statistics__container__departing__container__all-avg" id="station-information__data__statistics__container__departing__container__all-avg" />
+              </div>
+              <div className="station-information__data__statistics__container__departing__footer"> departing </div>
             </div>
             <div className="station-information__data__statistics__container__returning">
-              <p className="station-information__data__statistics__container__returning__title"> returning: </p>
-              <p className="station-information__data__statistics__container__returning__all-trips" id="station-information__data__statistics__container__returning__all-trips" />
-              <p className="station-information__data__statistics__container__returning__all-avg" id="station-information__data__statistics__container__returning__all-avg" />
+              <div className="station-information__data__statistics__container__returning__container">
+                <div className="station-information__data__statistics__container__returning__container__all-img" />
+                <div className="station-information__data__statistics__container__returning__container__all-trips" id="station-information__data__statistics__container__returning__container__all-trips" />
+                <div className="station-information__data__statistics__container__returning__container__avg-img" />
+                <div className="station-information__data__statistics__container__returning__container__all-avg" id="station-information__data__statistics__container__returning__container__all-avg" />
+              </div>
+              <div className="station-information__data__statistics__container__returning__footer"> returning </div>
             </div>
           </div>
         </div>
