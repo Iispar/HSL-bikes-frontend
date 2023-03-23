@@ -131,9 +131,7 @@ const Station = () => {
           <button type="button" onClick={() => changeView('departure')} name="station-filter-btn" id="station-information__selection__container__departure-btn" className="station-information__selection__container__btn"> departure </button>
         </div>
       </div>
-      <div className="station-information__data" id="station-information__data">
-        <SingleStationData />
-      </div>
+      <SingleStationData />
       <div className="station-information__return" id="station-information__return">
         <SingleStationReturn />
       </div>
