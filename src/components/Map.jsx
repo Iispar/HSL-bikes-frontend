@@ -11,7 +11,7 @@ import { getKeyByValue, setTopOnMap, getLngLat } from './helpers/stationDataHelp
 import mapboxgl from '!mapbox-gl';
 
 const Map = () => {
-  mapboxgl.accessToken = 'pk.eyJ1IjoiaWlzcGFyIiwiYSI6ImNsZmw3Z2todDAyZXMzcXJ0bDBkdXBtZjMifQ.bF--5bboiwIzLx8OcrDAsQ';
+  mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API;
 
   const map = useRef(null);
   const [lng, setLng] = useState(24.9000000000);
