@@ -5,14 +5,16 @@ import { stationsAndIds } from '../data/stationsData';
 import {
   setTop, getAverageDistance, getCountTrips, getKeyByValue,
 } from './helpers/stationDataHelpers';
-import SingleStationData from './singleStationData';
+import SingleStationData from './SingleStationData';
+import SingleStationReturn from './SingleStationReturn';
+import SingleStationDeparture from './SingleStationDeparture';
 
 /**
  * Returns html for a view with one station.
  * @returns view of a single station
  */
 const Station = () => {
-  const [currentView, setCurrentView] = useState('stats');
+  const [currentView, setCurrentView] = useState('data');
   const { id } = useParams();
   const navigate = useNavigate();
   const name = getKeyByValue(stationsAndIds, id);
@@ -39,7 +41,7 @@ const Station = () => {
     $('#journeys__pagination').css('display', 'none');
     $('#journeys__single-station-map').css('display', 'flex');
     $('#station-information').css('display', 'flex');
-    $('#station-information__selection__container__stats-btn').addClass('selected');
+    $('#station-information__selection__container__data-btn').addClass('selected');
 
     if (name.length > 20) $('#station-information__header__name__title').css('font-size', '22px');
     else if (name.length > 16) $('#station-information__header__name__title').css('font-size', '30px');
@@ -101,7 +103,10 @@ const Station = () => {
     $(`#station-information__selection__container__${currentView}-btn`).removeClass('selected');
     $(`#station-information__selection__container__${selection}-btn`).addClass('selected');
     setCurrentView(selection);
-    console.log(selection);
+    $('#station-information__data').css('display', 'none');
+    $('#station-information__return').css('display', 'none');
+    $('#station-information__departure').css('display', 'none');
+    $(`#station-information__${selection}`).css('display', 'grid');
   };
 
   return (
@@ -121,13 +126,19 @@ const Station = () => {
       </div>
       <div className="station-information__selection">
         <div className="station-information__selection__container">
-          <button type="button" onClick={() => changeView('stats')} name="station-filter-btn" id="station-information__selection__container__stats-btn" className="station-information__selection__container__btn"> stats </button>
+          <button type="button" onClick={() => changeView('data')} name="station-filter-btn" id="station-information__selection__container__data-btn" className="station-information__selection__container__btn"> stats </button>
           <button type="button" onClick={() => changeView('return')} name="station-filter-btn" id="station-information__selection__container__return-btn" className="station-information__selection__container__btn"> return </button>
           <button type="button" onClick={() => changeView('departure')} name="station-filter-btn" id="station-information__selection__container__departure-btn" className="station-information__selection__container__btn"> departure </button>
         </div>
       </div>
-      <div className="station-information__data">
+      <div className="station-information__data" id="station-information__data">
         <SingleStationData />
+      </div>
+      <div className="station-information__return" id="station-information__return">
+        <SingleStationReturn />
+      </div>
+      <div className="station-information__departure" id="station-information__departure">
+        <SingleStationDeparture />
       </div>
     </div>
   );

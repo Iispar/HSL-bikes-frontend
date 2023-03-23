@@ -476,6 +476,12 @@
 
         }
     }
+    &__return {
+        display: none;
+    }
+    &__departure {
+        display: none;
+    }
 }
 
 .selected {
@@ -506,5 +512,60 @@
     }
     100% {
         transform: scaleY(1)
+    }
+}
+
+.station-single-journey {
+    margin: 2px;
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    padding-bottom: 2px;
+
+    &__departure {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        font-family: $font, sans-serif;
+        font-weight: 500;
+        font-stretch: expanded;
+        letter-spacing: 0px;
+    }
+
+    &__data {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 4px;
+        width: 140px;
+        padding: 2px;
+        &__distance {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70px;
+            border: 2px solid #007AC9;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: $font, sans-serif;
+            font-weight: 500;
+            font-stretch: expanded;
+            letter-spacing: 1px;
+        }
+        &__duration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70px;
+            border: 2px solid #007AC9;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: $font, sans-serif;
+            font-weight: 500;
+            font-stretch: expanded;
+            letter-spacing: 1px;
+        }
     }
 }
