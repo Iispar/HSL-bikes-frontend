@@ -5,13 +5,13 @@ import $ from 'jquery';
 import { useParams } from 'react-router-dom';
 import stationService from '../services/StationService';
 import { stationsAndIds } from '../data/stationsData';
-import { getKeyByValue, setTopOnMap } from './helpers/stationDataHelpers';
+import { getKeyByValue, setTopOnMap, getLngLat } from './helpers/stationDataHelpers';
 // eslint-disable-line import/no-webpack-loader-syntax
 // eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
 import mapboxgl from '!mapbox-gl';
 
 const Map = () => {
-  mapboxgl.accessToken = 'pk.eyJ1IjoiaWlzcGFyIiwiYSI6ImNsZjZ2ZjNtbDB6MHczd3FoemJiYjYwNDIifQ.MHK5AW08xBT6JgTuYfBJTg';
+  mapboxgl.accessToken = 'pk.eyJ1IjoiaWlzcGFyIiwiYSI6ImNsZmw3Z2todDAyZXMzcXJ0bDBkdXBtZjMifQ.bF--5bboiwIzLx8OcrDAsQ';
 
   const map = useRef(null);
   const [lng, setLng] = useState(24.9000000000);
@@ -22,6 +22,9 @@ const Map = () => {
   const nameEng = getKeyByValue(stationsAndIds, id);
   const [markers, setMarkers] = useState([]);
   const [observer, setObserver] = useState('');
+  // eslint-disable-next-line no-unused-vars
+  const [currentMarker, setCurrentMarker] = useState('');
+  const [stationObserver, setStationObserver] = useState('');
 
   const changeDirection = async (direction) => {
     $('button[name=map__menu__btn').prop('disabled', true);
@@ -43,10 +46,37 @@ const Map = () => {
     $('button[name=map__menu__btn').prop('disabled', false);
   };
 
+  const setSingleMarker = async () => {
+    const inputStation = $('#map__menu').attr('data-station');
+    if (currentMarker !== '') currentMarker.remove();
+    const coords = await getLngLat(inputStation);
+    const stationMarker = new mapboxgl.Marker()
+      .setLngLat(coords)
+      .addTo(map.current);
+    setCurrentMarker(stationMarker);
+    if (stationObserver !== '') stationObserver.disconnect();
+  };
+
   useEffect(() => {
     stationService.getFiltered([`Name=${nameEng}`])
       .then((stationData) => setStation(stationData));
   }, []);
+
+  useEffect(() => {
+    const elem = document.getElementById('map__menu');
+    const newObserver = new MutationObserver(() => {
+      const inputStation = $('#map__menu').data('station');
+      if (inputStation !== '') {
+        setSingleMarker();
+        newObserver.disconnect();
+      }
+    });
+    setStationObserver(newObserver);
+    newObserver.observe(elem, {
+      attributes: true,
+      attributeFilter: ['data-station'],
+    });
+  }, [currentMarker]);
 
   useEffect(() => {
     const elem = document.getElementById('map__menu');
@@ -110,7 +140,7 @@ const Map = () => {
 
   return (
     <div className="map" id="map">
-      <div id="map__menu" className="map__menu" data-month="all" data-dir="">
+      <div id="map__menu" className="map__menu" data-month="all" data-dir="" data-station="">
         <div className="map__menu__btn-container">
           <button className="map__menu__btn-container__btn" id="map-return-btn" type="button" name="map__menu__btn" onClick={() => changeDirection('return')}> return </button>
           <button className="map__menu__btn-container__btn" id="map-departure-btn" type="button" name="map__menu__btn" onClick={() => changeDirection('departure')}> departure </button>

@@ -84,6 +84,16 @@ export const setTopOnMap = async (map, direction, stationId, month) => {
   return list;
 };
 
+export const getLngLat = async (stationName) => {
+  const coords = [];
+  await stationService.getFiltered([`Name=${stationName}`])
+    .then((data) => {
+      coords.push(data[0].x);
+      coords.push(data[0].y);
+    });
+  return coords;
+};
+
 /**
  * Returns the name of the integer month.
  * @param {int} month

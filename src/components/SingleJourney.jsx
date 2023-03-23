@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import propTypes from 'prop-types';
+import $ from 'jquery';
 
 /**
  * Creates a html object of a journey for single station.
@@ -18,8 +19,12 @@ const SingleJourney = (props) => {
   if (direction === 'return') direction = 'FROM';
   else direction = 'TO';
 
+  const setMap = () => {
+    $('#map__menu').attr('data-station', departureStationName);
+  };
+
   return (
-    <div className="station-single-journey">
+    <div className="station-single-journey" id="station-single-journey" onClick={() => setMap()} onKeyDown={() => setMap()} role="button" tabIndex={0}>
       <div className="station-single-journey__departure">
         {direction}
         &#160;
