@@ -10,7 +10,7 @@ import Journey from './OneJourney';
 const ListJourneys = (props) => {
   const { journeys } = props;
   // if no results set it as the result.
-  if (journeys.length === 0) return <p id="loadingJourneys-container" className="loadingJourneys-container"> No results </p>;
+  if (journeys.length === 0) return <p id="loadingJourneys-container" className="station-display__no-results"> No results </p>;
   const list = [];
   for (let i = 0; i < journeys.length; i += 1) {
     list.push(<Journey

@@ -9,7 +9,7 @@ import Station from './OneStation';
  */
 const ListStations = (props) => {
   const { stations } = props;
-  if (stations.length === 0) return <p id="loadingStations-container" className="loadingStations-container"> No results </p>;
+  if (stations.length === 0) return <div id="loadingStations-container" className="station-display__no-results"> No results </div>;
 
   const list = [];
   for (let i = 0; i < stations.length; i += 1) {
