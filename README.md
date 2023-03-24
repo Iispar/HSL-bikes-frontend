@@ -10,11 +10,13 @@ The original goal of the project was to overall get better at fullstack develope
 
 I also chose this project because it made me create an API and an own backend for the data. This also tought me alot especially into mongoose and how to query the database in an effective way.
 
-# Prerequisites and Configurations
+# Prerequisites, Configurations and using on own computer
 The project can be accessed form [here](https://bikes-frontend.vercel.app/).
 The application can be also accessed by cloning the repository and using command npm install and npm start.
 This should open the app into localhost:3000 and work with the backend. The project might give eslint errors because
 I have some custom rules in the .eslintrc so I can give this file if needed. Please contact me if the project doesn't work.
+IMPORTANT! Because of React.StrictMode some of the functions for example clearing the map don't work in developement!
+
 # Using
 The app should be self explanitory, but if not:
   You see all the journeys that have happened on the right and all the stations on the left. The journeys include where it starts and ends and also
