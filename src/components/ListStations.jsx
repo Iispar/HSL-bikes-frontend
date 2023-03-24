@@ -3,9 +3,9 @@ import propTypes from 'prop-types';
 import Station from './OneStation';
 
 /**
- * Lists all the stations as Station.
+ * Lists all the stations in a list as Station objects and returns this list.
  * @param {*} props
- * @returns
+ * @returns list of Station objects.
  */
 const ListStations = (props) => {
   const { stations } = props;

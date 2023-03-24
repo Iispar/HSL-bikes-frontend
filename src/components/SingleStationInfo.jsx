@@ -5,9 +5,9 @@ import { stationsAndIds } from '../data/stationsData';
 import {
   setTop, getAverageDistance, getCountTrips, getKeyByValue,
 } from './helpers/stationDataHelpers';
-import SingleStationData from './SingleStationData';
 import SingleStationReturn from './SingleStationReturn';
 import SingleStationDeparture from './SingleStationDeparture';
+import SingleStationData from './SingleStationData';
 
 /**
  * Returns html for a view with one station.
@@ -31,22 +31,15 @@ const Station = () => {
   const setStation = async () => {
     $('#station-information').attr('name', id);
     $('#station-filter-btn').prop('disabled', true);
-    $('#stations__list').css('display', 'none');
-    $('#stations__pagination').css('display', 'none');
-    $('#stations__search').css('display', 'none');
-    $('#stations__title').css('display', 'none');
-    $('#journeys__title').css('display', 'none');
-    $('#journeys__header').css('display', 'none');
-    $('#journeys__list').css('display', 'none');
-    $('#journeys__pagination').css('display', 'none');
-    $('#journeys__single-station-map').css('display', 'flex');
-    $('#station-information').css('display', 'flex');
+    // selects the "stats" button when page is loaded.
     $('#station-information__selection__container__data-btn').addClass('selected');
 
+    // Formats the size of the title for station depending on the size of the name
     if (name.length > 20) $('#station-information__header__name__title').css('font-size', '22px');
     else if (name.length > 16) $('#station-information__header__name__title').css('font-size', '30px');
     else $('#station-information__header__name__title').css('font-size', '38px');
 
+    // sets name, topstations and changes from loading to titles.
     $('#station-information__header__name__title').text(name);
     await setTop('station-information__data__top-returning__container__list', 'return', id, 'all');
     await setTop('station-information__data__top-departing__container__list', 'departure', id, 'all');
@@ -54,12 +47,14 @@ const Station = () => {
     $('.station-information__data__top-departing__container__title').text('top departure:');
     $('#station-filter-btn').prop('disabled', false);
 
+    // calculates all the data.
     tripsEndingHere = await getCountTrips('return', id, 'all');
     tripsStartingHere = await getCountTrips('departure', id, 'all');
     avgReturning = await getAverageDistance('return', id, 'all');
     avgDeparting = await getAverageDistance('departure', id, 'all');
     avgReturnignKm = parseFloat(avgReturning / 1000).toFixed(2);
     avgDepartingKm = parseFloat(avgDeparting / 1000).toFixed(2);
+    // sets the data.
     $('#station-information__data__statistics__container__departing__container__all-trips').text(`${tripsEndingHere} trips`);
     $('#station-information__data__statistics__container__returning__container__all-trips').text(`${tripsStartingHere} trips`);
     $('#station-information__data__statistics__container__returning__container__all-avg').text(`${avgReturnignKm} km`);
@@ -75,20 +70,9 @@ const Station = () => {
   }, []);
 
   /**
-   * Closes the single station view and returns the list.
+   * Closes the single station view and returns the list to empty.
    */
   const closeView = () => {
-    $('#stations__view').css('display', 'flex');
-    $('#stations__search').css('display', 'flex');
-    $('#stations__title').css('display', 'flex');
-    $('#stations__list').css('display', 'flex');
-    $('#stations__pagination').css('display', 'flex');
-    $('#journeys__title').css('display', 'flex');
-    $('#journeys__header').css('display', 'flex');
-    $('#journeys__list').css('display', 'block');
-    $('#journeys__pagination').css('display', 'flex');
-    $('#journeys__single-station-map').css('display', 'none');
-    $('#station-information').css('display', 'none');
     $('#station-information__data__top-returning__container__list').empty();
     $('#station-information__data__top-departing__container__list').empty();
     $('#station-information__data__statistics__returning__all-avg').text('');
@@ -100,13 +84,20 @@ const Station = () => {
    * Changes the view between stats, returning trips and departing trips.
    */
   const changeView = (selection) => {
+    // removes the selected view from current and moves it to new one.
     $(`#station-information__selection__container__${currentView}-btn`).removeClass('selected');
     $(`#station-information__selection__container__${selection}-btn`).addClass('selected');
     setCurrentView(selection);
+
+    // all selections to none and then selected into grid.
+    $('#map__menu__btn-container').css('display', 'none');
     $('#station-information__data').css('display', 'none');
     $('#station-information__return').css('display', 'none');
     $('#station-information__departure').css('display', 'none');
     $(`#station-information__${selection}`).css('display', 'grid');
+    if (selection === 'data') {
+      $('#map__menu__btn-container').css('display', 'flex');
+    }
   };
 
   return (

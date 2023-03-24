@@ -1,6 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
+/**
+  * Returns html for one single journey.
+  */
 const Journey = (props) => {
   const { departureStationName } = props;
   const { returnStationName } = props;
@@ -18,9 +21,6 @@ const Journey = (props) => {
     string = localStorage.getItem(id);
   }
 
-  /**
-   * Returns html for one single journey.
-   */
   return (
     <div name="journey-display" className="journey-display">
       <div className="journey-display__location">

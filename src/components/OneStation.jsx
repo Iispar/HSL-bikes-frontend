@@ -25,9 +25,7 @@ const Station = (props) => {
 
   /**
    * Clicking an station displays this.
-   * We set and call all wanted data from backend and set it with jquery.
-   * We also hide the list of stations first and then make visible
-   * the single station view.
+   * opens the single station view.
    */
   const setSingleStationThis = async () => {
     navigate(`/${id}`);

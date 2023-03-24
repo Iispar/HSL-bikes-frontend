@@ -9,8 +9,8 @@ import StationData from './components/StationData';
 import './components/styles/main.css';
 
 /**
- * Basic structure for the application. Used a grid layout but only have
- * need for the header and a main element that is split into two.
+ * Basic structure for the application. Routes for the normal home view with all stations and
+ * journeys and a route for the single station view with data for station and map.
  */
 const App = () => (
   <Router>

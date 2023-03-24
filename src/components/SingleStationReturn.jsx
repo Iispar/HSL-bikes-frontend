@@ -17,6 +17,9 @@ const SingleStationReturn = () => {
       .then((journeysData) => setJourneys(journeysData));
   }, []);
 
+  /**
+   * Displays the current set of journeys.
+   */
   const displayJourneys = () => {
     const list = [];
     for (let i = 0; i < journeys.length; i += 1) {
@@ -33,7 +36,7 @@ const SingleStationReturn = () => {
   };
 
   /**
-   * method for moving forwards and backwords pages of journeydata.
+   * method for moving forwards and backwords pages of journeys.
    * @param {String} direction
    * @param {Integer} page
    * @returns set journeydata as filtered

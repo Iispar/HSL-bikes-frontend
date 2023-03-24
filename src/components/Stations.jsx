@@ -43,6 +43,7 @@ const Stations = () => {
    */
   const handleSubmit = (event) => {
     event.preventDefault();
+    // only one result so we disable the pagination buttons
     $('#backwardsStation-button').prop('disabled', true);
     $('#forwardsStation-button').prop('disabled', true);
     $('#stations__search__input').autocomplete('close');
@@ -62,8 +63,9 @@ const Stations = () => {
 
     if (page.current === 0) $('#backwardsStation-button').prop('disabled', true);
     else $('#backwardsStation-button').prop('disabled', false);
-
+    // gets new filter
     const filter = getPageFilter(direction, page.current, filterNow);
+    // gets new data and sets it.
     stationService.getFiltered(filter)
       .then((filteredJourneys) => setStationsDisplay(filteredJourneys));
   };
@@ -82,6 +84,9 @@ const Stations = () => {
       .then((filteredJourneys) => setStationsDisplay([...filteredJourneys]));
   };
 
+  /**
+   * sets the name as the new one and also displays the reset button for the station search.
+   */
   const changeName = (val) => {
     setName(val);
     if (val !== '') {

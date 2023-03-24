@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import $ from 'jquery';
 
 /**
- * Creates a html object of a journey for single station.
+ * Creates a html object of a journey for single journey for single station.
  * @param {} props
  * @returns singular journey object
  */
@@ -19,6 +19,9 @@ const SingleJourney = (props) => {
   if (direction === 'return') direction = 'FROM';
   else direction = 'TO';
 
+  /**
+   * Sets the station for the map. Moves the data into the maps div-data attr.
+   */
   const setMap = () => {
     $('#map__menu').attr('data-station', departureStationName);
   };

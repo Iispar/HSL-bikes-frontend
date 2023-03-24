@@ -40,6 +40,7 @@ const Journeys = () => {
     bikeService.getFiltered(filter)
       .then((filteredJourneys) => {
         setJourneys(filteredJourneys);
+        // if no journeys don't let go forwards anymore.
         if (filteredJourneys.length <= 0) $('#forwards-journey-button').prop('disabled', true);
         else $('#forwards-journey-button').prop('disabled', false);
       });
@@ -70,6 +71,7 @@ const Journeys = () => {
   const handleSubmitDeparture = (event) => {
     event.preventDefault();
     $('#journeys__header__search__departure__input').autocomplete('close');
+    // gets id of station.
     const id = stationsAndIds[departure];
     const filterToChange = [`Departure_station_id=${id}`];
     changeFilter(filterToChange);
@@ -82,6 +84,7 @@ const Journeys = () => {
   const handleSubmitReturn = (event) => {
     event.preventDefault();
     $('#journeys__header__search__return__input').autocomplete('close');
+    // gets id of station.
     const id = stationsAndIds[arrival];
     const filterToChange = [`Return_station_id=${id}`];
     changeFilter(filterToChange);
@@ -89,7 +92,7 @@ const Journeys = () => {
   };
 
   /**
-   *  onChange for distance and duration slider.
+   * onChange for distance and duration slider.
    * We set the value of the slider and also check that the sliders don't overlap.
    * @param {*} event
    * @param {*} slider
@@ -103,29 +106,37 @@ const Journeys = () => {
     let filteredMin;
     let filteredMax;
     if (slider === 'distance-slider-min') {
+      // if slider are next to each other don't let them overlap.
       if (min >= max - 0.2) {
         $('#distance-slider-max').val(parseFloat($('#distance-slider-max').val()) + 0.01);
       }
+      // if sliders value is 0.85 of 1 it is the "max" and wont go over this. That way the
+      // sliders wont overlap in the end.
       if (min >= 0.85) {
         $('#distance-slider-min').val(0.85);
         const filtered = Math.round(((0.85 ** 3) * 3600) * 50);
         setDistanceMin(filtered);
         return;
       }
+      // else just calculate the value and set it for both
       const filtered = Math.round((valuePotent * 3600) * 50);
       filteredMax = Math.round($('#distance-slider-max').val() ** 3 * 3600 * 50);
       setDistanceMax(filteredMax);
       setDistanceMin(filtered);
     } else if (slider === 'distance-slider-max') {
+      // if slider are next to each other don't let them overlap.
       if (min >= max - 0.2) {
         $('#distance-slider-min').val(parseFloat($('#distance-slider-min').val()) - 0.01);
       }
+      // if sliders value is 0.15 of 1 it is the "min" and wont go over this. That way the
+      // sliders wont overlap in the start.
       if (max <= 0.15) {
         $('#distance-slider-max').val(0.15);
         const filtered = Math.round(((0.15 ** 3) * 3600) * 50);
         setDistanceMax(filtered);
         return;
       }
+      // else just calculate the value and set it for both
       const filtered = Math.round((valuePotent * 3600) * 50);
       filteredMin = Math.round((($('#distance-slider-min').val() ** 3) * 3600) * 50);
       setDistanceMin(filteredMin);
@@ -136,6 +147,7 @@ const Journeys = () => {
       setDurationMin(filtered);
       return;
     }
+    // calculates and displays the value for the slider.
     const minDisplayValue = ($('#distance-slider-min').val() ** 3) * 3600 * 50;
     const maxDisplayValue = ($('#distance-slider-max').val() ** 3) * 3600 * 50;
     const displayMin = parseFloat(minDisplayValue / 1000).toFixed(2);
@@ -151,6 +163,7 @@ const Journeys = () => {
    */
   const searchFilters = async () => {
     let filter = [];
+    // adds what filters are selcted.
     if (distanceMax !== 'null') filter.push(`Covered_distance<${distanceMax}`);
     if (distanceMin !== 'null') filter.push(`Covered_distance>${distanceMin}`);
     if (durationMin !== 'null') filter.push(`Duration>${durationMin}`);
@@ -162,6 +175,7 @@ const Journeys = () => {
       const id = stationsAndIds[arrival];
       filter.push(`Return_station_id=${id}`);
     }
+    // creates and searches and updates data.
     filter = newFilter(filterNow, filter);
     setFilterNow(filter);
     bikeService.getFiltered(filter)
@@ -175,8 +189,10 @@ const Journeys = () => {
       mouseenter: () => {
         const min = $('#distance-slider-min').val();
         const max = $('#distance-slider-max').val();
+        // calculates the distance
         const displayMin = parseFloat(distanceMin / 1000).toFixed(2);
         const displayMax = parseFloat(distanceMax / 1000).toFixed(2);
+        // sets the corresponding value to display.
         if ((parseFloat(min, 10) === 0.00) && (parseFloat(max, 10) === 1.0)) $('#distance-slider-header').text('all');
         else if (parseFloat(max, 10) === 1.0) $('#distance-slider-header').text(`${displayMin} -`);
         else if (parseFloat(min, 10) === 0.00) $('#distance-slider-header').text(`- ${displayMax} `);

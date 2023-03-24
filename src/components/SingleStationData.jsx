@@ -29,6 +29,7 @@ const SingleStationData = () => {
     $('#station-information__data__top-returning__container__list').text('');
     $('#station-information__data__top-departing__container__list').text('');
 
+    // sends the data to the map through the div's data attribute.
     if (setMonth === 'all') {
       $('#station-information__data__month-filter__dropdown__button__info__current').text('all');
       $('#map__menu').attr('data-month', 'all');

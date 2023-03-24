@@ -3,6 +3,11 @@ import Journeys from './Journeys';
 import Stations from './Stations';
 import Header from './Header';
 
+/**
+ * Returns the view for the normal home view this is called when the user
+ * goes in address /.
+ * This displays all the stations and journeys, uses a grid layout.
+ */
 const Home = () => (
   <div className="background">
     <div className="background-container">
