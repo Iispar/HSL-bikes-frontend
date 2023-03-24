@@ -196,6 +196,8 @@ const Map = () => {
    * clears all markers from the map.
    */
   const clearMap = () => {
+    $('#map-departure-btn').removeClass('selected');
+    $('#map-return-btn').removeClass('selected');
     if (currentMarker !== '') currentMarker.remove();
     for (let i = 0; i < markers.length; i += 1) {
       markers[i].remove();
@@ -209,7 +211,7 @@ const Map = () => {
           <button className="map__menu__btn-container__btn" id="map-return-btn" type="button" name="map__menu__btn" onClick={() => changeDirection('return')}> return </button>
           <button className="map__menu__btn-container__btn" id="map-departure-btn" type="button" name="map__menu__btn" onClick={() => changeDirection('departure')}> departure </button>
         </div>
-        <button className="map__menu__btn-container__clear-btn" id="map-clear-btn" type="button" name="map__menu__btn" onClick={() => clearMap()}> X </button>
+        <button className="map__menu__btn-container__clear-btn" id="map-clear-btn" type="button" name="map__menu__btn" onClick={() => clearMap()}> </button>
       </div>
       <div id="map__container" className="map__container" />
     </div>

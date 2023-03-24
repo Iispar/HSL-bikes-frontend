@@ -478,9 +478,57 @@
     }
     &__return {
         display: none;
+        &__pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            gap: 6px;
+            &__btn {
+                border: 0px;
+                border-radius: 13px;
+                height: 26px;
+                width: 80px;
+                color: white;
+                background-color: #007AC9;
+                text-align: center;
+                font-family: $buttonFont, sans-serif;
+                &:disabled {
+                    display: none;
+                }
+    
+                &:hover {
+                    background-color: #0065a8;
+                }
+            }
+        }
     }
     &__departure {
         display: none;
+        &__pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            gap: 6px;
+            &__btn {
+                border: 0px;
+                border-radius: 13px;
+                height: 26px;
+                width: 80px;
+                color: white;
+                background-color: #007AC9;
+                text-align: center;
+                font-family: $buttonFont, sans-serif;
+                &:disabled {
+                    display: none;
+                }
+    
+                &:hover {
+                    background-color: #0065a8;
+                }
+            }
+        }
     }
 }
 

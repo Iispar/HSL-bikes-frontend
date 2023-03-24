@@ -15,6 +15,7 @@ const SingleStationReturn = () => {
   useEffect(() => {
     bikeService.getFiltered(['limit=10', `Return_station_id=${id}`])
       .then((journeysData) => setJourneys(journeysData));
+    $('#station-information__return__container__pagination__previous-btn').prop('disabled', true);
   }, []);
 
   /**
@@ -58,9 +59,9 @@ const SingleStationReturn = () => {
       <div className="station-information__return__container__display">
         {displayJourneys()}
       </div>
-      <div className="station-information__return__container__pagination">
-        <button type="button" className="station-information__return__container__pagination__previous-btn" id="station-information__return__container__pagination__previous-btn" onClick={() => changePage('b')}> prev </button>
-        <button type="button" className="station-information__return__container__pagination__next-btn" id="station-information__return__container__pagination__next-btn" onClick={() => changePage('f')}> next </button>
+      <div className="station-information__return__pagination">
+        <button type="button" className="station-information__return__pagination__btn" id="station-information__return__container__pagination__previous-btn" onClick={() => changePage('b')}> prev </button>
+        <button type="button" className="station-information__return__pagination__btn" id="station-information__return__container__pagination__next-btn" onClick={() => changePage('f')}> next </button>
       </div>
     </div>
   );
