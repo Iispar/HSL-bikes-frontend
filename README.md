@@ -1,7 +1,7 @@
 This project is still underway and production doesn't include all functions yet. Production should still work as planned.
 
 # Background
-In this project I use open data from HSL and display citybike trips for three months and also all stations for HSL citybikes. The project is split into two repositories. One for the [backgend](https://github.com/Iispar/solita-backend) and this for the frontend. You can know more about the backend from it's own repository. Shortly the data is based in mongoDB and the backend is an REST API that calls the data from mongo and processes it.
+In this project I use open data from HSL and display citybike trips for three months and also all stations for HSL citybikes. The project is split into two repositories. One for the [backend](https://github.com/Iispar/solita-backend) and this for the frontend. You can know more about the backend from it's own repository. Shortly the data is based in mongoDB and the backend is an REST API that calls the data from mongo and processes it.
 
 <br />
 <br />
