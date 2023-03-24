@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import $ from 'jquery';
+import { useNavigate } from 'react-router-dom';
 import stationService from '../services/StationService';
 import ListStations from './ListStations';
-import { stations } from '../data/stationsData';
-import { newFilter, getPageFilter } from './helpers/filterHelpers';
+import { stations, stationsAndIds } from '../data/stationsData';
+import { getPageFilter } from './helpers/filterHelpers';
 
 /*
  * method for creating the list of stations.
@@ -14,6 +15,7 @@ const Stations = () => {
   const [name, setName] = useState('');
   const [filterNow, setFilterNow] = useState(['limit=10', 'sort=+ID']);
   const page = useRef(0);
+  const navigate = useNavigate();
 
   /**
    * useEffect hook that retrieves the data when the app is opened.
@@ -25,31 +27,18 @@ const Stations = () => {
   }, []);
 
   /**
-   * method for changing the filter. And setting the journeydata as instructed by the filtering.
-   * @param {Array} filter
-   */
-  const changeFilter = (addToFilter) => {
-    const filter = newFilter(filterNow, addToFilter);
-    setFilterNow(filter);
-    stationService.getFiltered(filter)
-      .then((filteredJourneys) => {
-        setStationsDisplay(filteredJourneys);
-      });
-  };
-
-  /**
-   * Handles the submit of the form. Same as in bikes.
+   * Handles the submit of the form. Navigates to the stations page if it exists.
    * @param {} event
    */
   const handleSubmit = (event) => {
     event.preventDefault();
-    // only one result so we disable the pagination buttons
-    $('#backwardsStation-button').prop('disabled', true);
-    $('#forwardsStation-button').prop('disabled', true);
-    $('#stations__search__input').autocomplete('close');
-    const filterToChange = [`Name=${name}`];
-    changeFilter(filterToChange);
+    const id = stationsAndIds[name];
+    if (id !== '') {
+      setStationsDisplay([]);
+      return;
+    }
     setName('');
+    navigate(`/${id}`);
   };
 
   /**
