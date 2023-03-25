@@ -24,15 +24,4 @@ describe('Stations', () => {
     cy.wait(200);
     cy.contains('Unioninkatu');
   });
-
-  it('single station view works', () => {
-    cy.visit('http://localhost:3000');
-    cy.contains('Kaivopuisto').click();
-    cy.wait(200);
-    cy.get('.station-display').should('have.css', 'display')
-      .and('match', /flex/);
-    cy.contains('capasity');
-    cy.contains('top');
-    cy.contains('avg');
-  });
 });

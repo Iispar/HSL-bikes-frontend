@@ -33,7 +33,7 @@ const Stations = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const id = stationsAndIds[name];
-    if (id !== '') {
+    if (id === undefined) {
       setStationsDisplay([]);
       return;
     }

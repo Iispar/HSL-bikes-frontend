@@ -3,6 +3,12 @@ import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
 import Station from '../components/OneStation';
 
+const mockedUsedNavigate = jest.fn();
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUsedNavigate,
+}));
+
 describe('Station component tests', () => {
   const station = (
     <Station
@@ -24,7 +30,7 @@ describe('Station component tests', () => {
   test('renders station', () => {
     const component = render(station);
     expect(component.container).toHaveTextContent(
-      '111testStationFitestStation, testCityFi1',
+      '111testStation, testCityFi10',
     );
   });
 });

@@ -67,6 +67,7 @@ const Map = () => {
     const stationMarker = new mapboxgl.Marker()
       .setLngLat(coords)
       .addTo(map.current);
+    stationMarker._element.id = 'singleJourneyMarker';
     await setCurrentMarker(stationMarker);
     if (stationObserver !== '') stationObserver.disconnect();
   };
@@ -154,10 +155,13 @@ const Map = () => {
           center: [station[0].x, station[0].y],
         });
         // station marker.
-        // eslint-disable-next-line no-unused-vars
-        const stationMarker = new mapboxgl.Marker()
-          .setLngLat([station[0].x, station[0].y])
-          .addTo(map.current);
+        if ($('#stationMarker').length === 0) {
+          const stationMarker = new mapboxgl.Marker()
+            .setLngLat([station[0].x, station[0].y])
+            .addTo(map.current);
+          stationMarker._element.id = 'stationMarker';
+          console.log(stationMarker.getElement());
+        }
       } catch {
         console.log('error with the name in the database, please fix');
       }

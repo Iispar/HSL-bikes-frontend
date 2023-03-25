@@ -76,6 +76,7 @@ export const setTopOnMap = async (map, direction, stationId, month) => {
       .setPopup(new mapboxgl.Popup()
         .setHTML(`${responses[i][0].Name_fi} is the ${i + 1} top ${direction} station`))
       .addTo(map);
+    stationMarker._element.id = 'topMarker';
     list.push(stationMarker);
     const markerDiv = stationMarker.getElement();
     markerDiv.addEventListener('mouseenter', () => stationMarker.togglePopup());
