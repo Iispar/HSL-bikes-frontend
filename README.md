@@ -15,7 +15,6 @@ The project can be accessed form [here](https://bikes-frontend.vercel.app/).
 The application can be also accessed by cloning the repository and using command npm install and npm start.
 This should open the app into localhost:3000 and work with the backend. The project might give eslint errors because
 I have some custom rules in the .eslintrc so I can give this file if needed. Please contact me if the project doesn't work.
-IMPORTANT! Because of React.StrictMode some of the functions for example clearing the map don't work in developement!
 
 # Using
 The app should be self explanitory, but if not:
