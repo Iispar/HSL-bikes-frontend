@@ -895,9 +895,10 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   flex-direction: column;
   height: 1fr;
   padding-left: 20px;
+  padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  width: 380px;
+  width: 100%;
 }
 .station-information__header {
   display: flex;
@@ -940,7 +941,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
 }
 .station-information__header__close__btn {
   position: absolute;
-  right: -30px;
+  right: 0px;
   width: 30px;
   height: 30px;
   border: 0;

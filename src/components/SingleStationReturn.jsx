@@ -27,8 +27,8 @@ const SingleStationReturn = () => {
       list.push(<SingleJourney
         direction="return"
         key={journeys[i]._id}
-        departureStationName={journeys[i].Departure_station_name}
-        returnStationName={journeys[i].Return_station_name}
+        departureStationId={journeys[i].Departure_station_id}
+        returnStationId={journeys[i].Return_station_id}
         coveredDistance={journeys[i].Covered_distance}
         duration={journeys[i].Duration}
       />);

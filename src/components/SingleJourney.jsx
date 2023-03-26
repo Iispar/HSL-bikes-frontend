@@ -2,6 +2,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import $ from 'jquery';
+import { getKeyByValue } from './helpers/stationDataHelpers';
+import { stationsAndIds } from '../data/stationsData';
 
 /**
  * Creates a html object of a journey for single journey for single station.
@@ -9,8 +11,8 @@ import $ from 'jquery';
  * @returns singular journey object
  */
 const SingleJourney = (props) => {
-  const { departureStationName } = props;
-  const { returnStationName } = props;
+  const { departureStationId } = props;
+  const { returnStationId } = props;
   const { coveredDistance } = props;
   const { duration } = props;
   const distanceInKm = parseFloat(coveredDistance / 1000).toFixed(2);
@@ -18,6 +20,7 @@ const SingleJourney = (props) => {
   let { direction } = props;
   if (direction === 'return') direction = 'FROM';
   else direction = 'TO';
+  const departureStationName = getKeyByValue(stationsAndIds, departureStationId);
 
   /**
    * Sets the station for the map. Moves the data into the maps div-data attr.
@@ -48,16 +51,16 @@ const SingleJourney = (props) => {
 };
 
 SingleJourney.propTypes = {
-  departureStationName: propTypes.string,
-  returnStationName: propTypes.string,
+  departureStationId: propTypes.string,
+  returnStationId: propTypes.string,
   coveredDistance: propTypes.number,
   duration: propTypes.number,
   direction: propTypes.string,
 };
 
 SingleJourney.defaultProps = {
-  departureStationName: null,
-  returnStationName: null,
+  departureStationId: null,
+  returnStationId: null,
   coveredDistance: null,
   duration: null,
   direction: null,

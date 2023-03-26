@@ -64,11 +64,15 @@ const Map = () => {
     if (currentMarker !== '') currentMarker.remove();
     // gets langitude and latitude of new marker for station.
     const coords = await getLngLat(inputStation);
-    const stationMarker = new mapboxgl.Marker()
-      .setLngLat(coords)
-      .addTo(map.current);
-    stationMarker._element.id = 'singleJourneyMarker';
-    await setCurrentMarker(stationMarker);
+    // only one marker on screen at a time.
+    if ($('#singleJourneyMarker').length === 0) {
+      console.log('call');
+      const stationMarker = new mapboxgl.Marker()
+        .setLngLat(coords)
+        .addTo(map.current);
+      stationMarker._element.id = 'singleJourneyMarker';
+      await setCurrentMarker(stationMarker);
+    }
     if (stationObserver !== '') stationObserver.disconnect();
   };
 
@@ -160,7 +164,6 @@ const Map = () => {
             .setLngLat([station[0].x, station[0].y])
             .addTo(map.current);
           stationMarker._element.id = 'stationMarker';
-          console.log(stationMarker.getElement());
         }
       } catch {
         console.log('error with the name in the database, please fix');

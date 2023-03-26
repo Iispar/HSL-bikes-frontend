@@ -1,12 +1,15 @@
 import React from 'react';
 import propTypes from 'prop-types';
-
+import { stationsAndIds } from '../data/stationsData';
+import { getKeyByValue } from './helpers/stationDataHelpers';
 /**
   * Returns html for one single journey.
   */
 const Journey = (props) => {
-  const { departureStationName } = props;
-  const { returnStationName } = props;
+  const { departureStationId } = props;
+  const departureStationName = getKeyByValue(stationsAndIds, departureStationId);
+  const { returnStationId } = props;
+  const returnStationName = getKeyByValue(stationsAndIds, returnStationId);
   const { distance } = props;
   const distanceInKm = parseFloat(distance / 1000).toFixed(2);
   const { duration } = props;
@@ -49,8 +52,8 @@ const Journey = (props) => {
 };
 
 Journey.propTypes = {
-  departureStationName: propTypes.string.isRequired,
-  returnStationName: propTypes.string.isRequired,
+  departureStationId: propTypes.string.isRequired,
+  returnStationId: propTypes.string.isRequired,
   distance: propTypes.number.isRequired,
   duration: propTypes.number.isRequired,
   id: propTypes.string.isRequired,

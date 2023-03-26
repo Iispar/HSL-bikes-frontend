@@ -16,8 +16,8 @@ const ListJourneys = (props) => {
     list.push(<Journey
       key={journeys[i]._id}
       id={journeys[i]._id}
-      departureStationName={journeys[i].Departure_station_name}
-      returnStationName={journeys[i].Return_station_name}
+      departureStationId={journeys[i].Departure_station_id}
+      returnStationId={journeys[i].Return_station_id}
       distance={journeys[i].Covered_distance}
       duration={journeys[i].Duration}
     />);
