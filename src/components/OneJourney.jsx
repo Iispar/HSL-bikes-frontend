@@ -30,12 +30,10 @@ const Journey = (props) => {
         <div className="journey-display__location__from-text" name="station-text">
           {departureStationName}
         </div>
-        <div className="journey-display__location__from-station" />
-        <div className="journey-display__location__biker" style={{ left: `${string}` }} />
+        <div className="journey-display__location__arrow" />
         <div className="journey-display__location__to-text">
           {returnStationName}
         </div>
-        <div className="journey-display__location__to-station" />
       </div>
       <div className="journey-display__data">
         <p className="journey-display__data__text">

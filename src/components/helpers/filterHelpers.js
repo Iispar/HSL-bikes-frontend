@@ -11,16 +11,16 @@
 export const getPageFilter = (direction, page, filterNow) => {
   if (direction === 'f') {
     const filter = [...filterNow];
-    filter.push(`skip=${page * 10}`);
+    filter.push(`skip=${page * 8}`);
     return filter;
   }
   const filter = [...filterNow];
-  if (page * 10 < 0) {
+  if (page * 8 < 0) {
     // TODO: error handling here
     console.log('too low');
     return ('null');
   }
-  filter.push(`skip=${page * 10}`);
+  filter.push(`skip=${page * 8}`);
   return filter;
 };
 

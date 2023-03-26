@@ -26,7 +26,7 @@ const Home = () => (
       </div>
       <div className="grid__left" id="left-container">
         <Stations />
-        <div className="background-container">
+        <div className="background-container--left">
           <div id="bottom-left-background" />
         </div>
 

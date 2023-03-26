@@ -16,7 +16,6 @@
   left: 5px;
   top: 15px;
   width: 60px;
-  height: 100%;
   justify-content: center;
   align-items: center;
   margin-left: 15px;
@@ -25,7 +24,6 @@
   position: absolute;
   right: 5px;
   top: 10px;
-  height: 100%;
   width: 120px;
   align-items: center;
   justify-content: center;
@@ -76,8 +74,8 @@
 }
 input-logo, .journeys__header__search__departure__logo, .journeys__header__search__return__logo, .stations__search__field__logo {
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 9px;
+  left: 8px;
   width: 25px;
   height: 25px;
   font-weight: bold;
@@ -89,13 +87,13 @@ input-logo, .journeys__header__search__departure__logo, .journeys__header__searc
 }
 
 input-field, .journeys__header__search__departure__input, .journeys__header__search__return__input, .stations__search__field__input {
-  height: 30px;
+  height: 38px;
   padding-left: 40px;
   padding-right: 20px;
   width: calc(100% - 60px);
   border-radius: 5px;
   border: 1px solid;
-  font-size: 15px;
+  font-size: 18px;
   font-family: "HCo Gotham XNarrow", sans-serif;
   font-weight: 500;
   letter-spacing: 1px;
@@ -111,14 +109,14 @@ input-field-focus, .journeys__header__search__departure__input:focus, .journeys_
 reset-btn, .stations__search__field__reset-btn {
   display: none;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 9px;
+  right: 8px;
   width: 25px;
   height: 25px;
   border: 0;
   background: transparent;
   background-image: url("../../data/closeIcon.svg");
-  background-size: 50%;
+  background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -152,10 +150,10 @@ reset-btn, .stations__search__field__reset-btn {
 }
 .stations__search {
   grid-row: 2;
-  height: 36px;
+  height: 44px;
   margin-top: 10px;
   justify-self: center;
-  width: 360px;
+  width: 35vw;
 }
 .stations__search__field {
   position: relative;
@@ -195,11 +193,13 @@ reset-btn, .stations__search__field__reset-btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 14px;
-  width: 360px;
-  padding-bottom: 18px;
-  padding-top: 9px;
-  margin-bottom: 9px;
+  height: 22px;
+  width: 35vw;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  margin-bottom: 10px;
   border-bottom: 1px solid;
   border-color: #929292;
   z-index: 1;
@@ -211,7 +211,7 @@ reset-btn, .stations__search__field__reset-btn {
   align-items: center;
   border-radius: 5px;
   border-color: rgba(0, 0, 0, 0.455);
-  height: 30px;
+  height: 35px;
   width: 50px;
   background: #007AC9;
   text-transform: uppercase;
@@ -223,7 +223,7 @@ reset-btn, .stations__search__field__reset-btn {
 }
 .station-display__location__name {
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 20px;
   font-family: "HCo Gotham XNarrow", sans-serif;
   font-weight: 2000;
   letter-spacing: 0.8px;
@@ -231,7 +231,7 @@ reset-btn, .stations__search__field__reset-btn {
 }
 .station-display__location__address {
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 12px;
   font-family: "HCo Gotham XNarrow", sans-serif;
   font-weight: 100;
   letter-spacing: 0.2px;
@@ -271,8 +271,8 @@ reset-btn, .stations__search__field__reset-btn {
 }
 input-logo, .journeys__header__search__departure__logo, .journeys__header__search__return__logo, .stations__search__field__logo {
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 9px;
+  left: 8px;
   width: 25px;
   height: 25px;
   font-weight: bold;
@@ -284,13 +284,13 @@ input-logo, .journeys__header__search__departure__logo, .journeys__header__searc
 }
 
 input-field, .journeys__header__search__departure__input, .journeys__header__search__return__input, .stations__search__field__input {
-  height: 30px;
+  height: 38px;
   padding-left: 40px;
   padding-right: 20px;
   width: calc(100% - 60px);
   border-radius: 5px;
   border: 1px solid;
-  font-size: 15px;
+  font-size: 18px;
   font-family: "HCo Gotham XNarrow", sans-serif;
   font-weight: 500;
   letter-spacing: 1px;
@@ -306,14 +306,14 @@ input-field-focus, .journeys__header__search__departure__input:focus, .journeys_
 reset-btn, .stations__search__field__reset-btn {
   display: none;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 9px;
+  right: 8px;
   width: 25px;
   height: 25px;
   border: 0;
   background: transparent;
   background-image: url("../../data/closeIcon.svg");
-  background-size: 50%;
+  background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -374,7 +374,7 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
   flex-direction: column;
   align-items: center;
   background: transparent;
-  width: 100%;
+  width: 99%;
   z-index: 0;
 }
 .journeys__title {
@@ -404,18 +404,19 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 82px;
+  height: 100px;
   width: 100%;
   margin-top: 10px;
   padding-right: 4px;
   gap: 10px;
   justify-self: center;
+  padding-bottom: 6px;
 }
 .journeys__header__search {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  width: 200px;
+  width: 240px;
   height: 70px;
   margin-right: 10px;
 }
@@ -425,7 +426,7 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
 .journeys__header__search__return__logo {
   height: 25px;
   width: 25px;
-  top: 5px;
+  top: 7px;
   left: 5px;
   filter: invert(73%) sepia(9%) saturate(2369%) hue-rotate(283deg) brightness(98%) contrast(92%);
 }
@@ -433,6 +434,7 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
   padding-right: 0px;
   padding-left: 30px;
   width: calc(100% - 30px);
+  height: 35px;
 }
 .journeys__header__search__departure {
   position: relative;
@@ -440,7 +442,7 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
 .journeys__header__search__departure__logo {
   height: 25px;
   width: 25px;
-  top: 5px;
+  top: 7px;
   left: 5px;
   filter: invert(60%) sepia(37%) saturate(1265%) hue-rotate(52deg) brightness(102%) contrast(76%);
 }
@@ -448,6 +450,7 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
   padding-right: 0px;
   padding-left: 30px;
   width: calc(100% - 30px);
+  height: 35px;
 }
 .journeys__header__all {
   display: flex;
@@ -484,7 +487,7 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
 }
 .journeys__header__filters {
   display: none;
-  height: 78px;
+  height: 86px;
   width: 270px;
   flex-direction: row;
   justify-content: space-between;
@@ -508,11 +511,13 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
 }
 .journeys__header__filters__sliders__distance-slider__header {
   font-family: "HCo Gotham XNarrow", sans-serif;
+  text-align: center;
   padding-bottom: 4px;
   margin: 0px;
 }
 .journeys__header__filters__sliders__duration-slider__header {
   font-family: "HCo Gotham XNarrow", sans-serif;
+  text-align: center;
   padding-bottom: 6px;
   margin: 0px;
 }
@@ -636,8 +641,6 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
   justify-self: center;
   grid-row: 3;
   padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
   z-index: 0;
 }
 .journeys__pagination {
@@ -687,93 +690,61 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
   }
 }
 .journey-display {
-  position: relative;
-  height: 14px;
-  width: 500px;
-  padding-bottom: 18px;
-  padding-top: 9px;
-  margin-bottom: 9px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 540px;
+  height: 22px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  margin-bottom: 10px;
   background: transparent;
   border-bottom: 1px solid #929292;
   cursor: default;
 }
 .journey-display__location {
-  position: absolute;
-  top: -4px;
-  bottom: 4px;
-  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 65%;
-  border-bottom: 2px dashed rgb(119, 119, 119);
-}
-.journey-display__location__biker {
-  position: absolute;
-  bottom: -4px;
-  left: 50px;
-  height: 28px;
-  width: 28px;
-  background-image: url("../../data/biker.svg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: bottom;
+  height: 80%;
 }
 .journey-display__location__from-text {
-  position: absolute;
-  top: 0px;
-  left: 0px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-top: 2px;
   margin-bottom: 5px;
   font-family: "HCo Gotham XNarrow", sans-serif;
-  font-size: 14px;
-}
-.journey-display__location__from-station {
-  position: absolute;
-  bottom: -2px;
-  left: 15px;
-  height: 25px;
-  width: 25px;
-  background-image: url("../../data/bikeParking.svg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: bottom;
+  font-size: 18px;
+  text-align: start;
 }
 .journey-display__location__to-text {
-  position: absolute;
-  top: 0px;
-  right: 0px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-top: 2px;
   margin-bottom: 5px;
   font-family: "HCo Gotham XNarrow", sans-serif;
-  font-size: 14px;
+  font-size: 18px;
+  text-align: end;
 }
-.journey-display__location__to-station {
-  position: absolute;
-  bottom: -2px;
-  right: 15px;
-  height: 25px;
-  width: 25px;
-  background-image: url("../../data/bikeParking.svg");
+.journey-display__location__arrow {
+  height: 40px;
+  width: 40px;
+  background-image: url("../../data/arrow.svg");
   background-size: 100%;
   background-repeat: no-repeat;
-  background-position: bottom;
+  z-index: 1;
 }
 .journey-display__data {
   display: flex;
-  position: absolute;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  bottom: 9px;
-  top: 0;
-  right: 0;
-  width: 33%;
-  padding: 0px;
+  height: 40px;
+  width: 140px;
 }
 .journey-display__data__text {
   display: flex;
@@ -837,9 +808,6 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
 }
 
 .background {
-  display: flex;
-  justify-content: center;
-  background: white;
   position: absolute;
   top: 0;
   left: 0;
@@ -856,7 +824,17 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   right: 0px;
   overflow: hidden;
   background: transparent;
-  z-index: -11;
+  z-index: -1;
+}
+.background-container--left {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: -100px;
+  overflow: hidden;
+  background: transparent;
+  z-index: -1;
 }
 
 #top-right-background {
@@ -881,10 +859,10 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   background-repeat: no-repeat;
   background-position: bottom 0px left 0px;
   bottom: -200px;
-  left: -400px;
+  left: -300px;
   height: 1050px;
-  width: 1050px;
-  z-index: 0;
+  width: 1450px;
+  z-index: 1;
   filter: invert(84%) sepia(27%) saturate(250%) hue-rotate(159deg) brightness(98%) contrast(98%);
 }
 
@@ -1618,29 +1596,31 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 40% 60%;
   grid-template-rows: 50px 1fr;
   min-width: 1000px;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
+  padding: 0px;
 }
 .grid__header {
   display: flex;
   justify-content: center;
-  grid-column: 1/4;
+  grid-column: 1/3;
   grid-row: 1;
 }
 .grid__right {
   position: relative;
   display: flex;
   justify-content: center;
-  grid-column: 2/4;
+  grid-column: 2;
   grid-row: 2;
 }
 .grid__left {
   position: relative;
   display: flex;
   justify-content: center;
-  grid-column: 1/1;
+  grid-column: 1;
   grid-row: 2;
   max-width: 720px;
 }/*# sourceMappingURL=main.css.map */

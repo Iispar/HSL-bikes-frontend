@@ -6,7 +6,7 @@ const baseUrl = 'https://solita-backend.fly.dev';
  * get the data of the stations from the backend. Return first 10 items from the backend.
  */
 const getAll = async () => {
-  const request = await axios.get(`${baseUrl}/api/stations?limit=10&sort=+ID`);
+  const request = await axios.get(`${baseUrl}/api/stations?limit=8&sort=+ID`);
   return request.data;
 };
 

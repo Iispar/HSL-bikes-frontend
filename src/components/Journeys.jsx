@@ -14,7 +14,7 @@ import { stations, stationsAndIds } from '../data/stationsData';
 const Journeys = () => {
   const [journeys, setJourneys] = useState([]);
   const page = useRef(0);
-  const [filterNow, setFilterNow] = useState(['limit=9']);
+  const [filterNow, setFilterNow] = useState(['limit=7']);
   const [departure, setDeparture] = useState('');
   const [arrival, setArrival] = useState('');
   const [distanceMin, setDistanceMin] = useState('null');
@@ -256,8 +256,8 @@ const Journeys = () => {
     $('#journeys__header__search__return__input').val('');
     $('.journeys__header__all').css('display', 'flex');
     $('.journeys__header__filters').css('display', 'none');
-    setFilterNow(['limit=9']);
-    bikeService.getFiltered(['limit=9'])
+    setFilterNow(['limit=7']);
+    bikeService.getFiltered(['limit=7'])
       .then((filteredJourneys) => setJourneys([...filteredJourneys]));
   };
 

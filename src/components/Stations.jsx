@@ -13,7 +13,7 @@ import { getPageFilter } from './helpers/filterHelpers';
 const Stations = () => {
   const [stationsDisplay, setStationsDisplay] = useState([]);
   const [name, setName] = useState('');
-  const [filterNow, setFilterNow] = useState(['limit=10', 'sort=+ID']);
+  const [filterNow, setFilterNow] = useState(['limit=8', 'sort=+ID']);
   const page = useRef(0);
   const navigate = useNavigate();
 
@@ -67,9 +67,9 @@ const Stations = () => {
     $('#forwardsStation-button').prop('disabled', false);
     $('#stations__search__reset-btn').css('display', 'none');
     $('#stations__search__input').val('');
-    setFilterNow(['limit=10', 'sort=+ID']);
+    setFilterNow(['limit=8', 'sort=+ID']);
     setName('');
-    stationService.getFiltered(['limit=10', 'sort=+ID'])
+    stationService.getFiltered(['limit=8', 'sort=+ID'])
       .then((filteredJourneys) => setStationsDisplay([...filteredJourneys]));
   };
 

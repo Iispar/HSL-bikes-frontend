@@ -1,7 +1,4 @@
 .background {
-    display: flex;
-    justify-content: center;
-    background: white;
     position: absolute;
     top: 0;
     left: 0;
@@ -18,7 +15,17 @@
     right: 0px;
     overflow: hidden;
     background: transparent;
-    z-index: -11;
+    z-index: -1;
+    &--left {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: -100px;
+        overflow: hidden;
+        background: transparent;
+        z-index: -1;
+    }
 }
 
 #top-right-background {
@@ -43,9 +50,9 @@
     background-repeat: no-repeat;
     background-position: bottom 0px left 0px;
     bottom: -200px;
-    left: -400px;
+    left: -300px;
     height: 1050px;
-    width: 1050px;
-    z-index: 0;
+    width: 1450px;
+    z-index: 1;
     filter: invert(84%) sepia(27%) saturate(250%) hue-rotate(159deg) brightness(98%) contrast(98%);
     }
