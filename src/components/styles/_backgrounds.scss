@@ -18,6 +18,7 @@
     right: 0px;
     overflow: hidden;
     background: transparent;
+    z-index: -11;
 }
 
 #top-right-background {
@@ -25,13 +26,14 @@
     background-image: url('../../data/blob.svg');
     background-size: 1500px;
     background-repeat: no-repeat;
-    top: -5px;
-    right: -25px;
+    background-position: top right;
+    top: -50px;
+    right: -600px;
     height: 600px;
-    width: 60%;
+    width: 2050px;
     min-width: 550px;
     z-index: 0;
-    filter: invert(28%) sepia(100%) saturate(1681%) hue-rotate(184deg) brightness(91%) contrast(102%);
+    filter: invert(84%) sepia(27%) saturate(250%) hue-rotate(159deg) brightness(98%) contrast(98%);
     }
 
 #bottom-left-background {
@@ -40,12 +42,10 @@
     background-size: 1500px;
     background-repeat: no-repeat;
     background-position: bottom 0px left 0px;
-    top: 0px;
-    bottom: 0px;
-    right: 450px;
+    bottom: -200px;
+    left: -400px;
     height: 1050px;
-    width: 88%;
-    min-width: 920px;
+    width: 1050px;
     z-index: 0;
-    filter: invert(28%) sepia(100%) saturate(1681%) hue-rotate(184deg) brightness(91%) contrast(102%);
+    filter: invert(84%) sepia(27%) saturate(250%) hue-rotate(159deg) brightness(98%) contrast(98%);
     }

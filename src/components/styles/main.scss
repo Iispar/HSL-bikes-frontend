@@ -13,11 +13,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 50px 1fr;
   min-width: 1000px;
-
-  &>div {
-    text-align: center;
-    margin: 0px;
-  }
+  width: 100%;
 
   &__header {
     display: flex;
@@ -27,6 +23,7 @@
   }
 
   &__right {
+    position: relative;
     display: flex;
     justify-content: center;
     grid-column: 2/4;
@@ -34,6 +31,7 @@
   }
 
   &__left {
+    position: relative;
     display: flex;
     justify-content: center;
     grid-column: 1/1;

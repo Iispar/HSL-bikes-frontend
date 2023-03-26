@@ -12,8 +12,6 @@ const Home = () => (
   <div className="background">
     <div className="background-container">
       <div id="header-background" />
-      <div id="top-right-background" />
-      <div id="bottom-left-background" />
     </div>
     <div className="grid">
       <div className="grid__header" id="header-container">
@@ -21,9 +19,17 @@ const Home = () => (
       </div>
       <div className="grid__right" id="right-container">
         <Journeys />
+        <div className="background-container">
+          <div id="top-right-background" />
+        </div>
+
       </div>
       <div className="grid__left" id="left-container">
         <Stations />
+        <div className="background-container">
+          <div id="bottom-left-background" />
+        </div>
+
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import $ from 'jquery';
 import { useParams } from 'react-router-dom';
 import {
@@ -13,6 +13,46 @@ const SingleStationData = () => {
   let avgReturnignKm = null;
   let avgDepartingKm = null;
   const { id } = useParams();
+
+  /**
+   * Sets the correct information for the current displayed station.
+   */
+  const setData = async () => {
+    $('#station-information__data__statistics__container__departing__container').css('display', 'none');
+    $('#station-information__data__statistics__container__returning__container').css('display', 'none');
+    $('.loader-container').css('display', 'flex');
+
+    $('.station-information__data__top-returning__container__title').text('top return: ');
+    $('.station-information__data__top-departing__container__title').text('top departure:');
+    $('#station-filter-btn').prop('disabled', false);
+
+    // calculates all the data.
+    await setTop('station-information__data__top-returning__container__list', 'return', id, 'all');
+    await setTop('station-information__data__top-departing__container__list', 'departure', id, 'all');
+    tripsEndingHere = await getCountTrips('return', id, 'all');
+    tripsStartingHere = await getCountTrips('departure', id, 'all');
+    avgReturning = await getAverageDistance('return', id, 'all');
+    avgDeparting = await getAverageDistance('departure', id, 'all');
+    avgReturnignKm = parseFloat(avgReturning / 1000).toFixed(2);
+    avgDepartingKm = parseFloat(avgDeparting / 1000).toFixed(2);
+    // sets the data.
+    $('#station-information__data__statistics__container__departing__container').css('display', 'flex');
+    $('#station-information__data__statistics__container__returning__container').css('display', 'flex');
+    $('.loader-container').css('display', 'none');
+    $('#station-information__data__statistics__container__departing__container__all-trips').text(`${tripsEndingHere} trips`);
+    $('#station-information__data__statistics__container__returning__container__all-trips').text(`${tripsStartingHere} trips`);
+    $('#station-information__data__statistics__container__returning__container__all-avg').text(`${avgReturnignKm} km`);
+    $('#station-information__data__statistics__container__departing__container__all-avg').text(`${avgDepartingKm} km`);
+  };
+
+  /**
+   * sets the station info after stats has been loaded.
+   */
+  useEffect(() => {
+    // Doing thisway because useEffect can't be async.
+    setData();
+  }, []);
+
   /**
    * Changes the month for all of the statistics
    * @param {Int} month
@@ -21,10 +61,9 @@ const SingleStationData = () => {
     $('button[name=station-filter-btn]').prop('disabled', true);
     const setMonth = getMonthName(month);
 
-    $('#station-information__data__statistics__container__departing__container__all-trips').text('Waiting for data...');
-    $('#station-information__data__statistics__returning__all-trips').text('Waiting for data...');
-    $('#station-information__data__statistics__returning__all-avg').text('');
-    $('#station-information__data__statistics__container__departing__container__all-avg').text('');
+    $('#station-information__data__statistics__container__departing__container').css('display', 'none');
+    $('#station-information__data__statistics__container__returning__container').css('display', 'none');
+    $('.loader-container').css('display', 'flex');
     $('td[name=top-stations-title]').text('');
     $('#station-information__data__top-returning__container__list').text('');
     $('#station-information__data__top-departing__container__list').text('');
@@ -55,6 +94,9 @@ const SingleStationData = () => {
     $('#station-information__data__statistics__container__returning__container__all-trips').text(`${tripsStartingHere} trips`);
     $('#station-information__data__statistics__container__returning__container__all-avg').text(`${avgReturnignKm} km`);
     $('#station-information__data__statistics__container__departing__container__all-avg').text(`${avgDepartingKm} km`);
+    $('#station-information__data__statistics__container__departing__container').css('display', 'flex');
+    $('#station-information__data__statistics__container__returning__container').css('display', 'flex');
+    $('.loader-container').css('display', 'none');
   };
 
   /**
@@ -118,20 +160,26 @@ const SingleStationData = () => {
       <div className="station-information__data__statistics">
         <div className="station-information__data__statistics__container">
           <div className="station-information__data__statistics__container__departing" id="station-information__data__statistics__container__departing">
-            <div className="station-information__data__statistics__container__departing__container">
+            <div className="station-information__data__statistics__container__departing__container" id="station-information__data__statistics__container__departing__container">
               <div className="station-information__data__statistics__container__departing__container__all-img" />
               <div className="station-information__data__statistics__container__departing__container__all-trips" id="station-information__data__statistics__container__departing__container__all-trips" />
               <div className="station-information__data__statistics__container__departing__container__avg-img" />
               <div className="station-information__data__statistics__container__departing__container__all-avg" id="station-information__data__statistics__container__departing__container__all-avg" />
             </div>
+            <div className="loader-container">
+              <div className="loader-container__loader" />
+            </div>
             <div className="station-information__data__statistics__container__departing__footer"> departing </div>
           </div>
           <div className="station-information__data__statistics__container__returning">
-            <div className="station-information__data__statistics__container__returning__container">
+            <div className="station-information__data__statistics__container__returning__container" id="station-information__data__statistics__container__returning__container">
               <div className="station-information__data__statistics__container__returning__container__all-img" />
               <div className="station-information__data__statistics__container__returning__container__all-trips" id="station-information__data__statistics__container__returning__container__all-trips" />
               <div className="station-information__data__statistics__container__returning__container__avg-img" />
               <div className="station-information__data__statistics__container__returning__container__all-avg" id="station-information__data__statistics__container__returning__container__all-avg" />
+            </div>
+            <div className="loader-container">
+              <div className="loader-container__loader" />
             </div>
             <div className="station-information__data__statistics__container__returning__footer"> returning </div>
           </div>

@@ -6,9 +6,12 @@
     justify-content: space-between;
     z-index: 1;
     width: 100%;
+    height: 50px;
+    background: #007AC9;
     &__logo {
-        display: flex;
-        justify-self: flex-start;
+        position: absolute;
+        left: 5px;
+        top: 15px;
         width: 60px;
         height: 100%;
         justify-content: center;
@@ -17,11 +20,11 @@
     }
 
     &__create-new {
-        display: flex;
-        justify-self: flex-end;
+        position: absolute;
+        right: 5px;
+        top: 10px;
         height: 100%;
         width: 120px;
-        margin-right: 150px;
         align-items: center;
         justify-content: center;
 
