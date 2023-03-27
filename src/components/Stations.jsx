@@ -31,6 +31,8 @@ const Stations = () => {
    * @param {} event
    */
   const handleSubmit = (event) => {
+    $('#backwardsStation-button').prop('disabled', true);
+    $('#forwardsStation-button').prop('disabled', true);
     event.preventDefault();
     const id = stationsAndIds[name];
     if (id === undefined) {
@@ -63,14 +65,13 @@ const Stations = () => {
    * Resets the current sorts
    */
   const resetFilters = () => {
-    $('#backwardsStation-button').prop('disabled', true);
-    $('#forwardsStation-button').prop('disabled', false);
     $('#stations__search__reset-btn').css('display', 'none');
     $('#stations__search__input').val('');
     setFilterNow(['limit=8', 'sort=+ID']);
     setName('');
     stationService.getFiltered(['limit=8', 'sort=+ID'])
       .then((filteredJourneys) => setStationsDisplay([...filteredJourneys]));
+    $('#forwardsStation-button').prop('disabled', false);
   };
 
   /**

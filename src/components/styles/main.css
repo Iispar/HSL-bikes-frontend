@@ -257,9 +257,10 @@ reset-btn, .stations__search__field__reset-btn {
   background-repeat: no-repeat;
 }
 .station-display__no-results {
+  text-align: center;
   width: 360px;
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 30px;
   font-family: "HCo Gotham XNarrow", sans-serif;
   font-weight: 100;
   letter-spacing: 0.8px;
@@ -873,11 +874,10 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
 .station-information {
   display: flex;
   flex-direction: column;
-  height: 1fr;
+  height: 90vh;
   padding-left: 20px;
   padding-right: 10px;
   padding-top: 10px;
-  padding-bottom: 10px;
   width: 100%;
 }
 .station-information__header {
@@ -970,7 +970,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   display: grid;
   grid-template-columns: 1fr 200px;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  height: 50%;
+  height: 500px;
   z-index: 0;
   margin-right: 20px;
 }
@@ -1058,7 +1058,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   background: rgba(0, 121, 201, 0.4392156863);
 }
 .station-information__data__top-returning {
-  grid-row: 1/6;
+  grid-row: 1/5;
   grid-column: 1;
   padding-top: 8px;
   z-index: 10;
@@ -1075,7 +1075,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   padding-left: 5px;
   text-align: left;
   font-family: "HCo Gotham XNarrow", sans-serif;
-  font-size: 26px;
+  font-size: 30px;
   text-transform: uppercase;
   font-weight: 500;
   font-stretch: expanded;
@@ -1117,9 +1117,8 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   display: none;
 }
 .station-information__data__top-departing {
-  grid-row: 6/9;
+  grid-row: 5/9;
   grid-column: 1;
-  padding-top: 4px;
 }
 .station-information__data__top-departing__container {
   display: flex;
@@ -1133,7 +1132,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   padding-left: 5px;
   text-align: left;
   font-family: "HCo Gotham XNarrow", sans-serif;
-  font-size: 26px;
+  font-size: 30px;
   text-transform: uppercase;
   font-weight: 500;
   font-stretch: expanded;
@@ -1180,13 +1179,13 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   z-index: 0;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 2px;
+  padding-top: 8px;
   width: 100%;
 }
 .station-information__data__statistics__container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 .station-information__data__statistics__container__departing {
   display: flex;
