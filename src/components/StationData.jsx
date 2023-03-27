@@ -9,7 +9,7 @@ import Header from './SingleStationHeader';
  */
 const StationData = () => (
   <div className="background">
-    <div className="grid">
+    <div className="grid--single">
       <div className="grid__header" id="header-container">
         <Header />
       </div>

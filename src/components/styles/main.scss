@@ -7,15 +7,25 @@
 @import './backgrounds';
 @import './single-station-view';
 @import './map';
+@import './footer';
 
 .grid {
   display: grid;
   grid-template-columns: 40% 60%;
-  grid-template-rows: 50px 1fr;
+  grid-template-rows: 50px 1fr 400px;
   min-width: 1000px;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   padding: 0px;
+  &--single {
+    display: grid;
+    grid-template-columns: 550px 1fr;
+    grid-template-rows: 50px 1fr;
+    min-width: 1000px;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+  }
 
   &__header {
     display: flex;
@@ -39,5 +49,12 @@
     grid-column: 1;
     grid-row: 2;
     max-width: 720px;
+  }
+  &__footer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    grid-row: 3;
+    grid-column: 1/3;
   }
 }

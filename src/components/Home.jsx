@@ -2,6 +2,7 @@ import React from 'react';
 import Journeys from './Journeys';
 import Stations from './Stations';
 import Header from './Header';
+import Footer from './Footer';
 
 /**
  * Returns the view for the normal home view this is called when the user
@@ -29,7 +30,9 @@ const Home = () => (
         <div className="background-container--left">
           <div id="bottom-left-background" />
         </div>
-
+      </div>
+      <div className="grid__footer" id="left-container">
+        <Footer />
       </div>
     </div>
   </div>
