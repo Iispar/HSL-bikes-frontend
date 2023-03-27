@@ -53,6 +53,7 @@ const Journeys = () => {
    * @returns set journeydata as filtered
    */
   const changePage = (direction) => {
+    $('#forwards-journey-button').prop('disabled', false);
     if (direction === 'f') page.current += 1;
     else page.current -= 1;
 
@@ -61,7 +62,12 @@ const Journeys = () => {
 
     const filter = getPageFilter(direction, page.current, filterNow);
     bikeService.getFiltered(filter)
-      .then((filteredJourneys) => setJourneys(filteredJourneys));
+      .then((filteredJourneys) => {
+        if (filteredJourneys.length === 0) {
+          $('#forwards-journey-button').prop('disabled', true);
+        }
+        setJourneys(filteredJourneys);
+      });
   };
 
   /**

@@ -1441,7 +1441,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   border: 2px solid #007AC9;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-  height: 65px;
+  height: 75px;
   width: 100%;
 }
 .loader-container__loader {
