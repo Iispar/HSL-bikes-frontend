@@ -141,7 +141,7 @@ reset-btn, .stations__search__field__reset-btn {
 }
 .stations__title__text {
   text-transform: uppercase;
-  font-size: 80px;
+  font-size: 70px;
   font-family: "HCo Gotham XNarrow", sans-serif;
   font-weight: 500;
   font-stretch: expanded;
@@ -394,7 +394,7 @@ double-slider-track, .journeys__header__filters__sliders__duration-slider__track
   z-index: 1;
   text-transform: uppercase;
   mix-blend-mode: difference;
-  font-size: 80px;
+  font-size: 70px;
   font-family: "HCo Gotham XNarrow", sans-serif;
   font-weight: 500;
   font-stretch: expanded;
@@ -1607,8 +1607,12 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   padding: 10px;
 }
 .footer__content {
-  border: 2px solid black;
   height: 100%;
+  width: 100%;
+}
+.footer__content__map {
+  height: 100%;
+  width: 100%;
 }
 
 .grid {
