@@ -127,7 +127,8 @@ reset-btn, .stations__search__field__reset-btn {
   align-items: center;
   border-right: 2px solid #b4b4b4;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  padding-bottom: 80px;
 }
 .stations__title {
   display: flex;
@@ -833,7 +834,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
 .background-container--left {
   position: absolute;
   top: 0px;
-  bottom: 0px;
+  bottom: 0;
   left: 0px;
   right: -60vw;
   overflow: hidden;
@@ -844,11 +845,11 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
 #top-right-background {
   position: absolute;
   background-image: url("../../data/blob.svg");
-  background-size: 1500px;
+  background-size: 1200px;
   background-repeat: no-repeat;
   background-position: top right;
-  top: -50px;
-  right: -600px;
+  top: -100px;
+  right: -550px;
   height: 600px;
   width: 2050px;
   min-width: 550px;
@@ -862,7 +863,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   background-size: 1500px;
   background-repeat: no-repeat;
   background-position: bottom 0px left 0px;
-  bottom: -50px;
+  bottom: 0px;
   left: 0px;
   right: 0px;
   height: 1250px;
