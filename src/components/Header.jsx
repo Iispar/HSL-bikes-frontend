@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import $ from 'jquery';
 
 const Header = () => {
   const screen = window.matchMedia('(max-width: 1000px)');
+
+  /**
+   * Sets stations as the current view on the switch.
+   */
+  useEffect(() => {
+    $('#switch-stations-btn').addClass('selected');
+  }, []);
   /**
    * When the screen is smaller than 1000px we use this switch to swap between the journeys
    * and stations display.
@@ -12,9 +19,13 @@ const Header = () => {
     if (view === 'stations') {
       $('.grid__right').css('display', 'none');
       $('.grid__left').css('display', 'flex');
+      $('#switch-journeys-btn').removeClass('selected');
+      $('#switch-stations-btn').addClass('selected');
     } else {
       $('.grid__right').css('display', 'flex');
       $('.grid__left').css('display', 'none');
+      $('#switch-stations-btn').removeClass('selected');
+      $('#switch-journeys-btn').addClass('selected');
     }
   };
   /**
@@ -38,8 +49,8 @@ const Header = () => {
     <div className="header">
       <div className="header__logo"> LOGO </div>
       <div className="header__switch">
-        <button className="header__switch__stations-btn" type="button" onClick={() => changeView('stations')}> stations </button>
-        <button className="header__switch__jorneys-btn" type="button" onClick={() => changeView('journeys')}> journeys </button>
+        <button id="switch-stations-btn" className="header__switch__btn" type="button" onClick={() => changeView('stations')}> stations </button>
+        <button id="switch-journeys-btn" className="header__switch__btn" type="button" onClick={() => changeView('journeys')}> journeys </button>
       </div>
       <div className="header__create-new">
         <button className="header__create-new__btn" type="button"> Create new </button>
