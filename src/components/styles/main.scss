@@ -10,6 +10,9 @@
 
 .grid {
   @media all and (min-width: 1001px) {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: 50px 1fr 400px;
@@ -17,6 +20,9 @@
     height: 100vh;
   }
   @media all and (max-width: 1000px) {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 50px 1fr 400px;

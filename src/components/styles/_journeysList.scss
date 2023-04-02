@@ -1,12 +1,23 @@
 @import './colors-and-fonts';
 @import './sliders';
 .journeys {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: transparent;
-    width: 99%;
-    z-index: 0;
+    @media all and (min-width: 1001px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: transparent;
+        width: 99%;
+        z-index: 0;
+    }
+    @media all and (max-width: 1000px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 0px;
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
 
     &__title {
         display: flex;
@@ -34,17 +45,31 @@
     }
 
     &__header {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        height: 100px;
-        width: 50vw;
-        max-width: 750px;
-        margin-top: 10px;
-        padding-right: 4px;
-        gap: 10px;
-        justify-self: center;
-        padding-bottom: 6px;
+        @media all and (min-width: 1001px) {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            height: 100px;
+            width: 50vw;
+            max-width: 750px;
+            margin-top: 10px;
+            padding-right: 4px;
+            gap: 10px;
+            justify-self: center;
+            padding-bottom: 6px;
+        }
+        @media all and (max-width: 1000px) {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            height: 100px;
+            width: 100%;
+            margin-top: 10px;
+            padding-right: 4px;
+            gap: 10px;
+            justify-self: center;
+            padding-bottom: 6px;
+        }
 
         &__search {
             display: flex;
@@ -318,10 +343,16 @@
         }
     }
     &__list {
-        justify-self: center;
-        grid-row: 3;
-        padding-top: 10px;
-        z-index: 0;
+        @media all and (min-width: 1001px) {
+            justify-self: center;
+            grid-row: 3;
+            padding-top: 10px;
+            z-index: 0;
+          }
+          @media all and (max-width: 1000px) {
+            padding-top: 10px;
+            width: 100%;
+          }
     }
 
     &__pagination {
@@ -330,6 +361,7 @@
         justify-content: center;
         gap: 10px;
         z-index: 1;
+        padding-bottom: 10px;
         &__button {
             border: 0px;
             border-radius: 13px;
@@ -376,18 +408,33 @@
 }
 
 .journey-display {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 50vw;
-    max-width: 750px;
-    height: 22px;
-    padding-bottom: 20px;
-    padding-top: 10px;
-    margin-bottom: 10px;
-    background:transparent;
-    border-bottom: 1px solid #929292;
-    cursor: default;
+    @media all and (min-width: 1001px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 50vw;
+        max-width: 750px;
+        height: 22px;
+        padding-bottom: 20px;
+        padding-top: 10px;
+        margin-bottom: 10px;
+        background:transparent;
+        border-bottom: 1px solid #929292;
+        cursor: default;
+    }
+    @media all and (max-width: 1000px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 22px;
+        padding-bottom: 20px;
+        padding-top: 10px;
+        margin-bottom: 10px;
+        background:transparent;
+        border-bottom: 1px solid #929292;
+        cursor: default;
+    }
 
     &__location {
         display: flex;

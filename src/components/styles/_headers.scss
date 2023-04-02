@@ -3,26 +3,39 @@
 .header {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     z-index: 1;
-    width: 100%;
+    width: 100vw;
     height: 50px;
     background: #007AC9;
     &__logo {
-        position: absolute;
-        left: 5px;
-        top: 15px;
-        width: 60px;
         justify-content: center;
         align-items: center;
         margin-left: 15px;
     }
 
+    &__switch {
+        @media all and (min-width: 1001px) {
+            display: none;
+        }
+        @media all and (max-width: 1000px) {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            border: 0px;
+            padding: 5px;
+        }
+        &__stations-btn {
+
+        }
+        &__journeys-btn {
+
+        }
+    }
+
     &__create-new {
-        position: absolute;
-        right: 5px;
-        top: 10px;
-        width: 120px;
         align-items: center;
         justify-content: center;
 
@@ -31,6 +44,7 @@
             border-radius: 15px;
             height: 30px;
             width: 90px;
+            margin-right: 15px;
             color: #0065a8;
             background-color: white;
             text-align: center;
