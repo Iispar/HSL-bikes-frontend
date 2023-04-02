@@ -1,9 +1,20 @@
 .map {
-    z-index: 0;
-    height: 100%;
-    width: 100%;
-    position: relative;
-    border-left: 2px solid #dedede;
+    @media all and (min-width: 1001px) {
+        z-index: 0;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        border-left: 2px solid #dedede;
+      }
+      @media all and (max-width: 1000px) {
+        z-index: 0;
+        height: 100%;
+        width: 100%;
+        padding: 40px;
+        background: #bbe6ff;
+        position: relative;
+        border-left: 2px solid #dedede;
+      }
     &__menu {
         position: absolute;
         left: 0;
@@ -55,7 +66,13 @@
         }
     }
     &__container {
-        height: 100%;
+        @media all and (min-width: 1001px) {
+            height: 100%;
+          }
+          @media all and (max-width: 1000px) {
+            height: 100%;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          }
     }
 }
 

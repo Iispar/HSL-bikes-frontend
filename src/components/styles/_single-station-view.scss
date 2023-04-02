@@ -1,12 +1,23 @@
 @import './colors-and-fonts';
 .station-information {
-    display: flex;
-    flex-direction: column;
-    height: 90vh;
-    padding-left: 20px;
-    padding-right: 10px;
-    padding-top: 10px;
-    width: 100%;
+    @media all and (min-width: 1001px) {
+        display: flex;
+        flex-direction: column;
+        height: 90vh;
+        padding-left: 20px;
+        padding-right: 10px;
+        padding-top: 10px;
+        width: 100%;
+      }
+      @media all and (max-width: 1000px) {
+        display: flex;
+        flex-direction: column;
+        height: 700px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 10px;
+        width: 100%;
+      }
     &__header {
         display: flex;
         justify-content: space-between;

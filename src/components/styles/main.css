@@ -1008,14 +1008,27 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   font-family: "Varela round";
   src: url("../../data/varelaRound.ttf");
 }
-.station-information {
-  display: flex;
-  flex-direction: column;
-  height: 90vh;
-  padding-left: 20px;
-  padding-right: 10px;
-  padding-top: 10px;
-  width: 100%;
+@media all and (min-width: 1001px) {
+  .station-information {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-top: 10px;
+    width: 100%;
+  }
+}
+@media all and (max-width: 1000px) {
+  .station-information {
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    width: 100%;
+  }
 }
 .station-information__header {
   display: flex;
@@ -1661,12 +1674,25 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   letter-spacing: 1px;
 }
 
-.map {
-  z-index: 0;
-  height: 100%;
-  width: 100%;
-  position: relative;
-  border-left: 2px solid #dedede;
+@media all and (min-width: 1001px) {
+  .map {
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    border-left: 2px solid #dedede;
+  }
+}
+@media all and (max-width: 1000px) {
+  .map {
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    padding: 40px;
+    background: #bbe6ff;
+    position: relative;
+    border-left: 2px solid #dedede;
+  }
 }
 .map__menu {
   position: absolute;
@@ -1718,8 +1744,16 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
 .map__menu__btn-container__clear-btn:hover {
   filter: invert(4%);
 }
-.map__container {
-  height: 100%;
+@media all and (min-width: 1001px) {
+  .map__container {
+    height: 100%;
+  }
+}
+@media all and (max-width: 1000px) {
+  .map__container {
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
 }
 
 .marker {
@@ -1820,4 +1854,86 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   grid-row: 3;
   grid-column: 1/3;
   padding-top: 40px;
+}
+
+@media all and (min-width: 1001px) {
+  .grid-single {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 550px 1fr;
+    grid-template-rows: 50px 1fr;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+  }
+}
+@media all and (max-width: 1000px) {
+  .grid-single {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr 400px;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+  }
+}
+.grid-single__header {
+  display: flex;
+  justify-content: center;
+  grid-column: 1/3;
+  grid-row: 1;
+}
+@media all and (min-width: 1001px) {
+  .grid-single__right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+@media all and (max-width: 1000px) {
+  .grid-single__right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    grid-row: 3;
+  }
+}
+@media all and (min-width: 1001px) {
+  .grid-single__right__splitter {
+    display: none;
+  }
+}
+@media all and (max-width: 1000px) {
+  .grid-single__right__splitter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 1;
+  }
+  .grid-single__right__splitter svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 20px;
+  }
+  .grid-single__right__splitter .shape-fill {
+    fill: #FFFFFF;
+  }
+}
+.grid-single__left {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  grid-column: 1;
+  grid-row: 2;
 }/*# sourceMappingURL=main.css.map */
