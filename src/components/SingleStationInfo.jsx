@@ -29,11 +29,14 @@ const Station = () => {
     $('#station-information__selection__container__data-btn').addClass('selected');
 
     // Formats the size of the title for station depending on the size of the name
-    if (name.length > 28) $('#station-information__header__name__title').css('font-size', '26px');
-    else if (name.length > 26) $('#station-information__header__name__title').css('font-size', '30px');
-    else if (name.length > 22) $('#station-information__header__name__title').css('font-size', '36px');
-    else if (name.length > 15) $('#station-information__header__name__title').css('font-size', '45px');
-    else $('#station-information__header__name__title').css('font-size', '50px');
+    if ($(window).width() > 550) {
+      if (name.length > 28) $('#station-information__header__name__title').css('font-size', '26px');
+      else if (name.length > 26) $('#station-information__header__name__title').css('font-size', '30px');
+      else if (name.length > 22) $('#station-information__header__name__title').css('font-size', '36px');
+      else if (name.length > 15) $('#station-information__header__name__title').css('font-size', '45px');
+      else $('#station-information__header__name__title').css('font-size', '50px');
+    } else if (name.length > 22) $('#station-information__header__name__title').css('font-size', '25px');
+    else $('#station-information__header__name__title').css('font-size', '28px');
 
     $('#station-information__header__name__title').text(name);
   }, []);

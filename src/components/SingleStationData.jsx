@@ -161,10 +161,14 @@ const SingleStationData = () => {
         <div className="station-information__data__statistics__container">
           <div className="station-information__data__statistics__container__departing" id="station-information__data__statistics__container__departing">
             <div className="station-information__data__statistics__container__departing__container" id="station-information__data__statistics__container__departing__container">
-              <div className="station-information__data__statistics__container__departing__container__all-img" />
-              <div className="station-information__data__statistics__container__departing__container__all-trips" id="station-information__data__statistics__container__departing__container__all-trips" />
-              <div className="station-information__data__statistics__container__departing__container__avg-img" />
-              <div className="station-information__data__statistics__container__departing__container__all-avg" id="station-information__data__statistics__container__departing__container__all-avg" />
+              <div className="station-information__data__statistics__container__departing__container__all">
+                <div className="station-information__data__statistics__container__departing__container__all__img" />
+                <div className="station-information__data__statistics__container__departing__container__all__trips" id="station-information__data__statistics__container__departing__container__all-trips" />
+              </div>
+              <div className="station-information__data__statistics__container__departing__container__avg">
+                <div className="station-information__data__statistics__container__departing__container__avg__img" />
+                <div className="station-information__data__statistics__container__departing__container__avg__avg" id="station-information__data__statistics__container__departing__container__all-avg" />
+              </div>
             </div>
             <div className="loader-container">
               <div className="loader-container__loader" />
@@ -173,10 +177,14 @@ const SingleStationData = () => {
           </div>
           <div className="station-information__data__statistics__container__returning">
             <div className="station-information__data__statistics__container__returning__container" id="station-information__data__statistics__container__returning__container">
-              <div className="station-information__data__statistics__container__returning__container__all-img" />
-              <div className="station-information__data__statistics__container__returning__container__all-trips" id="station-information__data__statistics__container__returning__container__all-trips" />
-              <div className="station-information__data__statistics__container__returning__container__avg-img" />
-              <div className="station-information__data__statistics__container__returning__container__all-avg" id="station-information__data__statistics__container__returning__container__all-avg" />
+              <div className="station-information__data__statistics__container__returning__container__all">
+                <div className="station-information__data__statistics__container__returning__container__all__img" />
+                <div className="station-information__data__statistics__container__returning__container__all__trips" id="station-information__data__statistics__container__returning__container__all-trips" />
+              </div>
+              <div className="station-information__data__statistics__container__returning__container__avg">
+                <div className="station-information__data__statistics__container__returning__container__avg__img" />
+                <div className="station-information__data__statistics__container__returning__container__avg__avg" id="station-information__data__statistics__container__returning__container__all-avg" />
+              </div>
             </div>
             <div className="loader-container">
               <div className="loader-container__loader" />

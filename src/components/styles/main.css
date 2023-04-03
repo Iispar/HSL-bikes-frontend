@@ -1278,13 +1278,24 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
     width: 100%;
   }
 }
-@media all and (max-width: 1000px) {
+@media all and (min-width: 551px) and (max-width: 1000px) {
   .station-information {
     display: flex;
     flex-direction: column;
     height: 700px;
     padding-left: 50px;
     padding-right: 50px;
+    padding-top: 10px;
+    width: 100%;
+  }
+}
+@media all and (max-width: 550px) {
+  .station-information {
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 10px;
     width: 100%;
   }
@@ -1375,13 +1386,25 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   font-stretch: expanded;
   letter-spacing: 0px;
 }
-.station-information__data {
-  display: grid;
-  grid-template-columns: 1fr 200px;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  height: 500px;
-  z-index: 0;
-  margin-right: 20px;
+@media screen and (min-width: 551px) {
+  .station-information__data {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 500px;
+    z-index: 0;
+    margin-right: 20px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .station-information__data {
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 500px;
+    z-index: 0;
+    margin-right: 20px;
+  }
 }
 .station-information__data__month-filter {
   grid-row: 1;
@@ -1404,12 +1427,23 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   display: flex;
   flex-direction: row;
 }
-.station-information__data__month-filter__dropdown__search__info {
-  pointer-events: none;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 80px;
+@media screen and (min-width: 551px) {
+  .station-information__data__month-filter__dropdown__search__info {
+    pointer-events: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .station-information__data__month-filter__dropdown__search__info {
+    pointer-events: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+  }
 }
 .station-information__data__month-filter__dropdown__search__info__title {
   position: absolute;
@@ -1422,21 +1456,45 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   letter-spacing: 0px;
   color: #767676;
 }
-.station-information__data__month-filter__dropdown__search__info__current {
-  position: absolute;
-  bottom: 1px;
-  left: 5px;
-  font-family: "Varela round", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  font-stretch: expanded;
-  letter-spacing: 0px;
+@media screen and (min-width: 551px) {
+  .station-information__data__month-filter__dropdown__search__info__current {
+    position: absolute;
+    bottom: 1px;
+    left: 5px;
+    font-family: "Varela round", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: expanded;
+    letter-spacing: 0px;
+  }
 }
-.station-information__data__month-filter__dropdown__search__logo {
-  pointer-events: none;
-  height: 45px;
-  width: 45px;
-  border-left: 1px solid #888888;
+@media screen and (max-width: 550px) {
+  .station-information__data__month-filter__dropdown__search__info__current {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    bottom: 1px;
+    left: 0px;
+    width: 100%;
+    font-family: "Varela round", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: expanded;
+    letter-spacing: 0px;
+  }
+}
+@media screen and (min-width: 551px) {
+  .station-information__data__month-filter__dropdown__search__logo {
+    pointer-events: none;
+    height: 45px;
+    width: 45px;
+    border-left: 1px solid #888888;
+  }
+}
+@media screen and (max-width: 550px) {
+  .station-information__data__month-filter__dropdown__search__logo {
+    display: none;
+  }
 }
 .station-information__data__month-filter__dropdown__content {
   display: none;
@@ -1471,6 +1529,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   grid-column: 1;
   padding-top: 8px;
   z-index: 10;
+  min-width: 210px;
 }
 .station-information__data__top-returning__container {
   display: flex;
@@ -1528,6 +1587,7 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
 .station-information__data__top-departing {
   grid-row: 5/9;
   grid-column: 1;
+  min-width: 210px;
 }
 .station-information__data__top-departing__container {
   display: flex;
@@ -1596,23 +1656,55 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   flex-direction: column;
   gap: 20px;
 }
-.station-information__data__statistics__container__departing {
-  display: flex;
-  flex-direction: column;
-  height: 100px;
-  position: relative;
+@media screen and (min-width: 551px) {
+  .station-information__data__statistics__container__departing {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    position: relative;
+  }
 }
-.station-information__data__statistics__container__departing__container {
+@media screen and (max-width: 550px) {
+  .station-information__data__statistics__container__departing {
+    display: flex;
+    flex-direction: column;
+    height: 135px;
+    position: relative;
+  }
+}
+@media screen and (min-width: 551px) {
+  .station-information__data__statistics__container__departing__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid #007AC9;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    height: 80px;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 550px) {
+  .station-information__data__statistics__container__departing__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid #007AC9;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    height: 110px;
+    width: 100%;
+  }
+}
+.station-information__data__statistics__container__departing__container__all {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 2px solid #007AC9;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  height: 80px;
+  flex-direction: row;
   width: 100%;
 }
-.station-information__data__statistics__container__departing__container__all-img {
+.station-information__data__statistics__container__departing__container__all__img {
   height: 40px;
   width: 40px;
   background-image: url("../../data/biker.svg");
@@ -1620,24 +1712,11 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   background-position: center;
   background-repeat: no-repeat;
 }
-.station-information__data__statistics__container__departing__container__avg-img {
-  height: 50px;
-  width: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translate(8px, 2px);
-  background-image: url("../../data/avgIcon.svg");
-  background-size: 130%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.station-information__data__statistics__container__departing__container__all-trips {
+.station-information__data__statistics__container__departing__container__all__trips {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
-  transform: translateX(-8px);
   text-align: center;
   font-family: "Varela round", sans-serif;
   font-size: 15px;
@@ -1645,7 +1724,24 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   font-stretch: expanded;
   letter-spacing: 0px;
 }
-.station-information__data__statistics__container__departing__container__all-avg {
+.station-information__data__statistics__container__departing__container__avg {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.station-information__data__statistics__container__departing__container__avg__img {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(2px, 2px);
+  background-image: url("../../data/avgIcon.svg");
+  background-size: 130%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.station-information__data__statistics__container__departing__container__avg__avg {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1677,24 +1773,57 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   font-stretch: expanded;
   letter-spacing: 0px;
 }
-.station-information__data__statistics__container__returning {
-  display: flex;
-  flex-direction: column;
-  height: 100px;
-  position: relative;
+@media screen and (min-width: 551px) {
+  .station-information__data__statistics__container__returning {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    position: relative;
+  }
 }
-.station-information__data__statistics__container__returning__container {
+@media screen and (max-width: 550px) {
+  .station-information__data__statistics__container__returning {
+    display: flex;
+    flex-direction: column;
+    height: 135px;
+    position: relative;
+  }
+}
+@media screen and (min-width: 551px) {
+  .station-information__data__statistics__container__returning__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border: 2px solid #007AC9;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    height: 80px;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 550px) {
+  .station-information__data__statistics__container__returning__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    background: white;
+    border: 2px solid #007AC9;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    height: 110px;
+    width: 100%;
+  }
+}
+.station-information__data__statistics__container__returning__container__all {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: white;
-  border: 2px solid #007AC9;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  height: 80px;
+  flex-direction: row;
   width: 100%;
 }
-.station-information__data__statistics__container__returning__container__all-img {
+.station-information__data__statistics__container__returning__container__all__img {
   height: 40px;
   width: 40px;
   background-image: url("../../data/biker.svg");
@@ -1702,24 +1831,11 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   background-position: center;
   background-repeat: no-repeat;
 }
-.station-information__data__statistics__container__returning__container__avg-img {
-  height: 50px;
-  width: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translate(8px, 2px);
-  background-image: url("../../data/avgIcon.svg");
-  background-size: 130%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.station-information__data__statistics__container__returning__container__all-trips {
+.station-information__data__statistics__container__returning__container__all__trips {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
-  transform: translateX(-8px);
   text-align: center;
   font-family: "Varela round", sans-serif;
   font-size: 15px;
@@ -1727,7 +1843,24 @@ double-slider-track, .journeys__header__filters__sliders__distance-slider__track
   font-stretch: expanded;
   letter-spacing: 0px;
 }
-.station-information__data__statistics__container__returning__container__all-avg {
+.station-information__data__statistics__container__returning__container__avg {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.station-information__data__statistics__container__returning__container__avg__img {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(2px, 2px);
+  background-image: url("../../data/avgIcon.svg");
+  background-size: 130%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.station-information__data__statistics__container__returning__container__avg__avg {
   display: flex;
   align-items: center;
   justify-content: center;
