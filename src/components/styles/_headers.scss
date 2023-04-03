@@ -46,6 +46,7 @@
     }
 
     &__create-new {
+        position: relative;
         align-items: center;
         justify-content: center;
 
@@ -65,6 +66,30 @@
 
             &:hover {
                 background-color: #dedede;
+            }
+        }
+        &__form {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            background: #DEDEDE;
+            top: 34px;
+            right: 15px;
+            width: 200px;
+            height: 200px;
+            border-radius: 5px;
+            &__close-btn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                height: 16px;
+                width: 16px;
+                border: 0px;
+                background-image: url('../../data/closeIcon.svg');
+                background-size: 100%;
+                background-color: transparent;
+                filter: invert(28%) sepia(100%) saturate(994%) hue-rotate(176deg) brightness(106%) contrast(105%);
             }
         }
     }

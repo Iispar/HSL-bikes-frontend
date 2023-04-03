@@ -53,7 +53,11 @@ const Header = () => {
         <button id="switch-journeys-btn" className="header__switch__btn" type="button" onClick={() => changeView('journeys')}> journeys </button>
       </div>
       <div className="header__create-new">
-        <button className="header__create-new__btn" type="button"> Create new </button>
+        <button className="header__create-new__btn" type="button" onClick={() => $('#header__create-new__form').css('display', 'flex')}> Create new </button>
+        <div className="header__create-new__form" id="header__create-new__form">
+          <button className="header__create-new__form__close-btn" type="button" onClick={() => $('#header__create-new__form').css('display', 'none')}> </button>
+          this is still underway
+        </div>
       </div>
     </div>
   );
