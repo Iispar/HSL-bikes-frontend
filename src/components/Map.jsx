@@ -1,14 +1,11 @@
-/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-console */
 import React, { useRef, useEffect, useState } from 'react';
 import $ from 'jquery';
+import mapboxgl from 'mapbox-gl';
 import { useParams } from 'react-router-dom';
 import stationService from '../services/StationService';
 import { stationsAndIds } from '../data/stationsData';
 import { getKeyByValue, setTopOnMap, getLngLat } from './helpers/stationDataHelpers';
-// eslint-disable-line import/no-webpack-loader-syntax
-// eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
-import mapboxgl from '!mapbox-gl';
 
 const Map = () => {
   mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API;
@@ -66,7 +63,6 @@ const Map = () => {
     const coords = await getLngLat(inputStation);
     // only one marker on screen at a time.
     if ($('#singleJourneyMarker').length === 0) {
-      console.log('call');
       const stationMarker = new mapboxgl.Marker()
         .setLngLat(coords)
         .addTo(map.current);

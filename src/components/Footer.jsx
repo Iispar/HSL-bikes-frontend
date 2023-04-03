@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import mapboxgl from 'mapbox-gl';
 import stationService from '../services/StationService';
-// eslint-disable-next-line import/no-unresolved, import/no-webpack-loader-syntax
-import mapboxgl from '!mapbox-gl';
 
 const Footer = () => {
   mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API;

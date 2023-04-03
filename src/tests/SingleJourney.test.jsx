@@ -8,7 +8,9 @@ describe('Journey component tests', () => {
     <SingleJourney
       key="123"
       departureStationName="TestDepartureStation"
+      departureStationId="10"
       returnStationName="TestReturnStation"
+      returnStationId="20"
       coveredDistance={200}
       duration={100}
       direction="return"
@@ -18,7 +20,7 @@ describe('Journey component tests', () => {
   test('renders journey', () => {
     const component = render(journey);
     expect(component.container).toHaveTextContent(
-      'FROM TestDepartureStation0.20KM1MIN',
+      'FROM Kasarmitori0.20KM1MIN',
     );
   });
 });

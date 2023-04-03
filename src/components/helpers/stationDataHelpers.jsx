@@ -1,7 +1,6 @@
+import mapboxgl from 'mapbox-gl';
 import bikeService from '../../services/BikeService';
 import { stationsAndIds } from '../../data/stationsData';
-// eslint-disable-next-line import/no-unresolved, import/no-webpack-loader-syntax
-import mapboxgl from '!mapbox-gl';
 import stationService from '../../services/StationService';
 
 export const getKeyByValue = (object, value) => Object

@@ -7,8 +7,11 @@ describe('Journey component tests', () => {
   const journey = (
     <Journey
       key="123"
+      id="111"
       departureStationName="TestDepartureStation"
+      departureStationId="10"
       returnStationName="TestReturnStation"
+      returnStationId="20"
       distance={200}
       duration={100}
     />
@@ -17,7 +20,7 @@ describe('Journey component tests', () => {
   test('renders journey', () => {
     const component = render(journey);
     expect(component.container).toHaveTextContent(
-      'TestDepartureStationTestReturnStation0.20KM1MIN',
+      'KasarmitoriKaisaniemenpuisto0.20KM1MIN',
     );
   });
 });
