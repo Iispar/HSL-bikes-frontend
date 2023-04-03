@@ -38,7 +38,7 @@ describe('Single-station-view', () => {
     cy.visit('http://localhost:3000/10');
     cy.wait(1000);
     cy.get('button[id=station-information__selection__container__departure-btn]').click();
-    cy.contains('TO Viiskulma');
+    cy.contains('TO Annankatu');
   });
   it('map return journeys works', () => {
     cy.visit('http://localhost:3000/10');

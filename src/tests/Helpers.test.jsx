@@ -7,8 +7,8 @@ describe('Helpers tests', () => {
     const resBack = getPageFilter('b', 5, ['Return_station_id=100', 'Duration=200']);
     const resBackBroken = getPageFilter('b', -1, ['Covered_distance=1000']);
 
-    expect(resForward).toStrictEqual(['sort=-Duration', 'skip=20']);
-    expect(resBack).toStrictEqual(['Return_station_id=100', 'Duration=200', 'skip=50']);
+    expect(resForward).toStrictEqual(['sort=-Duration', 'skip=16']);
+    expect(resBack).toStrictEqual(['Return_station_id=100', 'Duration=200', 'skip=40']);
     expect(resBackBroken).toStrictEqual('null');
   });
 

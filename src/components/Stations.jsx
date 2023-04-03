@@ -102,7 +102,7 @@ const Stations = () => {
   return (
     <div className="stations" id="stations">
       <div className="stations__title" id="stations__title">
-        <h1 className="stations__title__text">
+        <h1 className="stations__title__text" id="stations__title__text">
           STATIONS
         </h1>
       </div>

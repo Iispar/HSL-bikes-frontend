@@ -278,7 +278,7 @@ const Journeys = () => {
   return (
     <div className="journeys" id="journeys">
       <div className="journeys__title" id="journeys__title">
-        <p className="journeys__title__text">
+        <p className="journeys__title__text" id="journeys__title__text">
           Journeys
         </p>
       </div>

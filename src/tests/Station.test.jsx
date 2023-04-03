@@ -13,7 +13,7 @@ describe('Station component tests', () => {
   const station = (
     <Station
       key="123"
-      id="111"
+      id={111}
       nameFi="testStationFi"
       nameSwe="testStationSwe"
       adressFi="testStation"

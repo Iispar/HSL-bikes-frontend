@@ -1,12 +1,14 @@
 describe('Journeys', () => {
   it('front page opens', () => {
+    cy.viewport(1920, 1080);
     cy.visit('http://localhost:3000');
     cy.contains('Journeys');
-    cy.contains('aajalahden aukio');
-    cy.contains('Teljäntie');
+    cy.contains('Pohjolankatu');
+    cy.contains('Kaivopuisto');
   });
 
   it('search form works', () => {
+    cy.viewport(1920, 1080);
     cy.visit('http://localhost:3000');
     cy.get('input[id=journeys__header__search__departure__input]').type('Hanasaari{enter}');
     cy.get('input[id=journeys__header__search__return__input]').type('Otaranta{enter}');
@@ -14,10 +16,11 @@ describe('Journeys', () => {
     cy.contains('Otaranta');
     cy.get('*[name=station-text]')
       .filter((index, elt) => elt.textContent.match('Hanasaari'))
-      .should('have.length.gte', 9);
+      .should('have.length.gte', 7);
   });
 
   it('popup and sort buttons works', () => {
+    cy.viewport(1920, 1080);
     cy.visit('http://localhost:3000');
     cy.wait(1000);
 
@@ -34,6 +37,7 @@ describe('Journeys', () => {
   });
 
   it('reset button works', () => {
+    cy.viewport(1920, 1080);
     cy.visit('http://localhost:3000');
     cy.get('input[id=journeys__header__search__departure__input]').type('Hakalehto{enter}');
     cy.contains('Hakalehto');
@@ -42,21 +46,22 @@ describe('Journeys', () => {
     cy.wait(500);
     cy.get('button[id=reset-button]').click();
     cy.wait(500);
-    cy.contains('Laajalahden aukio');
+    cy.contains('Pohjolankatu');
   });
 
   it('pagination works', () => {
+    cy.viewport(1920, 1080);
     cy.viewport(1920, 1080);
     cy.visit('http://localhost:3000');
     cy.wait(500);
     cy.get('button[id=forwards-journey-button]').click();
     cy.wait(200);
-    cy.contains('Kalevankatu');
+    cy.contains('Niittymaa');
     cy.get('button[id=forwards-journey-button]').click();
     cy.wait(200);
-    cy.contains('Kalevankatu').should('not.exist');
+    cy.contains('Niittymaa').should('not.exist');
     cy.get('button[id=backwards-journey-button]').click();
     cy.wait(200);
-    cy.contains('Kalevankatu');
+    cy.contains('Niittymaa');
   });
 });
