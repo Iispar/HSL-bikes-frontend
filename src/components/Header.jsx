@@ -8,7 +8,7 @@ const Header = () => {
    * Sets stations as the current view on the switch.
    */
   useEffect(() => {
-    $('#switch-stations-btn').addClass('selected');
+    $('#switch-stations-btn').addClass('selected-switch');
   }, []);
   /**
    * When the screen is smaller than 1000px we use this switch to swap between the journeys
@@ -19,13 +19,13 @@ const Header = () => {
     if (view === 'stations') {
       $('.grid__right').css('display', 'none');
       $('.grid__left').css('display', 'flex');
-      $('#switch-journeys-btn').removeClass('selected');
-      $('#switch-stations-btn').addClass('selected');
+      $('#switch-journeys-btn').removeClass('selected-switch');
+      $('#switch-stations-btn').addClass('selected-switch');
     } else {
       $('.grid__right').css('display', 'flex');
       $('.grid__left').css('display', 'none');
-      $('#switch-stations-btn').removeClass('selected');
-      $('#switch-journeys-btn').addClass('selected');
+      $('#switch-stations-btn').removeClass('selected-switch');
+      $('#switch-journeys-btn').addClass('selected-switch');
     }
   };
   /**

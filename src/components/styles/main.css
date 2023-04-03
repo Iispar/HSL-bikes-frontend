@@ -28,7 +28,6 @@
     align-items: center;
     justify-content: center;
     width: 162px;
-    background: #DDDDDD;
     height: 32px;
     border-radius: 3px;
   }
@@ -41,7 +40,7 @@
   transition: background-color 0.3s ease-out;
   z-index: 1;
   background: transparent;
-  color: #888888;
+  color: black;
   font-family: "Varela round", sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -89,9 +88,8 @@
   margin-left: 15px;
 }
 
-.selected {
-  background: #ffffff;
-  color: #333333;
+.selected-switch {
+  color: white;
 }
 
 @font-face {
