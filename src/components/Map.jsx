@@ -30,7 +30,7 @@ const Map = () => {
    */
   const changeDirection = async (direction) => {
     // visuals.
-    $('button[name=map__menu__btn').prop('disabled', true);
+    $('button[name=map__menu__btn]').prop('disabled', true);
     if (direction === 'return') {
       $('#map-departure-btn').removeClass('selected');
       $('#map-return-btn').addClass('selected');
@@ -49,7 +49,7 @@ const Map = () => {
     const newMarkers = await setTopOnMap(map.current, direction, id, val);
     setMarkers(newMarkers);
     if (observer !== '') observer.disconnect();
-    $('button[name=map__menu__btn').prop('disabled', false);
+    $('button[name=map__menu__btn]').prop('disabled', false);
   };
 
   /**
