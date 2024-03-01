@@ -1,3 +1,5 @@
+!! APP IS CURRENTLY OFFLINE !!
+
 The project can be accessed from [here](https://bikes-frontend.vercel.app/).
 
 # Background
